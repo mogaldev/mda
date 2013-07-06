@@ -4,5 +4,7 @@
     <string name="app_name">דיווחי מגן דוד אדום</string>
     <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_filter_list_view_tests">FilterListViewTests</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
