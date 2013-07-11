@@ -1,6 +1,6 @@
 package com.madareports.ui.reportslist;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,28 +9,40 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.madareports.R;
-import com.madareports.db.FakeDb;
+import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.MyRecord;
+import com.madareports.db.models.Report;
+import com.madareports.utils.Logger;
 
 public class ReportsListAdapter extends ArrayAdapter<MyRecord> {
-	FakeDb db;
+	private String TAG = Logger.makeLogTag(getClass());
+	private ArrayList<Report> reportsList;
 	private Context context;
 
-	public ReportsListAdapter(Context context, int textViewResourceId,
-			List<MyRecord> objects) {
-		super(context, textViewResourceId, objects);
+	public ReportsListAdapter(Context context, int textViewResourceId) {
+		super(context, textViewResourceId);
 		this.context = context;
-		db = new FakeDb();
+		initReportsList();
+	}
+	
+	@Override
+	public int getCount() {
+		return reportsList.size();
+	}
+
+	private void initReportsList() {
+		// get the reports from the db
+		reportsList = (ArrayList<Report>) DatabaseWrapper.getInstance(context)
+				.getAllReports();
+		Logger.LOGE(TAG, "reportsList.size: #" + reportsList.size());
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		LayoutInflater inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		
-		View recordView = inflater.inflate(R.layout.report_list_view_item, parent, false);
-		// TODO save list locally or find another way. it is very inefficeint
-		((ReportListItem)recordView).set(db.getRecords().get(position));
-		return recordView;
+		Logger.LOGE(TAG, "getView is called for item: #" + position);
+		ReportListItem item = new ReportListItem(context, reportsList.get(position));
+		return item;
 	}
+		
+
 }

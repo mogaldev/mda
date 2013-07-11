@@ -1,20 +1,22 @@
 package com.madareports.ui.reportslist;
 
-import com.madareports.R;
-import com.madareports.db.MyRecord;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.madareports.R;
+import com.madareports.db.models.Report;
+import com.madareports.utils.Logger;
+
 // TODO maybe can remove the inheritance
 public class ReportListItem extends RelativeLayout {
+	private String TAG =  Logger.makeLogTag(getClass());
 	private TextView tvId;
 	private TextView tvTitle;
 	private TextView tvDescription;
 
-	public ReportListItem(Context context) {
+	public ReportListItem(Context context, Report report) {
 		super(context);
 
 		LayoutInflater li = (LayoutInflater) context
@@ -24,12 +26,15 @@ public class ReportListItem extends RelativeLayout {
 		this.tvId = (TextView) findViewById(R.id.tvReportId);
 		this.tvTitle = (TextView) findViewById(R.id.tvTitle);
 		this.tvDescription = (TextView) findViewById(R.id.tvDescription);
+		
+		set(report);
 	}
 
-	public void set(MyRecord record) {
-		tvId.setText(record.id);
-		tvTitle.setText(record.title);
-		tvDescription.setText(record.description, TextView.BufferType.SPANNABLE);
+	public void set(Report report) {
+		Logger.LOGE(TAG, "set report " + report.getId());
+		tvId.setText("" + report.getId());
+		tvTitle.setText(report.getTitle());
+		tvDescription.setText(report.getDescription(), TextView.BufferType.SPANNABLE);
 	}
 
 }
