@@ -1,8 +1,10 @@
 package com.madareports;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.madareports.ui.reportslist.ReportsListAdapter;
@@ -10,17 +12,43 @@ import com.madareports.utils.Logger;
 
 public class FilterListViewTests extends Activity {
 	private String TAG = Logger.makeLogTag(getClass());
+	private ReportsListAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_filter_list_view_tests);
-		Logger.LOGE(TAG, "onCreate");
-		ListView lv = (ListView)findViewById(R.id.listView);
-		lv.setAdapter(new ReportsListAdapter(this,
-				R.layout.report_list_view_item));
-/*		setListAdapter(new ReportsListAdapter(this,
-				R.layout.report_list_view_item));*/
-	}
 
+		ListView lv = (ListView) findViewById(R.id.listView);
+		mAdapter = new ReportsListAdapter(this, R.layout.report_list_view_item);
+		lv.setAdapter(mAdapter);
+
+		EditText inputSearch = (EditText) findViewById(R.id.editTxt);
+		inputSearch.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence cs, int start, int before,
+					int count) {
+
+				ReportsListAdapter adptr = FilterListViewTests.this.mAdapter;
+
+				if (count < before) {
+					// We're deleting char so we need to reset the adapter data
+					adptr.resetData();
+				}
+				// When user changed the Text
+				adptr.getFilter().filter(cs);
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+
+		});
+	}
 }

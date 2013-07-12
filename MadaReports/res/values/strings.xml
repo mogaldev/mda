@@ -7,4 +7,12 @@
     <string name="title_activity_filter_list_view_tests">FilterListViewTests</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Preferences Settings Keys -->
+    <string name="prefrences_key_ringtone_uri">RINGTONE_URI</string>
+    <string name="prefrences_key_sound_enabled">SOUND_ENABLED</string>
+    <string name="prefrences_key_vibrate_enabled">VIBRATE_ENABLED</string>
+    
+
+    <!-- End of Preferences Settings Keys -->
+
 </resources>
