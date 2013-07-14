@@ -7,12 +7,23 @@
     <string name="title_activity_filter_list_view_tests">FilterListViewTests</string>
     <string name="action_settings">Settings</string>
 
-    <!-- Preferences Settings Keys -->
+    <!-- Preferences Settings -->
     <string name="prefrences_key_ringtone_uri">RINGTONE_URI</string>
     <string name="prefrences_key_sound_enabled">SOUND_ENABLED</string>
     <string name="prefrences_key_vibrate_enabled">VIBRATE_ENABLED</string>
-    
-
-    <!-- End of Preferences Settings Keys -->
+    <string name="prefrences_key_sender_name">SENDER_NAME</string>
+    <string name="prefrences_key_sender_numbers">SENDER_NUMBERS</string>
+    <!-- Titles -->
+    <string name="prefrences_title_vibrate_enabled">Vibrate</string>
+    <string name="prefrences_title_sound_enabled">Sound</string>
+    <string name="prefrences_title_ringtone_uri">Ringtone</string>
+    <!-- Summaries -->
+    <string name="prefrences_summary_vibrate_enabled">Whether to perform vibration when there is incoming notification</string>
+    <string name="prefrences_summary_sound_enabled">Whether to play the ringtone when there is incoming notification</string>
+    <string name="prefrences_summary_ringtone_uri">The ringtone to be played when the time is over</string>
+    <!-- Categories -->
+    <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
+    <string name="prefrences_category_notifications_title">Notifications</string>
+    <!-- End of Preferences Settings -->
 
 </resources>

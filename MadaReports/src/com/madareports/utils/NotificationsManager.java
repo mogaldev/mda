@@ -63,7 +63,6 @@ public class NotificationsManager {
 	 * Removing the permanent notification that represents the running of the
 	 * application
 	 */
-
 	public void removeNotification() {
 		removeNotification(NOTIFICATION_ID);
 	}

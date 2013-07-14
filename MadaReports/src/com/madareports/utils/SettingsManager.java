@@ -40,6 +40,13 @@ public class SettingsManager {
 	}
 
 	/**
+	 * Get instance of the SharedPreferenceAdapter
+	 */
+	private SharedPreferenceAdapter getAdapterInstance() {
+		return SharedPreferenceAdapter.getInstance(cntx);
+	}
+
+	/**
 	 * Getting the URI of the chosen ringtone. if no ringtone has been chosen
 	 * the ALARM_ALERT is returned
 	 */
@@ -54,24 +61,23 @@ public class SettingsManager {
 
 		Log.e("getRingtoneUri-IsExists", exists + "");
 
-		String valueFromPref = SharedPreferenceAdapter.getInstance(cntx)
-				.readString(R.string.prefrences_key_ringtone_uri,
-						defaultRingtone);
+		String valueFromPref = getAdapterInstance().readString(
+				R.string.prefrences_key_ringtone_uri, defaultRingtone);
 		Log.e("getRingtoneUri", valueFromPref);
 		return Uri.parse(valueFromPref);
 	}
 
 	public void setRingtoneUri(Uri ringtoneUri) {
 		Log.e("setRingtoneUri", ringtoneUri.toString());
-		SharedPreferenceAdapter.getInstance(cntx).writeString(
-				R.string.prefrences_key_ringtone_uri, ringtoneUri.toString());
+		getAdapterInstance().writeString(R.string.prefrences_key_ringtone_uri,
+				ringtoneUri.toString());
 	}
 
 	/**
 	 * Whether to perform vibration when the time is up
 	 */
 	public boolean isVibrateEnabled() {
-		return SharedPreferenceAdapter.getInstance(cntx).readBoolean(
+		return getAdapterInstance().readBoolean(
 				R.string.prefrences_key_vibrate_enabled);
 	}
 
@@ -80,8 +86,47 @@ public class SettingsManager {
 	 * disabled the getRingtoneUri() if irrelevant
 	 */
 	public boolean isSoundEnabled() {
-		return SharedPreferenceAdapter.getInstance(cntx).readBoolean(
+		return getAdapterInstance().readBoolean(
 				R.string.prefrences_key_sound_enabled);
 	}
 
+	/**
+	 * Save the information of the reports sender (m.d.a specific number)
+	 * 
+	 * @param displayName
+	 *            - The name of the reports sender in the the contacts
+	 * @param numbers
+	 *            - The numbers of the sender separated by ';'. should be only
+	 *            one number but this was made for treating the case of multiple
+	 *            report senders
+	 */
+	public void setReportsSender(String displayName, String numbers) {
+		SharedPreferenceAdapter spAdapter = getAdapterInstance();
+		spAdapter.writeString(R.string.prefrences_key_sender_name, displayName);
+		spAdapter.writeString(R.string.prefrences_key_sender_numbers, displayName);
+	}
+	
+	/**
+	 * Get the display name of the reports sender
+	 */
+	public String getReportsSenderName(){
+		return getAdapterInstance().readString(R.string.prefrences_key_sender_name);
+	}
+	
+	/**
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public boolean isReportsSenderNumber(String number){
+		String[] numbers = getAdapterInstance().readString(R.string.prefrences_key_sender_numbers).split(";");
+		if (numbers.length > 0){
+			
+		}
+		
+		return false;
+	}
+
+	// TODO: check if an inputed number is the MADA caller. use
+	// PhoneNumberUtils.compare function
 }

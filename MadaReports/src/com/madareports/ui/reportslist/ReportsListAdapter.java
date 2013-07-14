@@ -3,6 +3,7 @@ package com.madareports.ui.reportslist;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 	}
 
 	// TODO: check about more efficient filter mechanism
+	@SuppressLint("DefaultLocale")
 	@Override
 	public Filter getFilter() {
 		return new Filter() {
@@ -94,6 +96,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 				return results;
 			}
 
+			@SuppressWarnings("unchecked")
 			@Override
 			protected void publishResults(CharSequence constraint,
 					FilterResults results) {

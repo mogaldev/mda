@@ -9,22 +9,50 @@ import android.telephony.SmsMessage;
 
 import com.madareports.MainActivity;
 import com.madareports.R;
+import com.madareports.db.DatabaseWrapper;
+import com.madareports.db.DbHelper;
+import com.madareports.db.models.Report;
 import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
 	private final String TAG = Logger.makeLogTag(getClass());
 
-	public IncomingSMSReceiver() {
-	}
-
-	// TODO: this not use the listeners. check what is better
+		
+	
+	
 	private void raiseMessage(String msg, Context context) {
+		final String test = "#123 תיאור  המשך תיאור";
+		msg = test;
+		
+		Report report = new Report();
+		// get the id from the message
+		report.setId(Integer.parseInt(msg.substring(1, msg.indexOf(" "))));
+		report.setNotes(msg);
+		 
+		// add the report to the database
+		DatabaseWrapper.getInstance(context).AddReport(report);
+		
+		
+		
 		String formattedString = String.format(
 				context.getString(R.string.notification_d_new_messages), 5);
 		NotificationsManager.getInstance(context).raiseNotification(
 				formattedString, msg);
 
+	}
+
+	/**
+	 * Check if the message came from the relevant sender
+	 * @param smsMsg - the message to be checked
+	 * @return True if the message is relevant and should be treated, False otherwise
+	 */
+	boolean isRelevantSms(SmsMessage smsMsg) {
+		final String madaSender = "1234"; // TODO: replace with the real sender
+											// number. Check about getting the
+											// number from settings
+
+		return (smsMsg.getOriginatingAddress().equals(madaSender));
 	}
 
 	// TODO: remove - only for testing. the move method should be implement
@@ -40,41 +68,27 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 * them for treatment
 	 */
 	public void onReceive(Context context, Intent intent) {
-		Logger.LOGE(TAG, "OnReceive called");
-
 		// check if the incoming message is SMS
 		if (intent.getAction()
 				.equals("android.provider.Telephony.SMS_RECEIVED")) {
-			SmsManager sms = SmsManager.getDefault();
 			Bundle bundle = intent.getExtras();
 			if (bundle != null) {
 				Object[] pdus = (Object[]) bundle.get("pdus");
 
-				// build the SMS messages array for the received message
+				// reassemble the PDUs into array of SMS messages
 				SmsMessage[] messages = new SmsMessage[pdus.length];
 				for (int i = 0; i < pdus.length; i++)
 					messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
 
-				// iterate the sms messages that was received
+				// iterate the SMS messages that was received
 				for (SmsMessage message : messages) {
 					String msg = message.getMessageBody();
-					String to = message.getOriginatingAddress();
 
-					// TODO: perform filter according to the caller number
-					// inform others about the incoming message
-					Logger.LOGE(TAG, "Raising message");
+					// check if the message is relevant and pass it on
+					if (isRelevantSms(message)){
+						raiseMessage(msg, context);					
+					}
 
-					// treat individual message
-					raiseMessage(msg, context);
-
-					// TODO: insert the message to the database and promote
-					// notification
-					// insert the message to the database
-					/*
-					 * DatabaseFactory.getSmsDatabase(_context)
-					 * .insertMessageReceived( message, msg + " -> MyTime: " +
-					 * System.currentTimeMillis());
-					 */
 					// abortBroadcast();
 				}
 			}

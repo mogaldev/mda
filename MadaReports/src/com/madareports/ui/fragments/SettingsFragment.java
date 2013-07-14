@@ -10,7 +10,6 @@ import com.madareports.R;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SettingsFragment extends PreferenceFragment {
-
 	
 	@SuppressLint("NewApi")
 	@Override
@@ -19,4 +18,5 @@ public class SettingsFragment extends PreferenceFragment {
 	
 		 addPreferencesFromResource(R.xml.preferences_settings);
 	}
+	
 }
