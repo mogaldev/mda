@@ -14,8 +14,6 @@ public class SettingsActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
 
-		
-		Logger.LOGE("SettingsAct", "here");
 		// Display the fragment instead of the FrameLayout in the
 		// activity_settings layout
 		getFragmentManager().beginTransaction()

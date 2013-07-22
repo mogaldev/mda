@@ -2,7 +2,6 @@ package com.madareports.ui.reportslist;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
@@ -29,10 +28,10 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 
 	public ReportsListAdapter(Context context, int textViewResourceId) {
 		this(context, textViewResourceId, (ArrayList<Report>) DatabaseWrapper
-				.getInstance(context).getAllReports());
+				.getInstance(context).getAllReports());		
 	}
 
-	static int counter = 0;
+	static int counter = 0; // TODO remove
 
 	@Override
 	public int getCount() {
@@ -46,7 +45,6 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// Logger.LOGE(TAG, "getView is called : #" + counter++);
 		ReportListItem item = null;
 		try {
 			item = new ReportListItem(context, reportsList.get(position));
@@ -55,7 +53,8 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 		}
 
 		return item;
-	}
+	}	
+	
 
 	// TODO: check about more efficient filter mechanism
 	@SuppressLint("DefaultLocale")

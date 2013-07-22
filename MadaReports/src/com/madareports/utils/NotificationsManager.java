@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.app.NotificationCompat;
 
+import com.madareports.FilterListViewTests;
 import com.madareports.MainActivity;
 import com.madareports.R;
 
@@ -75,7 +76,7 @@ public class NotificationsManager {
 
 		Notification notification = createNotification(NOTIFICATION_ID, true,
 				title, description, R.drawable.ic_launcher,
-				MainActivity.class);
+				FilterListViewTests.class);
 
 		// Hide the notification after its selected
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;

@@ -17,17 +17,14 @@ import com.madareports.utils.Logger;
 public class DbHelper extends OrmLiteSqliteOpenHelper {
 	private String TAG = Logger.makeLogTag(getClass());
 
-	// name of the database file for your application -- change to something
-	// appropriate for your app
-	private static final String DATABASE_NAME = "WishListDB.sqlite";
+	// name of the database file for your application
+	private static final String DATABASE_NAME = "MadaReportsDB.sqlite";
 
 	// any time you make changes to your database objects, you may have to
 	// increase the database version
 	private static final int DATABASE_VERSION = 1;
 
 	// the DAO object we use to access the SimpleData table
-	// private Dao<WishList, Integer> wishListDao = null;
-	// private Dao<WishItem, Integer> wishItemDao = null;
 	private Dao<Report, Integer> reportsDao = null;
 
 	public DbHelper(Context context) {
@@ -38,6 +35,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	public void onCreate(SQLiteDatabase database,
 			ConnectionSource connectionSource) {
 		try {
+			// Create here the database tables
 			TableUtils.createTable(connectionSource, Report.class);
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());

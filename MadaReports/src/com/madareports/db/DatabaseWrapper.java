@@ -26,18 +26,22 @@ public class DatabaseWrapper {
 		helper = new DbHelper(ctx);
 	}
 
+	// ////////////////////////////
+	// Reports Functions
+	// ////////////////////////////
+
 	public List<Report> getAllReports() {
 		List<Report> reports = null;
 		try {
+			// ownerDao.queryBuilder().orderByRaw("Name COLLATE NOCASE").query();
 			reports = helper.getReportsDao().queryForAll();
 			// TODO remove
 			if (reports.size() < 1) {
 				// fill with random items
 				int numOfRecords = 4;
 				for (int i = 0; i < numOfRecords; i++) {
-					helper.getReportsDao().create(new Report(i));
+					//helper.getReportsDao().create(new Report(i));
 				}
-
 			}
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -53,14 +57,19 @@ public class DatabaseWrapper {
 		}
 	}
 
-	public int getNumOfReports(){		
+	public int countUnreadReports() {
 		Dao<Report, Integer> dao = helper.getReportsDao();
 		try {
-			return (int)dao.countOf(dao.queryBuilder().setCountOf(true).where().eq("isWatched", "1").prepare());
+			// TODO find different way, not using hard-coded column name
+			return (int) dao.countOf(dao.queryBuilder().setCountOf(true)
+					.where().eq("isWatched", false).prepare());
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			return -1;
 		}
 	}
 
+	// ////////////////////////////
+	// End of Reports Functions
+	// ////////////////////////////
 }

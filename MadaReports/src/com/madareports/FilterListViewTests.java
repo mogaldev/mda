@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import com.madareports.ui.reportslist.ReportsListAdapter;
 import com.madareports.utils.Logger;
 
@@ -20,16 +19,17 @@ public class FilterListViewTests extends Activity {
 		setContentView(R.layout.activity_filter_list_view_tests);
 
 		ListView lv = (ListView) findViewById(R.id.listView);
-		mAdapter = new ReportsListAdapter(this, R.layout.report_list_view_item);
+		mAdapter = new ReportsListAdapter(this, R.layout.reports_list_item);
 		lv.setAdapter(mAdapter);
 
 		EditText inputSearch = (EditText) findViewById(R.id.editTxt);
+
+		// Filter callbacks
 		inputSearch.addTextChangedListener(new TextWatcher() {
 
 			@Override
 			public void onTextChanged(CharSequence cs, int start, int before,
 					int count) {
-
 				ReportsListAdapter adptr = FilterListViewTests.this.mAdapter;
 
 				if (count < before) {

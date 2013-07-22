@@ -4,13 +4,11 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 
-import com.madareports.MainActivity;
+import com.madareports.FilterListViewTests;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
-import com.madareports.db.DbHelper;
 import com.madareports.db.models.Report;
 import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;
@@ -18,47 +16,43 @@ import com.madareports.utils.NotificationsManager;
 public class IncomingSMSReceiver extends BroadcastReceiver {
 	private final String TAG = Logger.makeLogTag(getClass());
 
-		
-	
-	
-	private void raiseMessage(String msg, Context context) {
-		final String test = "#123 תיאור  המשך תיאור";
-		msg = test;
-		
-		Report report = new Report();
-		// get the id from the message
-		report.setId(Integer.parseInt(msg.substring(1, msg.indexOf(" "))));
-		report.setNotes(msg);
-		 
+	private void raiseMessage(SmsMessage smsMsg, Context context) {		
+		Report report = new Report(smsMsg);
 		// add the report to the database
-		DatabaseWrapper.getInstance(context).AddReport(report);
-		
-		
-		
+		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
+		dbWrpr.AddReport(report);
+
+		// notify about the new report with the number of unread reports
 		String formattedString = String.format(
-				context.getString(R.string.notification_d_new_messages), 5);
+				context.getString(R.string.notification_d_new_messages),
+				dbWrpr.countUnreadReports());
 		NotificationsManager.getInstance(context).raiseNotification(
-				formattedString, msg);
+				formattedString, report.getDescription());
 
 	}
 
 	/**
 	 * Check if the message came from the relevant sender
-	 * @param smsMsg - the message to be checked
-	 * @return True if the message is relevant and should be treated, False otherwise
+	 * 
+	 * @param smsMsg
+	 *            - the message to be checked
+	 * @return True if the message is relevant and should be treated, False
+	 *         otherwise
 	 */
 	boolean isRelevantSms(SmsMessage smsMsg) {
 		final String madaSender = "1234"; // TODO: replace with the real sender
 											// number. Check about getting the
 											// number from settings
 
+		// TODO: check by the message structure. should be from private number
+		// (check if it could be detected) with specific scheme.
 		return (smsMsg.getOriginatingAddress().equals(madaSender));
 	}
 
 	// TODO: remove - only for testing. the move method should be implement
 	// inside the notification.
 	private void MoveToMainActivity(Context context) {
-		Intent intent = new Intent(context, MainActivity.class);
+		Intent intent = new Intent(context, FilterListViewTests.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(intent);
 	}
@@ -85,8 +79,8 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 					String msg = message.getMessageBody();
 
 					// check if the message is relevant and pass it on
-					if (isRelevantSms(message)){
-						raiseMessage(msg, context);					
+					if (isRelevantSms(message)) {
+						raiseMessage(message, context);
 					}
 
 					// abortBroadcast();

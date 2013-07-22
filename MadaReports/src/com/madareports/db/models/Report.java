@@ -1,5 +1,9 @@
 package com.madareports.db.models;
 
+import java.util.Date;
+
+import android.telephony.SmsMessage;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -31,19 +35,38 @@ public class Report {
 	@DatabaseField
 	private boolean isReported; // if the user report this record on the website
 	@DatabaseField
-	private boolean isWatched; // if the user saw this report
+	private boolean isWatched; // if the user saw this report. NOTE: Dont change
+								// the variable name. the countNewReports() rely
+								// on this name right now.
+	@DatabaseField
+	private Date receivedAt; // TODO: added. update in specifications.
 
-	// Setters & Getters
 	// TODO remove
-	public Report(int i) {
+	/*public Report(int i) {
 		this.id = i;
 		this.title = "Title#" + id;
 		this.description = "Decription#" + id;
-	}
+	}*/
 
+	public Report(SmsMessage smsMsg){
+		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(smsMsg.getMessageBody());
+		// TODO: currently simulate the description manually
+		final String testDescription = "#123 תיאור  המשך תיאור";		
+		String messageBody = smsMsg.getMessageBody();
+		messageBody = ReportAnalyzer.buildFakeMessage();
+		
+		// get the id from the message
+		setId(rprtAnlzr.getId());
+		setDescription(messageBody); // TODO cut the message body
+		setReceivedAt(new Date(smsMsg.getTimestampMillis()));
+
+	}
+	
 	public Report() {
 		super();
 	}
+
+	// Setters & Getters
 
 	public String getTitle() {
 		return title;
@@ -139,6 +162,14 @@ public class Report {
 
 	public void setWatched(boolean isWatched) {
 		this.isWatched = isWatched;
+	}
+
+	public Date getReceivedAt() {
+		return receivedAt;
+	}
+
+	public void setReceivedAt(Date receivedAt) {
+		this.receivedAt = receivedAt;
 	}
 
 }

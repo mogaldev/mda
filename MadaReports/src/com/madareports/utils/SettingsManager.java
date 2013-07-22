@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 
 import com.madareports.R;
@@ -103,30 +104,37 @@ public class SettingsManager {
 	public void setReportsSender(String displayName, String numbers) {
 		SharedPreferenceAdapter spAdapter = getAdapterInstance();
 		spAdapter.writeString(R.string.prefrences_key_sender_name, displayName);
-		spAdapter.writeString(R.string.prefrences_key_sender_numbers, displayName);
+		spAdapter.writeString(R.string.prefrences_key_sender_numbers,
+				displayName);
 	}
-	
+
 	/**
 	 * Get the display name of the reports sender
 	 */
-	public String getReportsSenderName(){
-		return getAdapterInstance().readString(R.string.prefrences_key_sender_name);
+	public String getReportsSenderName() {
+		return getAdapterInstance().readString(
+				R.string.prefrences_key_sender_name);
 	}
-	
+
 	/**
+	 * Check if the inputed number is included in the reports-sender phone
+	 * numbers
 	 * 
 	 * @param number
-	 * @return
+	 *            - the number to be checked
+	 * @return True if the reports-sender own this numbers, False otherwise
 	 */
-	public boolean isReportsSenderNumber(String number){
-		String[] numbers = getAdapterInstance().readString(R.string.prefrences_key_sender_numbers).split(";");
-		if (numbers.length > 0){
-			
+	public boolean isReportsSenderNumber(String number) {
+		String[] numbers = getAdapterInstance().readString(
+				R.string.prefrences_key_sender_numbers).split(";");
+		if (numbers.length > 0) {
+			for (String phoneNumber : numbers) {
+				if (android.telephony.PhoneNumberUtils.compare(phoneNumber,
+						number))
+					return true;
+			}
 		}
-		
 		return false;
 	}
 
-	// TODO: check if an inputed number is the MADA caller. use
-	// PhoneNumberUtils.compare function
 }
