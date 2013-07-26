@@ -53,8 +53,8 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-	//	if (convertView != null)
-			//return convertView;
+		// if (convertView != null)
+		// return convertView;
 
 		View itemView = null;
 		try {
@@ -67,13 +67,13 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 
 			// choose the layout to be inflated according to the report
 			// properties
+			// TODO: change isWatch to isRead.
 			if (report.isWatched()) {
-				itemView = li.inflate(R.layout.reports_list_item, null);
+				itemView = li.inflate(R.layout.read_reports_list_item, null);
 				setUnreadItemView(itemView, report);
 			} else { // unread mode
-				// TODO: choose another layout for unread. + change isWatch to
-				// isRead.
-				itemView = li.inflate(R.layout.reports_list_item, null);
+
+				itemView = li.inflate(R.layout.unread_reports_list_item, null);
 				setUnreadItemView(itemView, report);
 			}
 		} catch (Exception e) {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/read_item_bgcolor" >
+
+    <ImageView
+        android:id="@+id/imgReportIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_launcher_gray" />
+
+    <TextView
+        android:id="@+id/tvReportDescription"
+        style="@style/read_list_item_text"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/imgReportIcon"
+        android:text="ת.ד בלהבלה בלה בלה בלה בלה בלהבלה בלה בלה בלה"
+        android:textDirection="anyRtl" />
+
+    <TextView
+        android:id="@+id/tvReportId"
+        style="@style/read_list_item_text"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imgReportIcon"
+        android:text="12#" />
+
+    <TextView
+        android:id="@+id/tvReceivedAt"
+        style="@style/read_list_item_text"
+        android:layout_alignBaseline="@+id/tvReportId"
+        android:layout_alignBottom="@+id/tvReportId"
+        android:layout_alignRight="@+id/tvReportDescription"
+        android:layout_marginTop="10dp"
+        android:text="21/12/2013 15:11" />
+
+</RelativeLayout>

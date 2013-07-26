@@ -28,6 +28,11 @@ public class ReportAnalyzer {// TODO turn this class logic into regular
 		return Integer.parseInt(messageBody.substring(1,
 				messageBody.indexOf(" ")));
 	}
+		
+	
+	public String getDisplayContent(){
+		return strippedMessageBody.replace("#", "").replace("אמב 61 ", "").replaceAll("  ", " ");
+	}
 
 	/*
 	 * The address is after the 3th whitespace until the multiple whitespaces

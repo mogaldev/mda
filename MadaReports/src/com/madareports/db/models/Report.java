@@ -41,27 +41,19 @@ public class Report {
 	@DatabaseField
 	private Date receivedAt; // TODO: added. update in specifications.
 
-	// TODO remove
-	/*public Report(int i) {
-		this.id = i;
-		this.title = "Title#" + id;
-		this.description = "Decription#" + id;
-	}*/
-
-	public Report(SmsMessage smsMsg){
-		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(smsMsg.getMessageBody());
+	public Report(String messageBody, long timesptamp) {
 		// TODO: currently simulate the description manually
-		final String testDescription = "#123 תיאור  המשך תיאור";		
-		String messageBody = smsMsg.getMessageBody();
-		messageBody = ReportAnalyzer.buildFakeMessage();
-		
+		messageBody = new ReportIllustrator().getFakeReport();
+		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(messageBody);
+
 		// get the id from the message
 		setId(rprtAnlzr.getId());
-		setDescription(messageBody); // TODO cut the message body
-		setReceivedAt(new Date(smsMsg.getTimestampMillis()));
+		setDescription(rprtAnlzr.getDisplayContent()); // TODO cut the message
+														// body
+		setReceivedAt(new Date(timesptamp));
 
 	}
-	
+
 	public Report() {
 		super();
 	}

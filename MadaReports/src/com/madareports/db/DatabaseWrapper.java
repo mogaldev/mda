@@ -2,6 +2,7 @@ package com.madareports.db;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 import android.content.Context;
 
@@ -40,13 +41,21 @@ public class DatabaseWrapper {
 				// fill with random items
 				int numOfRecords = 4;
 				for (int i = 0; i < numOfRecords; i++) {
-					//helper.getReportsDao().create(new Report(i));
+					// helper.getReportsDao().create(new Report(i));
 				}
 			}
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return reports;
+	}
+
+	public void DeleteAllReports() {
+		try {
+			helper.getReportsDao().delete(getAllReports());
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
 	}
 
 	public void AddReport(Report report) {
@@ -66,6 +75,20 @@ public class DatabaseWrapper {
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			return -1;
+		}
+	}
+
+	public void setRandomReadOrUnread() {
+		Random rnd = new Random();
+
+		List<Report> list = getAllReports();
+		for (Report report : list) {
+			report.setWatched(new Random().nextBoolean());
+			try {
+				helper.getReportsDao().update(report);
+			} catch (SQLException e) {
+				Logger.LOGE(TAG, e.getMessage());
+			}
 		}
 	}
 

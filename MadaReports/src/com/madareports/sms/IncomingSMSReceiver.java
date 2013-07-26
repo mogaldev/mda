@@ -17,7 +17,10 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	private final String TAG = Logger.makeLogTag(getClass());
 
 	private void raiseMessage(SmsMessage smsMsg, Context context) {		
-		Report report = new Report(smsMsg);
+		Logger.LOGE(TAG, "Display: " + smsMsg.getDisplayOriginatingAddress() + "; Regular: " + smsMsg.getOriginatingAddress());
+		
+		Report report = new Report(smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
+		
 		// add the report to the database
 		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
 		dbWrpr.AddReport(report);
@@ -43,9 +46,6 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		final String madaSender = "1234"; // TODO: replace with the real sender
 											// number. Check about getting the
 											// number from settings
-
-		
-		Logger.LOGE(TAG, "Display: " + smsMsg.getDisplayOriginatingAddress() + "; Regular: " + smsMsg.getOriginatingAddress());
 		
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
