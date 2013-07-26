@@ -13,10 +13,12 @@ import android.widget.TextView;
 
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
+import com.madareports.db.DbChangedNotifier;
 import com.madareports.db.models.Report;
 import com.madareports.utils.Logger;
 
-public class ReportsListAdapter extends ArrayAdapter<Report> {
+public class ReportsListAdapter extends ArrayAdapter<Report> implements
+		DbChangedNotifier {
 	private String TAG = Logger.makeLogTag(getClass());
 	private ArrayList<Report> reportsList;
 	private ArrayList<Report> originalReportsList;
@@ -28,6 +30,8 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 		this.context = context;
 		this.reportsList = (ArrayList<Report>) reports;
 		this.originalReportsList = this.reportsList;
+
+		DatabaseWrapper.getInstance(context).setDbChangedListener(this);
 	}
 
 	public ReportsListAdapter(Context context, int textViewResourceId) {
@@ -144,6 +148,14 @@ public class ReportsListAdapter extends ArrayAdapter<Report> {
 				notifyDataSetChanged();
 			}
 		};
+	}
+
+	@Override
+	public void DbChanged() {
+		this.originalReportsList = (ArrayList<Report>) DatabaseWrapper
+				.getInstance(context).getAllReports();
+		resetData();
+		notifyDataSetChanged();
 	}
 
 }

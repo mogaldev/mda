@@ -7,8 +7,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import com.madareports.db.DatabaseWrapper;
+import com.madareports.db.DbChangedNotifier;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
 import com.madareports.utils.Logger;
@@ -39,7 +39,8 @@ public class FilterListViewTests extends Activity {
 
 					@Override
 					public void onClick(View v) {
-						DatabaseWrapper.getInstance(v.getContext()).DeleteAllReports();
+						DatabaseWrapper.getInstance(v.getContext())
+								.DeleteAllReports();
 					}
 				});
 

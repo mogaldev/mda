@@ -1,6 +1,7 @@
 package com.madareports.db;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -12,9 +13,9 @@ import com.madareports.utils.Logger;
 
 public class DatabaseWrapper {
 	private String TAG = Logger.makeLogTag(getClass());
-
 	private static DatabaseWrapper instance;
 	private DbHelper helper;
+	List<DbChangedNotifier> listeners;
 
 	public static DatabaseWrapper getInstance(Context ctx) {
 		if (instance == null) {
@@ -25,12 +26,23 @@ public class DatabaseWrapper {
 
 	private DatabaseWrapper(Context ctx) {
 		helper = new DbHelper(ctx);
+		listeners = new ArrayList<DbChangedNotifier>();
 	}
 
+	public void notifyDatabaseChanged(){
+		for (DbChangedNotifier listener : listeners) {
+			listener.DbChanged();
+		}
+	}
+	
+	public void setDbChangedListener(DbChangedNotifier listener){
+		listeners.add(listener);
+	}
+	
 	// ////////////////////////////
 	// Reports Functions
 	// ////////////////////////////
-
+	
 	public List<Report> getAllReports() {
 		List<Report> reports = null;
 		try {
@@ -53,6 +65,7 @@ public class DatabaseWrapper {
 	public void DeleteAllReports() {
 		try {
 			helper.getReportsDao().delete(getAllReports());
+			notifyDatabaseChanged();
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
@@ -61,6 +74,7 @@ public class DatabaseWrapper {
 	public void AddReport(Report report) {
 		try {
 			helper.getReportsDao().create(report);
+			notifyDatabaseChanged();
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
