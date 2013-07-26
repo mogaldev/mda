@@ -1,15 +1,14 @@
 package com.madareports;
 
-import java.util.List;
-import java.util.Random;
-
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.madareports.db.DatabaseWrapper;
-import com.madareports.db.models.Report;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
 import com.madareports.utils.Logger;
@@ -34,9 +33,17 @@ public class FilterListViewTests extends Activity {
 		txtSearch.addTextChangedListener(new ReportsFilterTextWatcher(
 				reportsAdapter));
 
-		// DatabaseWrapper.getInstance(this).DeleteAllReports();
+		// button used for debug
+		((Button) findViewById(R.id.btnTests))
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						DatabaseWrapper.getInstance(v.getContext()).DeleteAllReports();
+					}
+				});
+
 		DatabaseWrapper.getInstance(this).setRandomReadOrUnread();
 	}
 
-	
 }

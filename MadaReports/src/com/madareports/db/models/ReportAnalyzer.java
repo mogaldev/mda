@@ -31,7 +31,7 @@ public class ReportAnalyzer {// TODO turn this class logic into regular
 		
 	
 	public String getDisplayContent(){
-		return strippedMessageBody.replace("#", "").replace("אמב 61 ", "").replaceAll("  ", " ");
+		return strippedMessageBody.replace("#", "").replace("אמב 61 ", "").replaceAll("  ", " ").replaceFirst("  ", "\n");
 	}
 
 	/*
