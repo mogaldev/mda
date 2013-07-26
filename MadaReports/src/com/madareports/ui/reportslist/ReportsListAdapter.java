@@ -109,8 +109,8 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 
 			private boolean isPassedFilterTest(Report report,
 					CharSequence constraint) {
-				String combined = report.getId() + ", " + report.getTitle()
-						+ ", " + report.getDescription();
+				String combined = report.getId() + ", "
+						+ report.getDescription();
 
 				return combined.toLowerCase().contains(
 						constraint.toString().toLowerCase());

@@ -1,24 +1,17 @@
 package com.madareports.db.models;
 
 import java.util.Date;
-
-import android.telephony.SmsMessage;
-
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class Report {
-
-	@DatabaseField
-	private String title;
-	@DatabaseField
-	private String description;
-
 	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField
 	private String address;
+	@DatabaseField
+	private String description;
 	// TODO: add region
 	@DatabaseField
 	private int pulse;
@@ -59,14 +52,6 @@ public class Report {
 	}
 
 	// Setters & Getters
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
 	public String getDescription() {
 		return description;
