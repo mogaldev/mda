@@ -44,6 +44,9 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 											// number. Check about getting the
 											// number from settings
 
+		
+		Logger.LOGE(TAG, "Display: " + smsMsg.getDisplayOriginatingAddress() + "; Regular: " + smsMsg.getOriginatingAddress());
+		
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
 		return (smsMsg.getOriginatingAddress().equals(madaSender));
