@@ -39,7 +39,6 @@ public class ReportAnalyzer {// TODO turn this class logic into regular
 	 * // TODO check about case that there is no ambulance information
 	 */
 	
-
 	private String getStrippedMessage() {
 		String messageBodyCopy = messageBody;
 		for (String part : partsToBeRemoved) {
