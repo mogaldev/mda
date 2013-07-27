@@ -3,6 +3,8 @@ package com.madareports.db.models;
 import java.util.Date;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.madareports.db.reports.ReportAnalyzer;
+import com.madareports.db.reports.ReportIllustrator;
 
 @DatabaseTable
 public class Report {

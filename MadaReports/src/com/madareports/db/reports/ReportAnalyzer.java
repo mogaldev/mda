@@ -1,4 +1,4 @@
-package com.madareports.db.models;
+package com.madareports.db.reports;
 
 /**
  * analyze the received message text. All the parsing logic should appear only

@@ -18,161 +18,160 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class BaseActivity extends FragmentActivity {
-    // /////////////////////////////////////////
-    // --- Navigate between activities ---
-    // /////////////////////////////////////////
 
-    /**
-     * Create intent for the move to methods
-     *
-     * @param actvtyClass
-     *            the class of the activity to move to it
-     * @param intentFlags
-     *            the flags that determine the intent behavior
-     * @return intent that can be started
-     */
-    private Intent createIntent(Class<?> actvtyClass, Integer flags) {
-        Intent intent = new Intent(this, actvtyClass);
-        flags = (flags == null) ? 0 : flags;
-        intent.setFlags(flags);
-        return intent;
-    }
+	// /////////////////////////////////////////
+	// --- Navigate between activities ---
+	// /////////////////////////////////////////
 
-    /**
-     * move to other activity this method
-     *
-     * @param actvtyClass
-     *            the class of the activity to move to it
-     * @param intentFlags
-     *            the flags that determine the intent behavior
-     */
-    protected void MoveTo(Class<?> actvtyClass, Integer flags) {
-        startActivity(createIntent(actvtyClass, flags));
-    }
+	/**
+	 * Create intent for the move to methods
+	 * 
+	 * @param actvtyClass
+	 *            the class of the activity to move to it
+	 * @param intentFlags
+	 *            the flags that determine the intent behavior
+	 * @return intent that can be started
+	 */
+	private Intent createIntent(Class<?> actvtyClass, Integer flags) {
+		Intent intent = new Intent(this, actvtyClass);
+		flags = (flags == null) ? 0 : flags;
+		intent.setFlags(flags);
+		return intent;
+	}
 
-    protected void MoveTo(Class<?> actvtyClass) {
-        this.MoveTo(actvtyClass, null);
-    }
+	/**
+	 * move to other activity this method
+	 * 
+	 * @param actvtyClass
+	 *            the class of the activity to move to it
+	 * @param intentFlags
+	 *            the flags that determine the intent behavior
+	 */
+	protected void MoveTo(Class<?> actvtyClass, Integer flags) {
+		startActivity(createIntent(actvtyClass, flags));
+	}
 
-    /**
-     * Get on click listener that holds the move-to method on its on-click
-     * event.
-     *
-     * @param actvtyClass
-     *            the class of the activity to move to it
-     * @param intentFlags
-     *            the flags that determine the intent behavior
-     * @return listener that can be assigned to ui widgets
-     */
-    protected OnClickListener getMoveToClickListener(
-            final Class<?> actvtyClass, final Integer flags) {
-        return new OnClickListener() {
-            public void onClick(View v) {
-                MoveTo(actvtyClass, flags);
-            }
-        };
-    }
+	protected void MoveTo(Class<?> actvtyClass) {
+		this.MoveTo(actvtyClass, null);
+	}
 
-    protected OnClickListener getMoveToClickListener(final Class<?> actvtyClass) {
-        return getMoveToClickListener(actvtyClass, null);
-    }
+	/**
+	 * Get on click listener that holds the move-to method on its on-click
+	 * event.
+	 * 
+	 * @param actvtyClass
+	 *            the class of the activity to move to it
+	 * @param intentFlags
+	 *            the flags that determine the intent behavior
+	 * @return listener that can be assigned to ui widgets
+	 */
+	protected OnClickListener getMoveToClickListener(
+			final Class<?> actvtyClass, final Integer flags) {
+		return new OnClickListener() {
+			public void onClick(View v) {
+				MoveTo(actvtyClass, flags);
+			}
+		};
+	}
 
-    /**
-     * Set the button as navigator to the inputed activity
-     *
-     * @param buttonId
-     *            the resource id of the button to be set
-     * @param actvtyClassToMoveTo
-     *            the class of the activity to move to it
-     */
-    protected void setNavigationButton(int buttonId,
-            Class<?> actvtyClassToMoveTo, Integer flags) {
-        Button button = getButton(buttonId);
-        button.setOnClickListener(getMoveToClickListener(actvtyClassToMoveTo,
-                flags));
+	protected OnClickListener getMoveToClickListener(final Class<?> actvtyClass) {
+		return getMoveToClickListener(actvtyClass, null);
+	}
 
-    }
+	/**
+	 * Set the button as navigator to the inputed activity
+	 * 
+	 * @param buttonId
+	 *            the resource id of the button to be set
+	 * @param actvtyClassToMoveTo
+	 *            the class of the activity to move to it
+	 */
+	protected void setNavigationButton(int buttonId,
+			Class<?> actvtyClassToMoveTo, Integer flags) {
+		Button button = getButton(buttonId);
+		button.setOnClickListener(getMoveToClickListener(actvtyClassToMoveTo,
+				flags));
 
-    protected void setNavigationButton(int buttonId,
-            Class<?> actvtyClassToMoveTo) {
-        this.setNavigationButton(buttonId, actvtyClassToMoveTo, null);
-    }
+	}
 
+	protected void setNavigationButton(int buttonId,
+			Class<?> actvtyClassToMoveTo) {
+		this.setNavigationButton(buttonId, actvtyClassToMoveTo, null);
+	}
 
-    // /////////////////////////////////////////
-    // --- End of Navigate between activities ---
-    // /////////////////////////////////////////
+	// /////////////////////////////////////////
+	// --- End of Navigate between activities ---
+	// /////////////////////////////////////////
 
-    // /////////////////////////////////////////
-    // --- Get Controls without casting ---
-    // /////////////////////////////////////////
-    protected TextView getTextView(int id) {
-        return ((TextView) findViewById(id));
-    }
+	// /////////////////////////////////////////
+	// --- Get Controls without casting ---
+	// /////////////////////////////////////////
+	protected TextView getTextView(int id) {
+		return ((TextView) findViewById(id));
+	}
 
-    protected Spinner getSpinner(int id) {
-        return ((Spinner) findViewById(id));
-    }
+	protected Spinner getSpinner(int id) {
+		return ((Spinner) findViewById(id));
+	}
 
-    protected EditText getEditText(int id) {
-        return ((EditText) findViewById(id));
-    }
+	protected EditText getEditText(int id) {
+		return ((EditText) findViewById(id));
+	}
 
-    protected CheckBox getCheckBox(int id) {
-        return ((CheckBox) findViewById(id));
-    }
+	protected CheckBox getCheckBox(int id) {
+		return ((CheckBox) findViewById(id));
+	}
 
-    protected Button getButton(int id) {
-        return ((Button) findViewById(id));
-    }
+	protected Button getButton(int id) {
+		return ((Button) findViewById(id));
+	}
 
-    protected ListView getListView(int id) {
-        return ((ListView) findViewById(id));
-    }
+	protected ListView getListView(int id) {
+		return ((ListView) findViewById(id));
+	}
 
-    protected GridView getGridView(int id) {
-        return ((GridView) findViewById(id));
-    }
+	protected GridView getGridView(int id) {
+		return ((GridView) findViewById(id));
+	}
 
-    protected WebView getWebView(int id) {
-        return ((WebView) findViewById(id));
-    }
+	protected WebView getWebView(int id) {
+		return ((WebView) findViewById(id));
+	}
 
-    protected ImageView getImageView(int id) {
-        return ((ImageView) findViewById(id));
-    }
+	protected ImageView getImageView(int id) {
+		return ((ImageView) findViewById(id));
+	}
 
-    protected ImageButton getImageButton(int id) {
-        return ((ImageButton) findViewById(id));
-    }
+	protected ImageButton getImageButton(int id) {
+		return ((ImageButton) findViewById(id));
+	}
 
-    protected SeekBar getSeekBar(int id) {
-        return ((SeekBar) findViewById(id));
-    }
+	protected SeekBar getSeekBar(int id) {
+		return ((SeekBar) findViewById(id));
+	}
 
-    // /////////////////////////////////////////
-    // --- End of Get Controls without casting ---
-    // /////////////////////////////////////////
+	// /////////////////////////////////////////
+	// --- End of Get Controls without casting ---
+	// /////////////////////////////////////////
 
-    /**
-     * create a Toast on the screen the Toast is disabled for <b>Short</b> time
-     *
-     * @param message
-     *            the text to write on the screen
-     */
-    public void writeShortTimeMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
+	/**
+	 * create a Toast on the screen the Toast is disabled for <b>Short</b> time
+	 * 
+	 * @param message
+	 *            the text to write on the screen
+	 */
+	public void writeShortTimeMessage(String message) {
+		Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+	}
 
-    /**
-     * create a Toast on the screen the Toast is disabled for <b>Short</b> time
-     *
-     * @param message
-     *            the text to write on the screen
-     */
-    public void writeLongTimeMessage(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
-    }
-
+	/**
+	 * create a Toast on the screen the Toast is disabled for <b>Short</b> time
+	 * 
+	 * @param message
+	 *            the text to write on the screen
+	 */
+	public void writeLongTimeMessage(String msg) {
+		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+	}
 
 }

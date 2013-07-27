@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="code_table_dialog_options">
+        <item>@string/code_table_dialog_options_edit</item>
+        <item>@string/code_table_dialog_options_delete</item>
+    </array>
+
+</resources>

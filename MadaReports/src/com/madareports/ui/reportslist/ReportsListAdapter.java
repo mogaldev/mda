@@ -39,8 +39,6 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				.getInstance(context).getAllReports());
 	}
 
-	static int counter = 0; // TODO remove
-
 	@Override
 	public int getCount() {
 		return reportsList.size();

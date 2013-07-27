@@ -8,6 +8,9 @@ import java.util.Random;
 import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
+import com.madareports.db.codetables.CodeTables;
+import com.madareports.db.codetables.ICodeTable;
+import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.utils.Logger;
 
@@ -29,40 +32,32 @@ public class DatabaseWrapper {
 		listeners = new ArrayList<DbChangedNotifier>();
 	}
 
-	public void notifyDatabaseChanged(){
+	public void notifyDatabaseChanged() {
 		for (DbChangedNotifier listener : listeners) {
 			listener.DbChanged();
 		}
 	}
-	
-	public void setDbChangedListener(DbChangedNotifier listener){
+
+	public void setDbChangedListener(DbChangedNotifier listener) {
 		listeners.add(listener);
 	}
-	
+
 	// ////////////////////////////
 	// Reports Functions
 	// ////////////////////////////
-	
+
 	public List<Report> getAllReports() {
 		List<Report> reports = null;
 		try {
 			// ownerDao.queryBuilder().orderByRaw("Name COLLATE NOCASE").query();
 			reports = helper.getReportsDao().queryForAll();
-			// TODO remove
-			if (reports.size() < 1) {
-				// fill with random items
-				int numOfRecords = 4;
-				for (int i = 0; i < numOfRecords; i++) {
-					// helper.getReportsDao().create(new Report(i));
-				}
-			}
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return reports;
 	}
 
-	public void DeleteAllReports() {
+	public void deleteAllReports() {
 		try {
 			helper.getReportsDao().delete(getAllReports());
 			notifyDatabaseChanged();
@@ -93,8 +88,6 @@ public class DatabaseWrapper {
 	}
 
 	public void setRandomReadOrUnread() {
-		Random rnd = new Random();
-
 		List<Report> list = getAllReports();
 		for (Report report : list) {
 			report.setWatched(new Random().nextBoolean());
@@ -108,5 +101,90 @@ public class DatabaseWrapper {
 
 	// ////////////////////////////
 	// End of Reports Functions
+	// ////////////////////////////
+
+
+	// ////////////////////////////
+	// Code Tables Functions
+	// ////////////////////////////
+
+	@SuppressWarnings("unchecked")
+	public List<ICodeTable> getAll(CodeTables table) {
+		List<ICodeTable> records = null;
+		try {
+			switch (table) {
+			case Regions:
+				records = (List<ICodeTable>) (List<?>) helper.getRegions()
+						.queryForAll();
+				break;
+			case Treatments:
+				// records =
+				// (List<ICodeTable>)(List<?>)helper.getTreatments().queryForAll();
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+		return records;
+	}
+
+	public void addCodeTableRecord(ICodeTable record, CodeTables table) {
+		try {
+			switch (table) {
+			case Regions:
+				helper.getRegions().create((Region) record);
+				break;
+			case Treatments:
+
+				break;
+			default:
+				break;
+			}
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+	}
+
+	public boolean deleteCodeTableRecord(ICodeTable record, CodeTables table) {
+		try {
+			switch (table) {
+			case Regions:
+				helper.getRegions().delete((Region) record);
+				break;
+			case Treatments:
+
+				break;
+			default:
+				return false;
+			}
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+			return false;
+		}
+		return true;
+	}
+
+	public void updateCodeTableRecord(ICodeTable record, CodeTables table) {
+		try {
+			switch (table) {
+			case Regions:
+				helper.getRegions().update((Region) record);
+				break;
+			case Treatments:
+
+				break;
+			default:
+				break;
+			}
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+	}
+
+
+	// ////////////////////////////
+	// End of Code Tables Functions
 	// ////////////////////////////
 }

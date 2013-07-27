@@ -40,7 +40,7 @@ public class FilterListViewTests extends Activity {
 					@Override
 					public void onClick(View v) {
 						DatabaseWrapper.getInstance(v.getContext())
-								.DeleteAllReports();
+								.deleteAllReports();
 					}
 				});
 

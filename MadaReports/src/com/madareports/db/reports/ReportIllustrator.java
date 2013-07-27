@@ -1,4 +1,4 @@
-package com.madareports.db.models;
+package com.madareports.db.reports;
 
 import java.util.Random;
 
