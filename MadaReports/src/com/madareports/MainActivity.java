@@ -1,13 +1,14 @@
 package com.madareports;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.madareports.ui.activities.BaseActivity;
 import com.madareports.utils.Logger;
 
 //TODO: DB aspect - add isViewed for each report to indicate whether the report has been seen
-public class MainActivity extends Activity  {
+public class MainActivity extends BaseActivity {
 	private final String TAG = Logger.makeLogTag(getClass());
 
 	@Override
@@ -15,13 +16,17 @@ public class MainActivity extends Activity  {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		// tests:
-		String msg = String.format(
-				this.getString(R.string.notification_d_new_messages), 5);
-		((TextView) findViewById(R.id.tvHelloWorld)).setText(msg);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
-
-
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.main_action_bar, menu);
+		
+		menu.addSubMenu("gal madar");
+		
+		return true;
+	}
 
 }

@@ -1,19 +1,19 @@
 package com.madareports;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import com.madareports.db.DatabaseWrapper;
-import com.madareports.db.DbChangedNotifier;
+import com.madareports.ui.activities.BaseActivity;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
 import com.madareports.utils.Logger;
 
-public class FilterListViewTests extends Activity {
+public class FilterListViewTests extends BaseActivity {
 	private String TAG = Logger.makeLogTag(getClass());
 	private ReportsListAdapter reportsAdapter;
 
@@ -37,14 +37,14 @@ public class FilterListViewTests extends Activity {
 		((Button) findViewById(R.id.btnTests))
 				.setOnClickListener(new OnClickListener() {
 
-					@Override
+			@Override
 					public void onClick(View v) {
 						DatabaseWrapper.getInstance(v.getContext())
 								.deleteAllReports();
-					}
+			}
 				});
 
 		DatabaseWrapper.getInstance(this).setRandomReadOrUnread();
-	}
+			}
 
 }

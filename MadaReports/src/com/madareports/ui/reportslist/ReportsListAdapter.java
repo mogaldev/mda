@@ -2,10 +2,13 @@ package com.madareports.ui.reportslist;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Filter;
@@ -15,6 +18,7 @@ import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.DbChangedNotifier;
 import com.madareports.db.models.Report;
+import com.madareports.ui.activities.detailactivity.DetailActivity;
 import com.madareports.utils.Logger;
 
 public class ReportsListAdapter extends ArrayAdapter<Report> implements
@@ -61,7 +65,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 		View itemView = null;
 		try {
 			// get the report that this item represents
-			Report report = reportsList.get(position);
+			final Report report = reportsList.get(position);
 
 			// inflate the layout
 			LayoutInflater li = (LayoutInflater) context
@@ -78,6 +82,17 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				itemView = li.inflate(R.layout.unread_reports_list_item, null);
 				setUnreadItemView(itemView, report);
 			}
+			
+			itemView.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(v.getContext(), DetailActivity.class);
+//					intent.
+					intent.putExtra(DetailActivity.REPORT_ID_EXTRA, report.getId());
+					v.getContext().startActivity(intent);
+				}
+			});
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}

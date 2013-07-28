@@ -98,6 +98,16 @@ public class DatabaseWrapper {
 			}
 		}
 	}
+	
+	public Report getReportById(int reportId) {
+		Report reportToReturn = null;
+		try {
+			reportToReturn = helper.getReportsDao().queryForId(reportId);
+		} catch (Exception e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+		return reportToReturn;
+	}
 
 	// ////////////////////////////
 	// End of Reports Functions

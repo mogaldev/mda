@@ -5,6 +5,7 @@
     <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_filter_list_view_tests">FilterListViewTests</string>
+    <string name="title_activity_detail">DetailActivity</string>
     <string name="action_settings">Settings</string>
 
     <!-- Code Tables -->
@@ -17,7 +18,6 @@
     <string name="code_table_dialog_options_edit">עריכה</string>
     <string name="code_table_dialog_options_delete">מחיקה</string>
     <string name="dialog_region_title">מרחבים</string>
-
     <!-- End of Code Tables -->
 
 
@@ -39,5 +39,27 @@
     <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
     <string name="prefrences_category_notifications_title">Notifications</string>
     <!-- End of Preferences Settings -->
+
+
+    <!-- End of Preferences Settings Keys -->
+
+
+    <!-- Details Activity -->
+    <!-- Tabs Titles -->
+    <string name="general_info">פרטים כלליים</string>
+    <string name="tech_info">פרטים טכניים</string>
+    <string name="treatments">טיפולים</string>
+    <!-- General Info Fragment -->
+    <string name="address">כתובת</string>
+    <string name="report_id">מספר מקרה</string>
+    <string name="region">מרחב</string>
+    <string name="notes">הערות</string>
+    <string name="is_watched">דווח באתר?</string>
+    <!-- End of Details Activity -->
+
+
+    <!-- Main Action Bar -->
+    <string name="search">חפש</string>
+    <!-- End of Main Action Bar -->
 
 </resources>

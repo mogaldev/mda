@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
+
+        <EditText
+            android:id="@+id/reportIdEditText"
+            android:layout_width="200dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:inputType="number"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/report_id" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
+
+        <EditText
+            android:id="@+id/addressEditText"
+            android:layout_width="200dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:inputType="text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/address" />
+    </LinearLayout>
+
+<!--     <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
+
+        <Spinner
+            android:id="@+id/widget73"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/region" />
+    </LinearLayout> -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp" >
+
+        <EditText
+            android:id="@+id/notesEditText"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:inputType="text"
+            android:padding="5dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/notes" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/isWatchedCheckBox"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/is_watched" />
+
+</LinearLayout>

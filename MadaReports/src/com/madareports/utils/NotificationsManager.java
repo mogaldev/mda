@@ -122,7 +122,7 @@ public class NotificationsManager {
 
 		ncBuilder.setContentIntent(resultPendingIntent);
 
-		return ncBuilder.build();
+		return ncBuilder.getNotification();
 	}
 
 }
