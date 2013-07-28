@@ -1,13 +1,12 @@
 package com.madareports.ui.activities.detailactivity;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.widget.Toast;
+import android.support.v4.app.NavUtils;
 
 import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.ActionBar.Tab;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
@@ -37,9 +36,9 @@ public class DetailActivity extends BaseActivity {
 
 		ActionBar.Tab techInfoTab = supportActionBar.newTab();
 		techInfoTab.setText(getString(R.string.tech_info));
-		techInfoTab.setTabListener(new TabListener<GeneralInfoFragment>(
-				this, GeneralInfoFragment.class.getName(),
-				GeneralInfoFragment.class));
+		techInfoTab.setTabListener(new TabListener<TechInfoFragment>(
+				this, TechInfoFragment.class.getName(),
+				TechInfoFragment.class));
 		supportActionBar.addTab(techInfoTab);
 
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
@@ -62,12 +61,35 @@ public class DetailActivity extends BaseActivity {
 		return sentReport;
 	}
 
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.main_action_bar, menu);
+		inflater.inflate(R.menu.detail_activity_action_bar, menu);
 
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case android.R.id.home:
+				NavUtils.navigateUpFromSameTask(this);
+				return true;
+			case R.id.menu_save:
+				saveCurrentReport();
+				DatabaseWrapper.getInstance(this).updateReport(getCurrentReport());
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	public void saveCurrentReport() {
+		GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) getSupportFragmentManager().findFragmentByTag(GeneralInfoFragment.class.getName());
+		generalInfoFragment.save();
+		TechInfoFragment techInfoFragment = (TechInfoFragment) getSupportFragmentManager().findFragmentByTag(TechInfoFragment.class.getName());
+		techInfoFragment.save();
 	}
 
 }

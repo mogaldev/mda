@@ -1,6 +1,5 @@
 package com.madareports.ui.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,7 +20,7 @@ import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.codetables.CodeTables;
 import com.madareports.db.codetables.ICodeTable;
 
-public abstract class CodeTableBaseActivity extends Activity {	
+public abstract class CodeTableBaseActivity extends BaseActivity {	
 	private ListView lstRecords;
 	protected int resIdDialogTitle; // the title for the dialogs of this code table	
 	protected CodeTables table; // the enum represents the table

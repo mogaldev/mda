@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.main_action_bar, menu);
+		inflater.inflate(R.menu.detail_activity_action_bar, menu);
 		
 		menu.addSubMenu("gal madar");
 		

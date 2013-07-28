@@ -6,6 +6,7 @@ import java.util.List;
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
@@ -69,7 +70,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
 	}
 
-	public Dao<Report, Integer> getReportsDao() {
+	public Dao<Report, Integer> getReportDao() {
 		if (reportsDao == null) {
 			try {
 				reportsDao = getDao(Report.class);
@@ -80,7 +81,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 		return reportsDao;
 	}
 
-	public Dao<Region, Integer> getRegions() {
+	public Dao<Region, Integer> getRegionDao() {
 		if (regionsDao == null) {
 			try {
 				regionsDao = getDao(Region.class);

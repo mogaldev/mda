@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.madareports.db.codetables.ICodeTable;
 
-@DatabaseTable
+@DatabaseTable(tableName = "REGIONS")
 public class Region implements ICodeTable {
 	@DatabaseField(generatedId = true)
 	private int id;

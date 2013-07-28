@@ -9,6 +9,7 @@ import android.widget.ListView;
 
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.activities.BaseActivity;
+import com.madareports.ui.activities.RegionActivity;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
 import com.madareports.utils.Logger;
@@ -43,6 +44,9 @@ public class FilterListViewTests extends BaseActivity {
 								.deleteAllReports();
 			}
 				});
+		
+		// button for adding regions
+		((Button) findViewById(R.id.btnRegion)).setOnClickListener(getMoveToClickListener(RegionActivity.class));
 
 		DatabaseWrapper.getInstance(this).setRandomReadOrUnread();
 			}

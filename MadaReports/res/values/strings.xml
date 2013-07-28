@@ -45,6 +45,8 @@
 
 
     <!-- Details Activity -->
+    <!-- Detail Activity Action Bar -->
+    <string name="save">שמור</string>
     <!-- Tabs Titles -->
     <string name="general_info">פרטים כלליים</string>
     <string name="tech_info">פרטים טכניים</string>
@@ -55,11 +57,10 @@
     <string name="region">מרחב</string>
     <string name="notes">הערות</string>
     <string name="is_watched">דווח באתר?</string>
+    <!-- Tech Info Fragment -->
+    <string name="pulse">דופק</string>
+    <string name="sugar">סוכר</string>
+    <string name="breath">נשימה</string>
     <!-- End of Details Activity -->
-
-
-    <!-- Main Action Bar -->
-    <string name="search">חפש</string>
-    <!-- End of Main Action Bar -->
 
 </resources>

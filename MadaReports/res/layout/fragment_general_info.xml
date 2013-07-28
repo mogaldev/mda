@@ -14,7 +14,7 @@
             android:layout_width="200dp"
             android:layout_height="fill_parent"
             android:layout_gravity="center_vertical"
-            android:inputType="number"
+            android:inputType="numberSigned"
             android:textSize="18sp" />
 
         <TextView
@@ -42,13 +42,13 @@
             android:text="@string/address" />
     </LinearLayout>
 
-<!--     <LinearLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="5dp" >
 
         <Spinner
-            android:id="@+id/widget73"
+            android:id="@+id/regionsSpinner"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:padding="5dp" />
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:text="@string/region" />
-    </LinearLayout> -->
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -67,7 +67,7 @@
         <EditText
             android:id="@+id/notesEditText"
             android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:inputType="text"
             android:padding="5dp"
             android:textSize="18sp" />

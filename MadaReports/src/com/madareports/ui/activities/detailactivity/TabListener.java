@@ -37,7 +37,6 @@ public class TabListener<T extends Fragment> implements ActionBar.TabListener {
             // If it exists, simply attach it in order to show it
             ft.attach(mFragment);
         }
-    	Toast.makeText(mActivity, "onTabSelected", Toast.LENGTH_SHORT).show();
     }
 
     public void onTabUnselected(Tab tab, FragmentTransaction ft) {
@@ -45,11 +44,9 @@ public class TabListener<T extends Fragment> implements ActionBar.TabListener {
             // Detach the fragment, because another one is being attached
             ft.detach(mFragment);
         }
-    	Toast.makeText(mActivity, "onTabUnselected", Toast.LENGTH_SHORT).show();
     }
 
     public void onTabReselected(Tab tab, FragmentTransaction ft) {
         // User selected the already selected tab. Usually do nothing.
-    	Toast.makeText(mActivity, "onTabReselected", Toast.LENGTH_SHORT).show();
     }
 }

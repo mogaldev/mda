@@ -50,7 +50,7 @@ public class DatabaseWrapper {
 		List<Report> reports = null;
 		try {
 			// ownerDao.queryBuilder().orderByRaw("Name COLLATE NOCASE").query();
-			reports = helper.getReportsDao().queryForAll();
+			reports = helper.getReportDao().queryForAll();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
@@ -59,7 +59,7 @@ public class DatabaseWrapper {
 
 	public void deleteAllReports() {
 		try {
-			helper.getReportsDao().delete(getAllReports());
+			helper.getReportDao().delete(getAllReports());
 			notifyDatabaseChanged();
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -68,7 +68,7 @@ public class DatabaseWrapper {
 
 	public void AddReport(Report report) {
 		try {
-			helper.getReportsDao().create(report);
+			helper.getReportDao().create(report);
 			notifyDatabaseChanged();
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -76,7 +76,7 @@ public class DatabaseWrapper {
 	}
 
 	public int countUnreadReports() {
-		Dao<Report, Integer> dao = helper.getReportsDao();
+		Dao<Report, Integer> dao = helper.getReportDao();
 		try {
 			// TODO find different way, not using hard-coded column name
 			return (int) dao.countOf(dao.queryBuilder().setCountOf(true)
@@ -92,7 +92,7 @@ public class DatabaseWrapper {
 		for (Report report : list) {
 			report.setWatched(new Random().nextBoolean());
 			try {
-				helper.getReportsDao().update(report);
+				helper.getReportDao().update(report);
 			} catch (SQLException e) {
 				Logger.LOGE(TAG, e.getMessage());
 			}
@@ -102,11 +102,19 @@ public class DatabaseWrapper {
 	public Report getReportById(int reportId) {
 		Report reportToReturn = null;
 		try {
-			reportToReturn = helper.getReportsDao().queryForId(reportId);
+			reportToReturn = helper.getReportDao().queryForId(reportId);
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return reportToReturn;
+	}
+	
+	public void updateReport(Report report) {
+		try {
+			helper.getReportDao().update(report);
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
 	}
 
 	// ////////////////////////////
@@ -124,7 +132,7 @@ public class DatabaseWrapper {
 		try {
 			switch (table) {
 			case Regions:
-				records = (List<ICodeTable>) (List<?>) helper.getRegions()
+				records = (List<ICodeTable>) (List<?>) helper.getRegionDao()
 						.queryForAll();
 				break;
 			case Treatments:
@@ -139,12 +147,22 @@ public class DatabaseWrapper {
 		}
 		return records;
 	}
+	
+	public List<Region> getAllRegions() {
+		List<Region> regions = null;
+		try {
+			regions = helper.getRegionDao().queryForAll();
+		} catch (Exception e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+		return regions;
+	}
 
 	public void addCodeTableRecord(ICodeTable record, CodeTables table) {
 		try {
 			switch (table) {
 			case Regions:
-				helper.getRegions().create((Region) record);
+				helper.getRegionDao().create((Region) record);
 				break;
 			case Treatments:
 
@@ -161,7 +179,7 @@ public class DatabaseWrapper {
 		try {
 			switch (table) {
 			case Regions:
-				helper.getRegions().delete((Region) record);
+				helper.getRegionDao().delete((Region) record);
 				break;
 			case Treatments:
 
@@ -180,7 +198,7 @@ public class DatabaseWrapper {
 		try {
 			switch (table) {
 			case Regions:
-				helper.getRegions().update((Region) record);
+				helper.getRegionDao().update((Region) record);
 				break;
 			case Treatments:
 

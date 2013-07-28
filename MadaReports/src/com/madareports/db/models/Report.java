@@ -1,20 +1,26 @@
 package com.madareports.db.models;
 
 import java.util.Date;
+import java.util.Random;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.db.reports.ReportIllustrator;
 
-@DatabaseTable
+@DatabaseTable(tableName = "REPORTS")
 public class Report {
+	
+	public static final String REGION_ID_COLUMN_NAME = "regionId";
+	
 	@DatabaseField(generatedId = true)
 	private int id;
 	@DatabaseField
 	private String address;
 	@DatabaseField
 	private String description;
-	// TODO: add region
+	@DatabaseField(foreign = true, columnName = REGION_ID_COLUMN_NAME)
+	private Region region;
 	@DatabaseField
 	private int pulse;
 	@DatabaseField
@@ -43,10 +49,20 @@ public class Report {
 
 		// get the id from the message
 		setId(rprtAnlzr.getId());
-		setDescription(rprtAnlzr.getDisplayContent()); // TODO cut the message
-														// body
+		setDescription(rprtAnlzr.getDisplayContent()); // TODO cut the message body
+		
+		// set random things for debugging
+		Random rnd = new Random();
 		setReceivedAt(new Date(timesptamp));
-
+		setAddress("temp address");
+		setNotes("יש כאן מלא מלא מלא הערות\n bla bla ablabl\n\n\nasdasd\n\nnnasdasda");
+		setReported(rnd.nextBoolean());
+		Region tempRegion = new Region();
+		tempRegion.setId(rnd.nextInt(7) + 1);
+		setRegion(tempRegion);
+		setPulse(rnd.nextInt(100));
+		setBreath(rnd.nextInt(100));
+		setSugar(rnd.nextInt(100));
 	}
 
 	public Report() {
@@ -54,14 +70,6 @@ public class Report {
 	}
 
 	// Setters & Getters
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public int getId() {
 		return id;
@@ -77,6 +85,22 @@ public class Report {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+ 
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
 	}
 
 	public int getPulse() {
