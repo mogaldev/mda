@@ -28,6 +28,13 @@
     <Button
         android:id="@+id/btnRegion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="מרחבים" />
+
+    <Button
+        android:id="@+id/btnTreatment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="טיפולים" />
 
 </LinearLayout>

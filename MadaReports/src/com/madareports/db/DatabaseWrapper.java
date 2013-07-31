@@ -131,16 +131,14 @@ public class DatabaseWrapper {
 		List<ICodeTable> records = null;
 		try {
 			switch (table) {
-			case Regions:
-				records = (List<ICodeTable>) (List<?>) helper.getRegionDao()
-						.queryForAll();
-				break;
-			case Treatments:
-				// records =
-				// (List<ICodeTable>)(List<?>)helper.getTreatments().queryForAll();
-				break;
-			default:
-				break;
+				case Regions:
+					records = (List<ICodeTable>) (List<?>) helper.getRegionDao().queryForAll();
+					break;
+				case Treatments:
+					records = (List<ICodeTable>) (List<?>) helper.getTreatmentDao().queryForAll();
+					break;
+				default:
+					break;
 			}
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());

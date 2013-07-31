@@ -10,6 +10,7 @@
 
     <!-- Code Tables -->
     <string name="code_table_dialog_region_title">מרחבים</string>
+    <string name="code_table_dialog_treatment_title">טיפולים</string>
     <string name="code_table_dialog_edit_positive_button">שמירה</string>
     <string name="code_table_dialog_add_positive_button">הוספה</string>
     <string name="code_table_dialog_edit_success">הרשומה נשמרה</string>

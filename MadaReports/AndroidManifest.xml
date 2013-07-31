@@ -30,6 +30,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name="com.madareports.ui.activities.TreatmentsActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name="com.madareports.ui.activities.ContactPickerActivity"
             android:label="@string/app_name" >
             <intent-filter>

@@ -1,8 +1,5 @@
 package com.madareports.db;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +10,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
+import com.madareports.db.models.Treatment;
 import com.madareports.utils.Logger;
 
 public class DbHelper extends OrmLiteSqliteOpenHelper {
@@ -28,6 +26,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	// the dao's to access the tables
 	private Dao<Report, Integer> reportsDao = null;
 	private Dao<Region, Integer> regionsDao = null;
+	private Dao<Treatment, Integer> treatmentDao = null;
 
 	public DbHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -40,6 +39,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			// Create here the database tables
 			TableUtils.createTable(connectionSource, Report.class);
 			TableUtils.createTable(connectionSource, Region.class);
+			TableUtils.createTable(connectionSource, Treatment.class);
 			
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -54,18 +54,23 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource,
 			int oldVersion, int newVersion) {
 		try {
-			List<String> allSql = new ArrayList<String>();
-			switch (oldVersion) {
-			case 1:
-				// allSql.add("alter table AdData add column `new_col` VARCHAR");
-				// allSql.add("alter table AdData add column `new_col2` VARCHAR");
-			}
-			for (String sql : allSql) {
-				db.execSQL(sql);
-			}
+			TableUtils.createTableIfNotExists(connectionSource, Report.class);
+			TableUtils.createTableIfNotExists(connectionSource, Region.class);
+			TableUtils.createTableIfNotExists(connectionSource, Treatment.class);
+//			List<String> allSql = new ArrayList<String>();
+//			switch (oldVersion) {
+//			case 1:
+//				// allSql.add("alter table AdData add column `new_col` VARCHAR");
+//				// allSql.add("alter table AdData add column `new_col2` VARCHAR");
+//			}
+//			for (String sql : allSql) {
+//				db.execSQL(sql);
+//			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			throw new RuntimeException(e);
+		} catch (java.sql.SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
 		}
 
 	}
@@ -90,7 +95,17 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			}
 		}
 		return regionsDao;
-
+	}
+	
+	public Dao<Treatment, Integer> getTreatmentDao() {
+		if (treatmentDao == null) {
+			try {
+				treatmentDao = getDao(Treatment.class);
+			} catch (Exception e) {
+				Logger.LOGE(TAG, e.getMessage());
+			}
+		}
+		return treatmentDao;
 	}
 
 }
