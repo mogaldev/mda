@@ -88,7 +88,6 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(v.getContext(), DetailActivity.class);
-//					intent.
 					intent.putExtra(DetailActivity.REPORT_ID_EXTRA, report.getId());
 					v.getContext().startActivity(intent);
 				}
@@ -108,7 +107,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				.findViewById(R.id.tvReportDescription);
 
 		// set the values into the views
-		tvId.setText(report.getId() + "#");
+		tvId.setText(report.getReportId() + "#");
 		tvReceivedAt.setText(report.getReceivedAt().toString());
 		tvDescription.setText(report.getDescription(),
 				TextView.BufferType.SPANNABLE);
@@ -122,7 +121,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 
 			private boolean isPassedFilterTest(Report report,
 					CharSequence constraint) {
-				String combined = report.getId() + ", "
+				String combined = report.getReportId() + ", "
 						+ report.getDescription();
 
 				return combined.toLowerCase().contains(

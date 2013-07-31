@@ -28,6 +28,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	private Dao<Report, Integer> reportsDao = null;
 	private Dao<Region, Integer> regionsDao = null;
 	private Dao<Treatment, Integer> treatmentDao = null;
+	private Dao<TreatmentsToReports, Integer> treatmentsToReports = null;
 
 	public DbHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,6 +43,17 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTable(connectionSource, Region.class);
 			TableUtils.createTable(connectionSource, Treatment.class);
 			TableUtils.createTable(connectionSource, TreatmentsToReports.class);
+			
+			
+			// Set some Regions for debugging
+			getRegionDao().create(new Region("מרכז"));
+			getRegionDao().create(new Region("צפון"));
+			getRegionDao().create(new Region("דרום"));
+
+			// Set some Treatments for debugging
+			getTreatmentDao().create(new Treatment("חית עין"));
+			getTreatmentDao().create(new Treatment("הנשמה"));
+			getTreatmentDao().create(new Treatment("טיפול 10,000"));
 			
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -112,4 +124,14 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 		return treatmentDao;
 	}
 
+	public Dao<TreatmentsToReports, Integer> getTreatmentsToReportsDao() {
+		if (treatmentsToReports == null) {
+			try {
+				treatmentsToReports = getDao(TreatmentsToReports.class);
+			} catch (Exception e) {
+				Logger.LOGE(TAG, e.getMessage());
+			}
+		}
+		return treatmentsToReports;
+	}
 }

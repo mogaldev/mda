@@ -11,10 +11,13 @@ import com.madareports.db.reports.ReportIllustrator;
 @DatabaseTable(tableName = "REPORTS")
 public class Report {
 	
-	public static final String REGION_ID_COLUMN_NAME = "regionId";
+	public static final String REGION_ID_COLUMN_NAME = "REGION_ID";
+	public static final String ID_COLUMN_NAME = "ID";
 	
-	@DatabaseField(generatedId = true)
+	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
 	private int id;
+	@DatabaseField
+	private int reportId;
 	@DatabaseField
 	private String address;
 	@DatabaseField
@@ -48,7 +51,7 @@ public class Report {
 		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(messageBody);
 
 		// get the id from the message
-		setId(rprtAnlzr.getId());
+		setReportId(rprtAnlzr.getId());
 		setDescription(rprtAnlzr.getDisplayContent()); // TODO cut the message body
 		
 		// set random things for debugging
@@ -58,7 +61,7 @@ public class Report {
 		setNotes("יש כאן מלא מלא מלא הערות\n bla bla ablabl\n\n\nasdasd\n\nnnasdasda");
 		setReported(rnd.nextBoolean());
 		Region tempRegion = new Region();
-		tempRegion.setId(rnd.nextInt(7) + 1);
+		tempRegion.setId(rnd.nextInt(2) + 1);
 		setRegion(tempRegion);
 		setPulse(rnd.nextInt(100));
 		setBreath(rnd.nextInt(100));
@@ -77,6 +80,14 @@ public class Report {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public int getReportId() {
+		return reportId;
+	}
+	
+	public void setReportId(int reportId) {
+		this.reportId = reportId;
 	}
 
 	public String getAddress() {

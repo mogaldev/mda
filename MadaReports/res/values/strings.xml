@@ -46,6 +46,7 @@
 
 
     <!-- Details Activity -->
+    <string name="report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
     <string name="save">שמור</string>
     <!-- Tabs Titles -->

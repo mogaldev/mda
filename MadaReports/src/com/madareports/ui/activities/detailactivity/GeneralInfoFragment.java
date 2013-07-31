@@ -35,7 +35,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		
 		// set the report id edit text
 		reportIdEditText = (EditText) getActivity().findViewById(R.id.reportIdEditText);
-		reportIdEditText.setText(String.valueOf(getCurrentReport().getId()));
+		reportIdEditText.setText(String.valueOf(getCurrentReport().getReportId()));
 		
 		// set the regions spinner
 		List<Region> allRegions = DatabaseWrapper.getInstance(getActivity()).getAllRegions();
@@ -76,7 +76,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 
 	@Override
     public void save() {
-		 getCurrentReport().setId(Integer.valueOf(reportIdEditText.getText().toString()));
+		 getCurrentReport().setReportId(Integer.valueOf(reportIdEditText.getText().toString()));
 		 getCurrentReport().setRegion((Region) regionSpinner.getSelectedItem());
 		 getCurrentReport().setAddress(addressEditText.getText().toString());
 		 getCurrentReport().setNotes(notesEditText.getText().toString());

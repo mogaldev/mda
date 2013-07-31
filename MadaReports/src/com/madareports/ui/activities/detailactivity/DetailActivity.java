@@ -2,6 +2,7 @@ package com.madareports.ui.activities.detailactivity;
 
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
@@ -14,7 +15,7 @@ import com.madareports.ui.activities.BaseActivity;
 
 public class DetailActivity extends BaseActivity {
 
-	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
+	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";	
 	private Report sentReport;
 
 	@Override
@@ -43,16 +44,16 @@ public class DetailActivity extends BaseActivity {
 
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
 		treatmentsTab.setText(getString(R.string.treatments));
-		treatmentsTab.setTabListener(new TabListener<GeneralInfoFragment>(
-				this, GeneralInfoFragment.class.getName(),
-				GeneralInfoFragment.class));
+		treatmentsTab.setTabListener(new TabListener<TreatmentsFragment>(
+				this, TreatmentsFragment.class.getName(),
+				TreatmentsFragment.class));
 		supportActionBar.addTab(treatmentsTab);
 	}
 
 	private Report getReportFromIntent() {
-		int reportId = getIntent().getExtras().getInt(REPORT_ID_EXTRA);
+		int id = getIntent().getExtras().getInt(REPORT_ID_EXTRA);
 		DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(this);
-		Report reportById = databaseWrapper.getReportById(reportId);
+		Report reportById = databaseWrapper.getReportById(id);
 
 		return reportById;
 	}
@@ -79,6 +80,7 @@ public class DetailActivity extends BaseActivity {
 			case R.id.menu_save:
 				saveCurrentReport();
 				DatabaseWrapper.getInstance(this).updateReport(getCurrentReport());
+				Toast.makeText(this , getString(R.string.report_saved), Toast.LENGTH_SHORT).show();
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
