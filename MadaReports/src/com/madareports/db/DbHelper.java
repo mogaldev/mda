@@ -11,6 +11,7 @@ import com.j256.ormlite.table.TableUtils;
 import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.db.models.Treatment;
+import com.madareports.db.models.TreatmentsToReports;
 import com.madareports.utils.Logger;
 
 public class DbHelper extends OrmLiteSqliteOpenHelper {
@@ -40,6 +41,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTable(connectionSource, Report.class);
 			TableUtils.createTable(connectionSource, Region.class);
 			TableUtils.createTable(connectionSource, Treatment.class);
+			TableUtils.createTable(connectionSource, TreatmentsToReports.class);
 			
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -57,6 +59,8 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTableIfNotExists(connectionSource, Report.class);
 			TableUtils.createTableIfNotExists(connectionSource, Region.class);
 			TableUtils.createTableIfNotExists(connectionSource, Treatment.class);
+			TableUtils.createTableIfNotExists(connectionSource, TreatmentsToReports.class);
+			
 //			List<String> allSql = new ArrayList<String>();
 //			switch (oldVersion) {
 //			case 1:

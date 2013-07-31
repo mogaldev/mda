@@ -49,7 +49,8 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
-		return (smsMsg.getOriginatingAddress().equals(madaSender));
+//		return (smsMsg.getOriginatingAddress().equals(madaSender));
+		return true;
 	}
 
 	// TODO: remove - only for testing. the move method should be implement
