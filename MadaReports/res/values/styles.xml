@@ -1,14 +1,14 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -30,5 +30,74 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+    
+    <!-- DetailActivity Style -->
+
+    <!-- General Info Fragment Style -->
+    <style name="fragment_general_info_relative_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="fragment_general_info_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="fragment_general_info_edittext">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+
+    <style name="fragment_general_info_edittext_notes" parent="@style/fragment_general_info_edittext">
+        <item name="android:layout_height">150dp</item>
+    </style>
+
+    <style name="fragment_general_info_spinner" parent="fragment_general_info_edittext" />
+    <!-- End of General Info Fragment Style -->
+
+
+    <!-- Tech Info Fragment Style -->
+    <style name="fragment_tech_info_relative_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="fragment_tech_info_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="fragment_tech_info_textview_value">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">205dp</item>
+    </style>
+    
+    <style name="fragment_tech_info_seekbar">
+        <item name="android:paddingTop">25dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentLeft">true</item>
+    </style>
+    <!-- End of Tech Info Fragment Style -->
+
+
+    <!-- End of DetailActivity Style -->
 
 </resources>

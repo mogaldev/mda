@@ -4,58 +4,52 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp" >
+    <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
 
         <SeekBar
             android:id="@+id/pulseView"
-            android:layout_width="200dp"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_horizontal"
+            style="@style/fragment_tech_info_seekbar"
             android:max="100" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="@string/pulse" />
-    </LinearLayout>
+            android:id="@+id/pulseValue"
+            style="@style/fragment_tech_info_textview_value" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp" >
+        <TextView
+            style="@style/fragment_tech_info_textview"
+            android:text="@string/pulse" />
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
 
         <SeekBar
             android:id="@+id/sugarView"
-            android:layout_width="200dp"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_horizontal"
+            style="@style/fragment_tech_info_seekbar"
             android:max="100" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="@string/sugar" />
-    </LinearLayout>
+            android:id="@+id/sugarValue"
+            style="@style/fragment_tech_info_textview_value" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp" >
+        <TextView
+            style="@style/fragment_tech_info_textview"
+            android:text="@string/sugar" />
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
 
         <SeekBar
             android:id="@+id/breathView"
-            android:layout_width="200dp"
-            android:layout_height="fill_parent"
-            android:layout_gravity="center_horizontal"
+            style="@style/fragment_tech_info_seekbar"
             android:max="100" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:id="@+id/breathValue"
+            style="@style/fragment_tech_info_textview_value" />
+
+        <TextView
+            style="@style/fragment_tech_info_textview"
             android:text="@string/breath" />
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>
