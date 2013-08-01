@@ -75,12 +75,22 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 	}
 
 	@Override
-    public void save() {
-		 getCurrentReport().setReportId(Integer.valueOf(reportIdEditText.getText().toString()));
-		 getCurrentReport().setRegion((Region) regionSpinner.getSelectedItem());
-		 getCurrentReport().setAddress(addressEditText.getText().toString());
-		 getCurrentReport().setNotes(notesEditText.getText().toString());
-		 getCurrentReport().setReported(isReportedCheckBox.isChecked());
-    }
+	public void postChangesOnCurrentReport() {
+		getCurrentReport().setReportId(Integer.valueOf(reportIdEditText.getText().toString()));
+		getCurrentReport().setRegion((Region) regionSpinner.getSelectedItem());
+		getCurrentReport().setAddress(addressEditText.getText().toString());
+		getCurrentReport().setNotes(notesEditText.getText().toString());
+		getCurrentReport().setReported(isReportedCheckBox.isChecked());
+	}
+	
+	@Override
+	public void refreshDataWithCurrentReport() {
+		reportIdEditText.setText(String.valueOf(getCurrentReport().getReportId()));
+		regionSpinner.setSelection(findRegionPositionForReport(DatabaseWrapper.getInstance(getActivity()).getAllRegions(),
+		                                                       getCurrentReport()));
+		addressEditText.setText(String.valueOf(getCurrentReport().getAddress()));
+		notesEditText.setText(String.valueOf(getCurrentReport().getNotes()));
+		isReportedCheckBox.setChecked(getCurrentReport().isReported());
+	}
 
 }

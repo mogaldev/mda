@@ -53,6 +53,6 @@ public class FilterListViewTests extends BaseActivity {
 		((Button) findViewById(R.id.btnTreatment)).setOnClickListener(getMoveToClickListener(TreatmentsActivity.class));
 
 		DatabaseWrapper.getInstance(this).setRandomReadOrUnread();
-			}
+	}
 
 }

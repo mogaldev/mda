@@ -15,7 +15,7 @@ import com.madareports.ui.activities.BaseActivity;
 
 public class DetailActivity extends BaseActivity {
 
-	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";	
+	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
 	private Report sentReport;
 
 	@Override
@@ -61,6 +61,10 @@ public class DetailActivity extends BaseActivity {
 	public Report getCurrentReport() {
 		return sentReport;
 	}
+	
+	private void setCurrentReport(Report report) {
+		sentReport = report;
+	}
 
 	
 	@Override
@@ -77,25 +81,50 @@ public class DetailActivity extends BaseActivity {
 			case android.R.id.home:
 				NavUtils.navigateUpFromSameTask(this);
 				return true;
-			case R.id.menu_save:
+			case R.id.detail_activity_menu_save:
 				saveCurrentReport();
 				DatabaseWrapper.getInstance(this).updateReport(getCurrentReport());
 				Toast.makeText(this , getString(R.string.report_saved), Toast.LENGTH_SHORT).show();
 				return true;
+			case R.id.detail_activity_menu_sync:
+				Report currentReportFromDataBase = DatabaseWrapper.getInstance(this).getReportById(getCurrentReport().getId());
+				setCurrentReport(currentReportFromDataBase);
+				rollbackCurrentReport(currentReportFromDataBase);
 			default:
 				return super.onOptionsItemSelected(item);
 		}
 	}
 	
 	public void saveCurrentReport() {
-		// try to get each fragment because not all the fragment were loaded
+		// try to get each fragment because maybe not all the fragment were loaded
 		try {
 			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) getSupportFragmentManager().findFragmentByTag(GeneralInfoFragment.class.getName());
-			generalInfoFragment.save();
+			generalInfoFragment.postChangesOnCurrentReport();
 		} catch (Exception e) {}
 		try {
 			TechInfoFragment techInfoFragment = (TechInfoFragment) getSupportFragmentManager().findFragmentByTag(TechInfoFragment.class.getName());
-			techInfoFragment.save();
+			techInfoFragment.postChangesOnCurrentReport();
+		} catch (Exception e) {}
+		try {
+			TreatmentsFragment treatmentFragment = (TreatmentsFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsFragment.class.getName());
+			treatmentFragment.postChangesOnCurrentReport();
+			treatmentFragment.commitOnTreatmentsToReports();
+		} catch (Exception e) {}
+	}
+	
+	public void rollbackCurrentReport(Report currentReportFromDataBase) {
+		// try to get each fragment because maybe not all the fragment were loaded
+		try {
+			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) getSupportFragmentManager().findFragmentByTag(GeneralInfoFragment.class.getName());
+			generalInfoFragment.refreshDataWithCurrentReport();
+		} catch (Exception e) {}
+		try {
+			TechInfoFragment techInfoFragment = (TechInfoFragment) getSupportFragmentManager().findFragmentByTag(TechInfoFragment.class.getName());
+			techInfoFragment.refreshDataWithCurrentReport();
+		} catch (Exception e) {}
+		try {
+			TreatmentsFragment treatmentFragment = (TreatmentsFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsFragment.class.getName());
+			treatmentFragment.refreshDataWithCurrentReport();
 		} catch (Exception e) {}
 	}
 

@@ -49,6 +49,7 @@
     <string name="report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
     <string name="save">שמור</string>
+    <string name="refresh_data">רענון</string>
     <!-- Tabs Titles -->
     <string name="general_info">פרטים כלליים</string>
     <string name="tech_info">פרטים טכניים</string>
@@ -64,5 +65,6 @@
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
     <!-- End of Details Activity -->
-
+    <string name="search">search</string>
+    
 </resources>

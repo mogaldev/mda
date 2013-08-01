@@ -301,7 +301,7 @@ public class DatabaseWrapper {
 		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
         try {
     		// Get all the treatments id's of this report
-        		List<TreatmentsToReports> TreatmentToReport = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME, reportId).and().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME, TreatmentId).query();
+        	treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME, reportId).and().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME, TreatmentId).query();
         } catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
         }

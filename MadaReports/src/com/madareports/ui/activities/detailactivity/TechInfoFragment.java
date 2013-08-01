@@ -9,6 +9,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.madareports.R;
+import com.madareports.db.models.Report;
 
 public class TechInfoFragment extends FragmentDetailActivity {
 
@@ -67,10 +68,17 @@ public class TechInfoFragment extends FragmentDetailActivity {
 	}
 
 	@Override
-	public void save() {
+	public void postChangesOnCurrentReport() {
 		 getCurrentReport().setPulse(pulseView.getProgress());
 		 getCurrentReport().setSugar(sugarView.getProgress());
 		 getCurrentReport().setBreath(breathView.getProgress());
+	}
+	
+	@Override
+	public void refreshDataWithCurrentReport() {
+		 pulseView.setProgress(getCurrentReport().getPulse());
+		 sugarView.setProgress(getCurrentReport().getSugar());
+		 breathView.setProgress(getCurrentReport().getBreath());
 	}
 
 }
