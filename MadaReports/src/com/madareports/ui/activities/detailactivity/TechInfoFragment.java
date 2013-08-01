@@ -68,7 +68,7 @@ public class TechInfoFragment extends FragmentDetailActivity {
 	}
 
 	@Override
-	public void postChangesOnCurrentReport() {
+	public void saveCurrentReport() {
 		 getCurrentReport().setPulse(pulseView.getProgress());
 		 getCurrentReport().setSugar(sugarView.getProgress());
 		 getCurrentReport().setBreath(breathView.getProgress());

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.telephony.PhoneNumberUtils;
 import android.util.Log;
 
 import com.madareports.R;

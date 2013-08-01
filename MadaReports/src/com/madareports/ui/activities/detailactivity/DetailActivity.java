@@ -99,16 +99,15 @@ public class DetailActivity extends BaseActivity {
 		// try to get each fragment because maybe not all the fragment were loaded
 		try {
 			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) getSupportFragmentManager().findFragmentByTag(GeneralInfoFragment.class.getName());
-			generalInfoFragment.postChangesOnCurrentReport();
+			generalInfoFragment.saveCurrentReport();
 		} catch (Exception e) {}
 		try {
 			TechInfoFragment techInfoFragment = (TechInfoFragment) getSupportFragmentManager().findFragmentByTag(TechInfoFragment.class.getName());
-			techInfoFragment.postChangesOnCurrentReport();
+			techInfoFragment.saveCurrentReport();
 		} catch (Exception e) {}
 		try {
 			TreatmentsFragment treatmentFragment = (TreatmentsFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsFragment.class.getName());
-			treatmentFragment.postChangesOnCurrentReport();
-			treatmentFragment.commitOnTreatmentsToReports();
+			treatmentFragment.saveCurrentReport();
 		} catch (Exception e) {}
 	}
 	

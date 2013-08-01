@@ -94,7 +94,7 @@ public class TreatmentsFragment extends FragmentDetailActivity {
     }
 
 	@Override
-	public void postChangesOnCurrentReport() {}
+	public void saveCurrentReport() {}
 
 	@Override
 	public void refreshDataWithCurrentReport() {}

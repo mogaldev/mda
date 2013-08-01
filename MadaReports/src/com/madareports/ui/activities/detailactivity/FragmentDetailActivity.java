@@ -10,7 +10,7 @@ public abstract class FragmentDetailActivity extends SherlockFragment {
 	@Override
 	public void onPause() {
 	    super.onPause();
-	    postChangesOnCurrentReport();
+	    saveCurrentReport();
 	}
 	
 	protected Report getCurrentReport() {
@@ -22,6 +22,6 @@ public abstract class FragmentDetailActivity extends SherlockFragment {
 		return currentReport;
 	}
 	
-	public abstract void postChangesOnCurrentReport();
+	public abstract void saveCurrentReport();
 	public abstract void refreshDataWithCurrentReport();
 }

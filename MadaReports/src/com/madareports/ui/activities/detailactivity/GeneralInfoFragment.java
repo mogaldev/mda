@@ -75,7 +75,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 	}
 
 	@Override
-	public void postChangesOnCurrentReport() {
+	public void saveCurrentReport() {
 		getCurrentReport().setReportId(Integer.valueOf(reportIdEditText.getText().toString()));
 		getCurrentReport().setRegion((Region) regionSpinner.getSelectedItem());
 		getCurrentReport().setAddress(addressEditText.getText().toString());

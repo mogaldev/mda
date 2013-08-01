@@ -9,7 +9,6 @@ import android.content.res.Resources;
 import android.support.v4.app.NotificationCompat;
 
 import com.madareports.FilterListViewTests;
-import com.madareports.MainActivity;
 import com.madareports.R;
 
 public class NotificationsManager {
