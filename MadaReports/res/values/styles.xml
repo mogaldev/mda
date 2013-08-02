@@ -55,8 +55,8 @@
         <item name="android:layout_alignParentLeft">true</item>
     </style>
 
-    <style name="fragment_general_info_edittext_notes" parent="@style/fragment_general_info_edittext">
-        <item name="android:layout_height">150dp</item>
+    <style name="fragment_general_info_edittext_big" parent="@style/fragment_general_info_edittext">
+        <item name="android:layout_height">75dp</item>
     </style>
 
     <style name="fragment_general_info_spinner" parent="fragment_general_info_edittext" />

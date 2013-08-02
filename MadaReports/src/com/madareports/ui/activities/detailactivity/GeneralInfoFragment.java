@@ -20,6 +20,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 	private EditText reportIdEditText;
 	private Spinner regionSpinner;
 	private EditText addressEditText;
+	private EditText descriptionEditText;
 	private EditText notesEditText;
 	private CheckBox isReportedCheckBox; 
 	
@@ -48,6 +49,10 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		// set the address edit text
 		addressEditText = (EditText) getActivity().findViewById(R.id.addressEditText);
 		addressEditText.setText(getCurrentReport().getAddress());
+
+		// set the description edit text
+		descriptionEditText = (EditText) getActivity().findViewById(R.id.descriptionEditText);
+		descriptionEditText.setText(getCurrentReport().getDescription());
 
 		// set the notes edit text
 		notesEditText = (EditText) getActivity().findViewById(R.id.notesEditText);
@@ -82,6 +87,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		getCurrentReport().setReportId(Integer.valueOf(reportIdEditText.getText().toString()));
 		getCurrentReport().setRegion((Region) regionSpinner.getSelectedItem());
 		getCurrentReport().setAddress(addressEditText.getText().toString());
+		getCurrentReport().setDescription(descriptionEditText.getText().toString());
 		getCurrentReport().setNotes(notesEditText.getText().toString());
 		getCurrentReport().setReported(isReportedCheckBox.isChecked());
 	}
@@ -92,6 +98,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		regionSpinner.setSelection(findRegionPositionForReport(DatabaseWrapper.getInstance(getActivity()).getAllRegions(),
 		                                                       getCurrentReport().getRegion().getId()));
 		addressEditText.setText(String.valueOf(getCurrentReport().getAddress()));
+		descriptionEditText.setText(String.valueOf(getCurrentReport().getDescription()));
 		notesEditText.setText(String.valueOf(getCurrentReport().getNotes()));
 		isReportedCheckBox.setChecked(getCurrentReport().isReported());
 	}

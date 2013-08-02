@@ -8,6 +8,6 @@
         android:id="@+id/filter_list_view_tests_menu_search"
         android:actionViewClass="com.actionbarsherlock.widget.SearchView"
         android:showAsAction="always"
-        android:title="@string/search"/>
+        android:title="חיפוש"/>
 
 </menu>

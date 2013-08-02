@@ -43,11 +43,24 @@
     <RelativeLayout style="@style/fragment_general_info_relative_layout" >
 
         <EditText
-            android:id="@+id/notesEditText"
-            style="@style/fragment_general_info_edittext_notes"
+            android:id="@+id/descriptionEditText"
+            style="@style/fragment_general_info_edittext_big"
             android:inputType="textMultiLine" >
 
             <requestFocus />
+        </EditText>
+
+        <TextView
+            style="@style/fragment_general_info_textview"
+            android:text="@string/description" />
+    </RelativeLayout>
+
+    <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+        <EditText
+            android:id="@+id/notesEditText"
+            style="@style/fragment_general_info_edittext_big"
+            android:inputType="textMultiLine" >
         </EditText>
 
         <TextView

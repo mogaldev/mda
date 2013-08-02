@@ -58,6 +58,7 @@
     <string name="address">כתובת</string>
     <string name="report_id">מספר מקרה</string>
     <string name="region">מרחב</string>
+    <string name="description">תיאור</string>
     <string name="notes">הערות</string>
     <string name="is_watched">דווח באתר?</string>
     <!-- Tech Info Fragment -->
@@ -65,6 +66,6 @@
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
     <!-- End of Details Activity -->
-    <string name="search">search</string>
+    
     
 </resources>
