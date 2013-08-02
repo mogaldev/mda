@@ -69,6 +69,7 @@
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
     <!-- End of Details Activity -->
+    <string name="search_view_hint">חיפוש...</string>
     
     
 </resources>

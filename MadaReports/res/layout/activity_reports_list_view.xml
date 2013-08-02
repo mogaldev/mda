@@ -7,14 +7,6 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/editTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:inputType="text"
-        android:maxLines="1" />
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
