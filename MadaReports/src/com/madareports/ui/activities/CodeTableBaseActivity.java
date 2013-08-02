@@ -94,7 +94,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 
 									// add the new record
 									DatabaseWrapper.getInstance(context)
-											.addCodeTableRecord(
+											.createCodeTableRecord(
 													generateRecord(content),
 													table);
 

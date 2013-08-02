@@ -68,7 +68,7 @@ public class DatabaseWrapper {
 		}
 	}
 
-	public void addReport(Report report) {
+	public void createReport(Report report) {
 		try {
 			helper.getReportDao().create(report);
 			notifyDatabaseChanged();
@@ -179,7 +179,7 @@ public class DatabaseWrapper {
 		return treatments;
 	}
 	
-	public void addCodeTableRecord(ICodeTable record, CodeTables table) {
+	public void createCodeTableRecord(ICodeTable record, CodeTables table) {
 		try {
 			switch (table) {
 			case Regions:
@@ -309,7 +309,7 @@ public class DatabaseWrapper {
 		return treatmentsToReports;
 	}
 	
-	public void addTreatmentToReport(TreatmentsToReports treatmentsToReports) {
+	public void createTreatmentToReport(TreatmentsToReports treatmentsToReports) {
 		try {
 			// Check if there is no similar row
 			List<TreatmentsToReports> query = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME,
@@ -325,9 +325,9 @@ public class DatabaseWrapper {
         }
 	}
 	
-	public void addTreatmentToReport(Report report, Treatment treatment) {
+	public void createTreatmentToReport(Report report, Treatment treatment) {
 		TreatmentsToReports treatmentsToReports = new TreatmentsToReports(report, treatment);
-		addTreatmentToReport(treatmentsToReports);
+		createTreatmentToReport(treatmentsToReports);
 	}
 	
 	public void deleteTreatmentToReport(TreatmentsToReports treatmentsToReports) {

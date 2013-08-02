@@ -23,7 +23,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		
 		// add the report to the database
 		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
-		dbWrpr.addReport(report);
+		dbWrpr.createReport(report);
 
 		// notify about the new report with the number of unread reports
 		String formattedString = String.format(

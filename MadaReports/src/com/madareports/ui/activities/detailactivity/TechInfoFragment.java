@@ -9,7 +9,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.madareports.R;
-import com.madareports.db.models.Report;
 
 public class TechInfoFragment extends FragmentDetailActivity {
 

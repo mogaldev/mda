@@ -108,6 +108,7 @@ public class DetailActivity extends BaseActivity {
 		try {
 			TreatmentsFragment treatmentFragment = (TreatmentsFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsFragment.class.getName());
 			treatmentFragment.saveCurrentReport();
+			treatmentFragment.saveTreatments();
 		} catch (Exception e) {}
 	}
 	
