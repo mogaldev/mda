@@ -1,4 +1,4 @@
-package com.madareports.ui.activities.detailsactivity;
+package com.madareports.ui.activities.details;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;

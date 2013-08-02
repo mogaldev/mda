@@ -1,4 +1,4 @@
-package com.madareports.ui.activities.detailsactivity;
+package com.madareports.ui.activities.details;
 
 import java.util.ArrayList;
 import java.util.List;

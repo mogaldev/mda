@@ -18,7 +18,7 @@ import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.DbChangedNotifier;
 import com.madareports.db.models.Report;
-import com.madareports.ui.activities.detailsactivity.DetailsActivity;
+import com.madareports.ui.activities.details.DetailsActivity;
 import com.madareports.utils.Logger;
 
 public class ReportsListAdapter extends ArrayAdapter<Report> implements

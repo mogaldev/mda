@@ -1,4 +1,4 @@
-package com.madareports.ui.activities.detailactivity;
+package com.madareports.ui.activities.details;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

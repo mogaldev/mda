@@ -1,4 +1,4 @@
-package com.madareports.ui.activities.detailsactivity;
+package com.madareports.ui.activities.details;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.madareports.db.models.Report;
