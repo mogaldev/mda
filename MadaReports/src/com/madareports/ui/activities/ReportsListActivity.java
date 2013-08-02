@@ -7,7 +7,6 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
@@ -21,19 +20,13 @@ public class ReportsListActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reports_list_view);
-		// TOOD: for search view
-		getWindow().requestFeature((int) Window.FEATURE_ACTION_BAR);
 		
 		ListView lv = (ListView) findViewById(R.id.listView);
-		EditText txtSearch = (EditText) findViewById(R.id.editTxt);
-
+	
 		reportsAdapter = new ReportsListAdapter(this,
 				R.layout.unread_reports_list_item);
 		lv.setAdapter(reportsAdapter);
 
-		// enable the 'real-time' filtering on the edit text
-		txtSearch.addTextChangedListener(new ReportsFilterTextWatcher(
-				reportsAdapter));
 	}
 	
 	@Override
@@ -41,6 +34,13 @@ public class ReportsListActivity extends BaseActivity {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.reportslist_activity_action_bar, menu);
 
+		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
+		EditText txt = (EditText)item.getActionView();
+		
+		// enable the 'real-time' filtering on the edit text
+		txt.addTextChangedListener(new ReportsFilterTextWatcher(
+				reportsAdapter));
+		
 		return true;
 	}
 	
