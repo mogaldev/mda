@@ -27,7 +27,10 @@ public class DetailActivity extends BaseActivity {
 
 		//  Get the sent report from the intent and set watched to the report
 		sentReport = getReportFromIntent();
+		
+		// Set watched on the report and update it
 		sentReport.setWatched(true);
+		DatabaseWrapper.getInstance(this).updateReport(sentReport);
 
 		// Get the action bar and set it up
 		ActionBar supportActionBar = getSupportActionBar();

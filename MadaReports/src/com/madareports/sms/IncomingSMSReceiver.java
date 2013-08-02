@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
+import com.madareports.utils.ApplicationUtils;
 import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;
 
@@ -28,9 +29,11 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		String formattedString = String.format(
 				context.getString(R.string.notification_d_new_messages),
 				dbWrpr.countUnreadReports());
-		NotificationsManager.getInstance(context).raiseNotification(
-				formattedString, report.getDescription());
-
+		
+		if (!ApplicationUtils.isApplicationInForeground(context)) {
+			NotificationsManager.getInstance(context).raiseNotification(formattedString,
+			                                                            report.getDescription());
+		}
 	}
 
 	/**
@@ -77,7 +80,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 						raiseMessage(message, context);
 					}
 
-					// abortBroadcast();
+					 abortBroadcast();
 				}
 			}
 		}
