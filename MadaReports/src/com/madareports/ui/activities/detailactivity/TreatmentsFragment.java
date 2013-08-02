@@ -20,19 +20,34 @@ import com.madareports.utils.Logger;
 
 public class TreatmentsFragment extends FragmentDetailActivity {
 	
+	/**
+	 * List of all the Treatments of the currentReport
+	 */
 	List<Treatment> allCurrentReportTreatments;
+	
+	/**
+	 * List of all the Treatments that are not connected to the currentReport
+	 */
 	List<Treatment> allOtherTreatmentsToReports;
 	
+	/**
+	 * List of {@link TreatmentsToReports} for adding to the DataBase when the user click on save
+	 */
 	List<TreatmentsToReports> treatmentsIdToAdd;
+	/**
+	 * List of {@link TreatmentsToReports} for deleting from the DataBase when the user click on save
+	 */
 	List<TreatmentsToReports> treatmentsIdToDelete;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    
+	    // Initialize the list of the treatments to show to the user
 	    allCurrentReportTreatments = getAllCurrentReportTreatments();
 	    allOtherTreatmentsToReports = getAllOtherTreatmentsToReports();
 	    
+	    // Initialize the TreatmentsToReports lists that will be add and delete when the user click on the save button
 	    treatmentsIdToAdd = new ArrayList<TreatmentsToReports>();
 	    treatmentsIdToDelete = new ArrayList<TreatmentsToReports>();
 	}
@@ -63,13 +78,21 @@ public class TreatmentsFragment extends FragmentDetailActivity {
 		treatmentsOfReportListView.setOnItemClickListener(getTreatmentsOfReportListViewOnClickListener());
 	}
 	
+	/**
+	 * Find all the Treatments of the currentReport 
+	 * @return List of all the Treatments of the currentReport
+	 */
 	private List<Treatment> getAllCurrentReportTreatments() {
 	    int currentReportId = getCurrentReport().getId();
 	    List<Treatment> treatmentsByReportId = DatabaseWrapper.getInstance(getActivity()).getTreatmentsByReportId(currentReportId);
 	    
 	    return treatmentsByReportId;
     }
-	
+
+	/**
+	 * Find all the Treatments that are not connected to the currentReport
+	 * @return List of all the Treatments that are not connected to the currentReport
+	 */
 	private List<Treatment> getAllOtherTreatmentsToReports() {
 		return DatabaseWrapper.getInstance(getActivity()).getAllOtherTreatments(getCurrentReport().getId());
 	}
@@ -131,6 +154,11 @@ public class TreatmentsFragment extends FragmentDetailActivity {
 		};
 	}
 	
+	/**
+	 * Create {@link ArrayAdapter} to the ListView in the tab.
+	 * @param treatments List of Treatments for the adapter
+	 * @return {@link ArrayAdapter} to the ListViews in the tab
+	 */
 	private ArrayAdapter<Treatment> getArrayAdapter(List<Treatment> treatments) {
 		return new ArrayAdapter<Treatment>(
 		        getActivity(),

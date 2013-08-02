@@ -46,7 +46,13 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		breathValue = (TextView) getActivity().findViewById(R.id.breathValue);
 		persistSeekBarToTextView(breathView, breathValue);
 	}
-	
+
+	/**
+	 * Add a {@link OnSeekBarChangeListener} to the {@link TextView}</br>
+	 * and when the {@link SeekBar} is changed, also change the text in the {@link TextView}
+	 * @param seekBar {@link SeekBar} to listen to
+	 * @param changingTextView The {@link TextView} that suppose to listen to the {@link SeekBar}
+	 */
 	private void persistSeekBarToTextView(SeekBar seekBar, final TextView changingTextView) {
 		changingTextView.setText(String.valueOf(seekBar.getProgress()));
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {

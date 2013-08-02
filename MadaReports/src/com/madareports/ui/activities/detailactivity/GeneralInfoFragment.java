@@ -14,7 +14,6 @@ import android.widget.Spinner;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Region;
-import com.madareports.db.models.Report;
 
 public class GeneralInfoFragment extends FragmentDetailActivity {
 
@@ -44,7 +43,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		regionSpinner.setAdapter(dataAdapter);
 		regionSpinner.setSelection(findRegionPositionForReport(allRegions,
-		                                                       getCurrentReport()));
+		                                                       getCurrentReport().getRegion().getId()));
 		
 		// set the address edit text
 		addressEditText = (EditText) getActivity().findViewById(R.id.addressEditText);
@@ -59,12 +58,16 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		isReportedCheckBox.setChecked(getCurrentReport().isReported());
 	}
 	
-	
-	private int findRegionPositionForReport(List<Region> allRegions, Report report) {
-		int regionIdOfReport = report.getRegion().getId();
+	/**
+	 * Find the position of a {@link Region} in a list of {@link Region} by a {@link Region} ID
+	 * @param allRegions List of Region
+	 * @param regionId Id of the {@link Region} to find in the list
+	 * @return Position of the {@link Region} in the List
+	 */
+	private int findRegionPositionForReport(List<Region> allRegions, Integer regionId) {
 		int index = 0;
 		for (Region region : allRegions) {
-			if (region.getId() == regionIdOfReport) {
+			if (region.getId() == regionId) {
 				break;
 			} else {
 				index++;
@@ -87,7 +90,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 	public void refreshDataWithCurrentReport() {
 		reportIdEditText.setText(String.valueOf(getCurrentReport().getReportId()));
 		regionSpinner.setSelection(findRegionPositionForReport(DatabaseWrapper.getInstance(getActivity()).getAllRegions(),
-		                                                       getCurrentReport()));
+		                                                       getCurrentReport().getRegion().getId()));
 		addressEditText.setText(String.valueOf(getCurrentReport().getAddress()));
 		notesEditText.setText(String.valueOf(getCurrentReport().getNotes()));
 		isReportedCheckBox.setChecked(getCurrentReport().isReported());
