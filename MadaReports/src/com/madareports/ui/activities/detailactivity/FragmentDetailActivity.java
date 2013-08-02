@@ -5,23 +5,18 @@ import com.madareports.db.models.Report;
 
 public abstract class FragmentDetailActivity extends SherlockFragment {
 
-	private Report currentReport;
-
 	@Override
 	public void onPause() {
-	    super.onPause();
-	    saveCurrentReport();
+		super.onPause();
+		saveCurrentReport();
 	}
-	
-	protected Report getCurrentReport() {
-		if (currentReport == null) {
-			DetailActivity activity = (DetailActivity) getActivity();
-			currentReport = activity.getCurrentReport();
-		}
 
-		return currentReport;
+	protected Report getCurrentReport() {
+		DetailActivity activity = (DetailActivity) getActivity();
+		return activity.getCurrentReport();
 	}
-	
+
 	public abstract void saveCurrentReport();
+
 	public abstract void refreshDataWithCurrentReport();
 }
