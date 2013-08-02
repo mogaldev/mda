@@ -36,13 +36,12 @@ public class DetailActivity extends BaseActivity {
 		// Set navigation mode
 		supportActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		// Init all the tabs in the DetailActivity
-		ActionBar.Tab generalInfotab = supportActionBar.newTab();
-		generalInfotab.setText(getString(R.string.general_info));
-		generalInfotab.setTabListener(new TabListener<GeneralInfoFragment>(
-				this, GeneralInfoFragment.class.getName(),
-				GeneralInfoFragment.class));
-		supportActionBar.addTab(generalInfotab);
+		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
+		treatmentsTab.setText(getString(R.string.treatments));
+		treatmentsTab.setTabListener(new TabListener<TreatmentsFragment>(
+				this, TreatmentsFragment.class.getName(),
+				TreatmentsFragment.class));
+		supportActionBar.addTab(treatmentsTab);
 
 		ActionBar.Tab techInfoTab = supportActionBar.newTab();
 		techInfoTab.setText(getString(R.string.tech_info));
@@ -51,12 +50,13 @@ public class DetailActivity extends BaseActivity {
 				TechInfoFragment.class));
 		supportActionBar.addTab(techInfoTab);
 
-		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
-		treatmentsTab.setText(getString(R.string.treatments));
-		treatmentsTab.setTabListener(new TabListener<TreatmentsFragment>(
-				this, TreatmentsFragment.class.getName(),
-				TreatmentsFragment.class));
-		supportActionBar.addTab(treatmentsTab);
+		// Init all the tabs in the DetailActivity
+		ActionBar.Tab generalInfotab = supportActionBar.newTab();
+		generalInfotab.setText(getString(R.string.general_info));
+		generalInfotab.setTabListener(new TabListener<GeneralInfoFragment>(
+				this, GeneralInfoFragment.class.getName(),
+				GeneralInfoFragment.class));
+		supportActionBar.addTab(generalInfotab, true);
 	}
 
 	/**
