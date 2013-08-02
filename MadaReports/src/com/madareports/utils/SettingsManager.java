@@ -135,5 +135,13 @@ public class SettingsManager {
 		}
 		return false;
 	}
+	
+	/**
+	 * Check if the application should abort the broadcast when the phone getting SMS
+	 * @return true if should abort, otherwise false
+	 */
+	public boolean getAbortBroadcast() {
+		return getAdapterInstance().readBoolean(R.string.prefrences_key_abort_broadcast);
+	}
 
 }

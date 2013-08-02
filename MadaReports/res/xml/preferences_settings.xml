@@ -6,6 +6,11 @@
         android:key="@string/prefrences_category_notifications_key"
         android:title="@string/prefrences_category_notifications_title" >
         <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="@string/prefrences_key_abort_broadcast"
+            android:summary="@string/prefrences_summary_abort_broadcast"
+            android:title="@string/prefrences_title_abort_broadcast" />
+        <CheckBoxPreference
             android:defaultValue="true"
             android:key="@string/prefrences_key_sound_enabled"
             android:summary="@string/prefrences_summary_sound_enabled"
@@ -45,7 +50,7 @@
         android:action="android.intent.action.VIEW" android:targetPackage="com.madareports.ui.activities"
         android:targetPackage="my.notifier.ui" 
         android:ringtoneType="alarm"
-        android:defaultValue="content://settings/system/alarm_alert"
+        android:defaultValue="content://settings/system/alarm_alert"
         -->
     </PreferenceCategory>
 

@@ -12,6 +12,7 @@ import com.madareports.db.models.Report;
 import com.madareports.utils.ApplicationUtils;
 import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;
+import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
 	private final String TAG = Logger.makeLogTag(getClass());
@@ -61,8 +62,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 */
 	public void onReceive(Context context, Intent intent) {
 		// check if the incoming message is SMS
-		if (intent.getAction()
-				.equals("android.provider.Telephony.SMS_RECEIVED")) {
+		if (intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {
 			Bundle bundle = intent.getExtras();
 			if (bundle != null) {
 				Object[] pdus = (Object[]) bundle.get("pdus");
@@ -80,7 +80,9 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 						raiseMessage(message, context);
 					}
 
-					 abortBroadcast();
+					if (SettingsManager.getInstance(context).getAbortBroadcast()) {
+						abortBroadcast();
+					}
 				}
 			}
 		}
