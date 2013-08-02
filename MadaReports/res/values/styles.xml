@@ -47,6 +47,8 @@
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
     </style>
 
     <style name="fragment_general_info_edittext">

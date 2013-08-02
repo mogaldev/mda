@@ -18,7 +18,7 @@ import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.DbChangedNotifier;
 import com.madareports.db.models.Report;
-import com.madareports.ui.activities.detailactivity.DetailActivity;
+import com.madareports.ui.activities.detailsactivity.DetailsActivity;
 import com.madareports.utils.Logger;
 
 public class ReportsListAdapter extends ArrayAdapter<Report> implements
@@ -87,8 +87,8 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(v.getContext(), DetailActivity.class);
-					intent.putExtra(DetailActivity.REPORT_ID_EXTRA, report.getId());
+					Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+					intent.putExtra(DetailsActivity.REPORT_ID_EXTRA, report.getId());
 					v.getContext().startActivity(intent);
 				}
 			});

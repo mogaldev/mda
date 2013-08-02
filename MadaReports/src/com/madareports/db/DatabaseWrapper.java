@@ -3,7 +3,6 @@ package com.madareports.db;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import android.content.Context;
 
@@ -68,6 +67,17 @@ public class DatabaseWrapper {
 		}
 	}
 
+	public boolean deleteReport(Report report){
+		try {
+			helper.getReportDao().delete(report);
+			notifyDatabaseChanged();
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
 	public void createReport(Report report) {
 		try {
 			helper.getReportDao().create(report);

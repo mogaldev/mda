@@ -166,13 +166,34 @@ public class BaseActivity extends SherlockFragmentActivity {
 	}
 
 	/**
-	 * create a Toast on the screen the Toast is disabled for <b>Short</b> time
+	 * create a Toast on the screen the Toast is disabled for <b>Long</b> time
 	 * 
 	 * @param message
 	 *            the text to write on the screen
 	 */
 	public void writeLongTimeMessage(String msg) {
 		Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+	}
+	
+
+	/**
+	 * create a Toast on the screen the Toast is disabled for <b>Short</b> time
+	 * 
+	 * @param messageResId
+	 *            the resource id of the string to be displayed
+	 */
+	public void writeShortTimeMessage(int messageResId) {
+		writeShortTimeMessage(getResources().getString(messageResId));
+	}
+
+	/**
+	 * create a Toast on the screen the Toast is disabled for <b>Short</b> time
+	 * 
+	 * @param messageResId
+	 *            the resource id of the string to be displayed
+	 */
+	public void writeLongTimeMessage(int messageResId) {
+		writeLongTimeMessage(getResources().getString(messageResId));
 	}
 
 }

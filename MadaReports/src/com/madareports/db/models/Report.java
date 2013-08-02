@@ -79,6 +79,7 @@ public class Report {
 		super();
 	}
 
+	
 	// Setters & Getters
 
 	public int getId() {
