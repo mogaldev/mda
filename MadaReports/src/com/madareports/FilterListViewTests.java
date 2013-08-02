@@ -1,22 +1,22 @@
 package com.madareports;
 
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.activities.BaseActivity;
 import com.madareports.ui.activities.RegionActivity;
 import com.madareports.ui.activities.TreatmentsActivity;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
-import com.madareports.utils.Logger;
 
 public class FilterListViewTests extends BaseActivity {
-	private String TAG = Logger.makeLogTag(getClass());
+
 	private ReportsListAdapter reportsAdapter;
 
 	@Override
@@ -34,23 +34,31 @@ public class FilterListViewTests extends BaseActivity {
 		// enable the 'real-time' filtering on the edit text
 		txtSearch.addTextChangedListener(new ReportsFilterTextWatcher(
 				reportsAdapter));
-
-		// button used for debug
-		((Button) findViewById(R.id.btnTests))
-				.setOnClickListener(new OnClickListener() {
-
-			@Override
-					public void onClick(View v) {
-						DatabaseWrapper.getInstance(v.getContext())
-								.deleteAllReports();
-			}
-				});
 		
 		// button for adding regions
 		((Button) findViewById(R.id.btnRegion)).setOnClickListener(getMoveToClickListener(RegionActivity.class));
 		
 		// button for adding treatments
 		((Button) findViewById(R.id.btnTreatment)).setOnClickListener(getMoveToClickListener(TreatmentsActivity.class));
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.filter_list_view_tests_action_bar, menu);
+
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.filter_list_view_tests_menu_delete_all_reports:
+				DatabaseWrapper.getInstance(this).deleteAllReports();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
+		}
 	}
 
 }
