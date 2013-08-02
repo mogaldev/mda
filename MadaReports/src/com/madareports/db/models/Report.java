@@ -58,17 +58,13 @@ public class Report {
 
 		// get the id from the message
 		setReportId(rprtAnlzr.getId());
-		setDescription(rprtAnlzr.getDisplayContent()); // TODO cut the message body
+		setDescription(rprtAnlzr.getDescription()); // TODO cut the message body
+		setAddress(rprtAnlzr.getAddress());
 		
 		// set random things for debugging
-		Random rnd = new Random();
+		Random rnd = new Random();		
 		setReceivedAt(new Date(timesptamp));
-		setAddress("temp address");
-		setNotes("יש כאן מלא מלא מלא הערות\n bla bla ablabl\n\n\nasdasd\n\nnnasdasda");
-		setReported(rnd.nextBoolean());
-		List<Region> allRegions = DatabaseWrapper.getInstance(ctx).getAllRegions();
-		Region tempRegion = allRegions.get(rnd.nextInt(allRegions.size() - 1) + 1);
-		setRegion(tempRegion);
+		setRegion(DatabaseWrapper.getInstance(ctx).getAllRegions().get(0));
 		setPulse(rnd.nextInt(100));
 		setBreath(rnd.nextInt(100));
 		setSugar(rnd.nextInt(100));

@@ -1,8 +1,8 @@
 package com.madareports.ui.reportslist;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import com.madareports.db.DbChangedNotifier;
 import com.madareports.db.models.Report;
 import com.madareports.ui.activities.details.DetailsActivity;
 import com.madareports.utils.Logger;
+
 
 public class ReportsListAdapter extends ArrayAdapter<Report> implements
 		DbChangedNotifier {
@@ -99,6 +100,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 		return itemView;
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	private void setUnreadItemView(View view, Report report) {
 		// initialize the views members
 		TextView tvId = (TextView) view.findViewById(R.id.tvReportId);
@@ -107,8 +109,8 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				.findViewById(R.id.tvReportDescription);
 
 		// set the values into the views
-		tvId.setText(report.getReportId() + "#");
-		tvReceivedAt.setText(report.getReceivedAt().toString());
+		tvId.setText(report.getReportId() + "#");		
+		tvReceivedAt.setText(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(report.getReceivedAt()));
 		tvDescription.setText(report.getDescription(),
 				TextView.BufferType.SPANNABLE);
 	}
