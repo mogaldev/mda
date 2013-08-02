@@ -328,6 +328,13 @@ public class DatabaseWrapper {
 		createTreatmentToReport(treatmentsToReports);
 	}
 	
+	public void deleteTreatmentToReportByReportId(Integer reportId) {
+		List<TreatmentsToReports> treatmentsToReportsByReportId = getTreatmentsToReportsByReportId(reportId);
+		for (TreatmentsToReports crrentTreatmentsToReports : treatmentsToReportsByReportId) {
+			deleteTreatmentToReport(crrentTreatmentsToReports);
+        }
+	}
+	
 	public void deleteTreatmentToReport(TreatmentsToReports treatmentsToReports) {
 		try {
 			helper.getTreatmentsToReportsDao().delete(treatmentsToReports);

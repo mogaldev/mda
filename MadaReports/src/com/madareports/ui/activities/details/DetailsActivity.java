@@ -125,15 +125,16 @@ public class DetailsActivity extends BaseActivity {
 				
 				// Refresh all the tabs in the activity
 				rollbackCurrentReport();
-				
+				return true;
 			case R.id.detail_activity_menu_delete:
-				// TODO: delete the record
+				DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(this);
 				if (DatabaseWrapper.getInstance(this).deleteReport(getCurrentReport()))
 				{
+					databaseWrapper.deleteTreatmentToReportByReportId(getCurrentReport().getId());
 					writeShortTimeMessage(R.string.deleted_successfuly);					
 					finish();
 				}
-				
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}

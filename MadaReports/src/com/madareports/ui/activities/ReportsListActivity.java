@@ -49,9 +49,10 @@ public class ReportsListActivity extends BaseActivity {
 		switch (item.getItemId()) {
 			case R.id.reportslist_activity_menu_settings:
 				MoveTo(SettingsActivity.class);
-				
+				return true;
 			case R.id.reportslist_activity_menu_delete_all:
 				DatabaseWrapper.getInstance(this).deleteAllReports();
+				return true;
 			default:
 				return super.onOptionsItemSelected(item);
 		}
