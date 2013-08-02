@@ -8,6 +8,9 @@
     <string name="title_activity_detail">DetailActivity</string>
     <string name="action_settings">Settings</string>
 
+    <string name="settings">הגדרות</string>
+    <string name="add">הוספה</string>
+    
     <!-- Code Tables -->
     <string name="code_table_dialog_region_title">מרחבים</string>
     <string name="code_table_dialog_treatment_title">טיפולים</string>
@@ -47,7 +50,7 @@
     <!-- Details Activity -->
     <string name="report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
-    <string name="save">שמור</string>
+    <string name="save">שמור</string>    
     <string name="refresh_data">רענן נתונים</string>
     <!-- Tabs Titles -->
     <string name="general_info">פרטים כלליים</string>

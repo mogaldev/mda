@@ -1,17 +1,14 @@
 package com.madareports;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.activities.BaseActivity;
-import com.madareports.ui.activities.RegionActivity;
-import com.madareports.ui.activities.TreatmentsActivity;
+import com.madareports.ui.activities.SettingsActivity;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
 
@@ -34,18 +31,12 @@ public class FilterListViewTests extends BaseActivity {
 		// enable the 'real-time' filtering on the edit text
 		txtSearch.addTextChangedListener(new ReportsFilterTextWatcher(
 				reportsAdapter));
-		
-		// button for adding regions
-		((Button) findViewById(R.id.btnRegion)).setOnClickListener(getMoveToClickListener(RegionActivity.class));
-		
-		// button for adding treatments
-		((Button) findViewById(R.id.btnTreatment)).setOnClickListener(getMoveToClickListener(TreatmentsActivity.class));
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
-		inflater.inflate(R.menu.filter_list_view_tests_action_bar, menu);
+		inflater.inflate(R.menu.reportslist_activity_action_bar, menu);
 
 		return true;
 	}
@@ -54,8 +45,10 @@ public class FilterListViewTests extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.filter_list_view_tests_menu_delete_all_reports:
-				DatabaseWrapper.getInstance(this).deleteAllReports();
+				//DatabaseWrapper.getInstance(this).deleteAllReports();
 				return true;
+			case R.id.reportslist_activity_menu_settings:
+				MoveTo(SettingsActivity.class);
 			default:
 				return super.onOptionsItemSelected(item);
 		}

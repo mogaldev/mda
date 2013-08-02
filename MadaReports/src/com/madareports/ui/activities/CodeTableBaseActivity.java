@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -15,14 +14,18 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.codetables.CodeTables;
 import com.madareports.db.codetables.ICodeTable;
 
-public abstract class CodeTableBaseActivity extends BaseActivity {	
+public abstract class CodeTableBaseActivity extends BaseActivity {
 	private ListView lstRecords;
-	protected int resIdDialogTitle; // the title for the dialogs of this code table	
+	protected int resIdDialogTitle; // the title for the dialogs of this code
+									// table
 	protected CodeTables table; // the enum represents the table
 
 	@Override
@@ -30,17 +33,77 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_base_code_table);
 
-		Button btnAdd = (Button) findViewById(R.id.btnAdd);
 		lstRecords = (ListView) findViewById(R.id.lstRecords);
-
-		// create location button's on click listener
-		// it will pop up the locations add form
-		btnAdd.setOnClickListener(addClickHandler);
-
 		lstRecords.setOnItemClickListener(itemClickHandler);
 
 		// display all the records
 		displayRecords();
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.codetable_activity_action_bar, menu);
+
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.codetable_activity_menu_add:
+			addRecord();
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	/**
+	 * Create location button's on click listener it will pop up the locations
+	 * add form
+	 */
+	private void addRecord() {
+		final Context context = this;
+
+		// build the dialog
+		LayoutInflater inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final View formElementsView = inflater.inflate(
+				R.layout.dialog_code_table_form, null, false);
+
+		// the alert dialog
+		new AlertDialog.Builder(context)
+				.setView(formElementsView)
+				.setTitle(resIdDialogTitle)
+				.setPositiveButton(
+						R.string.code_table_dialog_add_positive_button,
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int id) {
+
+								// get the content from the edit text
+								String content = ((EditText) formElementsView
+										.findViewById(R.id.txtContent))
+										.getText().toString();
+
+								// add the new record
+								DatabaseWrapper.getInstance(context)
+										.createCodeTableRecord(
+												generateRecord(content), table);
+
+								// display the records
+								((CodeTableBaseActivity) context)
+										.displayRecords();
+
+								// tell the user it was added
+								Toast.makeText(context,
+										R.string.code_table_dialog_add_success,
+										Toast.LENGTH_SHORT).show();
+
+								dialog.cancel();
+							}
+
+						}).show();
 	}
 
 	/**
@@ -59,61 +122,8 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 		// set the new adapter with the updated records
 		lstRecords.setAdapter(new ArrayAdapter<ICodeTable>(this,
 				android.R.layout.simple_list_item_1, DatabaseWrapper
-				.getInstance(this).getAll(table)));
+						.getInstance(this).getAll(table)));
 	}
-
-	/**
-	 * Handles clicking the add button
-	 */
-	private final OnClickListener addClickHandler = new OnClickListener() {
-		@Override
-		public void onClick(View v) {
-			// get the context
-			final Context context = v.getContext();
-
-			// build the dialog
-			LayoutInflater inflater = (LayoutInflater) context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			final View formElementsView = inflater.inflate(
-					R.layout.dialog_code_table_form, null, false);
-
-			// the alert dialog
-			new AlertDialog.Builder(context)
-					.setView(formElementsView)
-					.setTitle(resIdDialogTitle)
-					.setPositiveButton(
-							R.string.code_table_dialog_add_positive_button,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
-
-									// get the content from the edit text
-									String content = ((EditText) formElementsView
-											.findViewById(R.id.txtContent))
-											.getText().toString();
-
-									// add the new record
-									DatabaseWrapper.getInstance(context)
-											.createCodeTableRecord(
-													generateRecord(content),
-													table);
-
-									// display the records
-									((CodeTableBaseActivity) context)
-											.displayRecords();
-
-									// tell the user it was added
-									Toast.makeText(
-											context,
-											R.string.code_table_dialog_add_success,
-											Toast.LENGTH_SHORT).show();
-
-									dialog.cancel();
-								}
-
-							}).show();
-		}
-	};
 
 	/**
 	 * Pops up dialog for edit existing record
@@ -214,5 +224,4 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 
 		}
 	};
-
 }
