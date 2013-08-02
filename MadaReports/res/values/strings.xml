@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-
+<resources>    
+    
     <string name="app_name">דיווחי מגן דוד אדום</string>
     <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
     <string name="hello_world">Hello world!</string>
@@ -21,7 +21,6 @@
     <string name="dialog_region_title">מרחבים</string>
     <!-- End of Code Tables -->
 
-
     <!-- Preferences Settings -->
     <string name="prefrences_key_ringtone_uri">RINGTONE_URI</string>
     <string name="prefrences_key_sound_enabled">SOUND_ENABLED</string>
@@ -32,18 +31,18 @@
     <string name="prefrences_title_vibrate_enabled">Vibrate</string>
     <string name="prefrences_title_sound_enabled">Sound</string>
     <string name="prefrences_title_ringtone_uri">Ringtone</string>
+    <string name="prefrences_title_regions">Regions</string>
+    <string name="prefrences_title_treatments">Treatments</string>
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">Whether to perform vibration when there is incoming notification</string>
     <string name="prefrences_summary_sound_enabled">Whether to play the ringtone when there is incoming notification</string>
     <string name="prefrences_summary_ringtone_uri">The ringtone to be played when the time is over</string>
+    <string name="prefrences_summary_regions">Regions</string>
+    <string name="prefrences_summary_treatments">Treatments</string>
     <!-- Categories -->
     <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
     <string name="prefrences_category_notifications_title">Notifications</string>
     <!-- End of Preferences Settings -->
-
-
-    <!-- End of Preferences Settings Keys -->
-
 
     <!-- Details Activity -->
     <string name="report_saved">הדיווח נשמר</string>

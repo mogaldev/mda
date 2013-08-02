@@ -3,9 +3,9 @@ package com.madareports.ui.activities;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+
 import com.madareports.R;
 import com.madareports.ui.fragments.SettingsFragment;
-import com.madareports.utils.Logger;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class SettingsActivity extends BaseActivity {

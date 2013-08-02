@@ -89,7 +89,6 @@ public class DetailActivity extends BaseActivity {
 		sentReport = report;
 	}
 
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();

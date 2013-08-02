@@ -24,19 +24,28 @@
             android:summary="@string/prefrences_summary_ringtone_uri"
             android:title="@string/prefrences_title_ringtone_uri" />
 
-        <com.madareports.ui.customviews.ContactPickerPreference
-            android:key="TEMP_KEY"
-            android:title="Contact Picker" >
+        <Preference
+            android:summary="@string/prefrences_summary_treatments"
+            android:title="@string/prefrences_title_treatments" >
             <intent
-                android:action="moshe.beladev"
-                android:targetClass="com.madareports.ui.activities.ContactPicker"
-                 />
-        </com.madareports.ui.customviews.ContactPickerPreference>
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.madareports.ui.activities.TreatmentsActivity"
+                android:targetPackage="com.madareports" />
+        </Preference>
+        <Preference
+            android:summary="@string/prefrences_summary_regions"
+            android:title="@string/prefrences_title_regions" >
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.madareports.ui.activities.RegionActivity"
+                android:targetPackage="com.madareports" />
+        </Preference>
 
-        <!--android:action="android.intent.action.VIEW" android:targetPackage="com.madareports.ui.activities"
+        <!--
+        android:action="android.intent.action.VIEW" android:targetPackage="com.madareports.ui.activities"
         android:targetPackage="my.notifier.ui" 
         android:ringtoneType="alarm"
-        android:defaultValue="content://settings/system/alarm_alert"
+        android:defaultValue="content://settings/system/alarm_alert"
         -->
     </PreferenceCategory>
 
