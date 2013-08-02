@@ -8,7 +8,7 @@
         android:title="@string/save"/>
     <item
         android:id="@+id/detail_activity_menu_sync"
-        android:icon="@drawable/refresh_data"
+        android:icon="@drawable/ic_menu_refresh"
         android:showAsAction="ifRoom|collapseActionView"
         android:title="@string/refresh_data"/>
 

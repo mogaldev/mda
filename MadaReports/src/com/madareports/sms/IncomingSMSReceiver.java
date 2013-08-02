@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 
-import com.madareports.FilterListViewTests;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
@@ -19,7 +18,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	private void raiseMessage(SmsMessage smsMsg, Context context) {		
 		Logger.LOGE(TAG, "Display: " + smsMsg.getDisplayOriginatingAddress() + "; Regular: " + smsMsg.getOriginatingAddress());
 		
-		Report report = new Report(smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
+		Report report = new Report(context, smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
 		
 		// add the report to the database
 		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
@@ -43,7 +42,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 *         otherwise
 	 */
 	boolean isRelevantSms(SmsMessage smsMsg) {
-		final String madaSender = "1234"; // TODO: replace with the real sender
+//		final String madaSender = "1234"; // TODO: replace with the real sender
 											// number. Check about getting the
 											// number from settings
 		
@@ -51,14 +50,6 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		// (check if it could be detected) with specific scheme.
 //		return (smsMsg.getOriginatingAddress().equals(madaSender));
 		return true;
-	}
-
-	// TODO: remove - only for testing. the move method should be implement
-	// inside the notification.
-	private void MoveToMainActivity(Context context) {
-		Intent intent = new Intent(context, FilterListViewTests.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		context.startActivity(intent);
 	}
 
 	/**
@@ -80,7 +71,6 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 
 				// iterate the SMS messages that was received
 				for (SmsMessage message : messages) {
-					String msg = message.getMessageBody();
 
 					// check if the message is relevant and pass it on
 					if (isRelevantSms(message)) {

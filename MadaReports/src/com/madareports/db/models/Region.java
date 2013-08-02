@@ -7,7 +7,7 @@ import com.madareports.db.codetables.ICodeTable;
 @DatabaseTable(tableName = Region.TABLE_NAME)
 public class Region implements ICodeTable {
 	
-	public static final String TABLE_NAME = "REGIONS";
+	public static final String TABLE_NAME = "regions";
 	
 	@DatabaseField(generatedId = true)
 	private int id;

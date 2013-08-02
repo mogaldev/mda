@@ -7,8 +7,8 @@ import com.madareports.db.codetables.ICodeTable;
 @DatabaseTable(tableName = Treatment.TABLE_NAME)
 public class Treatment implements ICodeTable {
 	
-	public static final String TABLE_NAME = "TREATMENT";
-	public static final String TREATMENT_ID_COLUMN_NAME = "ID";
+	public static final String TABLE_NAME = "treatments";
+	public static final String TREATMENT_ID_COLUMN_NAME = "id";
 	
 	@DatabaseField(generatedId = true, columnName = TREATMENT_ID_COLUMN_NAME)
 	private int id;

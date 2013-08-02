@@ -20,23 +20,12 @@ import com.madareports.utils.Logger;
 
 public class TreatmentsFragment extends FragmentDetailActivity {
 	
-	/**
-	 * List of all the Treatments of the currentReport
-	 */
+	// Lists of the Treatments of the currentReport and of the Treatments that are note connected the the currentReport
 	List<Treatment> allCurrentReportTreatments;
-	
-	/**
-	 * List of all the Treatments that are not connected to the currentReport
-	 */
 	List<Treatment> allOtherTreatmentsToReports;
 	
-	/**
-	 * List of {@link TreatmentsToReports} for adding to the DataBase when the user click on save
-	 */
+	// Lists of TreatmentsToReports for adding to the DB or deleting from the DB when the user click on the save button
 	List<TreatmentsToReports> treatmentsIdToAdd;
-	/**
-	 * List of {@link TreatmentsToReports} for deleting from the DataBase when the user click on save
-	 */
 	List<TreatmentsToReports> treatmentsIdToDelete;
 	
 	@Override
@@ -44,10 +33,12 @@ public class TreatmentsFragment extends FragmentDetailActivity {
 	    super.onCreate(savedInstanceState);
 	    
 	    // Initialize the list of the treatments to show to the user
+	    // This initialization is for the first time the fragment created --> when the user enter to the DetailActivity
+	    // afterwards, onCreate is not called, just the onCreateView-->onStart-->etc.
 	    allCurrentReportTreatments = getAllCurrentReportTreatments();
 	    allOtherTreatmentsToReports = getAllOtherTreatmentsToReports();
 	    
-	    // Initialize the TreatmentsToReports lists that will be add and delete when the user click on the save button
+	    // Initialize the TreatmentsToReports lists
 	    treatmentsIdToAdd = new ArrayList<TreatmentsToReports>();
 	    treatmentsIdToDelete = new ArrayList<TreatmentsToReports>();
 	}
@@ -167,7 +158,17 @@ public class TreatmentsFragment extends FragmentDetailActivity {
 	}
 
 	@Override
-	public void saveCurrentReport() {}
+	public void saveCurrentReport() {
+		/**
+		 * this method is not called because in the onPause callback we don't
+		 * need to save a thing because we have:	
+		 * 		List<TreatmentsToReports> treatmentsIdToAdd; 
+		 * 		List<TreatmentsToReports> treatmentsIdToDelete;
+		 * in order to know what to add and what to delete.
+		 * 
+		 * when the user click on the save button the DetailActivity call saveTreatments method
+		 */
+	}
 
     @Override
 	public void refreshDataWithCurrentReport() {
@@ -193,6 +194,7 @@ public class TreatmentsFragment extends FragmentDetailActivity {
     
     /**
      * Save the {@link TreatmentsToReports} Rows in the DB
+     * This method is called from the {@link DetailActivity} when the user click on the save button. </br>
      */
     public void saveTreatments() {
     	for (TreatmentsToReports currTreatmentsToReports : treatmentsIdToAdd) {

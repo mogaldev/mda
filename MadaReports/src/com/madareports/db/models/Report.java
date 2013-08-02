@@ -1,18 +1,24 @@
 package com.madareports.db.models;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
+
+import android.content.Context;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.db.reports.ReportIllustrator;
 
-@DatabaseTable(tableName = "REPORTS")
+@DatabaseTable(tableName = Report.TABLE_NAME)
 public class Report {
 	
-	public static final String REGION_ID_COLUMN_NAME = "REGION_ID";
-	public static final String ID_COLUMN_NAME = "ID";
+	public static final String TABLE_NAME = "reports";
+	public static final String REGION_ID_COLUMN_NAME = "regionId";
+	public static final String ID_COLUMN_NAME = "id";
+	public static final String IS_WATCHED_COLUMN_NAME = "isWatched";
 	
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
 	private int id;
@@ -45,7 +51,7 @@ public class Report {
 	@DatabaseField
 	private Date receivedAt; // TODO: added. update in specifications.
 
-	public Report(String messageBody, long timesptamp) {
+	public Report(Context ctx, String messageBody, long timesptamp) {
 		// TODO: currently simulate the description manually
 		messageBody = new ReportIllustrator().getFakeReport();
 		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(messageBody);
@@ -60,12 +66,13 @@ public class Report {
 		setAddress("temp address");
 		setNotes("יש כאן מלא מלא מלא הערות\n bla bla ablabl\n\n\nasdasd\n\nnnasdasda");
 		setReported(rnd.nextBoolean());
-		Region tempRegion = new Region();
-		tempRegion.setId(rnd.nextInt(2) + 1);
+		List<Region> allRegions = DatabaseWrapper.getInstance(ctx).getAllRegions();
+		Region tempRegion = allRegions.get(rnd.nextInt(allRegions.size() - 1) + 1);
 		setRegion(tempRegion);
 		setPulse(rnd.nextInt(100));
 		setBreath(rnd.nextInt(100));
 		setSugar(rnd.nextInt(100));
+		setWatched(false);
 	}
 
 	public Report() {

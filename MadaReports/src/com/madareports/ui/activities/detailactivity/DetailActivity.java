@@ -24,7 +24,10 @@ public class DetailActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		//  Get the sent report from the intent and set watched to the report
 		sentReport = getReportFromIntent();
+		sentReport.setWatched(true);
 
 		// Get the action bar and set it up
 		ActionBar supportActionBar = getSupportActionBar();

@@ -6,10 +6,10 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = TreatmentsToReports.TABLE_NAME)
 public class TreatmentsToReports {
 	
-	public final static String TABLE_NAME = "TREATMENTS_TO_REPORTS";
-	public final static String ID_COLUMN_NAME = "ID";
-	public final static String REPORT_COLUMN_NAME = "REPORT_ID";
-	public final static String TREATMENT_COLUMN_NAME = "TREATMENT_ID";
+	public static final String TABLE_NAME = "treatmentsToReports";
+	public static final String ID_COLUMN_NAME = "id";
+	public static final String REPORT_COLUMN_NAME = "reportId";
+	public static final String TREATMENT_COLUMN_NAME = "treatmentId";
 	
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)	
 	private int id;

@@ -49,7 +49,7 @@
     <string name="report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
     <string name="save">שמור</string>
-    <string name="refresh_data">רענון</string>
+    <string name="refresh_data">רענן נתונים</string>
     <!-- Tabs Titles -->
     <string name="general_info">פרטים כלליים</string>
     <string name="tech_info">פרטים טכניים</string>
