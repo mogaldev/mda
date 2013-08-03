@@ -1,77 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:layout_height="fill_parent" >
 
-    <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-        <EditText
-            android:id="@+id/reportIdEditText"
-            style="@style/fragment_general_info_edittext"
-            android:inputType="numberSigned" >
-        </EditText>
-
-        <TextView
-            style="@style/fragment_general_info_textview"
-            android:text="@string/report_id" />
-    </RelativeLayout>
-
-    <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-        <EditText
-            android:id="@+id/addressEditText"
-            style="@style/fragment_general_info_edittext"
-            android:inputType="text" />
-
-        <TextView
-            style="@style/fragment_general_info_textview"
-            android:text="@string/address" />
-    </RelativeLayout>
-
-    <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-        <Spinner
-            android:id="@+id/regionsSpinner"
-            style="@style/fragment_general_info_spinner" />
-
-        <TextView
-            style="@style/fragment_general_info_textview"
-            android:text="@string/region" />
-    </RelativeLayout>
-
-    <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-        <EditText
-            android:id="@+id/descriptionEditText"
-            style="@style/fragment_general_info_edittext_big"
-            android:inputType="textMultiLine" >
-
-            <requestFocus />
-        </EditText>
-
-        <TextView
-            style="@style/fragment_general_info_textview"
-            android:text="@string/description" />
-    </RelativeLayout>
-
-    <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-        <EditText
-            android:id="@+id/notesEditText"
-            style="@style/fragment_general_info_edittext_big"
-            android:inputType="textMultiLine" >
-        </EditText>
-
-        <TextView
-            style="@style/fragment_general_info_textview"
-            android:text="@string/notes" />
-    </RelativeLayout>
-
-    <CheckBox
-        android:id="@+id/isWatchedCheckBox"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/is_watched" />
+        android:orientation="vertical" >
 
-</LinearLayout>
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/reportIdEditText"
+                style="@style/fragment_general_info_edittext"
+                android:inputType="numberSigned" >
+            </EditText>
+
+            <TextView
+                style="@style/fragment_general_info_textview"
+                android:text="@string/report_id" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/addressEditText"
+                style="@style/fragment_general_info_edittext"
+                android:inputType="text" />
+
+            <TextView
+                style="@style/fragment_general_info_textview"
+                android:text="@string/address" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <Spinner
+                android:id="@+id/regionsSpinner"
+                style="@style/fragment_general_info_spinner" />
+
+            <TextView
+                style="@style/fragment_general_info_textview"
+                android:text="@string/region" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/descriptionEditText"
+                style="@style/fragment_general_info_edittext_big"
+                android:inputType="textMultiLine" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                style="@style/fragment_general_info_textview"
+                android:text="@string/description" />
+        </RelativeLayout>
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/notesEditText"
+                style="@style/fragment_general_info_edittext_big"
+                android:inputType="textMultiLine" >
+            </EditText>
+
+            <TextView
+                style="@style/fragment_general_info_textview"
+                android:text="@string/notes" />
+        </RelativeLayout>
+
+        <CheckBox
+            android:id="@+id/isWatchedCheckBox"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/is_watched" />
+    </LinearLayout>
+
+</ScrollView>
