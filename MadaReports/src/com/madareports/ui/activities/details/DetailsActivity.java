@@ -130,7 +130,7 @@ public class DetailsActivity extends BaseActivity {
 				DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(this);
 				if (DatabaseWrapper.getInstance(this).deleteReport(getCurrentReport()))
 				{
-					databaseWrapper.deleteTreatmentToReportByReportId(getCurrentReport().getId());
+					databaseWrapper.deleteTreatmentsToReportByReportId(getCurrentReport().getId());
 					writeShortTimeMessage(R.string.deleted_successfuly);					
 					finish();
 				}

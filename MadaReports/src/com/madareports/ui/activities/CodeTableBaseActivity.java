@@ -88,7 +88,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 								// add the new record
 								DatabaseWrapper.getInstance(context)
 										.createCodeTableRecord(
-												generateRecord(content), table);
+												generateRecord(content));
 
 								// display the records
 								((CodeTableBaseActivity) context)
@@ -155,7 +155,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 								record.setContent(txtContent.getText()
 										.toString());
 								DatabaseWrapper.getInstance(context)
-										.updateCodeTableRecord(record, table);
+										.updateCodeTableRecord(record);
 
 								Toast.makeText(
 										context,
@@ -204,7 +204,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 										if (DatabaseWrapper
 												.getInstance(context)
 												.deleteCodeTableRecord(
-														selectedItem, table)) {
+														selectedItem)) {
 											Toast.makeText(
 													context,
 													R.string.code_table_dialog_delete_success,

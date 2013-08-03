@@ -58,13 +58,15 @@ public class DatabaseWrapper {
 		return reports;
 	}
 
-	public void deleteAllReports() {
+	public boolean deleteAllReports() {
 		try {
 			helper.getReportDao().delete(getAllReports());
 			notifyDatabaseChanged();
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
+			return false;
 		}
+		return true;
 	}
 
 	public boolean deleteReport(Report report){
@@ -177,44 +179,39 @@ public class DatabaseWrapper {
 		return treatments;
 	}
 	
-	public void createCodeTableRecord(ICodeTable record, CodeTables table) {
+	public void createCodeTableRecord(ICodeTable record) {
 		try {
-			switch (table) {
-			case Regions:
+			String recordClassName = record.getClass().getName();
+			if (recordClassName.equals(Region.class.getName())) {
 				helper.getRegionDao().create((Region) record);
-				break;
-			case Treatments:
-				helper.getTreatmentDao().create((Treatment) record);
-				break;
-			default:
-				break;
+			} else {
+				if (recordClassName.equals(Treatment.class.getName())) {
+					helper.getTreatmentDao().create((Treatment) record);
+				}
 			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 	}
 
-	public boolean deleteCodeTableRecord(ICodeTable record, CodeTables table) {
+	public boolean deleteCodeTableRecord(ICodeTable record) {
 		try {
-			switch (table) {
-				case Regions:
-					if (!getReportByRegionId(((Region) record).getId()).isEmpty()) {
-						helper.getRegionDao().delete((Region) record);
-					} else {
-						throw new SQLException(
-						        "this region is foriegn key at some Reports");
-					}
-					break;
-				case Treatments:
+			String recordClassName = record.getClass().getName();
+			if (recordClassName.equals(Region.class.getName())) {
+				if (!getReportByRegionId(((Region) record).getId()).isEmpty()) {
+					helper.getRegionDao().delete((Region) record);
+				} else {
+					throw new SQLException("this region is foriegn key at some Reports");
+				}
+			} else {
+				if (recordClassName.equals(Treatment.class.getName())) {
 					if (!getTreatmentsToReportsByTreatmentId(((Treatment) record).getId()).isEmpty()) {
 						helper.getTreatmentDao().delete((Treatment) record);
 					} else {
 						throw new SQLException(
 						        "this treatment is foriegn key in some Reports");
 					}
-					break;
-				default:
-					return false;
+				}
 			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -223,17 +220,15 @@ public class DatabaseWrapper {
 		return true;
 	}
 
-	public void updateCodeTableRecord(ICodeTable record, CodeTables table) {
+	public void updateCodeTableRecord(ICodeTable record) {
 		try {
-			switch (table) {
-			case Regions:
+			String recordClassName = record.getClass().getName();
+			if (recordClassName.equals(Region.class.getName())) {
 				helper.getRegionDao().update((Region) record);
-				break;
-			case Treatments:
-				helper.getTreatmentDao().update((Treatment) record);
-				break;
-			default:
-				break;
+			} else {
+				if (recordClassName.equals(Treatment.class.getName())) {
+					helper.getTreatmentDao().update((Treatment) record);
+				}
 			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -328,19 +323,21 @@ public class DatabaseWrapper {
 		createTreatmentToReport(treatmentsToReports);
 	}
 	
-	public void deleteTreatmentToReportByReportId(Integer reportId) {
+	public void deleteTreatmentsToReportByReportId(Integer reportId) {
 		List<TreatmentsToReports> treatmentsToReportsByReportId = getTreatmentsToReportsByReportId(reportId);
 		for (TreatmentsToReports crrentTreatmentsToReports : treatmentsToReportsByReportId) {
 			deleteTreatmentToReport(crrentTreatmentsToReports);
         }
 	}
 	
-	public void deleteTreatmentToReport(TreatmentsToReports treatmentsToReports) {
+	public boolean deleteTreatmentToReport(TreatmentsToReports treatmentsToReports) {
 		try {
 			helper.getTreatmentsToReportsDao().delete(treatmentsToReports);
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
+			return false;
 		}
+		return true;
 	}
 
 	// ////////////////////////////
