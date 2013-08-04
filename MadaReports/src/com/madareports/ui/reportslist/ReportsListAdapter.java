@@ -74,8 +74,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 
 			// choose the layout to be inflated according to the report
 			// properties
-			// TODO: change isWatch to isRead.
-			if (report.isWatched()) {
+			if (report.isRead()) {
 				itemView = li.inflate(R.layout.read_reports_list_item, null);
 				setUnreadItemView(itemView, report);
 			} else { // unread mode

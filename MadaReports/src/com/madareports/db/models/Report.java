@@ -1,7 +1,6 @@
 package com.madareports.db.models;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 import android.content.Context;
@@ -45,7 +44,7 @@ public class Report {
 	@DatabaseField
 	private boolean isReported; // if the user report this record on the website
 	@DatabaseField
-	private boolean isWatched; // if the user saw this report. NOTE: Dont change
+	private boolean isRead; // if the user saw this report. NOTE: Dont change
 								// the variable name. the countNewReports() rely
 								// on this name right now.
 	@DatabaseField
@@ -68,7 +67,7 @@ public class Report {
 		setPulse(rnd.nextInt(100));
 		setBreath(rnd.nextInt(100));
 		setSugar(rnd.nextInt(100));
-		setWatched(false);
+		setRead(false);
 	}
 
 	public Report() {
@@ -174,12 +173,12 @@ public class Report {
 		this.isReported = isReported;
 	}
 
-	public boolean isWatched() {
-		return isWatched;
+	public boolean isRead() {
+		return isRead;
 	}
 
-	public void setWatched(boolean isWatched) {
-		this.isWatched = isWatched;
+	public void setRead(boolean isRead) {
+		this.isRead = isRead;
 	}
 
 	public Date getReceivedAt() {

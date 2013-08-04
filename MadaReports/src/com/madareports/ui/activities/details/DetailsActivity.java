@@ -29,7 +29,7 @@ public class DetailsActivity extends BaseActivity {
 		sentReport = getReportFromIntent();
 		
 		// Set watched on the report and update it
-		sentReport.setWatched(true);
+		sentReport.setRead(true);
 		DatabaseWrapper.getInstance(this).updateReport(sentReport);
 
 		// Get the action bar and set it up
