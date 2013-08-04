@@ -42,7 +42,7 @@
             android:title="@string/prefrences_title_regions" >
             <intent
                 android:action="android.intent.action.VIEW"
-                android:targetClass="com.madareports.ui.activities.RegionActivity"
+                android:targetClass="com.madareports.ui.activities.RegionsActivity"
                 android:targetPackage="com.madareports" />
         </Preference>
 
