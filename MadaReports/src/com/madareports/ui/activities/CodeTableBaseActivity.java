@@ -3,7 +3,9 @@ package com.madareports.ui.activities;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -31,6 +33,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_base_code_table);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		lstRecords = (ListView) findViewById(R.id.lstRecords);
 		lstRecords.setOnItemClickListener(itemClickHandler);
@@ -51,10 +54,14 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.codetable_activity_menu_add:
-			addRecord();
-		default:
-			return super.onOptionsItemSelected(item);
+			case android.R.id.home: 
+				NavUtils.navigateUpTo(this, new Intent(this, ReportsListActivity.class));
+				return true;
+			case R.id.codetable_activity_menu_add:
+				addRecord();
+				return true;
+			default:
+				return super.onOptionsItemSelected(item);
 		}
 	}
 
@@ -152,19 +159,13 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 								// update the record
-								record.setContent(txtContent.getText()
-										.toString());
-								DatabaseWrapper.getInstance(context)
-										.updateCodeTableRecord(record);
+								record.setContent(txtContent.getText().toString());
+								DatabaseWrapper.getInstance(context).updateCodeTableRecord(record);
 
-								Toast.makeText(
-										context,
-										R.string.code_table_dialog_edit_success,
-										Toast.LENGTH_SHORT).show();
+								Toast.makeText(context, R.string.code_table_dialog_edit_success, Toast.LENGTH_SHORT).show();
 
 								// display the records
-								((CodeTableBaseActivity) context)
-										.displayRecords();
+								((CodeTableBaseActivity) context).displayRecords();
 
 								dialog.cancel();
 							}
@@ -177,9 +178,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 	 */
 	private final OnItemClickListener itemClickHandler = new OnItemClickListener() {
 		@Override
-		public void onItemClick(AdapterView<?> myAdapter, View myView,
-				int myItemInt, long mylng) {
-
+		public void onItemClick(AdapterView<?> myAdapter, View myView, int myItemInt, long mylng) {
 			final Context context = myView.getContext();
 
 			// get the selected item
@@ -190,30 +189,24 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 			new AlertDialog.Builder(context)
 					.setTitle(resIdDialogTitle)
 					.setItems(R.array.code_table_dialog_options,
-							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int item) {
-
-									switch (item) {
-
-									case 0: // edit
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int item) {
+								switch (item) {
+									// Edit
+									case 0:
 										openEditDialog(selectedItem, context);
 										break;
-
-									case 1: // delete
-										if (DatabaseWrapper
-												.getInstance(context)
-												.deleteCodeTableRecord(
-														selectedItem)) {
-											Toast.makeText(
-													context,
-													R.string.code_table_dialog_delete_success,
-													Toast.LENGTH_SHORT).show();
+									// delete
+									case 1:
+										if (DatabaseWrapper.getInstance(context).deleteCodeTableRecord(selectedItem)) {
+											Toast.makeText(context, R.string.code_table_dialog_delete_success, Toast.LENGTH_SHORT).show();
 
 											// display the records
-											((CodeTableBaseActivity) context)
-													.displayRecords();
+											((CodeTableBaseActivity)context).displayRecords();
+										} else {
+											Toast.makeText(context, R.string.code_table_dialog_delete_unsuccess, Toast.LENGTH_LONG).show();
 										}
+										break;
 									default:
 										break;
 									}
@@ -221,6 +214,6 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 								}
 							}).show();
 
-		}
+			}
 	};
 }
