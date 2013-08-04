@@ -7,12 +7,13 @@ import java.util.List;
 import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
-import com.madareports.db.codetables.CodeTables;
 import com.madareports.db.codetables.ICodeTable;
 import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.db.models.Treatment;
 import com.madareports.db.models.TreatmentsToReports;
+import com.madareports.ui.activities.RegionActivity;
+import com.madareports.ui.activities.TreatmentsActivity;
 import com.madareports.utils.Logger;
 
 public class DatabaseWrapper {
@@ -119,7 +120,7 @@ public class DatabaseWrapper {
 		}
 	}
 	
-	public List<Report> getReportByRegionId(Integer regionId) {
+	public List<Report> getReportsByRegionId(Integer regionId) {
 		List<Report> allReports = new ArrayList<Report>();
 		try {
 			allReports = helper.getReportDao().queryBuilder().where().eq(Report.REGION_ID_COLUMN_NAME, regionId).query();
@@ -140,18 +141,13 @@ public class DatabaseWrapper {
 	// ////////////////////////////
 
 	@SuppressWarnings("unchecked")
-	public List<ICodeTable> getAll(CodeTables table) {
+	public List<ICodeTable> getAll(String codeTableActivityName) {
 		List<ICodeTable> records = null;
 		try {
-			switch (table) {
-				case Regions:
-					records = (List<ICodeTable>) (List<?>) helper.getRegionDao().queryForAll();
-					break;
-				case Treatments:
-					records = (List<ICodeTable>) (List<?>) helper.getTreatmentDao().queryForAll();
-					break;
-				default:
-					break;
+			if (codeTableActivityName.equals(RegionActivity.class.getName())) {
+				records = (List<ICodeTable>) (List<?>) helper.getRegionDao().queryForAll();
+			} else if (codeTableActivityName.equals(TreatmentsActivity.class.getName())) {
+				records = (List<ICodeTable>) (List<?>) helper.getTreatmentDao().queryForAll();
 			}
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -198,19 +194,17 @@ public class DatabaseWrapper {
 		try {
 			String recordClassName = record.getClass().getName();
 			if (recordClassName.equals(Region.class.getName())) {
-				if (!getReportByRegionId(((Region) record).getId()).isEmpty()) {
+				if (getReportsByRegionId(((Region) record).getId()).isEmpty()) {
 					helper.getRegionDao().delete((Region) record);
 				} else {
 					throw new SQLException("this region is foriegn key at some Reports");
 				}
-			} else {
-				if (recordClassName.equals(Treatment.class.getName())) {
-					if (!getTreatmentsToReportsByTreatmentId(((Treatment) record).getId()).isEmpty()) {
-						helper.getTreatmentDao().delete((Treatment) record);
-					} else {
-						throw new SQLException(
-						        "this treatment is foriegn key in some Reports");
-					}
+			} else if (recordClassName.equals(Treatment.class.getName())) {
+				if (getTreatmentsToReportsByTreatmentId(((Treatment) record).getId()).isEmpty()) {
+					helper.getTreatmentDao().delete((Treatment) record);
+				} else {
+					throw new SQLException(
+					        "this treatment is foriegn key in some Reports");
 				}
 			}
 		} catch (SQLException e) {

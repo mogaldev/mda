@@ -20,14 +20,12 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
-import com.madareports.db.codetables.CodeTables;
 import com.madareports.db.codetables.ICodeTable;
 
 public abstract class CodeTableBaseActivity extends BaseActivity {
 	private ListView lstRecords;
 	protected int resIdDialogTitle; // the title for the dialogs of this code
 									// table
-	protected CodeTables table; // the enum represents the table
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +126,7 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 		// set the new adapter with the updated records
 		lstRecords.setAdapter(new ArrayAdapter<ICodeTable>(this,
 				android.R.layout.simple_list_item_1, DatabaseWrapper
-						.getInstance(this).getAll(table)));
+						.getInstance(this).getAll(this.getClass().getName())));
 	}
 
 	/**
