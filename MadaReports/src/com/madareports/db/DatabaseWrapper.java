@@ -12,7 +12,7 @@ import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.db.models.Treatment;
 import com.madareports.db.models.TreatmentsToReports;
-import com.madareports.ui.activities.RegionActivity;
+import com.madareports.ui.activities.RegionsActivity;
 import com.madareports.ui.activities.TreatmentsActivity;
 import com.madareports.utils.Logger;
 
@@ -144,7 +144,7 @@ public class DatabaseWrapper {
 	public List<ICodeTable> getAll(String codeTableActivityName) {
 		List<ICodeTable> records = null;
 		try {
-			if (codeTableActivityName.equals(RegionActivity.class.getName())) {
+			if (codeTableActivityName.equals(RegionsActivity.class.getName())) {
 				records = (List<ICodeTable>) (List<?>) helper.getRegionDao().queryForAll();
 			} else if (codeTableActivityName.equals(TreatmentsActivity.class.getName())) {
 				records = (List<ICodeTable>) (List<?>) helper.getTreatmentDao().queryForAll();

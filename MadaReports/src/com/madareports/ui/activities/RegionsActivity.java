@@ -4,9 +4,9 @@ import com.madareports.R;
 import com.madareports.db.codetables.ICodeTable;
 import com.madareports.db.models.Region;
 
-public class RegionActivity extends CodeTableBaseActivity {
+public class RegionsActivity extends CodeTableBaseActivity {
 
-	public RegionActivity() {
+	public RegionsActivity() {
 		super.resIdDialogTitle = R.string.code_table_dialog_region_title;
 	}
 

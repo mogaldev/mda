@@ -28,7 +28,7 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.madareports.ui.activities.RegionActivity"
+            android:name="com.madareports.ui.activities.RegionsActivity"
             android:label="@string/app_name" >
         </activity>
         <activity
