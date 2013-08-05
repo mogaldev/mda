@@ -50,8 +50,6 @@
                 android:id="@+id/descriptionEditText"
                 style="@style/fragment_general_info_edittext_big"
                 android:inputType="textMultiLine" >
-
-                <requestFocus />
             </EditText>
 
             <TextView
@@ -73,10 +71,10 @@
         </RelativeLayout>
 
         <CheckBox
-            android:id="@+id/isWatchedCheckBox"
+            android:id="@+id/isReportedCheckBox"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/is_watched" />
+            android:text="@string/is_reported" />
     </LinearLayout>
 
 </ScrollView>

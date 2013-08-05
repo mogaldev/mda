@@ -17,7 +17,7 @@ public class Report {
 	public static final String TABLE_NAME = "reports";
 	public static final String REGION_ID_COLUMN_NAME = "regionId";
 	public static final String ID_COLUMN_NAME = "id";
-	public static final String IS_WATCHED_COLUMN_NAME = "isWatched";
+	public static final String IS_READ_COLUMN_NAME = "isRead";
 	
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
 	private int id;
@@ -67,6 +67,8 @@ public class Report {
 		setPulse(rnd.nextInt(100));
 		setBreath(rnd.nextInt(100));
 		setSugar(rnd.nextInt(100));
+		setMinBloodPressure(rnd.nextInt(50));
+		setMaxBloodPressure(rnd.nextInt(50) + 51);
 		setRead(false);
 	}
 

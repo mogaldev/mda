@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.madareports.R;
+import com.madareports.utils.rangeseekbar.RangeSeekBar;
+import com.madareports.utils.rangeseekbar.RangeSeekBar.OnRangeSeekBarChangeListener;
 
 public class TechInfoFragment extends FragmentDetailActivity {
 
@@ -18,6 +21,8 @@ public class TechInfoFragment extends FragmentDetailActivity {
 	private TextView sugarValue;
 	private SeekBar breathView;
 	private TextView breathValue;
+	private RangeSeekBar<Integer> bloodPressureView;
+	private TextView bloodPressureValue;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,23 +33,43 @@ public class TechInfoFragment extends FragmentDetailActivity {
 	public void onStart() {
 		super.onStart();
 
-		// set the pulse edit text
+		// set the pulse views
 		pulseView = (SeekBar) getActivity().findViewById(R.id.pulseView);
 		pulseView.setProgress(getCurrentReport().getPulse());
 		pulseValue = (TextView) getActivity().findViewById(R.id.pulseValue);
 		persistSeekBarToTextView(pulseView, pulseValue);
 
-		// set the sugar edit text
+		// set the sugar views
 		sugarView = (SeekBar) getActivity().findViewById(R.id.sugarView);
 		sugarView.setProgress(getCurrentReport().getSugar());
 		sugarValue = (TextView) getActivity().findViewById(R.id.sugarValue);
 		persistSeekBarToTextView(sugarView, sugarValue);
 
-		// set the breath edit text
+		// set the breath views
 		breathView = (SeekBar) getActivity().findViewById(R.id.breathView);
 		breathView.setProgress(getCurrentReport().getBreath());
 		breathValue = (TextView) getActivity().findViewById(R.id.breathValue);
 		persistSeekBarToTextView(breathView, breathValue);
+		
+		// set the blood pressure views
+		bloodPressureView = new RangeSeekBar<Integer>(getCurrentReport().getMinBloodPressure(),getCurrentReport().getMaxBloodPressure(), getActivity());
+		RelativeLayout thisLayout = (RelativeLayout) getActivity().findViewById(R.id.bloodPressureLayout);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(250, 75);
+		params.setMargins(0, 25, 0, 20);
+		thisLayout.addView(bloodPressureView, params);
+		bloodPressureValue = (TextView) getActivity().findViewById(R.id.bloodPressureValue);
+		bloodPressureValue.setText(bloodPressureView.getSelectedMinValue() + ", " + bloodPressureView.getSelectedMaxValue());
+		bloodPressureView.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Integer>() {
+			@Override
+			public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+				bloodPressureValue.setText(minValue + ", " + maxValue);
+			}});
+		
+
+//        <item name="android:paddingTop">25dp</item>
+//        <item name="android:paddingBottom">20dp</item>
+//        <item name="android:gravity">center</item>
+//        <item name="android:layout_alignParentLeft">true</item>
 	}
 
 	/**

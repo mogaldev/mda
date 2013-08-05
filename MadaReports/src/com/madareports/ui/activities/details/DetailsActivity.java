@@ -25,10 +25,10 @@ public class DetailsActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		//  Get the sent report from the intent and set watched to the report
+		//  Get the sent report from the intent
 		sentReport = getReportFromIntent();
 		
-		// Set watched on the report and update it
+		// Set read on the report and update it
 		sentReport.setRead(true);
 		DatabaseWrapper.getInstance(this).updateReport(sentReport);
 

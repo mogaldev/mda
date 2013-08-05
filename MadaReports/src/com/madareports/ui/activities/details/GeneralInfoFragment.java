@@ -58,8 +58,8 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		notesEditText = (EditText) getActivity().findViewById(R.id.notesEditText);
 		notesEditText.setText(getCurrentReport().getNotes());
 		
-		// set the is watched check box
-		isReportedCheckBox = (CheckBox) getActivity().findViewById(R.id.isWatchedCheckBox);
+		// set the is read check box
+		isReportedCheckBox = (CheckBox) getActivity().findViewById(R.id.isReportedCheckBox);
 		isReportedCheckBox.setChecked(getCurrentReport().isReported());
 	}
 	

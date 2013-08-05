@@ -95,7 +95,7 @@ public class DatabaseWrapper {
 		try {
 			// TODO find different way, not using hard-coded column name
 			return (int) dao.countOf(dao.queryBuilder().setCountOf(true)
-					.where().eq(Report.IS_WATCHED_COLUMN_NAME, false).prepare());
+					.where().eq(Report.IS_READ_COLUMN_NAME, false).prepare());
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			return -1;

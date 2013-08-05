@@ -67,7 +67,7 @@
     <string name="region">מרחב</string>
     <string name="description">תיאור</string>
     <string name="notes">הערות</string>
-    <string name="is_watched">דווח באתר?</string>
+    <string name="is_reported">דווח באתר?</string>
     <!-- Tech Info Fragment -->
     <string name="pulse">דופק</string>
     <string name="sugar">סוכר</string>
