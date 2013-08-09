@@ -1,22 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <!--
-         <item
-        android:id="@+id/reportslist_activity_menu_search"
-        android:actionViewClass="com.actionbarsherlock.widget.SearchView"
-        android:icon="@android:drawable/ic_menu_search"
-        android:showAsAction="always"
-        android:title="Search"/>
-
-    -->
     <item
         android:id="@+id/reportslist_activity_menu_search"
         android:actionLayout="@layout/searchview_reportslist"
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="0"
         android:showAsAction="always|collapseActionView"
-        android:title="Search"/>
+        android:title="@string/search"/>
     <item
         android:id="@+id/reportslist_activity_menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"
