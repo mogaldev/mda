@@ -75,6 +75,9 @@
     <string name="pulse">דופק</string>
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
+    <!-- Treatment To Report Fragment -->
+    <string name="all_treatments_in_db">כל הטיפולים במאגר</string>
+    <string name="current_treatments_to_report">טיפולים נוכחים</string>
     <!-- End of Details Activity -->
     
     

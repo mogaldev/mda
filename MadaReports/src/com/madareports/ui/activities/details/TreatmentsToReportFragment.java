@@ -60,7 +60,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 		allTreatmentsListView.setAdapter(allTreatmentsListViewAdapter);
 
 		// Init the listView of treatments of the current report
-		ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report);
+		ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report_list);
 		final ArrayAdapter<Treatment> treatmentsOfReportListViewAdapter = getArrayAdapter(allCurrentReportTreatments);
 		treatmentsOfReportListView.setAdapter(treatmentsOfReportListViewAdapter);
 
@@ -105,7 +105,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 				
 				ListView allTreatmentsListView = (ListView) getActivity().findViewById(R.id.all_treatments_list);
 				ArrayAdapter<Treatment> allTreatmentsListViewAdapter = (ArrayAdapter<Treatment>) allTreatmentsListView.getAdapter();
-				ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report);
+				ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report_list);
 				ArrayAdapter<Treatment> treatmentsOfReportListViewAdapter = (ArrayAdapter<Treatment>) treatmentsOfReportListView.getAdapter();
 
 				// update UI				
@@ -129,7 +129,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 				
 				ListView allTreatmentsListView = (ListView) getActivity().findViewById(R.id.all_treatments_list);
 				ArrayAdapter<Treatment> allTreatmentsListViewAdapter = (ArrayAdapter<Treatment>) allTreatmentsListView.getAdapter();
-				ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report);
+				ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report_list);
 				ArrayAdapter<Treatment> treatmentsOfReportListViewAdapter = (ArrayAdapter<Treatment>) treatmentsOfReportListView.getAdapter();
 
 				// update UI
@@ -183,7 +183,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 		allTreatmentsListView.setAdapter(allTreatmentsListViewAdapter);
 
 		// Init the listView of treatments of the current report
-		ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report);
+		ListView treatmentsOfReportListView = (ListView) getActivity().findViewById(R.id.treatments_of_report_list);
 		final ArrayAdapter<Treatment> treatmentsOfReportListViewAdapter = getArrayAdapter(allCurrentReportTreatments);
 		treatmentsOfReportListView.setAdapter(treatmentsOfReportListViewAdapter);
 

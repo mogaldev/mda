@@ -5,20 +5,36 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/all_treatments_textview"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/all_treatments_in_db" />
+
+    <TextView
+        android:id="@+id/treatment_of_report_textview"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
+        android:text="@string/current_treatments_to_report" />
+
     <ListView
         android:id="@+id/all_treatments_list"
         android:layout_width="150dp"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-    </ListView>
+        android:layout_below="@id/all_treatments_textview" />
 
     <ListView
-        android:id="@+id/treatments_of_report"
+        android:id="@+id/treatments_of_report_list"
         android:layout_width="150dp"
         android:layout_height="fill_parent"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
-    </ListView>
+        android:layout_below="@id/treatment_of_report_textview" />
 
 </RelativeLayout>

@@ -41,9 +41,9 @@ public class DetailsActivity extends BaseActivity {
 
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
 		treatmentsTab.setText(getString(R.string.treatments));
-		treatmentsTab.setTabListener(new TabListener<TreatmentsFragment>(
-				this, TreatmentsFragment.class.getName(),
-				TreatmentsFragment.class));
+		treatmentsTab.setTabListener(new TabListener<TreatmentsToReportFragment>(
+				this, TreatmentsToReportFragment.class.getName(),
+				TreatmentsToReportFragment.class));
 		supportActionBar.addTab(treatmentsTab);
 
 		ActionBar.Tab techInfoTab = supportActionBar.newTab();
@@ -156,7 +156,7 @@ public class DetailsActivity extends BaseActivity {
 			techInfoFragment.saveCurrentReport();
 		} catch (Exception e) {}
 		try {
-			TreatmentsFragment treatmentFragment = (TreatmentsFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsFragment.class.getName());
+			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsToReportFragment.class.getName());
 			treatmentFragment.saveCurrentReport();
 			treatmentFragment.saveTreatments();
 		} catch (Exception e) {}
@@ -185,10 +185,10 @@ public class DetailsActivity extends BaseActivity {
 			                 " was not created");
 		}
 		try {
-			TreatmentsFragment treatmentFragment = (TreatmentsFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsFragment.class.getName());
+			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) getSupportFragmentManager().findFragmentByTag(TreatmentsToReportFragment.class.getName());
 			treatmentFragment.refreshDataWithCurrentReport();
 		} catch (Exception e) {
-			Logger.LOGW(TAG, "The Fragment " + TreatmentsFragment.class.getName() +
+			Logger.LOGW(TAG, "The Fragment " + TreatmentsToReportFragment.class.getName() +
 			                 " was not created");
 		}
 	}
