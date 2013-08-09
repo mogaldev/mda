@@ -131,7 +131,7 @@ public class DetailsActivity extends BaseActivity {
 				if (DatabaseWrapper.getInstance(this).deleteReport(getCurrentReport()))
 				{
 					databaseWrapper.deleteTreatmentsToReportByReportId(getCurrentReport().getId());
-					writeShortTimeMessage(R.string.deleted_successfuly);					
+					writeShortTimeMessage(R.string.code_table_deleted_successfuly);					
 					finish();
 				}
 				return true;

@@ -11,8 +11,7 @@
     <string name="settings">הגדרות</string>
     <string name="search_view_hint">חיפוש...</string>
     <string name="add">הוספה</string>
-    <string name="delete">מחיקה</string>
-    <string name="deleted_successfuly">נמחק בהצלחה</string>  
+    <string name="delete">מחיקה</string>  
     <string name="search">חפש</string>
     <!-- End of Action Bars -->
     
@@ -27,7 +26,7 @@
     <string name="code_table_dialog_delete_unsuccess">לא ניתן למחוק רשומה</string>
     <string name="code_table_dialog_options_edit">עריכה</string>
     <string name="code_table_dialog_options_delete">מחיקה</string>
-    <string name="dialog_region_title">מרחבים</string>
+    <string name="code_table_deleted_successfuly">נמחק בהצלחה</string>
     <!-- End of Code Tables -->
 
     <!-- Preferences Settings -->
