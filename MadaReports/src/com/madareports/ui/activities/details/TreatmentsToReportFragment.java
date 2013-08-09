@@ -18,7 +18,7 @@ import com.madareports.db.models.Treatment;
 import com.madareports.db.models.TreatmentsToReports;
 import com.madareports.utils.Logger;
 
-public class TreatmentsFragment extends FragmentDetailActivity {
+public class TreatmentsToReportFragment extends FragmentDetailActivity {
 	
 	// Lists of the Treatments of the currentReport and of the Treatments that are note connected the the currentReport
 	List<Treatment> allCurrentReportTreatments;
