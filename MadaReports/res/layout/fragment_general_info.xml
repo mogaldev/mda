@@ -75,14 +75,16 @@
 
         <CheckBox
             android:id="@+id/isReportedCheckBox"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:text="@string/is_reported" />
 
         <Button
-            android:id="@+id/showOriginalMessageButton" android:onClick="showOriginalMessageDialog"
+            android:id="@+id/showOriginalMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:text="@string/show_original_message" />
     </LinearLayout>
 
