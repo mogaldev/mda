@@ -284,18 +284,6 @@ public class DatabaseWrapper {
 		return treatmentsToReports;
 	}
 	
-	public List<TreatmentsToReports> getTreatmentsToReportsByReportAndTreatmentId(Integer reportId, Integer TreatmentId) {
-		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
-        try {
-    		// Get all the treatments id's of this report
-        	treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportId).and().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME, TreatmentId).query();
-        } catch (SQLException e) {
-			Logger.LOGE(TAG, e.getMessage());
-        }
-
-		return treatmentsToReports;
-	}
-	
 	public void createTreatmentToReport(TreatmentsToReports treatmentsToReports) {
 		try {
 			// Check if there is no similar row
