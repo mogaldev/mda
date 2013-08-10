@@ -1,5 +1,7 @@
 package com.madareports.ui.activities;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -45,21 +47,20 @@ public class ReportsListActivity extends BaseActivity {
 		// enable the 'real-time' filtering on the edit text
 		txt.addTextChangedListener(new ReportsFilterTextWatcher(
 				reportsAdapter));
-
-		/*
-		 * Initializing the share action provider
-		 */
-		MenuItem shareItem = menu.findItem(R.id.reportslist_activity_menu_share);
-		ShareActionProvider shareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
-		shareActionProvider.setShareIntent(getShareIntent());
 		
 		return true;
 	}
 	
 	private Intent getShareIntent() {
+		StringBuffer shareString = new StringBuffer();
+		List<String> reportsOnScreen = reportsAdapter.getToShareStringOfReports();
+		for (String currentReport : reportsOnScreen) {
+	        shareString.append(currentReport);
+	        shareString.append("\n\n");
+        }
 		Intent shareIntent = new Intent();
 		shareIntent.setAction(Intent.ACTION_SEND);
-		shareIntent.putExtra(Intent.EXTRA_TEXT, "download MDA Report!");
+		shareIntent.putExtra(Intent.EXTRA_TEXT, shareString.toString());
 		shareIntent.setType("text/plain");
 
 		return shareIntent;
@@ -73,6 +74,10 @@ public class ReportsListActivity extends BaseActivity {
 				return true;
 			case R.id.reportslist_activity_menu_delete_all:
 				DatabaseWrapper.getInstance(this).deleteAllReports();
+				return true;
+			case R.id.reportslist_activity_menu_share:
+				ShareActionProvider shareActionProvider = (ShareActionProvider) item.getActionProvider();
+				shareActionProvider.setShareIntent(getShareIntent());
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);

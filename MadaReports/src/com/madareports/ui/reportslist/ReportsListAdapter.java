@@ -171,4 +171,12 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 		notifyDataSetChanged();
 	}
 
+	public List<String> getToShareStringOfReports() {
+		List<String> returnList = new ArrayList<String>();
+		for (Report report : reportsList) {
+	        returnList.add(report.toShareString(getContext()));
+        }
+		
+		return returnList;
+	}
 }

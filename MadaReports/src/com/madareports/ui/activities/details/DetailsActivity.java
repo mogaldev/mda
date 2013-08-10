@@ -147,8 +147,7 @@ public class DetailsActivity extends BaseActivity {
 				}
 				return true;
 			case R.id.detail_activity_menu_share:
-				MenuItem shareItem = item;
-				ShareActionProvider shareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
+				ShareActionProvider shareActionProvider = (ShareActionProvider) item.getActionProvider();
 				shareActionProvider.setShareIntent(getShareIntent());
 				return true;
 			default:
