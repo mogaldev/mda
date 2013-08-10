@@ -11,14 +11,6 @@ public class ReportAnalyzer {// TODO turn this class logic into regular
 										// parts, for more efficient analyzing
 	private final String[] partsToBeRemoved = { "*על המידע חל חיסיון רפואי ואין להעבירו" };
 
-	// for debugging
-	public static String buildFakeMessage() {
-		final String prefixId = "#12";
-		final String reportContent = "אמב 61 כביש 45\\עטרות למחלף בן ציון    ת.ד. פצ' קלה רוכב אופנוע שנפגע מרכב.*על המידע חל חיסיון רפואי ואין להעבירו";
-
-		return prefixId + " " + reportContent;
-	}
-
 	public ReportAnalyzer(String messageBody) {
 		this.messageBody = messageBody;
 		this.strippedMessageBody = getStrippedMessage();
@@ -67,7 +59,8 @@ public class ReportAnalyzer {// TODO turn this class logic into regular
 	 */
 	public String getDescription() {
 		String whitespaceSeperator = "   ";
-		int startIndex = strippedMessageBody.indexOf(whitespaceSeperator) + whitespaceSeperator.length() +  1;
+		int startIndex = strippedMessageBody.indexOf(whitespaceSeperator)
+				+ whitespaceSeperator.length() + 1;
 		int endIndex = strippedMessageBody.length();
 
 		if (startIndex > 0 && endIndex > 0 && startIndex < endIndex) {
@@ -110,5 +103,16 @@ public class ReportAnalyzer {// TODO turn this class logic into regular
 			messageBodyCopy = messageBodyCopy.replace(part, "");
 		}
 		return messageBodyCopy;
+	}
+
+	/**
+	 * Check whether the incoming SMS message represents report
+	 * 
+	 * @param messageBody
+	 *            - the message body to be checked
+	 * @return True if the message is report, False otherwise
+	 */
+	public static boolean isRelevantMessage(String messageBody) {
+		return messageBody.startsWith("#") && messageBody.contains("*על המידע חל חיסיון רפואי ואין להעבירו");
 	}
 }

@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
+import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.utils.ApplicationUtils;
 import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;
@@ -46,14 +47,9 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 *         otherwise
 	 */
 	boolean isRelevantSms(SmsMessage smsMsg) {
-//		final String madaSender = "1234"; // TODO: replace with the real sender
-											// number. Check about getting the
-											// number from settings
-		
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
-//		return (smsMsg.getOriginatingAddress().equals(madaSender));
-		return true;
+		return ReportAnalyzer.isRelevantMessage(smsMsg.getMessageBody());
 	}
 
 	/**
