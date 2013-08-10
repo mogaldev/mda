@@ -6,6 +6,9 @@
     <string name="app_name">דיווחי מדא</string>
     <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
     <string name="title_activity_detail">פרטי דיווח</string>
+    <string name="title_activity_settings">הגדרות</string>
+    <string name="title_activity_regions">מרחב</string>
+    <string name="title_activity_treatments">טיפולים</string>
     <!-- End of General Application Strings -->
 
 
@@ -16,6 +19,7 @@
     <string name="save">שמור</string>
     <string name="delete">מחיקה</string>
     <string name="search">חפש</string>
+    <string name="share">שתף</string>
     <!-- End of Action Bars -->
 
 
