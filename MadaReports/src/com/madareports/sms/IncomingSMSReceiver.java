@@ -72,10 +72,10 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 					// check if the message is relevant and pass it on
 					if (isRelevantSms(message)) {
 						raiseMessage(message, context);
-					}
 
-					if (SettingsManager.getInstance(context).getAbortBroadcast()) {
-						abortBroadcast();
+						if (SettingsManager.getInstance(context).getAbortBroadcast()) {
+							abortBroadcast();
+						}
 					}
 				}
 			}
