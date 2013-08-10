@@ -7,7 +7,7 @@ import android.util.Log;
  */
 public class Logger {
 
-	public static boolean isDebugMode = true; //TODO make private with setter & getter
+	private static boolean isDebugMode = true;
 	private static final int MAX_LOG_TAG_LENGTH = 23;
 	  
     public static String makeLogTag(String str) {
@@ -17,11 +17,19 @@ public class Logger {
 
         return str;              
     }
+    
+    public void setDebugMode(boolean debugMode) {
+    	isDebugMode = debugMode;
+    }
+    
+    public boolean getIsDebugMode() {
+    	return isDebugMode;
+    }
 	
     /**
      * WARNING: Don't use this when obfuscating class names with Proguard!
      */
-    public static String makeLogTag(Class cls) {
+    public static String makeLogTag(Class<?> cls) {
         return makeLogTag(cls.getSimpleName());
     }
 

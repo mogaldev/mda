@@ -46,13 +46,11 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		Logger.LOGD("TreatmentsFragment", "onCreateView");
 		return inflater.inflate(R.layout.fragment_treatments_to_report, container, false);
 	}
 
 	@Override
 	public void onStart() {
-		Logger.LOGD("TreatmentsFragment", "onStart");
 		super.onStart();
 	
 		// Init the listView of all the treatments

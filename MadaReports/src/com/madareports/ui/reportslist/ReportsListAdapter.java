@@ -50,7 +50,6 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 	}
 
 	public void resetData() {
-		Logger.LOGE(TAG, "reset data");
 		reportsList = originalReportsList;
 	}
 

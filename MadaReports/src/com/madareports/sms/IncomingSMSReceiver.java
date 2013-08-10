@@ -5,20 +5,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
 import com.madareports.utils.ApplicationUtils;
-import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;
 import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
-	private final String TAG = Logger.makeLogTag(getClass());
 
-	private void raiseMessage(SmsMessage smsMsg, Context context) {		
-		Logger.LOGE(TAG, "Display: " + smsMsg.getDisplayOriginatingAddress() + "; Regular: " + smsMsg.getOriginatingAddress());
-		
+	private void raiseMessage(SmsMessage smsMsg, Context context) {
 		Report report = new Report(context, smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
 
 		// add the report to the database
