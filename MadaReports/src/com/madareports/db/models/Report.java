@@ -5,21 +5,23 @@ import java.util.Date;
 import java.util.Random;
 
 import android.content.Context;
+import android.content.res.Resources;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.db.reports.ReportIllustrator;
 
 @DatabaseTable(tableName = Report.TABLE_NAME)
 public class Report {
-	
+
 	public static final String TABLE_NAME = "reports";
 	public static final String REGION_ID_COLUMN_NAME = "regionId";
 	public static final String ID_COLUMN_NAME = "id";
 	public static final String IS_READ_COLUMN_NAME = "isRead";
-	
+
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
 	private int id;
 	@DatabaseField
@@ -46,8 +48,8 @@ public class Report {
 	private boolean isReported; // if the user report this record on the website
 	@DatabaseField
 	private boolean isRead; // if the user saw this report. NOTE: Dont change
-								// the variable name. the countNewReports() rely
-								// on this name right now.
+							// the variable name. the countNewReports() rely
+							// on this name right now.
 	@DatabaseField
 	private Date receivedAt; // TODO: added. update in specifications.
 
@@ -60,9 +62,9 @@ public class Report {
 		setReportId(rprtAnlzr.getId());
 		setDescription(rprtAnlzr.getDescription()); // TODO cut the message body
 		setAddress(rprtAnlzr.getAddress());
-		
+
 		// set random things for debugging
-		Random rnd = new Random();		
+		Random rnd = new Random();
 		setReceivedAt(new Date(timesptamp));
 		setRegion(DatabaseWrapper.getInstance(ctx).getAllRegions().get(0));
 		setPulse(rnd.nextInt(100));
@@ -77,25 +79,42 @@ public class Report {
 		super();
 	}
 
-	@Override
-	public String toString(){
+	/**
+	 * Get string representation for sharing
+	 * 
+	 * @param context
+	 *            - context for getting the string resources
+	 * @return string represents the report for the share description
+	 */
+	public String toShareString(Context context) {
 		String result;
-		// TODO: resources strings
-		result 	= "#" + getReportId() + " : ";
-		result += "Location: " + getAddress() + "\n";
-		result += "Description: " + getDescription() + "\n";
-		result += "Region: " + getRegion().getRegion() + "\n";
-		result += "Received At: " + new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() + "\n";
+
+		// get the resources for the strings
+		Resources resources = context.getResources();
+
+		result = "#" + getReportId() + " : ";
+		result += resources.getString(R.string.address) + ": " + getAddress()
+				+ "\n";
+		result += resources.getString(R.string.description) + ": "
+				+ getDescription() + "\n";
+		result += resources.getString(R.string.region) + ": "
+				+ getRegion().getRegion() + "\n";
+		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(
+				getReceivedAt()).toString()
+				+ "\n";
 		// technical details
-		result += "Pulse: " + getPulse() + "\n";
-		result += "Low Blood Pressure: " + getMinBloodPressure() + "\n";
-		result += "High Blood Pressure: " + getMaxBloodPressure() + "\n";
-		result += "Sugar: " + getSugar() + "\n";
-		result += "Notes: " + getNotes() + "\n";
-						
+		result += resources.getString(R.string.pulse) + ": " + getPulse()
+				+ "\n";
+		// TODO result += resources.getString(R.string.blood_pressure) + ": " +
+		// getMinBloodPressure() + " \\ " + getMaxBloodPressure () + "\n";
+		result += resources.getString(R.string.sugar) + ": " + getSugar()
+				+ "\n";
+		result += resources.getString(R.string.notes) + ": " + getNotes()
+				+ "\n";
+
 		return result;
 	}
-	
+
 	// Setters & Getters
 
 	public int getId() {
@@ -105,11 +124,11 @@ public class Report {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getReportId() {
 		return reportId;
 	}
-	
+
 	public void setReportId(int reportId) {
 		this.reportId = reportId;
 	}
@@ -129,7 +148,7 @@ public class Report {
 	public void setDescription(String description) {
 		this.description = description;
 	}
- 
+
 	public Region getRegion() {
 		return region;
 	}

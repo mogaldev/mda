@@ -80,6 +80,7 @@
     <string name="pulse">דופק</string>
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
+    <string name="blood_pressure">לחץ דם</string>
     <!-- Treatment To Report Fragment -->
     <string name="all_treatments_in_db">כל הטיפולים</string>
     <string name="current_treatments_to_report">טיפולים שבוצעו</string>
