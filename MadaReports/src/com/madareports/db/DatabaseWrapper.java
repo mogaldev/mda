@@ -300,11 +300,6 @@ public class DatabaseWrapper {
         }
 	}
 	
-	public void createTreatmentToReport(Report report, Treatment treatment) {
-		TreatmentsToReports treatmentsToReports = new TreatmentsToReports(report, treatment);
-		createTreatmentToReport(treatmentsToReports);
-	}
-	
 	public void deleteTreatmentsToReportByReportId(Integer reportId) {
 		List<TreatmentsToReports> treatmentsToReportsByReportId = getTreatmentsToReportsByReportId(reportId);
 		for (TreatmentsToReports crrentTreatmentsToReports : treatmentsToReportsByReportId) {
