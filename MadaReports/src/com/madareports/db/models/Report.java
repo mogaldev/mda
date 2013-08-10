@@ -1,5 +1,6 @@
 package com.madareports.db.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
@@ -76,6 +77,24 @@ public class Report {
 		super();
 	}
 
+	@Override
+	public String toString(){
+		String result;
+		// TODO: resources strings
+		result 	= "#" + getReportId() + " : ";
+		result += "Location: " + getAddress() + "\n";
+		result += "Description: " + getDescription() + "\n";
+		result += "Region: " + getRegion().getRegion() + "\n";
+		result += "Received At: " + new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() + "\n";
+		// technical details
+		result += "Pulse: " + getPulse() + "\n";
+		result += "Low Blood Pressure: " + getMinBloodPressure() + "\n";
+		result += "High Blood Pressure: " + getMaxBloodPressure() + "\n";
+		result += "Sugar: " + getSugar() + "\n";
+		result += "Notes: " + getNotes() + "\n";
+						
+		return result;
+	}
 	
 	// Setters & Getters
 

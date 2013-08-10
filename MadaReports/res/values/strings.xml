@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>    
-    
+<!-- Values -->
+<resources>
+
     <!-- General Application Strings -->
-    <string name="app_name">דיווחי מגן דוד אדום</string>
+    <string name="app_name">דיווחי מדא</string>
     <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
-    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_detail">פרטי דיווח</string>
     <!-- End of General Application Strings -->
+
 
     <!-- Action Bars -->
     <string name="settings">הגדרות</string>
     <string name="search_view_hint">חיפוש...</string>
     <string name="add">הוספה</string>
-    <string name="delete">מחיקה</string>  
+    <string name="save">שמור</string>
+    <string name="delete">מחיקה</string>
     <string name="search">חפש</string>
     <!-- End of Action Bars -->
-    
+
+
     <!-- Code Tables -->
     <string name="code_table_dialog_region_title">מרחבים</string>
     <string name="code_table_dialog_treatment_title">טיפולים</string>
     <string name="code_table_dialog_edit_positive_button">שמירה</string>
     <string name="code_table_dialog_add_positive_button">הוספה</string>
-    <string name="code_table_dialog_edit_success">הרשומה נשמרה</string>
+    <string name="code_table_dialog_edeit_success">הרשומה נשמרה</string>
     <string name="code_table_dialog_add_success">הרשומה נוספה</string>
     <string name="code_table_dialog_delete_success">הרשומה נמחקה</string>
     <string name="code_table_dialog_delete_unsuccess">לא ניתן למחוק רשומה</string>
@@ -28,6 +32,7 @@
     <string name="code_table_dialog_options_delete">מחיקה</string>
     <string name="code_table_deleted_successfuly">נמחק בהצלחה</string>
     <!-- End of Code Tables -->
+
 
     <!-- Preferences Settings -->
     <string name="prefrences_key_ringtone_uri">RINGTONE_URI</string>
@@ -37,32 +42,32 @@
     <string name="prefrences_key_sender_numbers">SENDER_NUMBERS</string>
     <string name="prefrences_key_abort_broadcast">ABORT_BROADCAST</string>
     <!-- Titles -->
-    <string name="prefrences_title_vibrate_enabled">Vibrate</string>
-    <string name="prefrences_title_sound_enabled">Sound</string>
-    <string name="prefrences_title_ringtone_uri">Ringtone</string>
-    <string name="prefrences_title_regions">Regions</string>
-    <string name="prefrences_title_treatments">Treatments</string>
-    <string name="prefrences_title_abort_broadcast">Abort Broadcast</string>
+    <string name="prefrences_title_vibrate_enabled">רטט</string>
+    <string name="prefrences_title_sound_enabled">צליל</string>
+    <string name="prefrences_title_ringtone_uri">רינגטון</string>
+    <string name="prefrences_title_regions">מרחבים</string>
+    <string name="prefrences_title_treatments">טיפולים</string>
+    <string name="prefrences_title_abort_broadcast">חסימת הודעה</string>
     <!-- Summaries -->
-    <string name="prefrences_summary_vibrate_enabled">Whether to perform vibration when there is incoming notification</string>
-    <string name="prefrences_summary_sound_enabled">Whether to play the ringtone when there is incoming notification</string>
-    <string name="prefrences_summary_ringtone_uri">The ringtone to be played when the time is over</string>
-    <string name="prefrences_summary_regions">Regions</string>
-    <string name="prefrences_summary_treatments">Treatments</string>
-    <string name="prefrences_summary_abort_broadcast">Whether to abort the broadcast event when getting SMS</string>
+    <string name="prefrences_summary_vibrate_enabled">האם לבצע רטט בעת קבלת התראה</string>
+    <string name="prefrences_summary_sound_enabled">האם להפעיל את הצלצול הנבחר בעת קבלת התראה</string>
+    <string name="prefrences_summary_ringtone_uri">הצלצול הנבחר בעת קבלת התראה</string>
+    <string name="prefrences_summary_regions">ניהול מרחבים</string>
+    <string name="prefrences_summary_regions">ניהול טיפולים</string>
+    <string name="prefrences_summary_abort_broadcast">האם למנוע מאפליקציות SMS קבלת ההודעה</string>
     <!-- Categories -->
     <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
-    <string name="prefrences_category_notifications_title">Notifications</string>
+    <string name="prefrences_category_notifications_title">התראות</string>
     <!-- End of Preferences Settings -->
+
 
     <!-- Details Activity -->
     <string name="report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
-    <string name="save">שמור</string>    
     <string name="refresh_data">רענן נתונים</string>
     <!-- Tabs Titles -->
-    <string name="general_info">פרטים כלליים</string>
-    <string name="tech_info">פרטים טכניים</string>
+    <string name="general_info">כללי</string>
+    <string name="tech_info">טכני</string>
     <string name="treatments">טיפולים</string>
     <!-- General Info Fragment -->
     <string name="address">כתובת</string>
@@ -76,9 +81,8 @@
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
     <!-- Treatment To Report Fragment -->
-    <string name="all_treatments_in_db">כל הטיפולים במאגר</string>
-    <string name="current_treatments_to_report">טיפולים נוכחים</string>
+    <string name="all_treatments_in_db">כל הטיפולים</string>
+    <string name="current_treatments_to_report">טיפולים שבוצעו</string>
     <!-- End of Details Activity -->
-    
-    
+
 </resources>

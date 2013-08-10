@@ -17,6 +17,13 @@
         android:id="@+id/reportslist_activity_menu_delete_all"
         android:icon="@android:drawable/ic_menu_delete"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/delete"/>
+        android:title="@string/delete"/>   
+    <item
+        android:id="@+id/reportslist_activity_menu_share"
+         android:icon="@android:drawable/ic_menu_share"
+        android:title="@string/share"
+        android:showAsAction="ifRoom"
+        android:actionProviderClass="com.actionbarsherlock.widget.ShareActionProvider"
+    />
 
 </menu>
