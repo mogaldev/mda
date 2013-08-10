@@ -5,11 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
-import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.utils.ApplicationUtils;
 import com.madareports.utils.Logger;
 import com.madareports.utils.NotificationsManager;

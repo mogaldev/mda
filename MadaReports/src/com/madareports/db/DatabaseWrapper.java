@@ -51,7 +51,7 @@ public class DatabaseWrapper {
 	public List<Report> getAllReports() {
 		List<Report> reports = null;
 		try {
-			reports = helper.getReportDao().queryBuilder().orderByRaw(Report.REPORT_ID_COLUMN_NAME + " DESC").query();			
+			reports = helper.getReportDao().queryBuilder().orderByRaw(Report.ID_COLUMN_NAME + " DESC").query();			
 			//reports = helper.getReportDao().queryForAll();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
