@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
+import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.utils.ApplicationUtils;
 import com.madareports.utils.NotificationsManager;
 import com.madareports.utils.SettingsManager;
@@ -44,7 +45,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	boolean isRelevantSms(SmsMessage smsMsg) {
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
-		return true;// return ReportAnalyzer.isRelevantMessage(smsMsg.getMessageBody());
+		 return ReportAnalyzer.isRelevantMessage(smsMsg.getMessageBody());//return true;
 	}
 
 	/**
