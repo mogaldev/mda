@@ -53,6 +53,8 @@ public class Report {
 							// on this name right now.
 	@DatabaseField
 	private Date receivedAt; // TODO: added. update in specifications.
+	@DatabaseField
+	private String originalMessage;
 
 	public Report(Context ctx, String messageBody, long timesptamp) {
 		// TODO: currently simulate the description manually
@@ -106,7 +108,7 @@ public class Report {
 		result += resources.getString(R.string.blood_pressure) + ": " +
 		          getMinBloodPressure() + " \\ " + getMaxBloodPressure() + "\n";
 		result += resources.getString(R.string.sugar) + ": " + getSugar() + "\n";
-		result += resources.getString(R.string.notes) + ": " + ApplicationUtils.NVL(getNotes()) + "\n";
+		result += resources.getString(R.string.notes) + ": " + getNotes() + "\n";
 
 		return result;
 	}
@@ -130,7 +132,7 @@ public class Report {
 	}
 
 	public String getAddress() {
-		return address;
+		return ApplicationUtils.NVL(address);
 	}
 
 	public void setAddress(String address) {
@@ -138,7 +140,7 @@ public class Report {
 	}
 
 	public String getDescription() {
-		return description;
+		return ApplicationUtils.NVL(description);
 	}
 
 	public void setDescription(String description) {
@@ -194,7 +196,7 @@ public class Report {
 	}
 
 	public String getNotes() {
-		return notes;
+		return ApplicationUtils.NVL(notes);
 	}
 
 	public void setNotes(String notes) {
@@ -223,6 +225,14 @@ public class Report {
 
 	public void setReceivedAt(Date receivedAt) {
 		this.receivedAt = receivedAt;
+	}
+
+	public String getOriginalMessage() {
+		return ApplicationUtils.NVL(originalMessage);
+	}
+
+	public void setOriginalMessage(String originalMessage) {
+		this.originalMessage = originalMessage;
 	}
 
 }

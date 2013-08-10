@@ -41,6 +41,9 @@ public class DetailsActivity extends BaseActivity {
 		// Set navigation mode
 		supportActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
+		/*
+		 * Init all the tabs in the DetailActivity
+		 */
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
 		treatmentsTab.setText(getString(R.string.treatments));
 		treatmentsTab.setTabListener(new TabListener<TreatmentsToReportFragment>(
@@ -55,7 +58,6 @@ public class DetailsActivity extends BaseActivity {
 				TechInfoFragment.class));
 		supportActionBar.addTab(techInfoTab);
 
-		// Init all the tabs in the DetailActivity
 		ActionBar.Tab generalInfotab = supportActionBar.newTab();
 		generalInfotab.setText(getString(R.string.general_info));
 		generalInfotab.setTabListener(new TabListener<GeneralInfoFragment>(

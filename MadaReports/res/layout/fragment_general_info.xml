@@ -37,7 +37,10 @@
 
             <Spinner
                 android:id="@+id/regionsSpinner"
-                style="@style/fragment_general_info_spinner" />
+                style="@style/fragment_general_info_spinner" >
+
+                <requestFocus />
+            </Spinner>
 
             <TextView
                 style="@style/fragment_general_info_textview"
@@ -75,6 +78,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/is_reported" />
+
+        <Button
+            android:id="@+id/showOriginalMessageButton" android:onClick="showOriginalMessageDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/show_original_message" />
     </LinearLayout>
 
 </ScrollView>

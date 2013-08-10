@@ -2,14 +2,18 @@ package com.madareports.ui.activities.details;
 
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
@@ -61,6 +65,13 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		// set the is read check box
 		isReportedCheckBox = (CheckBox) getActivity().findViewById(R.id.isReportedCheckBox);
 		isReportedCheckBox.setChecked(getCurrentReport().isReported());
+		
+		getActivity().findViewById(R.id.showOriginalMessageButton).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				showOriginalMessageDialog();
+			}
+		});
 	}
 	
 	/**
@@ -80,6 +91,22 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		}
 
 		return index;
+	}
+	
+	public void showOriginalMessageDialog() {
+		final Context context = getActivity();
+
+		// build the dialog layout
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final View originalMessageDialogView = inflater.inflate(R.layout.dialog_original_message,
+		                                               null, false);
+
+
+		TextView originalMessageTextView = (TextView) originalMessageDialogView.findViewById(R.id.originalMessageTextView);
+		originalMessageTextView.setText(getCurrentReport().getOriginalMessage());
+		
+		// the alert dialog
+		new AlertDialog.Builder(context).setView(originalMessageDialogView).setTitle(getString(R.string.title_dialog_original_message)).show();
 	}
 
 	@Override

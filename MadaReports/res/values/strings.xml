@@ -80,6 +80,8 @@
     <string name="description">תיאור</string>
     <string name="notes">הערות</string>
     <string name="is_reported">דווח באתר?</string>
+    <string name="show_original_message">הראה הודעה מקורית</string>
+    <string name="title_dialog_original_message">הודעה מקורית</string>
     <!-- Tech Info Fragment -->
     <string name="pulse">דופק</string>
     <string name="sugar">סוכר</string>
