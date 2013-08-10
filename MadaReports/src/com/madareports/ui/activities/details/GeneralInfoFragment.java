@@ -101,7 +101,6 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		final View originalMessageDialogView = inflater.inflate(R.layout.dialog_original_message,
 		                                               null, false);
 
-
 		TextView originalMessageTextView = (TextView) originalMessageDialogView.findViewById(R.id.originalMessageTextView);
 		originalMessageTextView.setText(getCurrentReport().getOriginalMessage());
 		
