@@ -93,24 +93,19 @@ public class Report {
 		Resources resources = context.getResources();
 
 		result = "#" + getReportId() + " : ";
-		result += resources.getString(R.string.address) + ": " + getAddress()
-				+ "\n";
-		result += resources.getString(R.string.description) + ": "
-				+ getDescription() + "\n";
-		result += resources.getString(R.string.region) + ": "
-				+ getRegion().getRegion() + "\n";
-		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(
-				getReceivedAt()).toString()
-				+ "\n";
+		result += resources.getString(R.string.address) + ": " + getAddress() + "\n";
+		result += resources.getString(R.string.description) + ": " + getDescription() +
+		          "\n";
+		result += resources.getString(R.string.region) + ": " + getRegion().getRegion() +
+		          "\n";
+		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() +
+		          "\n";
 		// technical details
-		result += resources.getString(R.string.pulse) + ": " + getPulse()
-				+ "\n";
-		// TODO result += resources.getString(R.string.blood_pressure) + ": " +
-		// getMinBloodPressure() + " \\ " + getMaxBloodPressure () + "\n";
-		result += resources.getString(R.string.sugar) + ": " + getSugar()
-				+ "\n";
-		result += resources.getString(R.string.notes) + ": " + getNotes()
-				+ "\n";
+		result += resources.getString(R.string.pulse) + ": " + getPulse() + "\n";
+		result += resources.getString(R.string.blood_pressure) + ": " +
+		          getMinBloodPressure() + " \\ " + getMaxBloodPressure() + "\n";
+		result += resources.getString(R.string.sugar) + ": " + getSugar() + "\n";
+		result += resources.getString(R.string.notes) + ": " + getNotes() + "\n";
 
 		return result;
 	}

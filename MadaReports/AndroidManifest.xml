@@ -29,7 +29,8 @@
         </activity>
         <activity
             android:name="com.madareports.ui.activities.ReportsListActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +52,7 @@
         <activity
             android:name="com.madareports.ui.activities.details.DetailsActivity"
             android:label="@string/title_activity_detail"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.madareports.ui.activities.ReportsListActivity" />

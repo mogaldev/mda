@@ -99,20 +99,13 @@ public class DetailsActivity extends BaseActivity {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.details_activity_action_bar, menu);
 		
-		/*
-		 * Initializing the share action provider
-		 */
-		MenuItem shareItem = menu.findItem(R.id.detail_activity_menu_share);
-		ShareActionProvider shareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
-		shareActionProvider.setShareIntent(getShareIntent());
-		
 		return true;
 	}
 	
 	private Intent getShareIntent() {
 		Intent shareIntent = new Intent();
 		shareIntent.setAction(Intent.ACTION_SEND);
-		shareIntent.putExtra(Intent.EXTRA_TEXT, getCurrentReport().getDescription());
+		shareIntent.putExtra(Intent.EXTRA_TEXT, getCurrentReport().toShareString(this));
 		shareIntent.setType("text/plain");
 
 		return shareIntent;
@@ -152,6 +145,11 @@ public class DetailsActivity extends BaseActivity {
 					writeShortTimeMessage(R.string.code_table_deleted_successfuly);					
 					finish();
 				}
+				return true;
+			case R.id.detail_activity_menu_share:
+				MenuItem shareItem = item;
+				ShareActionProvider shareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
+				shareActionProvider.setShareIntent(getShareIntent());
 				return true;
 			default:
 				return super.onOptionsItemSelected(item);
