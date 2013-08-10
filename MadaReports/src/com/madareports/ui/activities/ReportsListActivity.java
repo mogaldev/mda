@@ -1,5 +1,6 @@
 package com.madareports.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -7,6 +8,7 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.widget.ShareActionProvider;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
@@ -34,14 +36,33 @@ public class ReportsListActivity extends BaseActivity {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.reportslist_activity_action_bar, menu);
 
+		/*
+		 * Initializing the search action view
+		 */
 		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
 		EditText txt = (EditText)item.getActionView();
 		
 		// enable the 'real-time' filtering on the edit text
 		txt.addTextChangedListener(new ReportsFilterTextWatcher(
 				reportsAdapter));
+
+		/*
+		 * Initializing the share action provider
+		 */
+		MenuItem shareItem = menu.findItem(R.id.reportslist_activity_menu_share);
+		ShareActionProvider shareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
+		shareActionProvider.setShareIntent(getShareIntent());
 		
 		return true;
+	}
+	
+	private Intent getShareIntent() {
+		Intent shareIntent = new Intent();
+		shareIntent.setAction(Intent.ACTION_SEND);
+		shareIntent.putExtra(Intent.EXTRA_TEXT, "download MDA Report!");
+		shareIntent.setType("text/plain");
+
+		return shareIntent;
 	}
 	
 	@Override

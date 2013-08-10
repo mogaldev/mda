@@ -6,6 +6,9 @@
     <string name="app_name">MDA Reports</string>
     <string name="notification_d_new_messages">%d new reports</string>
     <string name="title_activity_detail">Report Details</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_regions">Regions</string>
+    <string name="title_activity_treatments">Treatments</string>
     <!-- End of General Application Strings -->
 
 

@@ -1,5 +1,6 @@
 package com.madareports.ui.activities.details;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.widget.ShareActionProvider;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
@@ -96,8 +98,24 @@ public class DetailsActivity extends BaseActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.details_activity_action_bar, menu);
-
+		
+		/*
+		 * Initializing the share action provider
+		 */
+		MenuItem shareItem = menu.findItem(R.id.detail_activity_menu_share);
+		ShareActionProvider shareActionProvider = (ShareActionProvider) shareItem.getActionProvider();
+		shareActionProvider.setShareIntent(getShareIntent());
+		
 		return true;
+	}
+	
+	private Intent getShareIntent() {
+		Intent shareIntent = new Intent();
+		shareIntent.setAction(Intent.ACTION_SEND);
+		shareIntent.putExtra(Intent.EXTRA_TEXT, getCurrentReport().getDescription());
+		shareIntent.setType("text/plain");
+
+		return shareIntent;
 	}
 	
 	@Override
