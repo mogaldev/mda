@@ -61,10 +61,11 @@ public class Report {
 		messageBody = new ReportIllustrator().getFakeReport();
 		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(messageBody);
 
-		// get the id from the message
+		// set info of the message in the Report object
 		setReportId(rprtAnlzr.getId());
 		setDescription(rprtAnlzr.getDescription()); // TODO cut the message body
 		setAddress(rprtAnlzr.getAddress());
+		setOriginalMessage(messageBody);
 
 		// set random things for debugging
 		Random rnd = new Random();

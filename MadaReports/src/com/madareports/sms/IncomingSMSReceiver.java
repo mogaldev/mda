@@ -20,7 +20,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		Logger.LOGE(TAG, "Display: " + smsMsg.getDisplayOriginatingAddress() + "; Regular: " + smsMsg.getOriginatingAddress());
 		
 		Report report = new Report(context, smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
-		
+
 		// add the report to the database
 		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
 		dbWrpr.createReport(report);
