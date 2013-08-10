@@ -248,7 +248,7 @@ public class DatabaseWrapper {
 	public List<Treatment> getAllOtherTreatments(Integer reportKey) {
 		List<Treatment> treatments = new ArrayList<Treatment>();
 		try {
-			List<TreatmentsToReports> treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().in(TreatmentsToReports.REPORT_COLUMN_NAME, reportKey).query();
+			List<TreatmentsToReports> treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().in(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportKey).query();
 			List<Integer> treatmentsId = new ArrayList<Integer>();
 			for (TreatmentsToReports currentTreatmentsToReports : treatmentsToReports) {
 				treatmentsId.add(currentTreatmentsToReports.getTreatment().getId());
@@ -264,7 +264,7 @@ public class DatabaseWrapper {
 		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
         try {
     		// Get all the reports id's of this treatment
-	        treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME, treatmentId).query();
+	        treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME, treatmentId).query();
         } catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
         }
@@ -276,7 +276,7 @@ public class DatabaseWrapper {
 		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
         try {
     		// Get all the treatments id's of this report
-	        treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME, reportId).query();
+	        treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportId).query();
         } catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
         }
@@ -288,7 +288,7 @@ public class DatabaseWrapper {
 		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
         try {
     		// Get all the treatments id's of this report
-        	treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME, reportId).and().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME, TreatmentId).query();
+        	treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportId).and().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME, TreatmentId).query();
         } catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
         }
@@ -299,8 +299,8 @@ public class DatabaseWrapper {
 	public void createTreatmentToReport(TreatmentsToReports treatmentsToReports) {
 		try {
 			// Check if there is no similar row
-			List<TreatmentsToReports> query = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME,
-			                                                                                               treatmentsToReports.getReport().getId()).and().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME,
+			List<TreatmentsToReports> query = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME,
+			                                                                                               treatmentsToReports.getReport().getId()).and().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
 			                                                                                                                                                 treatmentsToReports.getTreatment().getId()).query();
 
 			// if there is no row similar, create one
@@ -337,8 +337,8 @@ public class DatabaseWrapper {
 	public boolean deleteTreatmentsToReportByReportAndTreatmentId(Integer reportId, Integer TreatmentId) {
 		try {
 			Dao<TreatmentsToReports, Integer> treatmentsToReportsDao = helper.getTreatmentsToReportsDao();
-			List<TreatmentsToReports> allTreatmentsToReports = treatmentsToReportsDao.queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME,
-			                                                                                                    reportId).and().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME,
+			List<TreatmentsToReports> allTreatmentsToReports = treatmentsToReportsDao.queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME,
+			                                                                                                    reportId).and().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
 			                                                                                                                       TreatmentId).query();
 			treatmentsToReportsDao.delete(allTreatmentsToReports);
 		} catch (SQLException e) {

@@ -8,14 +8,14 @@ public class TreatmentsToReports {
 	
 	public static final String TABLE_NAME = "treatmentsToReports";
 	public static final String ID_COLUMN_NAME = "id";
-	public static final String REPORT_COLUMN_NAME = "reportId";
-	public static final String TREATMENT_COLUMN_NAME = "treatmentId";
+	public static final String REPORT_ID_COLUMN_NAME = "reportId";
+	public static final String TREATMENT_ID_COLUMN_NAME = "treatmentId";
 	
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)	
 	private int id;
-	@DatabaseField(foreign=true, columnName = REPORT_COLUMN_NAME)
+	@DatabaseField(foreign=true, columnName = REPORT_ID_COLUMN_NAME)
 	private Report report;
-	@DatabaseField(foreign=true, columnName = TREATMENT_COLUMN_NAME)
+	@DatabaseField(foreign=true, columnName = TREATMENT_ID_COLUMN_NAME)
 	private Treatment treatment;
 	
 	public TreatmentsToReports() {
