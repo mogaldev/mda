@@ -22,6 +22,7 @@ public class Report {
 	public static final String REGION_ID_COLUMN_NAME = "regionId";
 	public static final String ID_COLUMN_NAME = "id";
 	public static final String IS_READ_COLUMN_NAME = "isRead";
+	public static final String REPORT_ID_COLUMN_NAME = "reportId";
 
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
 	private int id;

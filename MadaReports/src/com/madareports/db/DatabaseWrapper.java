@@ -51,8 +51,8 @@ public class DatabaseWrapper {
 	public List<Report> getAllReports() {
 		List<Report> reports = null;
 		try {
-			// ownerDao.queryBuilder().orderByRaw("Name COLLATE NOCASE").query();
-			reports = helper.getReportDao().queryForAll();
+			reports = helper.getReportDao().queryBuilder().orderByRaw(Report.REPORT_ID_COLUMN_NAME + " DESC").query();			
+			//reports = helper.getReportDao().queryForAll();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
