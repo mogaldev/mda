@@ -175,6 +175,17 @@ public class DatabaseWrapper {
 		return treatments;
 	}
 	
+	public Region getRegionById(Integer regionId) {
+		Region regionById = null;
+		try {
+	        regionById = helper.getRegionDao().queryForId(regionId);
+        } catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+        }
+		
+		return regionById;
+	}
+	
 	public void createCodeTableRecord(ICodeTable record) {
 		try {
 			String recordClassName = record.getClass().getName();

@@ -13,6 +13,7 @@ import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.db.reports.ReportIllustrator;
+import com.madareports.utils.ApplicationUtils;
 
 @DatabaseTable(tableName = Report.TABLE_NAME)
 public class Report {
@@ -96,7 +97,7 @@ public class Report {
 		result += resources.getString(R.string.address) + ": " + getAddress() + "\n";
 		result += resources.getString(R.string.description) + ": " + getDescription() +
 		          "\n";
-		result += resources.getString(R.string.region) + ": " + getRegion().getRegion() +
+		result += resources.getString(R.string.region) + ": " + DatabaseWrapper.getInstance(context).getRegionById(getRegion().getId()).getRegion() +
 		          "\n";
 		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() +
 		          "\n";
@@ -105,7 +106,7 @@ public class Report {
 		result += resources.getString(R.string.blood_pressure) + ": " +
 		          getMinBloodPressure() + " \\ " + getMaxBloodPressure() + "\n";
 		result += resources.getString(R.string.sugar) + ": " + getSugar() + "\n";
-		result += resources.getString(R.string.notes) + ": " + getNotes() + "\n";
+		result += resources.getString(R.string.notes) + ": " + ApplicationUtils.NVL(getNotes()) + "\n";
 
 		return result;
 	}

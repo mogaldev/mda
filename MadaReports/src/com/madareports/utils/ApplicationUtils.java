@@ -27,4 +27,11 @@ public class ApplicationUtils {
 	    return isActivityFound;
 	}
 
+	public static String NVL(String string) {
+		if(string == null) {
+			return "";
+		}
+		
+		return string;
+	}
 }
