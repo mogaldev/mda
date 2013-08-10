@@ -1,9 +1,9 @@
 package com.madareports.ui.activities.details;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +20,15 @@ import com.madareports.utils.Logger;
 
 public class TreatmentsToReportFragment extends FragmentDetailActivity {
 	
+	private static final Integer ADD = 1;
+	private static final Integer DELETE = 2;
+	
 	// Lists of the Treatments of the currentReport and of the Treatments that are note connected the the currentReport
 	List<Treatment> allCurrentReportTreatments;
 	List<Treatment> allOtherTreatmentsToReports;
 	
 	// Lists of TreatmentsToReports for adding to the DB or deleting from the DB when the user click on the save button
-	List<TreatmentsToReports> treatmentsIdToAdd;
-	List<TreatmentsToReports> treatmentsIdToDelete;
+	SparseIntArray treatmentsIdToAdd;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -39,8 +41,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 	    allOtherTreatmentsToReports = getAllOtherTreatmentsToReports();
 	    
 	    // Initialize the TreatmentsToReports lists
-	    treatmentsIdToAdd = new ArrayList<TreatmentsToReports>();
-	    treatmentsIdToDelete = new ArrayList<TreatmentsToReports>();
+	    treatmentsIdToAdd = new SparseIntArray();
 	}
 	
 	@Override
@@ -96,11 +97,8 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 				// Find the selected Treatment
 				Treatment selectedTreatment = (Treatment) parent.getItemAtPosition(position);
 
-				// Create new row in TREATMENTS_TO_REPORTS table
-				TreatmentsToReports treatmentsToReports = new TreatmentsToReports(
-				        getCurrentReport(), selectedTreatment);
 				// Add the TreatmentsToReports row to the add list
-				treatmentsIdToAdd.add(treatmentsToReports);
+				treatmentsIdToAdd.put(selectedTreatment.getId(), ADD);
 
 				
 				ListView allTreatmentsListView = (ListView) getActivity().findViewById(R.id.all_treatments_list);
@@ -123,9 +121,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 				// Find the selected Treatment
 				Treatment selectedTreatment = (Treatment) parent.getItemAtPosition(position);
 
-				// Find the treatmentToReport row in the DB
-				List<TreatmentsToReports> treatmentsToReportsByReportAndTreatmentId = DatabaseWrapper.getInstance(getActivity()).getTreatmentsToReportsByReportAndTreatmentId(getCurrentReport().getId(),
-				                                                                                                                                                              selectedTreatment.getId());
+				treatmentsIdToAdd.put(selectedTreatment.getId(), DELETE);
 				
 				ListView allTreatmentsListView = (ListView) getActivity().findViewById(R.id.all_treatments_list);
 				ArrayAdapter<Treatment> allTreatmentsListViewAdapter = (ArrayAdapter<Treatment>) allTreatmentsListView.getAdapter();
@@ -135,12 +131,7 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 				// update UI
 				treatmentsOfReportListViewAdapter.remove(selectedTreatment);
 				allTreatmentsListViewAdapter.add(selectedTreatment);
-
-				// Foreach loop because if there are two similar rows by mistake
-				for (TreatmentsToReports currentTreatmentsToReports : treatmentsToReportsByReportAndTreatmentId) {
-					// Add the TreatmentsToReports row to the delete list
-					treatmentsIdToDelete.add(currentTreatmentsToReports);
-				}
+				
 			}
 		};
 	}
@@ -174,9 +165,8 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
 	public void refreshDataWithCurrentReport() {
 	    allCurrentReportTreatments = getAllCurrentReportTreatments();
 	    allOtherTreatmentsToReports = getAllOtherTreatmentsToReports();
-	    treatmentsIdToAdd = new ArrayList<TreatmentsToReports>();
-	    treatmentsIdToDelete = new ArrayList<TreatmentsToReports>();
-	    
+	    treatmentsIdToAdd = new SparseIntArray();
+
 		// Init the listView of all the treatments
 		ListView allTreatmentsListView = (ListView) getActivity().findViewById(R.id.all_treatments_list);
 		final ArrayAdapter<Treatment> allTreatmentsListViewAdapter = getArrayAdapter(allOtherTreatmentsToReports);
@@ -196,13 +186,18 @@ public class TreatmentsToReportFragment extends FragmentDetailActivity {
      * Save the {@link TreatmentsToReports} Rows in the DB
      * This method is called from the {@link DetailsActivity} when the user click on the save button. </br>
      */
-    public void saveTreatments() {
-    	for (TreatmentsToReports currTreatmentsToReports : treatmentsIdToAdd) {
-	        DatabaseWrapper.getInstance(getActivity()).createTreatmentToReport(currTreatmentsToReports);
-        }
-    	
-    	for (TreatmentsToReports currTreatmentsToReports : treatmentsIdToDelete) {
-	        DatabaseWrapper.getInstance(getActivity()).deleteTreatmentToReport(currTreatmentsToReports);
-        }
-    }	
+	public void saveTreatments() {
+		int size = treatmentsIdToAdd.size();
+		DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(getActivity());
+		for (int i = 0; i < size; i++) {
+			int treatmentId = treatmentsIdToAdd.keyAt(i);
+			int state = treatmentsIdToAdd.get(treatmentId);
+			if (state == ADD) {
+				TreatmentsToReports newTreatmentsToReports = new TreatmentsToReports(getCurrentReport(), new Treatment(treatmentId));
+				databaseWrapper.createTreatmentToReport(newTreatmentsToReports);
+			} else if (state == DELETE) {
+				databaseWrapper.deleteTreatmentsToReportByReportAndTreatmentId(getCurrentReport().getId(), treatmentId);
+			}
+		}
+	}	
 }

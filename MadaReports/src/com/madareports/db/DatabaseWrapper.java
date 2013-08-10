@@ -333,6 +333,20 @@ public class DatabaseWrapper {
 		}
 		return true;
 	}
+	
+	public boolean deleteTreatmentsToReportByReportAndTreatmentId(Integer reportId, Integer TreatmentId) {
+		try {
+			Dao<TreatmentsToReports, Integer> treatmentsToReportsDao = helper.getTreatmentsToReportsDao();
+			List<TreatmentsToReports> allTreatmentsToReports = treatmentsToReportsDao.queryBuilder().where().eq(TreatmentsToReports.REPORT_COLUMN_NAME,
+			                                                                                                    reportId).and().eq(TreatmentsToReports.TREATMENT_COLUMN_NAME,
+			                                                                                                                       TreatmentId).query();
+			treatmentsToReportsDao.delete(allTreatmentsToReports);
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+			return false;
+		}
+		return true;
+	}
 
 	// ////////////////////////////
 	// End of Code Tables Functions

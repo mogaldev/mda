@@ -22,6 +22,10 @@ public class Treatment implements ICodeTable {
 	public Treatment(String treatment) {
 		setTreatment(treatment);
 	}
+	
+	public Treatment(int treatmentId) {
+		setId(treatmentId);
+	}
 
 	// Setters & Getters
 	public int getId() {
