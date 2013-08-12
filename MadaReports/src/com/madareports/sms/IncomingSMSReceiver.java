@@ -15,6 +15,8 @@ import com.madareports.utils.NotificationsManager;
 import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
+	
+	
 
 	private void raiseMessage(SmsMessage smsMsg, Context context) {
 		Report report = new Report(context, smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
@@ -29,7 +31,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 				dbWrpr.countUnreadReports());
 		
 		if (!ApplicationUtils.isApplicationInForeground(context)) {
-			NotificationsManager.getInstance(context).raiseNotification(formattedString,
+			NotificationsManager.getInstance(context).raiseSmsReceivedNotification(formattedString,
 			                                                            report.getDescription());
 		}
 	}
