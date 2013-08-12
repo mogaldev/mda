@@ -38,6 +38,32 @@ public class NotificationsManager {
 		this.context = context;
 	}
 
+	private Notification createNotification(boolean nonRemovable, String title, String content, int iconId, Class<?> moveToactvty) {
+
+		// Build notification
+		NotificationCompat.Builder ncBuilder = new NotificationCompat.Builder(context);
+		ncBuilder.setContentTitle(title);
+		ncBuilder.setContentText(content);
+		ncBuilder.setSmallIcon(iconId);
+		ncBuilder.setOngoing(nonRemovable); // no removable notification = true
+
+		if (moveToactvty != null) {
+			// Creates an explicit intent for an Activity in your app
+			Intent resultIntent = new Intent(context, moveToactvty);
+			// creating a pendingIntent
+			// the flags mean that the current intent will be "refreshed" with the extra data
+			resultIntent.setFlags(getNewTaskFlags());
+			PendingIntent resultPendingIntent = PendingIntent.getActivity(context,
+			                                                              0,
+			                                                              resultIntent,
+			                                                              PendingIntent.FLAG_UPDATE_CURRENT);
+
+			ncBuilder.setContentIntent(resultPendingIntent);
+		}
+
+		return ncBuilder.getNotification();
+	}
+
 	private void performNotification(Notification notification, int notificationId) {
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -52,15 +78,6 @@ public class NotificationsManager {
 					| Intent.FLAG_ACTIVITY_NEW_TASK;
 		}
 		return Intent.FLAG_ACTIVITY_NEW_TASK;
-	}
-
-	/**
-	 * Removing the permanent notification that represents the running of the
-	 * application
-	 */
-	public void removeSmsReceivedNotification() {
-		NotificationManager nManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-		nManager.cancel(SMS_NOTIFICATION_ID);
 	}
 
 	/**
@@ -93,30 +110,13 @@ public class NotificationsManager {
 
 	}
 
-	private Notification createNotification(boolean nonRemovable, String title, String content, int iconId, Class<?> moveToactvty) {
-
-		// Build notification
-		NotificationCompat.Builder ncBuilder = new NotificationCompat.Builder(context);
-		ncBuilder.setContentTitle(title);
-		ncBuilder.setContentText(content);
-		ncBuilder.setSmallIcon(iconId);
-		ncBuilder.setOngoing(nonRemovable); // no removable notification = true
-
-		if (moveToactvty != null) {
-			// Creates an explicit intent for an Activity in your app
-			Intent resultIntent = new Intent(context, moveToactvty);
-			// creating a pendingIntent
-			// the flags mean that the current intent will be "refreshed" with the extra data
-			resultIntent.setFlags(getNewTaskFlags());
-			PendingIntent resultPendingIntent = PendingIntent.getActivity(context,
-			                                                              0,
-			                                                              resultIntent,
-			                                                              PendingIntent.FLAG_UPDATE_CURRENT);
-
-			ncBuilder.setContentIntent(resultPendingIntent);
-		}
-
-		return ncBuilder.getNotification();
+	/**
+	 * Removing the permanent notification that represents the running of the
+	 * application
+	 */	
+	public void removeSmsReceivedNotification() {
+		NotificationManager nManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+		nManager.cancel(SMS_NOTIFICATION_ID);
 	}
 
 }
