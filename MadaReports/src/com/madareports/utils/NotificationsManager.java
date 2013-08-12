@@ -1,12 +1,10 @@
 package com.madareports.utils;
 
-import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
 import com.madareports.R;
@@ -51,8 +49,8 @@ public class NotificationsManager {
 			// Creates an explicit intent for an Activity in your app
 			Intent resultIntent = new Intent(context, moveToactvty);
 			// creating a pendingIntent
-			// the flags mean that the current intent will be "refreshed" with the extra data
-			resultIntent.setFlags(getNewTaskFlags());
+			// the flags mean that the current task will be cleared and the task will be started again
+			resultIntent.setFlags(ApplicationUtils.getNewTaskFlags());
 			PendingIntent resultPendingIntent = PendingIntent.getActivity(context,
 			                                                              0,
 			                                                              resultIntent,
@@ -68,16 +66,6 @@ public class NotificationsManager {
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
 		notificationManager.notify(notificationId, notification);
-	}
-
-	// TODO: move this function to BaseActivity
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public int getNewTaskFlags() {
-		if (DeviceInfoUtils.hasHoneycomb()) {
-			return Intent.FLAG_ACTIVITY_CLEAR_TASK
-					| Intent.FLAG_ACTIVITY_NEW_TASK;
-		}
-		return Intent.FLAG_ACTIVITY_NEW_TASK;
 	}
 
 	/**
