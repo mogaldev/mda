@@ -90,6 +90,9 @@
     <string name="sugar">סוכר</string>
     <string name="breath">נשימה</string>
     <string name="blood_pressure">לחץ דם</string>
+    <string name="dialog_title">שנה ערך</string>
+    <string name="positive_button_dialog">אישור</string>
+    <string name="negative_button_dialog">ביטול</string>
     <!-- Treatment To Report Fragment -->
     <string name="all_treatments_in_db">כל הטיפולים</string>
     <string name="current_treatments_to_report">טיפולים שבוצעו</string>

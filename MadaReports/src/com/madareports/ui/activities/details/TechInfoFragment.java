@@ -1,8 +1,12 @@
 package com.madareports.ui.activities.details;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
@@ -54,8 +58,9 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		// set the blood pressure views
 		bloodPressureView = new RangeSeekBar<Integer>(getCurrentReport().getMinBloodPressure(),getCurrentReport().getMaxBloodPressure(), getActivity());
 		RelativeLayout thisLayout = (RelativeLayout) getActivity().findViewById(R.id.bloodPressureLayout);
-		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(250, 75);
+		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(300, 75);
 		params.setMargins(0, 25, 0, 20);
+		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		thisLayout.addView(bloodPressureView, params);
 		bloodPressureValue = (TextView) getActivity().findViewById(R.id.bloodPressureValue);
 		bloodPressureValue.setText(bloodPressureView.getSelectedMinValue() + ", " + bloodPressureView.getSelectedMaxValue());
@@ -64,12 +69,6 @@ public class TechInfoFragment extends FragmentDetailActivity {
 			public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
 				bloodPressureValue.setText(minValue + ", " + maxValue);
 			}});
-		
-
-//        <item name="android:paddingTop">25dp</item>
-//        <item name="android:paddingBottom">20dp</item>
-//        <item name="android:gravity">center</item>
-//        <item name="android:layout_alignParentLeft">true</item>
 	}
 
 	/**
@@ -78,23 +77,76 @@ public class TechInfoFragment extends FragmentDetailActivity {
 	 * @param seekBar {@link SeekBar} to listen to
 	 * @param changingTextView The {@link TextView} that suppose to listen to the {@link SeekBar}
 	 */
-	private void persistSeekBarToTextView(SeekBar seekBar, final TextView changingTextView) {
+	private void persistSeekBarToTextView(final SeekBar seekBar, final TextView changingTextView) {
 		changingTextView.setText(String.valueOf(seekBar.getProgress()));
 		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			
+
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
-			
+			public void onStopTrackingTouch(SeekBar seekBar) {}
+
 			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
-			
+			public void onStartTrackingTouch(SeekBar seekBar) {}
+
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				changingTextView.setText(String.valueOf(progress));
 			}
 		});
+		
+		// Set the onclick listener on the textView to open the dialog
+		changingTextView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				openDialogForTextView(getString(R.string.dialog_title), seekBar);
+			}
+		});
+	}
+	
+	private void openDialogForTextView(String title, final SeekBar seekBarToChange) {
+		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final View formView = inflater.inflate(R.layout.dialog_seekbar, null, false);
+		
+		// Get the SeekBar view from the dialog view
+		final SeekBar dialogSeekBarView = (SeekBar) formView.findViewById(R.id.dialogSeekBarView);
+		dialogSeekBarView.setProgress(seekBarToChange.getProgress());
+		
+		// Get the TextView from the dialog view
+		final TextView dialogTextView = (TextView) formView.findViewById(R.id.dialogTextView);
+		dialogTextView.setText(String.valueOf(dialogSeekBarView.getProgress()));
+		
+		// Set OnSeekBarChange listener to the dialogSeekBarView
+		dialogSeekBarView.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {				
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+				dialogTextView.setText(String.valueOf(progress));
+			}
+		});
+		
+		new AlertDialog.Builder(getActivity())
+		.setView(formView)
+		.setTitle(title)				
+		.setPositiveButton(R.string.positive_button_dialog, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				seekBarToChange.setProgress(dialogSeekBarView.getProgress());
+			}
+		})
+		.setNegativeButton(R.string.negative_button_dialog, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		}).show();
 	}
 
 	@Override

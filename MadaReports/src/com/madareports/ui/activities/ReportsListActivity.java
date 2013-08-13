@@ -18,6 +18,7 @@ import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
+import com.madareports.utils.NotificationsManager;
 
 public class ReportsListActivity extends BaseActivity {
 
@@ -33,7 +34,14 @@ public class ReportsListActivity extends BaseActivity {
 		reportsAdapter = new ReportsListAdapter(this,
 				R.layout.unread_reports_list_item);
 		lv.setAdapter(reportsAdapter);
-
+	}
+	
+	@Override
+	protected void onStart() {
+	    super.onStart();
+	    
+	    // Just remove the SMS Received Notification
+	    NotificationsManager.getInstance(this).removeSmsReceivedNotification();
 	}
 
 	@Override

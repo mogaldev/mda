@@ -52,7 +52,9 @@
             android:text="@string/breath" />
     </RelativeLayout>
 
-    <RelativeLayout android:id="@+id/bloodPressureLayout" style="@style/fragment_tech_info_relative_layout" >
+    <RelativeLayout
+        android:id="@+id/bloodPressureLayout"
+        style="@style/fragment_tech_info_relative_layout" >
 
         <TextView
             android:id="@+id/bloodPressureValue"

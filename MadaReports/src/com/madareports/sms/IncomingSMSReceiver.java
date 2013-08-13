@@ -15,8 +15,6 @@ import com.madareports.utils.NotificationsManager;
 import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
-	
-	
 
 	private void raiseMessage(SmsMessage smsMsg, Context context) {
 		Report report = new Report(context, smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
