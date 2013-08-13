@@ -5,7 +5,7 @@
 	<integer name="min_sugar">0</integer>
 	<integer name="max_sugar">100</integer>
 	<integer name="min_breath">0</integer>
-	<integer name="max_breath">0</integer>
+	<integer name="max_breath">50</integer>
 	<integer name="min_blood_pressure">0</integer>
 	<integer name="max_blood_pressure">200</integer>
 </resources>
