@@ -56,7 +56,7 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		persistSeekBarToTextView(breathView, breathValue);
 		
 		// set the blood pressure views
-		bloodPressureView = new RangeSeekBar<Integer>(getCurrentReport().getMinBloodPressure(),getCurrentReport().getMaxBloodPressure(), getActivity());
+		bloodPressureView = new RangeSeekBar<Integer>(getResources().getInteger(R.integer.min_blood_pressure), getResources().getInteger(R.integer.max_blood_pressure), getActivity());
 		RelativeLayout thisLayout = (RelativeLayout) getActivity().findViewById(R.id.bloodPressureLayout);
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(300, 75);
 		params.setMargins(0, 25, 0, 20);
@@ -98,35 +98,45 @@ public class TechInfoFragment extends FragmentDetailActivity {
 
 			@Override
 			public void onClick(View v) {
-				openDialogForTextView(getString(R.string.dialog_title), seekBar);
+				// Check what is the title that suppose to show up
+				String title = null;
+				switch (seekBar.getId()) {
+					case R.id.pulseView:
+						title = getString(R.string.pulse);
+						break;
+					case R.id.breathView:
+						title = getString(R.string.breath);
+						break;
+					case R.id.sugarView:
+						title = getString(R.string.sugar);
+						break;
+				}
+				
+				// Open the dialog with the correct title
+				openDialogForTextView(title, seekBar);
 			}
 		});
 	}
 	
-	private void openDialogForTextView(String title, final SeekBar seekBarToChange) {
+	private void openDialogForTextView(String title, final SeekBar seekBarFromFragment) {
 		LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		final View formView = inflater.inflate(R.layout.dialog_seekbar, null, false);
 		
 		// Get the SeekBar view from the dialog view
 		final SeekBar dialogSeekBarView = (SeekBar) formView.findViewById(R.id.dialogSeekBarView);
-		dialogSeekBarView.setProgress(seekBarToChange.getProgress());
+		dialogSeekBarView.setMax(seekBarFromFragment.getMax());
+		dialogSeekBarView.setProgress(seekBarFromFragment.getProgress());
 		
 		// Get the TextView from the dialog view
 		final TextView dialogTextView = (TextView) formView.findViewById(R.id.dialogTextView);
 		dialogTextView.setText(String.valueOf(dialogSeekBarView.getProgress()));
 		
 		// Set OnSeekBarChange listener to the dialogSeekBarView
-		dialogSeekBarView.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			
+		dialogSeekBarView.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {			
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {				
-			}
-			
+			public void onStopTrackingTouch(SeekBar seekBar) {}
 			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				
-			}
-			
+			public void onStartTrackingTouch(SeekBar seekBar) {}
 			@Override
 			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				dialogTextView.setText(String.valueOf(progress));
@@ -136,12 +146,12 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		new AlertDialog.Builder(getActivity())
 		.setView(formView)
 		.setTitle(title)				
-		.setPositiveButton(R.string.positive_button_dialog, new DialogInterface.OnClickListener() {
+		.setPositiveButton(R.string.tech_info_fragment_dialog_positive_button, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				seekBarToChange.setProgress(dialogSeekBarView.getProgress());
+				seekBarFromFragment.setProgress(dialogSeekBarView.getProgress());
 			}
 		})
-		.setNegativeButton(R.string.negative_button_dialog, new DialogInterface.OnClickListener() {
+		.setNegativeButton(R.string.tech_info_fragment_dialog_negative_button, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();

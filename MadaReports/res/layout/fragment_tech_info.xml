@@ -9,7 +9,7 @@
         <SeekBar
             android:id="@+id/pulseView"
             style="@style/fragment_tech_info_seekbar"
-            android:max="100" />
+            android:max="@integer/max_pulse" />
 
         <TextView
             android:id="@+id/pulseValue"
@@ -25,7 +25,7 @@
         <SeekBar
             android:id="@+id/sugarView"
             style="@style/fragment_tech_info_seekbar"
-            android:max="100" />
+            android:max="@integer/max_sugar" />
 
         <TextView
             android:id="@+id/sugarValue"
@@ -41,7 +41,7 @@
         <SeekBar
             android:id="@+id/breathView"
             style="@style/fragment_tech_info_seekbar"
-            android:max="100" />
+            android:max="@integer/max_breath" />
 
         <TextView
             android:id="@+id/breathValue"

@@ -16,7 +16,6 @@
         android:id="@+id/dialogTextView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="שגיאה" />
+        android:gravity="center" />
 
 </LinearLayout>
