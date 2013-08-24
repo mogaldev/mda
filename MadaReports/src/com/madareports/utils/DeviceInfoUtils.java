@@ -3,6 +3,7 @@ package com.madareports.utils;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Build;
+import android.util.DisplayMetrics;
 
 public class DeviceInfoUtils {
 
@@ -45,7 +46,30 @@ public class DeviceInfoUtils {
     public static boolean isHoneycombTablet(Context context) {
         return hasHoneycomb() && isTablet(context);
     }
+    
+    /**
+     * Get the Screen Densitity</br>
+     * Check with {@link DisplayMetrics} constants: DENSITY_LOW, DENSITY_MEDIUM or DENSITY_HIGH.
+     * @param context
+     * @return Screen Density of the device
+     */
+    public static float getScreenDensity(Context context) {
+    	DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+    	return metrics.densityDpi;
+    }
 	
+    /**
+     * Get the screen size of the device. </br>
+     * Check with {@link Configuration} constants: SCREENLAYOUT_SIZE_LARGE, SCREENLAYOUT_SIZE_NORMAL or SCREENLAYOUT_SIZE_SMALL
+     * @param context
+     * @return Screen size of the device
+     */
+    public static int getScreenSize(Context context) {
+    	int screenSize = context.getResources().getConfiguration().screenLayout &
+    	        Configuration.SCREENLAYOUT_SIZE_MASK;
+    	
+    	return screenSize;
+    }
     
     // TODO
     /*

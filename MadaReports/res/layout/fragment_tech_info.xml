@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
 
-    <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <SeekBar
-            android:id="@+id/pulseView"
-            style="@style/fragment_tech_info_seekbar"
-            android:max="@integer/max_pulse" />
+        <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
 
-        <TextView
-            android:id="@+id/pulseValue"
-            style="@style/fragment_tech_info_textview_value" />
+            <SeekBar
+                android:id="@+id/pulseView"
+                style="@style/fragment_tech_info_seekbar"
+                android:max="@integer/max_pulse" />
 
-        <TextView
-            style="@style/fragment_tech_info_textview"
-            android:text="@string/pulse" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/pulseValue"
+                style="@style/fragment_tech_info_textview_value" />
 
-    <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
+            <TextView
+                style="@style/fragment_tech_info_textview"
+                android:text="@string/pulse" />
+        </RelativeLayout>
 
-        <SeekBar
-            android:id="@+id/sugarView"
-            style="@style/fragment_tech_info_seekbar"
-            android:max="@integer/max_sugar" />
+        <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
 
-        <TextView
-            android:id="@+id/sugarValue"
-            style="@style/fragment_tech_info_textview_value" />
+            <SeekBar
+                android:id="@+id/sugarView"
+                style="@style/fragment_tech_info_seekbar"
+                android:max="@integer/max_sugar" />
 
-        <TextView
-            style="@style/fragment_tech_info_textview"
-            android:text="@string/sugar" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/sugarValue"
+                style="@style/fragment_tech_info_textview_value" />
 
-    <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
+            <TextView
+                style="@style/fragment_tech_info_textview"
+                android:text="@string/sugar" />
+        </RelativeLayout>
 
-        <SeekBar
-            android:id="@+id/breathView"
-            style="@style/fragment_tech_info_seekbar"
-            android:max="@integer/max_breath" />
+        <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
 
-        <TextView
-            android:id="@+id/breathValue"
-            style="@style/fragment_tech_info_textview_value" />
+            <SeekBar
+                android:id="@+id/breathView"
+                style="@style/fragment_tech_info_seekbar"
+                android:max="@integer/max_breath" />
 
-        <TextView
-            style="@style/fragment_tech_info_textview"
-            android:text="@string/breath" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/breathValue"
+                style="@style/fragment_tech_info_textview_value" />
 
-    <RelativeLayout
-        android:id="@+id/bloodPressureLayout"
-        style="@style/fragment_tech_info_relative_layout" >
+            <TextView
+                style="@style/fragment_tech_info_textview"
+                android:text="@string/breath" />
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/bloodPressureValue"
-            style="@style/fragment_tech_info_textview_value" />
+        <RelativeLayout
+            android:id="@+id/bloodPressureLayout"
+            style="@style/fragment_tech_info_relative_layout" >
 
-        <TextView
-            style="@style/fragment_tech_info_textview"
-            android:text="@string/blood_pressure" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/bloodPressureValue"
+                style="@style/fragment_tech_info_textview_value" />
 
-</LinearLayout>
+            <TextView
+                style="@style/fragment_tech_info_textview"
+                android:text="@string/blood_pressure" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

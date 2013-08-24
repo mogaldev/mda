@@ -101,6 +101,9 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_alignParentLeft">true</item>
     </style>
+    
+    <integer name="blood_pressure_view_width_dimension">300</integer>
+    <integer name="blood_pressure_view_height_dimension">75</integer>
     <!-- End of Tech Info Fragment Style -->
 
 	<!-- Treatments Fragment -->
