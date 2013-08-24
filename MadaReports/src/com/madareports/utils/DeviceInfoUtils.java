@@ -71,6 +71,17 @@ public class DeviceInfoUtils {
     	return screenSize;
     }
     
+    /**
+     * Get the language of the device
+     * @param context
+     * @return 
+     */
+	public static String getDeviceLanguage(Context context) {
+		String displayName = context.getResources().getConfiguration().locale.getLanguage();
+
+		return displayName;
+	}
+    
     // TODO
     /*
      * write methods to check about having camera, vibration option, isOnline, has external sd card etc. 

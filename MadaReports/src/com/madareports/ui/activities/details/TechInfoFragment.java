@@ -1,5 +1,7 @@
 package com.madareports.ui.activities.details;
 
+import java.util.Locale;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,6 +16,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.madareports.R;
+import com.madareports.utils.DeviceInfoUtils;
 import com.madareports.utils.rangeseekbar.RangeSeekBar;
 import com.madareports.utils.rangeseekbar.RangeSeekBar.OnRangeSeekBarChangeListener;
 
@@ -62,7 +65,11 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		        getResources().getInteger(R.integer.blood_pressure_view_width_dimension),
 		        getResources().getInteger(R.integer.blood_pressure_view_height_dimension));
 		params.setMargins(0, 25, 0, 20);
-		params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		if (!DeviceInfoUtils.getDeviceLanguage(getActivity().getApplicationContext()).equals(Locale.ENGLISH)) {
+			params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		} else {
+			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+		}
 		thisLayout.addView(bloodPressureView, params);
 		bloodPressureValue = (TextView) getActivity().findViewById(R.id.bloodPressureValue);
 		bloodPressureValue.setText(bloodPressureView.getSelectedMinValue() + ", " + bloodPressureView.getSelectedMaxValue());
