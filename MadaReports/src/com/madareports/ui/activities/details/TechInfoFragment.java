@@ -65,7 +65,7 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		        getResources().getInteger(R.integer.blood_pressure_view_width_dimension),
 		        getResources().getInteger(R.integer.blood_pressure_view_height_dimension));
 		params.setMargins(0, 25, 0, 20);
-		if (!DeviceInfoUtils.getDeviceLanguage(getActivity().getApplicationContext()).equals(Locale.ENGLISH)) {
+		if (DeviceInfoUtils.getDeviceLanguage(getActivity().getApplicationContext()).equals(Locale.ENGLISH)) {
 			params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		} else {
 			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);

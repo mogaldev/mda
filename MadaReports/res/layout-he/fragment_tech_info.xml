@@ -21,7 +21,8 @@
                 android:id="@+id/pulseValue"
                 style="@style/fragment_tech_info_textview_value"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="false" />
+                android:layout_alignParentRight="false"
+                android:layout_marginLeft="75dp" />
 
             <TextView
                 style="@style/fragment_tech_info_textview"
@@ -43,7 +44,8 @@
                 android:id="@+id/sugarValue"
                 style="@style/fragment_tech_info_textview_value"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="false" />
+                android:layout_alignParentRight="false"
+                android:layout_marginLeft="75dp" />
 
             <TextView
                 style="@style/fragment_tech_info_textview"
@@ -65,7 +67,8 @@
                 android:id="@+id/breathValue"
                 style="@style/fragment_tech_info_textview_value"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="false" />
+                android:layout_alignParentRight="false"
+                android:layout_marginLeft="75dp" />
 
             <TextView
                 style="@style/fragment_tech_info_textview"
@@ -82,7 +85,8 @@
                 android:id="@+id/bloodPressureValue"
                 style="@style/fragment_tech_info_textview_value"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="false" />
+                android:layout_alignParentRight="false"
+                android:layout_marginLeft="75dp" />
 
             <TextView
                 style="@style/fragment_tech_info_textview"
