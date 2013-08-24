@@ -72,6 +72,8 @@
     <string name="description">Description</string>
     <string name="notes">Notes</string>
     <string name="is_reported">Is Reported in the website?</string>
+    <string name="show_original_message">show original message</string>
+    <string name="title_dialog_original_message">original message</string>
     <!-- Tech Info Fragment -->
     <string name="pulse">Pulse</string>
     <string name="sugar">Sugar</string>
