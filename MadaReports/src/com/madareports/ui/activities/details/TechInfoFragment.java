@@ -175,6 +175,8 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		 getCurrentReport().setPulse(pulseView.getProgress());
 		 getCurrentReport().setSugar(sugarView.getProgress());
 		 getCurrentReport().setBreath(breathView.getProgress());
+		 getCurrentReport().setMinBloodPressure(bloodPressureView.getSelectedMinValue());
+		 getCurrentReport().setMaxBloodPressure(bloodPressureView.getSelectedMaxValue());
 	}
 	
 	@Override
@@ -182,6 +184,8 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		 pulseView.setProgress(getCurrentReport().getPulse());
 		 sugarView.setProgress(getCurrentReport().getSugar());
 		 breathView.setProgress(getCurrentReport().getBreath());
+		 bloodPressureView.setSelectedMinValue(getCurrentReport().getMinBloodPressure());
+		 bloodPressureView.setSelectedMaxValue(getCurrentReport().getMaxBloodPressure());
 	}
 
 }
