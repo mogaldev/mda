@@ -5,7 +5,7 @@
     <style name="fragment_general_info_edittext">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">50dp</item>
-        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentRight">true</item>
     </style>
     <!-- End of General Info Fragment Style -->
 
@@ -30,7 +30,7 @@
         <item name="android:layout_width">175dp</item>
         <item name="android:layout_height">75dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentRight">true</item>
     </style>
 
     <integer name="blood_pressure_view_width_dimension">250</integer>

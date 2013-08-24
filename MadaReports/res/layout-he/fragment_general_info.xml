@@ -13,10 +13,14 @@
             <EditText
                 android:id="@+id/reportIdEditText"
                 style="@style/fragment_general_info_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
                 android:inputType="numberSigned" />
 
             <TextView
                 style="@style/fragment_general_info_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
                 android:text="@string/report_id" />
         </RelativeLayout>
 
@@ -25,10 +29,14 @@
             <EditText
                 android:id="@+id/addressEditText"
                 style="@style/fragment_general_info_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
                 android:inputType="text" />
 
             <TextView
                 style="@style/fragment_general_info_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
                 android:text="@string/address" />
         </RelativeLayout>
 
@@ -36,10 +44,14 @@
 
             <Spinner
                 android:id="@+id/regionsSpinner"
-                style="@style/fragment_general_info_spinner" />
+                style="@style/fragment_general_info_spinner"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false" />
 
             <TextView
                 style="@style/fragment_general_info_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
                 android:text="@string/region" />
         </RelativeLayout>
 
@@ -48,10 +60,14 @@
             <EditText
                 android:id="@+id/descriptionEditText"
                 style="@style/fragment_general_info_edittext_big"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
                 android:inputType="textMultiLine" />
 
             <TextView
                 style="@style/fragment_general_info_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
                 android:text="@string/description" />
         </RelativeLayout>
 
@@ -60,10 +76,14 @@
             <EditText
                 android:id="@+id/notesEditText"
                 style="@style/fragment_general_info_edittext_big"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
                 android:inputType="textMultiLine" />
 
             <TextView
                 style="@style/fragment_general_info_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
                 android:text="@string/notes" />
         </RelativeLayout>
 
@@ -71,14 +91,14 @@
             android:id="@+id/isReportedCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="right"
             android:text="@string/is_reported" />
 
         <Button
             android:id="@+id/showOriginalMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="right"
             android:text="@string/show_original_message" />
     </LinearLayout>
 
