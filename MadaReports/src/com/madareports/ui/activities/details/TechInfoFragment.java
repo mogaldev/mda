@@ -60,6 +60,10 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		
 		// set the blood pressure views
 		bloodPressureView = new RangeSeekBar<Integer>(getResources().getInteger(R.integer.min_blood_pressure), getResources().getInteger(R.integer.max_blood_pressure), getActivity());
+		bloodPressureView.setSelectedMinValue(getCurrentReport().getMinBloodPressure());
+		bloodPressureView.setSelectedMaxValue(getCurrentReport().getMaxBloodPressure());
+		
+		// Init the layout of the ploodPressureView
 		RelativeLayout thisLayout = (RelativeLayout) getActivity().findViewById(R.id.bloodPressureLayout);
 		RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 		        getResources().getInteger(R.integer.blood_pressure_view_width_dimension),
@@ -71,6 +75,8 @@ public class TechInfoFragment extends FragmentDetailActivity {
 			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		}
 		thisLayout.addView(bloodPressureView, params);
+
+		// Init the bloodPressureValue view by the bloodPressureView
 		bloodPressureValue = (TextView) getActivity().findViewById(R.id.bloodPressureValue);
 		bloodPressureValue.setText(bloodPressureView.getSelectedMinValue() + ", " + bloodPressureView.getSelectedMaxValue());
 		bloodPressureView.setOnRangeSeekBarChangeListener(new OnRangeSeekBarChangeListener<Integer>() {
