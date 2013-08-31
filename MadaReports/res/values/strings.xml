@@ -3,40 +3,40 @@
 <resources>
 
     <!-- General Application Strings -->
-    <string name="app_name">דיווחי מדא</string>
-    <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
-    <string name="title_activity_detail">פרטי דיווח</string>
-    <string name="title_activity_settings">הגדרות</string>
-    <string name="title_activity_regions">מרחבים</string>
-    <string name="title_activity_treatments">טיפולים</string>
-    <string name="yes">כן</string>
-    <string name="cancel">ביטול</string>
+    <string name="app_name">MDA Reports</string>
+    <string name="notification_d_new_messages">%d new reports</string>
+    <string name="title_activity_detail">Report Details</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_regions">Regions</string>
+    <string name="title_activity_treatments">Treatments</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
     <!-- End of General Application Strings -->
 
 
     <!-- Action Bars -->
-    <string name="action_bars_settings">הגדרות</string>
-    <string name="action_bars_search_view_hint">חיפוש...</string>
-    <string name="action_bars_add">הוספה</string>
-    <string name="action_bars_save">שמור</string>
-    <string name="action_bars_delete">מחיקה</string>
-    <string name="action_bars_search">חפש</string>
-    <string name="action_bars_share">שתף</string>
+    <string name="action_bars_settings">Settings</string>
+    <string name="action_bars_search_view_hint">Search...</string>
+    <string name="action_bars_add">Add</string>
+    <string name="action_bars_save">Save</string>
+    <string name="action_bars_delete">Delete</string>
+    <string name="action_bars_search">Search</string>
+    <string name="action_bars_share">share</string>
     <!-- End of Action Bars -->
 
 
     <!-- Code Tables -->
-    <string name="code_table_dialog_region_title">מרחבים</string>
-    <string name="code_table_dialog_treatment_title">טיפולים</string>
-    <string name="code_table_dialog_edit_positive_button">שמירה</string>
-    <string name="code_table_dialog_add_positive_button">הוספה</string>
-    <string name="code_table_dialog_edeit_success">הרשומה נשמרה</string>
-    <string name="code_table_dialog_add_success">הרשומה נוספה</string>
-    <string name="code_table_dialog_delete_success">הרשומה נמחקה</string>
-    <string name="code_table_dialog_delete_unsuccess">לא ניתן למחוק רשומה</string>
-    <string name="code_table_dialog_options_edit">עריכה</string>
-    <string name="code_table_dialog_options_delete">מחיקה</string>
-    <string name="code_table_deleted_successfuly">נמחק בהצלחה</string>
+    <string name="code_table_dialog_region_title">Regions</string>
+    <string name="code_table_dialog_treatment_title">Treatments</string>
+    <string name="code_table_dialog_edit_positive_button">Save</string>
+    <string name="code_table_dialog_add_positive_button">Add</string>
+    <string name="code_table_dialog_edit_success">Record was saved</string>
+    <string name="code_table_dialog_add_success">Record was added</string>
+    <string name="code_table_dialog_delete_success">Record was deleted</string>
+    <string name="code_table_dialog_delete_unsuccess">Cannot delete this record</string>
+    <string name="code_table_dialog_options_edit">Edit</string>
+    <string name="code_table_dialog_options_delete">Delete</string>
+    <string name="code_table_deleted_successfuly">Deleted Successfully</string>
     <!-- End of Code Tables -->
 
 
@@ -48,54 +48,54 @@
     <string name="prefrences_key_sender_numbers">SENDER_NUMBERS</string>
     <string name="prefrences_key_abort_broadcast">ABORT_BROADCAST</string>
     <!-- Titles -->
-    <string name="prefrences_title_vibrate_enabled">רטט</string>
-    <string name="prefrences_title_sound_enabled">צליל</string>
-    <string name="prefrences_title_ringtone_uri">רינגטון</string>
-    <string name="prefrences_title_regions">מרחבים</string>
-    <string name="prefrences_title_treatments">טיפולים</string>
-    <string name="prefrences_title_abort_broadcast">חסימת הודעה</string>
+    <string name="prefrences_title_vibrate_enabled">Vibrate</string>
+    <string name="prefrences_title_sound_enabled">Sound</string>
+    <string name="prefrences_title_ringtone_uri">Ringtone</string>
+    <string name="prefrences_title_regions">Regions</string>
+    <string name="prefrences_title_treatments">Treatments</string>
+    <string name="prefrences_title_abort_broadcast">Abort SMS</string>
     <!-- Summaries -->
-    <string name="prefrences_summary_vibrate_enabled">האם לבצע רטט בעת קבלת התראה</string>
-    <string name="prefrences_summary_sound_enabled">האם להפעיל את הצלצול הנבחר בעת קבלת התראה</string>
-    <string name="prefrences_summary_ringtone_uri">הצלצול הנבחר בעת קבלת התראה</string>
-    <string name="prefrences_summary_regions">ניהול מרחבים</string>
-    <string name="prefrences_summary_regions">ניהול טיפולים</string>
-    <string name="prefrences_summary_abort_broadcast">האם למנוע מאפליקציות SMS קבלת ההודעה</string>
+    <string name="prefrences_summary_vibrate_enabled">Enable vibrate</string>
+    <string name="prefrences_summary_sound_enabled">Enable sound</string>
+    <string name="prefrences_summary_ringtone_uri">Chosen ringtone</string>
+    <string name="prefrences_summary_regions">Manage Regions</string>
+    <string name="prefrences_summary_treatments">Manage Treatments</string>
+    <string name="prefrences_summary_abort_broadcast">Abort SMS to user</string>
     <!-- Categories -->
     <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
-    <string name="prefrences_category_notifications_title">התראות</string>
+    <string name="prefrences_category_notifications_title">Notifications</string>
     <!-- End of Preferences Settings -->
 
 
     <!-- Details Activity -->
-    <string name="detail_activity_dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
-    <string name="detail_activity_report_saved">הדיווח נשמר</string>
+    <string name="detail_activity_report_saved">Report saved</string>
+    <string name="detail_activity_dialog_delete_are_you_sure">Are you sure you want to delete?</string>
     <!-- Detail Activity Action Bar -->
-    <string name="detail_activity_action_bar_refresh_data">רענן נתונים</string>
+    <string name="detail_activity_action_bar_refresh_data">Refresh Details</string>
     <!-- Tabs Titles -->
-    <string name="fragment_general_info_general_info_tab_title">כללי</string>
-    <string name="fragment_tech_info_title">טכני</string>
-    <string name="fragment_treatments_to_report_title">טיפולים</string>
+    <string name="fragment_general_info_general_info_tab_title">General</string>
+    <string name="fragment_tech_info_title">Technical</string>
+    <string name="fragment_treatments_to_report_title">Treatments</string>
     <!-- General Info Fragment -->
-    <string name="fragment_general_info_address">כתובת</string>
-    <string name="fragment_general_info_report_id">מספר מקרה</string>
-    <string name="fragment_general_info_region">מרחב</string>
-    <string name="fragment_general_info_description">תיאור</string>
-    <string name="fragment_general_info_notes">הערות</string>
-    <string name="fragment_general_info_is_reported">דווח באתר?</string>
-    <string name="fragment_general_info_show_original_message">הראה הודעה מקורית</string>
-    <string name="fragment_general_info_title_dialog_original_message">הודעה מקורית</string>
+    <string name="fragment_general_info_address">Address</string>
+    <string name="fragment_general_info_report_id">Report ID</string>
+    <string name="fragment_general_info_region">Region</string>
+    <string name="fragment_general_info_description">Description</string>
+    <string name="fragment_general_info_notes">Notes</string>
+    <string name="fragment_general_info_is_reported">Is Reported in the website?</string>
+    <string name="fragment_general_info_show_original_message">show original message</string>
+    <string name="fragment_general_info_title_dialog_original_message">original message</string>
     <!-- Tech Info Fragment -->
-    <string name="fragment_tech_info_pulse">דופק</string>
-    <string name="fragment_tech_info_sugar">סוכר</string>
-    <string name="fragment_tech_info_breath">נשימה</string>
-    <string name="fragment_tech_info_blood_pressure">לחץ דם</string>
-    <string name="fragment_tech_info_dialog_title">שנה ערך</string>
-    <string name="fragment_tech_info_dialog_positive_button">אישור</string>
-    <string name="fragment_tech_info_dialog_negative_button">ביטול</string>
+    <string name="fragment_tech_info_pulse">Pulse</string>
+    <string name="fragment_tech_info_sugar">Sugar</string>
+    <string name="fragment_tech_info_breath">Breath</string>
+    <string name="fragment_tech_info_blood_pressure">Blood Pressure</string>
+    <string name="fragment_tech_info_dialog_title">change value</string>
+    <string name="fragment_tech_info_dialog_positive_button">OK</string>
+    <string name="fragment_tech_info_dialog_negative_button">Cancel</string>
     <!-- Treatment To Report Fragment -->
-    <string name="fragment_treatments_to_report_all_treatments_in_db">כל הטיפולים</string>
-    <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו</string>
+    <string name="fragment_treatments_to_report_all_treatments_in_db">All treatments</string>
+    <string name="fragment_treatments_to_report_current_treatments_to_report">Treated</string>
     <!-- End of Details Activity -->
 
 </resources>
