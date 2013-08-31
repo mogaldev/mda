@@ -31,8 +31,7 @@ public class ReportsListActivity extends BaseActivity {
 
 		ListView lv = (ListView) findViewById(R.id.listView);
 
-		reportsAdapter = new ReportsListAdapter(this,
-				R.layout.unread_reports_list_item);
+		reportsAdapter = new ReportsListAdapter(this);
 		lv.setAdapter(reportsAdapter);
 	}
 	
@@ -99,7 +98,7 @@ public class ReportsListActivity extends BaseActivity {
 	private void handleDelete(final Context context) {
 		// show the options in a dialog
 		new AlertDialog.Builder(this)
-				.setMessage(R.string.dialog_delete_are_you_sure)
+				.setMessage(R.string.detail_activity_dialog_delete_are_you_sure)
 				.setPositiveButton(R.string.yes,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int item) {

@@ -3,6 +3,7 @@ package com.madareports.ui.reportslist;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.madareports.R;
@@ -22,31 +24,29 @@ import com.madareports.ui.activities.details.DetailsActivity;
 import com.madareports.utils.Logger;
 
 
-public class ReportsListAdapter extends ArrayAdapter<Report> implements
+public class ReportsListAdapter extends BaseAdapter implements Filterable, 
 		DbChangedNotifier {
 	private String TAG = Logger.makeLogTag(getClass());
+	private Context context;
 	private ArrayList<Report> reportsList;
 	private ArrayList<Report> originalReportsList;
-	private Context context;
+	LayoutInflater mInflater;
 
-	public ReportsListAdapter(Context context, int textViewResourceId,
-			List<Report> reports) {
-		super(context, textViewResourceId);
+	public ReportsListAdapter(Context context, List<Report> reports) {
 		this.context = context;
 		this.reportsList = (ArrayList<Report>) reports;
 		this.originalReportsList = this.reportsList;
+		this.mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
 		DatabaseWrapper.getInstance(context).setDbChangedListener(this);
 	}
 
-	public ReportsListAdapter(Context context, int textViewResourceId) {
-		this(context, textViewResourceId, (ArrayList<Report>) DatabaseWrapper
-				.getInstance(context).getAllReports());
+	public ReportsListAdapter(Context context) {
+		this(context, (ArrayList<Report>) DatabaseWrapper.getInstance(context).getAllReports());
 	}
-
-	@Override
-	public int getCount() {
-		return reportsList.size();
+	
+	public Context getContext() {
+		return this.context;
 	}
 
 	public void resetData() {
@@ -59,31 +59,22 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		// if (convertView != null)
-		// return convertView;
-
 		View itemView = null;
 		try {
 			// get the report that this item represents
 			final Report report = reportsList.get(position);
 
-			// inflate the layout
-			LayoutInflater li = (LayoutInflater) context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
 			// choose the layout to be inflated according to the report
 			// properties
 			if (report.isRead()) {
-				itemView = li.inflate(R.layout.read_reports_list_item, null);
-				setUnreadItemView(itemView, report);
+				itemView = mInflater.inflate(R.layout.read_reports_list_item, null);
+				initItemView(itemView, report);
 			} else { // unread mode
-
-				itemView = li.inflate(R.layout.unread_reports_list_item, null);
-				setUnreadItemView(itemView, report);
+				itemView = mInflater.inflate(R.layout.unread_reports_list_item, null);
+				initItemView(itemView, report);
 			}
 			
 			itemView.setOnClickListener(new OnClickListener() {
-				
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(v.getContext(), DetailsActivity.class);
@@ -99,7 +90,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 	}
 
 	@SuppressLint("SimpleDateFormat")
-	private void setUnreadItemView(View view, Report report) {
+    private void initItemView(View view, Report report) {
 		// initialize the views members
 		TextView tvId = (TextView) view.findViewById(R.id.tvReportId);
 		TextView tvReceivedAt = (TextView) view.findViewById(R.id.tvReceivedAt);
@@ -107,7 +98,7 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 				.findViewById(R.id.tvReportDescription);
 
 		// set the values into the views
-		tvId.setText(report.getReportId() + "#");		
+		tvId.setText(report.getReportId() + "#");
 		tvReceivedAt.setText(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(report.getReceivedAt()));
 		tvDescription.setText(report.getDescription(),
 				TextView.BufferType.SPANNABLE);
@@ -163,9 +154,14 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 	}
 
 	@Override
+	public int getCount() {
+		return reportsList.size();
+	}
+
+	@Override
 	public void DbChanged() {
 		this.originalReportsList = (ArrayList<Report>) DatabaseWrapper
-				.getInstance(context).getAllReports();
+				.getInstance(getContext()).getAllReports();
 		resetData();
 		notifyDataSetChanged();
 	}
@@ -178,4 +174,14 @@ public class ReportsListAdapter extends ArrayAdapter<Report> implements
 		
 		return returnList;
 	}
+
+	@Override
+    public Object getItem(int position) {
+		return this.originalReportsList.get(position);
+    }
+
+	@Override
+    public long getItemId(int position) {
+		return this.originalReportsList.get(position).getId();
+    }
 }

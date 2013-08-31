@@ -28,7 +28,7 @@
                 style="@style/fragment_tech_info_textview"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
-                android:text="@string/pulse" />
+                android:text="@string/fragment_tech_info_pulse" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
@@ -51,7 +51,7 @@
                 style="@style/fragment_tech_info_textview"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
-                android:text="@string/sugar" />
+                android:text="@string/fragment_tech_info_sugar" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
@@ -74,7 +74,7 @@
                 style="@style/fragment_tech_info_textview"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
-                android:text="@string/breath" />
+                android:text="@string/fragment_tech_info_breath" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -92,7 +92,7 @@
                 style="@style/fragment_tech_info_textview"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
-                android:text="@string/blood_pressure" />
+                android:text="@string/fragment_tech_info_blood_pressure" />
         </RelativeLayout>
     </LinearLayout>
 

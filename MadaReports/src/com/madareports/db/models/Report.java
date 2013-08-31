@@ -97,19 +97,19 @@ public class Report {
 		Resources resources = context.getResources();
 
 		result = "#" + getReportId() + " : ";
-		result += resources.getString(R.string.address) + ": " + getAddress() + "\n";
-		result += resources.getString(R.string.description) + ": " + getDescription() +
+		result += resources.getString(R.string.fragment_general_info_address) + ": " + getAddress() + "\n";
+		result += resources.getString(R.string.fragment_general_info_description) + ": " + getDescription() +
 		          "\n";
-		result += resources.getString(R.string.region) + ": " + DatabaseWrapper.getInstance(context).getRegionById(getRegion().getId()).getRegion() +
+		result += resources.getString(R.string.fragment_general_info_region) + ": " + DatabaseWrapper.getInstance(context).getRegionById(getRegion().getId()).getRegion() +
 		          "\n";
 		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() +
 		          "\n";
 		// technical details
-		result += resources.getString(R.string.pulse) + ": " + getPulse() + "\n";
-		result += resources.getString(R.string.blood_pressure) + ": " +
+		result += resources.getString(R.string.fragment_tech_info_pulse) + ": " + getPulse() + "\n";
+		result += resources.getString(R.string.fragment_tech_info_blood_pressure) + ": " +
 		          getMinBloodPressure() + " \\ " + getMaxBloodPressure() + "\n";
-		result += resources.getString(R.string.sugar) + ": " + getSugar() + "\n";
-		result += resources.getString(R.string.notes) + ": " + getNotes() + "\n";
+		result += resources.getString(R.string.fragment_tech_info_sugar) + ": " + getSugar() + "\n";
+		result += resources.getString(R.string.fragment_general_info_notes) + ": " + getNotes() + "\n";
 
 		return result;
 	}

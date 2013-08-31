@@ -7,22 +7,22 @@
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="0"
         android:showAsAction="always|collapseActionView"
-        android:title="@string/search"/>
+        android:title="@string/action_bars_search"/>
     <item
         android:id="@+id/reportslist_activity_menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/settings"/>
+        android:title="@string/action_bars_settings"/>
     <item
         android:id="@+id/reportslist_activity_menu_delete_all"
         android:icon="@android:drawable/ic_menu_delete"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/delete"/>
+        android:title="@string/action_bars_delete"/>
     <item
         android:id="@+id/reportslist_activity_menu_share"
         android:actionProviderClass="com.actionbarsherlock.widget.ShareActionProvider"
         android:icon="@android:drawable/ic_menu_share"
         android:showAsAction="ifRoom"
-        android:title="@string/share"/>
+        android:title="@string/action_bars_share"/>
 
 </menu>

@@ -48,7 +48,7 @@ public class DetailsActivity extends BaseActivity {
 		 * Init all the tabs in the DetailActivity
 		 */
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
-		treatmentsTab.setText(getString(R.string.treatments));
+		treatmentsTab.setText(getString(R.string.fragment_treatments_to_report_title));
 		treatmentsTab
 				.setTabListener(new TabListener<TreatmentsToReportFragment>(
 						this, TreatmentsToReportFragment.class.getName(),
@@ -56,13 +56,13 @@ public class DetailsActivity extends BaseActivity {
 		supportActionBar.addTab(treatmentsTab);
 
 		ActionBar.Tab techInfoTab = supportActionBar.newTab();
-		techInfoTab.setText(getString(R.string.tech_info));
+		techInfoTab.setText(getString(R.string.fragment_tech_info_title));
 		techInfoTab.setTabListener(new TabListener<TechInfoFragment>(this,
 				TechInfoFragment.class.getName(), TechInfoFragment.class));
 		supportActionBar.addTab(techInfoTab);
 
 		ActionBar.Tab generalInfotab = supportActionBar.newTab();
-		generalInfotab.setText(getString(R.string.general_info));
+		generalInfotab.setText(getString(R.string.fragment_general_info_general_info_tab_title));
 		generalInfotab.setTabListener(new TabListener<GeneralInfoFragment>(
 				this, GeneralInfoFragment.class.getName(),
 				GeneralInfoFragment.class));
@@ -135,7 +135,7 @@ public class DetailsActivity extends BaseActivity {
 			DatabaseWrapper.getInstance(this).updateReport(getCurrentReport());
 
 			// Make Toast to the user
-			Toast.makeText(this, getString(R.string.report_saved),
+			Toast.makeText(this, getString(R.string.detail_activity_report_saved),
 					Toast.LENGTH_SHORT).show();
 			return true;
 		case R.id.detail_activity_menu_sync:
@@ -166,7 +166,7 @@ public class DetailsActivity extends BaseActivity {
 	private void handleDelete(final Context context) {
 		// show the options in a dialog
 		new AlertDialog.Builder(this)
-				.setMessage(R.string.dialog_delete_are_you_sure)
+				.setMessage(R.string.detail_activity_dialog_delete_are_you_sure)
 				.setPositiveButton(R.string.yes,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int item) {

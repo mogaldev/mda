@@ -105,7 +105,7 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		originalMessageTextView.setText(getCurrentReport().getOriginalMessage());
 		
 		// the alert dialog
-		new AlertDialog.Builder(context).setView(originalMessageDialogView).setTitle(getString(R.string.title_dialog_original_message)).show();
+		new AlertDialog.Builder(context).setView(originalMessageDialogView).setTitle(getString(R.string.fragment_general_info_title_dialog_original_message)).show();
 	}
 
 	@Override

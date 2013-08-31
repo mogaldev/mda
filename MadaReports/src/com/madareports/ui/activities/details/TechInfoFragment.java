@@ -119,13 +119,13 @@ public class TechInfoFragment extends FragmentDetailActivity {
 				String title = null;
 				switch (seekBar.getId()) {
 					case R.id.pulseView:
-						title = getString(R.string.pulse);
+						title = getString(R.string.fragment_tech_info_pulse);
 						break;
 					case R.id.breathView:
-						title = getString(R.string.breath);
+						title = getString(R.string.fragment_tech_info_breath);
 						break;
 					case R.id.sugarView:
-						title = getString(R.string.sugar);
+						title = getString(R.string.fragment_tech_info_sugar);
 						break;
 				}
 				
@@ -163,12 +163,12 @@ public class TechInfoFragment extends FragmentDetailActivity {
 		new AlertDialog.Builder(getActivity())
 		.setView(formView)
 		.setTitle(title)				
-		.setPositiveButton(R.string.tech_info_fragment_dialog_positive_button, new DialogInterface.OnClickListener() {
+		.setPositiveButton(R.string.fragment_tech_info_dialog_positive_button, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				seekBarFromFragment.setProgress(dialogSeekBarView.getProgress());
 			}
 		})
-		.setNegativeButton(R.string.tech_info_fragment_dialog_negative_button, new DialogInterface.OnClickListener() {
+		.setNegativeButton(R.string.fragment_tech_info_dialog_negative_button, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();

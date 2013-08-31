@@ -15,13 +15,13 @@
 
 
     <!-- Action Bars -->
-    <string name="settings">הגדרות</string>
-    <string name="search_view_hint">חיפוש...</string>
-    <string name="add">הוספה</string>
-    <string name="save">שמור</string>
-    <string name="delete">מחיקה</string>
-    <string name="search">חפש</string>
-    <string name="share">שתף</string>
+    <string name="action_bars_settings">הגדרות</string>
+    <string name="action_bars_search_view_hint">חיפוש...</string>
+    <string name="action_bars_add">הוספה</string>
+    <string name="action_bars_save">שמור</string>
+    <string name="action_bars_delete">מחיקה</string>
+    <string name="action_bars_search">חפש</string>
+    <string name="action_bars_share">שתף</string>
     <!-- End of Action Bars -->
 
 
@@ -68,34 +68,34 @@
 
 
     <!-- Details Activity -->
-    <string name="dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
-    <string name="report_saved">הדיווח נשמר</string>
+    <string name="detail_activity_dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
+    <string name="detail_activity_report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
-    <string name="refresh_data">רענן נתונים</string>
+    <string name="detail_activity_action_bar_refresh_data">רענן נתונים</string>
     <!-- Tabs Titles -->
-    <string name="general_info">כללי</string>
-    <string name="tech_info">טכני</string>
-    <string name="treatments">טיפולים</string>
+    <string name="fragment_general_info_general_info_tab_title">כללי</string>
+    <string name="fragment_tech_info_title">טכני</string>
+    <string name="fragment_treatments_to_report_title">טיפולים</string>
     <!-- General Info Fragment -->
-    <string name="address">כתובת</string>
-    <string name="report_id">מספר מקרה</string>
-    <string name="region">מרחב</string>
-    <string name="description">תיאור</string>
-    <string name="notes">הערות</string>
-    <string name="is_reported">דווח באתר?</string>
-    <string name="show_original_message">הראה הודעה מקורית</string>
-    <string name="title_dialog_original_message">הודעה מקורית</string>
+    <string name="fragment_general_info_address">כתובת</string>
+    <string name="fragment_general_info_report_id">מספר מקרה</string>
+    <string name="fragment_general_info_region">מרחב</string>
+    <string name="fragment_general_info_description">תיאור</string>
+    <string name="fragment_general_info_notes">הערות</string>
+    <string name="fragment_general_info_is_reported">דווח באתר?</string>
+    <string name="fragment_general_info_show_original_message">הראה הודעה מקורית</string>
+    <string name="fragment_general_info_title_dialog_original_message">הודעה מקורית</string>
     <!-- Tech Info Fragment -->
-    <string name="pulse">דופק</string>
-    <string name="sugar">סוכר</string>
-    <string name="breath">נשימה</string>
-    <string name="blood_pressure">לחץ דם</string>
-    <string name="dialog_title">שנה ערך</string>
-    <string name="tech_info_fragment_dialog_positive_button">אישור</string>
-    <string name="tech_info_fragment_dialog_negative_button">ביטול</string>
+    <string name="fragment_tech_info_pulse">דופק</string>
+    <string name="fragment_tech_info_sugar">סוכר</string>
+    <string name="fragment_tech_info_breath">נשימה</string>
+    <string name="fragment_tech_info_blood_pressure">לחץ דם</string>
+    <string name="fragment_tech_info_dialog_title">שנה ערך</string>
+    <string name="fragment_tech_info_dialog_positive_button">אישור</string>
+    <string name="fragment_tech_info_dialog_negative_button">ביטול</string>
     <!-- Treatment To Report Fragment -->
-    <string name="all_treatments_in_db">כל הטיפולים</string>
-    <string name="current_treatments_to_report">טיפולים שבוצעו</string>
+    <string name="fragment_treatments_to_report_all_treatments_in_db">כל הטיפולים</string>
+    <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו</string>
     <!-- End of Details Activity -->
 
 </resources>

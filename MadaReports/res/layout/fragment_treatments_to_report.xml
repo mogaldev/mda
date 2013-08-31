@@ -12,7 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="20dp"
-        android:text="@string/all_treatments_in_db" />
+        android:text="@string/fragment_treatments_to_report_all_treatments_in_db" />
 
     <TextView
         android:id="@+id/treatment_of_report_textview"
@@ -21,7 +21,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="20dp"
-        android:text="@string/current_treatments_to_report" />
+        android:text="@string/fragment_treatments_to_report_current_treatments_to_report" />
 
     <ListView
         android:id="@+id/all_treatments_list"

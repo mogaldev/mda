@@ -5,22 +5,22 @@
         android:id="@+id/detail_activity_menu_save"
         android:icon="@android:drawable/ic_menu_save"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/save"/>
+        android:title="@string/action_bars_save"/>
       <item
         android:id="@+id/detail_activity_menu_delete"
         android:icon="@android:drawable/ic_menu_delete"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/delete"/>
+        android:title="@string/action_bars_delete"/>
     <item
         android:id="@+id/detail_activity_menu_sync"
         android:icon="@drawable/ic_menu_refresh"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/refresh_data"/>
+        android:title="@string/detail_activity_action_bar_refresh_data"/>
     <item
         android:id="@+id/detail_activity_menu_share"
         android:actionProviderClass="com.actionbarsherlock.widget.ShareActionProvider"
         android:icon="@android:drawable/ic_menu_share"
         android:showAsAction="ifRoom"
-        android:title="@string/share"/>
+        android:title="@string/action_bars_share"/>
 
 </menu>

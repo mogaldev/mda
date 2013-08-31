@@ -5,6 +5,6 @@
         android:id="@+id/codetable_activity_menu_add"
         android:icon="@android:drawable/ic_menu_add"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/settings"/>  
+        android:title="@string/action_bars_settings"/>  
 
 </menu>
