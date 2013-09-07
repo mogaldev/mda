@@ -101,8 +101,16 @@ public class SharedPreferenceAdapter {
         return this.readBoolean(getStringFromResources(id));
     }
 
+    public boolean readBoolean(int id, boolean defValue) {
+        return this.readBoolean(getStringFromResources(id), defValue);
+    }
+
     public boolean readBoolean(String key) {
         return getSharedPreferences().getBoolean(key, true);
+    }
+
+    public boolean readBoolean(String key, boolean defValue) {
+        return getSharedPreferences().getBoolean(key, defValue);
     }
 
     // Reading & Writing integer

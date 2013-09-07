@@ -43,18 +43,19 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTable(connectionSource, Region.class);
 			TableUtils.createTable(connectionSource, Treatment.class);
 			TableUtils.createTable(connectionSource, TreatmentsToReports.class);
-			
-			
+
 			// Set some Regions for debugging
 			getRegionDao().create(new Region("מרכז"));
 			getRegionDao().create(new Region("צפון"));
 			getRegionDao().create(new Region("דרום"));
 
 			// Set some Treatments for debugging
-			getTreatmentDao().create(new Treatment("חית עין"));
-			getTreatmentDao().create(new Treatment("הנשמה"));
-			getTreatmentDao().create(new Treatment("טיפול 10,000"));
-			
+			/*
+			 * getTreatmentDao().create(new Treatment("חית עין"));
+			 * getTreatmentDao().create(new Treatment("הנשמה"));
+			 * getTreatmentDao().create(new Treatment("טיפול 10,000"));
+			 */
+
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			throw new RuntimeException(e);
@@ -72,16 +73,6 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTableIfNotExists(connectionSource, Region.class);
 			TableUtils.createTableIfNotExists(connectionSource, Treatment.class);
 			TableUtils.createTableIfNotExists(connectionSource, TreatmentsToReports.class);
-			
-//			List<String> allSql = new ArrayList<String>();
-//			switch (oldVersion) {
-//			case 1:
-//				// allSql.add("alter table AdData add column `new_col` VARCHAR");
-//				// allSql.add("alter table AdData add column `new_col2` VARCHAR");
-//			}
-//			for (String sql : allSql) {
-//				db.execSQL(sql);
-//			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			throw new RuntimeException(e);
@@ -112,7 +103,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 		}
 		return regionsDao;
 	}
-	
+
 	public Dao<Treatment, Integer> getTreatmentDao() {
 		if (treatmentDao == null) {
 			try {

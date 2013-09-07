@@ -11,12 +11,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Treatment;
 import com.madareports.db.models.TreatmentsToReports;
-import com.madareports.utils.Logger;
 
 public class TreatmentsToReportFragment extends FragmentDetailActivity {
 	

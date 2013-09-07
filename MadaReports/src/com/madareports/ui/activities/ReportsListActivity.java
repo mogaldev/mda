@@ -18,29 +18,31 @@ import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.madareports.ui.reportslist.ReportsListAdapter;
+import com.madareports.utils.DeviceInfoUtils;
 import com.madareports.utils.NotificationsManager;
 
 public class ReportsListActivity extends BaseActivity {
 
 	private ReportsListAdapter reportsAdapter;
+	ListView listView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_reports_list_view);
-
-		ListView lv = (ListView) findViewById(R.id.listView);
-
-		reportsAdapter = new ReportsListAdapter(this);
-		lv.setAdapter(reportsAdapter);
+		setContentView(R.layout.activity_reports_list_view);		
+		writeLongTimeMessage(String.valueOf(DeviceInfoUtils.getScreenSize(this)));
+		listView = (ListView) findViewById(R.id.listView);
 	}
-	
+
 	@Override
 	protected void onStart() {
-	    super.onStart();
-	    
-	    // Just remove the SMS Received Notification
-	    NotificationsManager.getInstance(this).removeSmsReceivedNotification();
+		super.onStart();
+		
+		reportsAdapter = new ReportsListAdapter(this);
+		listView.setAdapter(reportsAdapter);
+
+		// Just remove the SMS Received Notification
+		NotificationsManager.getInstance(this).removeSmsReceivedNotification();
 	}
 
 	@Override
@@ -48,9 +50,13 @@ public class ReportsListActivity extends BaseActivity {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.reportslist_activity_action_bar, menu);
 
-		/*
-		 * Initializing the search action view
-		 */
+		// settings doesnt supported on android devices preior to gingerbread so
+		// hide it
+		if (!DeviceInfoUtils.hasGingerbread()) {
+			menu.findItem(R.id.reportslist_activity_menu_settings).setVisible(false);
+		}
+
+		// initializing the search action view
 		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
 		EditText txt = (EditText) item.getActionView();
 

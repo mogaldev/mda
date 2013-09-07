@@ -75,7 +75,7 @@
     <string name="fragment_general_info_description">תיאור</string>
     <string name="fragment_general_info_notes">הערות</string>
     <string name="fragment_general_info_is_reported">דווח באתר?</string>
-    <string name="fragment_general_info_show_original_message">הראה הודעה מקורית</string>
+    <string name="fragment_general_info_show_original_message">הצג הודעה מקורית</string>
     <string name="fragment_general_info_title_dialog_original_message">הודעה מקורית</string>
     <!-- Tech Info Fragment -->
     <string name="fragment_tech_info_pulse">דופק</string>
@@ -86,8 +86,8 @@
     <string name="fragment_tech_info_dialog_positive_button">אישור</string>
     <string name="fragment_tech_info_dialog_negative_button">ביטול</string>
     <!-- Treatment To Report Fragment -->
-    <string name="fragment_treatments_to_report_all_treatments_in_db">All treatments</string>
-    <string name="fragment_treatments_to_report_current_treatments_to_report">Performed treatments</string>
+    <string name="fragment_treatments_to_report_all_treatments_in_db">רשימת טיפולים</string>
+    <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו באירוע</string>
     <!-- End of Details Activity -->
 
 </resources>

@@ -45,7 +45,8 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	boolean isRelevantSms(SmsMessage smsMsg) {
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
-		 return ReportAnalyzer.isRelevantMessage(smsMsg.getMessageBody());//return true;
+		// return true;
+		return ReportAnalyzer.isRelevantMessage(smsMsg.getMessageBody());
 	}
 
 	/**

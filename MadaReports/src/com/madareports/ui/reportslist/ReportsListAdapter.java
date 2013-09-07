@@ -42,7 +42,7 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 	}
 
 	public ReportsListAdapter(Context context) {
-		this(context, (ArrayList<Report>) DatabaseWrapper.getInstance(context).getAllReports());
+		this(context, DatabaseWrapper.getInstance(context).getAllReports());
 	}
 	
 	public Context getContext() {

@@ -12,7 +12,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:contentDescription="TODO"
-        android:src="@drawable/ic_launcher_gray" />
+        android:src="@drawable/ic_report_read" />
 
     <TextView
         android:id="@+id/tvReportDescription"

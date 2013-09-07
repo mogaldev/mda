@@ -31,7 +31,7 @@
                 style="@style/fragment_general_info_edittext"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="false"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
 
             <TextView
                 style="@style/fragment_general_info_textview"
@@ -96,9 +96,10 @@
 
         <Button
             android:id="@+id/showOriginalMessageButton"
+            style="@style/btnStyleOrange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="center"
             android:text="@string/fragment_general_info_show_original_message" />
     </LinearLayout>
 

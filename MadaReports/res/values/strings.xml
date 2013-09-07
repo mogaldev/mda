@@ -21,7 +21,7 @@
     <string name="action_bars_save">Save</string>
     <string name="action_bars_delete">Delete</string>
     <string name="action_bars_search">Search</string>
-    <string name="action_bars_share">share</string>
+    <string name="action_bars_share">Share</string>
     <!-- End of Action Bars -->
 
 
@@ -83,8 +83,8 @@
     <string name="fragment_general_info_description">Description</string>
     <string name="fragment_general_info_notes">Notes</string>
     <string name="fragment_general_info_is_reported">Is Reported in the website?</string>
-    <string name="fragment_general_info_show_original_message">show original message</string>
-    <string name="fragment_general_info_title_dialog_original_message">original message</string>
+    <string name="fragment_general_info_show_original_message">Show original message</string>
+    <string name="fragment_general_info_title_dialog_original_message">Original message</string>
     <!-- Tech Info Fragment -->
     <string name="fragment_tech_info_pulse">Pulse</string>
     <string name="fragment_tech_info_sugar">Sugar</string>

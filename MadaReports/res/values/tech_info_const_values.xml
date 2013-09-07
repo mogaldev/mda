@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<integer name="min_pulse">0</integer>
-	<integer name="max_pulse">220</integer>
-	<integer name="min_sugar">0</integer>
-	<integer name="max_sugar">100</integer>
+	<integer name="min_pulse">50</integer>
+	<integer name="max_pulse">130</integer>
+	<integer name="min_sugar">80</integer>
+	<integer name="max_sugar">130</integer>
 	<integer name="min_breath">0</integer>
-	<integer name="max_breath">50</integer>
-	<integer name="min_blood_pressure">0</integer>
-	<integer name="max_blood_pressure">200</integer>
+	<integer name="max_breath">60</integer>
+	<integer name="min_blood_pressure">50</integer>
+	<integer name="max_blood_pressure">190</integer>
 </resources>

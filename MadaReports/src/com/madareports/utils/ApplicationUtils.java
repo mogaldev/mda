@@ -8,6 +8,7 @@ import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.TypedValue;
 
 public class ApplicationUtils {
 	
@@ -54,5 +55,15 @@ public class ApplicationUtils {
 					| Intent.FLAG_ACTIVITY_NEW_TASK;
 		}
 		return Intent.FLAG_ACTIVITY_NEW_TASK;
+	}
+	
+	/**
+	 * Get dpi value from pixels.
+	 * @param pixels 
+	 * @param context
+	 * @return
+	 */
+	public static int getDpiFromInteger(int pixels, Context context) {
+		return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, pixels, context.getResources().getDisplayMetrics());		
 	}
 }

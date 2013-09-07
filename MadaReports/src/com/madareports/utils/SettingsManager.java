@@ -141,7 +141,7 @@ public class SettingsManager {
 	 * @return true if should abort, otherwise false
 	 */
 	public boolean getAbortBroadcast() {
-		return getAdapterInstance().readBoolean(R.string.prefrences_key_abort_broadcast);
+		return getAdapterInstance().readBoolean(R.string.prefrences_key_abort_broadcast, false);
 	}
 
 }

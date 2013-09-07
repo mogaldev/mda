@@ -23,7 +23,6 @@
     </style>
 
     <style name="fragment_tech_info_seekbar">
-
         <!-- Important! keep the paddingTop and paddingBottom because without it the SeekBar is distorted -->
         <item name="android:paddingTop">25dp</item>
         <item name="android:paddingBottom">20dp</item>
@@ -32,8 +31,9 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <integer name="blood_pressure_view_width_dimension">250</integer>
+    <integer name="blood_pressure_view_width_dimension">175</integer>
     <integer name="blood_pressure_view_height_dimension">75</integer>
+    <dimen name="blood_pressure_view_height_dimension_dialog">80dp</dimen>
     <!-- End of Tech Info Fragment Style -->
 
 </resources>

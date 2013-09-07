@@ -74,26 +74,26 @@ public class NotificationsManager {
 	public void raiseSmsReceivedNotification(String title, String description) {
 
 		Notification notification = createNotification(true, title, description,
-		                                               R.drawable.ic_launcher,
+		                                               R.drawable.ic_report_unread,
 		                                               ReportsListActivity.class);
 
 		// Hide the notification after its selected
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 
-		// TODO: check in the settings weather to make sound and vibration or
-		// not
-		// treat the sound and vibration
-		/*
-		 * SettingsManager sm = SettingsManager.getInstance(context);
-		 * android.util.Log.e("isSoundEnabled", "" + sm.isSoundnabled()); if
-		 * (sm.isSoundnabled()) { notification.sound =
-		 * SettingsManager.getInstance(context) .getRingtoneUri(); } if
-		 * (sm.isVibrateEnabled()) { Vibrator vibrator = (Vibrator) context
-		 * .getSystemService(Context.VIBRATOR_SERVICE); vibrator.vibrate(500);
-		 * // long[] pattern = {0L,100L,250L,1000L,250L,500L}; //
-		 * vibrator.vibrate(pattern,2); }
-		 */
 
+		// treat the sound and vibration
+		SettingsManager settingsManager = SettingsManager.getInstance(context);
+		if (settingsManager.isSoundEnabled()) {
+			notification.sound = settingsManager.getRingtoneUri();
+		}
+		
+		if (settingsManager.isVibrateEnabled()) {
+			 android.os.Vibrator vibrator = (android.os.Vibrator) context
+	                    .getSystemService(Context.VIBRATOR_SERVICE);
+	            vibrator.vibrate(500);
+			//notification.vibrate = new long[]{200, 100, 500};
+		}
+		 
 		performNotification(notification, SMS_NOTIFICATION_ID);
 
 	}
