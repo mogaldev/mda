@@ -16,8 +16,8 @@ import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
 
-	private void raiseMessage(SmsMessage smsMsg, Context context) {
-		Report report = new Report(context, smsMsg.getMessageBody(), smsMsg.getTimestampMillis());
+	private void raiseMessage(String smsMessageBody, long timestampMillies, Context context) {
+		Report report = new Report(context, smsMessageBody, timestampMillies);
 
 		// add the report to the database
 		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
@@ -42,11 +42,11 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 * @return True if the message is relevant and should be treated, False
 	 *         otherwise
 	 */
-	boolean isRelevantSms(SmsMessage smsMsg) {
+	boolean isRelevantSms(String smsMessgeBody) {
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
 		// return true;
-		return ReportAnalyzer.isRelevantMessage(smsMsg.getMessageBody());
+		return ReportAnalyzer.isRelevantMessage(smsMessgeBody);		
 	}
 
 	/**
@@ -65,16 +65,20 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 				for (int i = 0; i < pdus.length; i++)
 					messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
 
+				StringBuilder messageBodyBuilder = new StringBuilder();
+				
 				// iterate the SMS messages that was received
 				for (SmsMessage message : messages) {
+					messageBodyBuilder.append(message.getMessageBody());
+				}
+				
+				String messageBody = messageBodyBuilder.toString();
+				// check if the message is relevant and pass it on
+				if (isRelevantSms(messageBody)) {
+					raiseMessage(messageBody, messages[0].getTimestampMillis(), context);
 
-					// check if the message is relevant and pass it on
-					if (isRelevantSms(message)) {
-						raiseMessage(message, context);
-
-						if (SettingsManager.getInstance(context).getAbortBroadcast()) {
-							abortBroadcast();
-						}
+					if (SettingsManager.getInstance(context).getAbortBroadcast()) {
+						abortBroadcast();
 					}
 				}
 			}

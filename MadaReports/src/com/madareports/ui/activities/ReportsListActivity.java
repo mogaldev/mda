@@ -29,8 +29,7 @@ public class ReportsListActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_reports_list_view);		
-		writeLongTimeMessage(String.valueOf(DeviceInfoUtils.getScreenSize(this)));
+		setContentView(R.layout.activity_reports_list_view);
 		listView = (ListView) findViewById(R.id.listView);
 	}
 
