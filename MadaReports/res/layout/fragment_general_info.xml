@@ -9,70 +9,62 @@
         android:orientation="vertical" >
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
             <EditText
                 android:id="@+id/reportIdEditText"
                 style="@style/fragment_general_info_edittext"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="numberSigned" />
-
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_report_id" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
             <EditText
                 android:id="@+id/addressEditText"
                 style="@style/fragment_general_info_edittext"
-                android:layout_height="75dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
-
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_address" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
             <Spinner
                 android:id="@+id/regionsSpinner"
                 style="@style/fragment_general_info_spinner"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true" />
-
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_region" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
             <EditText
                 android:id="@+id/descriptionEditText"
                 style="@style/fragment_general_info_edittext_big"
+                android:layout_height="150dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
-
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_description" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
             <EditText
                 android:id="@+id/notesEditText"
                 style="@style/fragment_general_info_edittext_big"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
+                android:layout_height="75dp"
                 android:inputType="textMultiLine" />
-
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_notes" />

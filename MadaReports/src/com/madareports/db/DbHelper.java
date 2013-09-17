@@ -8,6 +8,7 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.madareports.R;
 import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.db.models.Treatment;
@@ -17,6 +18,8 @@ import com.madareports.utils.Logger;
 public class DbHelper extends OrmLiteSqliteOpenHelper {
 	private String TAG = Logger.makeLogTag(getClass());
 
+	private Context context;
+	
 	// name of the database file for your application
 	private static final String DATABASE_NAME = "MadaReportsDB.sqlite";
 
@@ -32,6 +35,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
 	public DbHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		this.context = context; 
 	}
 
 	@Override
@@ -49,12 +53,11 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 			getRegionDao().create(new Region("צפון"));
 			getRegionDao().create(new Region("דרום"));
 
-			// Set some Treatments for debugging
-			/*
-			 * getTreatmentDao().create(new Treatment("חית עין"));
-			 * getTreatmentDao().create(new Treatment("הנשמה"));
-			 * getTreatmentDao().create(new Treatment("טיפול 10,000"));
-			 */
+			// Set some default treatments
+			String[] defaultTreatments = this.context.getResources().getStringArray(R.array.default_treatments);
+			for (String treatment : defaultTreatments) {
+				getTreatmentDao().create(new Treatment(treatment));
+			}
 
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());

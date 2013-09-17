@@ -12,7 +12,6 @@ import com.j256.ormlite.table.DatabaseTable;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.reports.ReportAnalyzer;
-import com.madareports.db.reports.ReportIllustrator;
 import com.madareports.utils.ApplicationUtils;
 
 @DatabaseTable(tableName = Report.TABLE_NAME)
@@ -58,7 +57,7 @@ public class Report {
 
 	public Report(Context ctx, String messageBody, long timesptamp) {
 		// TODO: currently simulate the description manually
-		messageBody = new ReportIllustrator().getFakeReport();
+		//messageBody = new ReportIllustrator().getFakeReport();
 		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(messageBody);
 
 		// set info of the message in the Report object

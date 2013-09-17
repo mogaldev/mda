@@ -98,4 +98,22 @@
     <string name="fragment_treatments_to_report_current_treatments_to_report">Treated</string>
     <!-- End of Details Activity -->
 
+
+    <!-- Default Treatments -->
+    <string name="treatments_oxygen_enrichment">Oxygen Enrichment</string>
+    <string name="treatments_opening_airway">Opening Airway</string>
+    <string name="treatments_artificial_respiration">Artificial Respiration</string>
+    <string name="treatments_connecting_defibrillator">Connecting Defibrillator</string>
+    <string name="treatments_cardiac_massage">Cardiac Massage</string>
+    <string name="treatments_stopping_hemorrhage">Stopping Hemorrhage</string>
+    <string name="treatments_infusion">Infusion</string>
+    <string name="treatments_headvise">Headvise</string>
+    <string name="treatments_collar">Collar</string>
+    <string name="treatments_backboard">Backboard</string>
+    <string name="treatments_deliver">Deliver</string>
+    <string name="treatments_rescue">Rescue</string>
+    <string name="treatments_administrate_glucogel">Administrate GlucoGel</string>
+    <string name="treatments_administrate_aspirin">Administrate Aspirin</string>
+    <!-- End of Default Treatments -->
+
 </resources>

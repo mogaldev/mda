@@ -89,5 +89,22 @@
     <string name="fragment_treatments_to_report_all_treatments_in_db">רשימת טיפולים</string>
     <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו באירוע</string>
     <!-- End of Details Activity -->
+    
+     <!-- Default Treatments-->
+     <string name="treatments_oxygen_enrichment">העשרה בחמצן</string>    
+     <string name="treatments_opening_airway">פתיחת נתיב אוויר</string>
+     <string name="treatments_artificial_respiration">הנשמה</string>
+     <string name="treatments_connecting_defibrillator">חיבור לדפיברילטור</string>
+     <string name="treatments_cardiac_massage">עיסוי לב</string>
+     <string name="treatments_stopping_hemorrhage">עצירת שט\"ד</string>     
+     <string name="treatments_infusion">עירוי</string>    
+     <string name="treatments_headvise">מנייח ראש</string>
+     <string name="treatments_collar">צוארון</string>     
+     <string name="treatments_backboard">לוח גב</string>
+     <string name="treatments_deliver">קבלת לידה</string>
+     <string name="treatments_rescue">חילוץ</string>
+     <string name="treatments_administrate_glucogel">מתן גלוקוג\'ל</string>
+     <string name="treatments_administrate_aspirin">מתן אספירין</string>                
+    <!-- End of Default Treatments-->    
 
 </resources>
