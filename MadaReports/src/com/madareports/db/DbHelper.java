@@ -65,8 +65,8 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource,
 			int oldVersion, int newVersion) {
 		try {
-			switch (newVersion) {
-				case 2:
+			switch (oldVersion) {
+				case 1:
 					TableUtils.dropTable(connectionSource, Report.class, true);
 					TableUtils.dropTable(connectionSource, Treatment.class, true);
 					TableUtils.dropTable(connectionSource, TreatmentsToReports.class, true);
