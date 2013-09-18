@@ -10,6 +10,9 @@
     <string name="title_activity_treatments">Treatments</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+    <string name="share_string_general_details">Report Details</string>
+    <string name="share_string_technical_details">Technical Details</string>
+    <string name="share_string_treatments">Treatments</string>        
     <!-- End of General Application Strings -->
 
 

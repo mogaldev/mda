@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
-
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.models.Report;
@@ -84,4 +83,5 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 			}
 		}
 	}
+
 }

@@ -2,6 +2,7 @@ package com.madareports.db.models;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import android.content.Context;
@@ -86,28 +87,57 @@ public class Report {
 	 * @return string represents the report for the share description
 	 */
 	public String toShareString(Context context) {
-		String result;
-		// TODO: check if all the values are here + reformat
+		StringBuilder shareMessage = new StringBuilder();		
 		
 		// get the resources for the strings
 		Resources resources = context.getResources();
 
-		result = "#" + getReportId() + " : ";
-		result += resources.getString(R.string.fragment_general_info_address) + ": " + getAddress() + "\n";
-		result += resources.getString(R.string.fragment_general_info_description) + ": " + getDescription() +
-		          "\n";
-		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() +
-		          "\n";
+		// general details
+		appendLine(shareMessage, resources.getString(R.string.share_string_general_details) + " #" + getReportId(), "", resources);
+		appendLine(shareMessage, R.string.fragment_general_info_address, getAddress(), resources);
+		appendLine(shareMessage, R.string.fragment_general_info_description,  getDescription(), resources);	
+		shareMessage.append(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() + "\n");
+		
+		// Separator
+		shareMessage.append("\n");
+		
 		// technical details
-		result += resources.getString(R.string.fragment_tech_info_pulse) + ": " + getPulse() + "\n";
-		result += resources.getString(R.string.fragment_tech_info_blood_pressure) + ": " +
-		          getMinBloodPressure() + " \\ " + getMaxBloodPressure() + "\n";
-		result += resources.getString(R.string.fragment_tech_info_sugar) + ": " + getSugar() + "\n";
-		result += resources.getString(R.string.fragment_general_info_notes) + ": " + getNotes() + "\n";
+		appendLine(shareMessage, R.string.share_string_technical_details, "", resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_pulse, getPulse(), resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_sugar, getSugar(), resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_breath, getBreath(), resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_blood_pressure, getMinBloodPressure() + " \\ " + getMaxBloodPressure(), resources);
+		
+		// Separator
+		shareMessage.append("\n");
+		
+		 // treatment
+		List<Treatment> treatments = DatabaseWrapper.getInstance(context).getTreatmentsByReportId(id);
+		appendLine(shareMessage, R.string.share_string_treatments, "", resources);
+		for (Treatment treatment : treatments) {
+			shareMessage.append(treatment + "\n");
+		}
+		
+		// Separator
+		shareMessage.append("\n");
+		
+		appendLine(shareMessage, R.string.fragment_general_info_notes, getNotes(), resources);			
 
-		return result;
+		return shareMessage.toString();
 	}
 
+	private void appendLine(StringBuilder sb, int keyResourceId, int value, Resources resources){
+		appendLine(sb, keyResourceId, value + "", resources);
+	}
+	
+	private void appendLine(StringBuilder sb, int keyResourceId, String value, Resources resources){
+		sb.append(resources.getString(keyResourceId) + ": " + value + "\n");
+	}
+	
+	private void appendLine(StringBuilder sb, String key, String value, Resources resources){
+		sb.append(key + ": " + value + "\n");
+	}
+	
 	// Setters & Getters
 
 	public int getId() {
