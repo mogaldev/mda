@@ -25,6 +25,11 @@
     <string name="action_bars_search">חפש</string>
     <string name="action_bars_share">שתף</string>
     <!-- End of Action Bars -->
+    
+    <!-- ReportsList Activity -->
+    <!-- ReportsList Activity Action Bar -->
+    <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
+    <!-- End of ReportsList Activity -->
 
 
     <!-- Code Tables -->
@@ -63,6 +68,7 @@
     <string name="detail_activity_report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
     <string name="detail_activity_action_bar_refresh_data">רענן נתונים</string>
+    <string name="detail_activity_action_bar_share_message">שלח את פרטי הדיווח ל...</string>
     <!-- Tabs Titles -->
     <string name="fragment_general_info_general_info_tab_title">כללי</string>
     <string name="fragment_tech_info_title">טכני</string>

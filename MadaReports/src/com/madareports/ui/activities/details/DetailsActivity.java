@@ -156,7 +156,7 @@ public class DetailsActivity extends BaseActivity {
 			// The ShareActionProvider of sherlock is not wirking well on Android 2.3.5 (i checked it on Galaxy 2)
 			// So here we will use the default ShareIntent
 			Intent sendIntent = getShareIntent();
-			startActivity(Intent.createChooser(sendIntent, "send to"));
+			startActivity(Intent.createChooser(sendIntent, getString(R.string.detail_activity_action_bar_share_message)));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
