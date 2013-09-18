@@ -60,6 +60,7 @@
     <string name="prefrences_summary_abort_broadcast">האם למנוע מאפליקציות SMS קבלת ההודעה</string>
     <!-- Categories -->
     <string name="prefrences_category_notifications_title">התראות</string>
+    <string name="prefrences_category_code_tables_title">טבלאות</string>
     <!-- End of Preferences Settings -->
 
 

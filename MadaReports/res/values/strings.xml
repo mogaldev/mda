@@ -68,6 +68,8 @@
     <!-- Categories -->
     <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
     <string name="prefrences_category_notifications_title">Notifications</string>
+    <string name="prefrences_category_code_tables_key">CATGRY_CODE_TABLES</string>
+    <string name="prefrences_category_code_tables_title">Tables</string>
     <!-- End of Preferences Settings -->
 
 
