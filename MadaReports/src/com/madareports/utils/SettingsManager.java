@@ -143,5 +143,15 @@ public class SettingsManager {
 	public boolean getAbortBroadcast() {
 		return getAdapterInstance().readBoolean(R.string.prefrences_key_abort_broadcast, false);
 	}
+	
+	public String getBufferedMessage() {
+		String readString = getAdapterInstance().readString("bufferedMessage", "");
+		readString = readString == null ? "" : readString;
+		return readString;
+	}
+	
+	public void setBufferedMessage(String value) {
+		getAdapterInstance().writeString("bufferedMessage", value);
+	}
 
 }

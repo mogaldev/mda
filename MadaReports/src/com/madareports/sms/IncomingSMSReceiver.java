@@ -14,11 +14,10 @@ import com.madareports.utils.NotificationsManager;
 import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
-	static StringBuilder bufferedMsg = new StringBuilder();
+//	static StringBuilder bufferedMsg = new StringBuilder();
 	static boolean isFinishReceiving = true;
 
-	private void raiseMessage(String smsMessageBody, long timestampMillies,
-			Context context) {
+	private void raiseMessage(String smsMessageBody, long timestampMillies, Context context) {
 		Report report = new Report(context, smsMessageBody, timestampMillies);
 
 		// add the report to the database
@@ -26,14 +25,12 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		dbWrpr.createReport(report);
 
 		// notify about the new report with the number of unread reports
-		String formattedString = String.format(
-				context.getString(R.string.notification_d_new_messages),
-				dbWrpr.countUnreadReports());
+		String formattedString = String.format(context.getString(R.string.notification_d_new_messages),
+		                                       dbWrpr.countUnreadReports());
 
 		if (!ApplicationUtils.isApplicationInForeground(context)) {
-			NotificationsManager.getInstance(context)
-					.raiseSmsReceivedNotification(formattedString,
-							report.getDescription());
+			NotificationsManager.getInstance(context).raiseSmsReceivedNotification(formattedString,
+			                                                                       report.getDescription());
 		}
 	}
 
@@ -57,11 +54,13 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 * them for treatment
 	 */
 	public void onReceive(Context context, Intent intent) {
+		SettingsManager settingsManager = SettingsManager.getInstance(context);
+		StringBuilder bufferedMsg = new StringBuilder(settingsManager.getBufferedMessage());
+		
 		// check if the incoming message is SMS
-		if (intent.getAction()
-				.equals("android.provider.Telephony.SMS_RECEIVED")) {
+		if (intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {
 			isFinishReceiving = true;
-
+			
 			Bundle bundle = intent.getExtras();
 			if (bundle != null) {
 				Object[] pdus = (Object[]) bundle.get("pdus");
@@ -74,12 +73,12 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 				StringBuilder messageBodyBuilder = new StringBuilder();
 
 				// iterate the SMS messages that was received
-				for (SmsMessage message : messages) {
-					String msgBody = message.getMessageBody();
+				int i;
+				for (i = 0; i < messages.length; i++) {
+					String msgBody = messages[i].getMessageBody();
 
 					if (isMultipartMessage(msgBody)) {
-						bufferedMsg
-								.append(getMsgWithoutMultipartPrefix(msgBody));
+						bufferedMsg.append(getMsgWithoutMultipartPrefix(msgBody));
 
 						if (isEndMultipartMessage(msgBody)) {
 							messageBodyBuilder.append(bufferedMsg);
@@ -89,25 +88,42 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 							isFinishReceiving = false;
 						}
 					} else {
-						messageBodyBuilder.append(msgBody);
+						if (i > 0 && bufferedMsg.length() > 0) {
+							//messageBodyBuilder.append(bufferedMsg);
+							break;
+						} else {
+							messageBodyBuilder.append(msgBody);
+						}
 					}
 				}
 
+				// treat the case where the first message is multipart and the
+				// other fragments are not
+				if (i != messages.length) {
+					for (i = 1; i < messages.length; i++) {
+						bufferedMsg.append(messages[i].getMessageBody());
+						//messageBodyBuilder.append(messages[i].getMessageBody());
+					}
+					//messageBodyBuilder = new  StringBuilder(bufferedMsg);
+				}
+
 				if (isFinishReceiving) {
+					bufferedMsg = new StringBuilder();
 					String messageBody = messageBodyBuilder.toString();
 					// check if the message is relevant and pass it on
 					if (isRelevantSms(messageBody)) {
-						raiseMessage(messageBody,
-								messages[0].getTimestampMillis(), context);
+						raiseMessage(messageBody, messages[0].getTimestampMillis(),
+						             context);
 
-						if (SettingsManager.getInstance(context)
-								.getAbortBroadcast()) {
+						if (SettingsManager.getInstance(context).getAbortBroadcast()) {
 							abortBroadcast();
 						}
 					}
 				}
 			}
 		}
+		
+		settingsManager.setBufferedMessage(bufferedMsg.toString());
 	}
 
 	/**
@@ -119,7 +135,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 */
 	private static String getMsgWithoutMultipartPrefix(String msg) {
 		int indexOfFirstSpace = msg.indexOf(' ');
-		return msg.substring(indexOfFirstSpace + 1, msg.length() - 1);
+		return msg.substring(indexOfFirstSpace + 1, msg.length());
 	}
 
 	/**
@@ -133,8 +149,8 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 */
 	private static boolean isEndMultipartMessage(String msg) {
 		int indexOfSlash = msg.indexOf('/');
-		return msg.substring(0, indexOfSlash).equals(
-				msg.substring(indexOfSlash + 1, msg.indexOf(' ')));
+		return msg.substring(0, indexOfSlash).equals(msg.substring(indexOfSlash + 1,
+		                                                           msg.indexOf(' ')));
 	}
 
 	/**
