@@ -20,7 +20,6 @@
         android:title="@string/action_bars_delete"/>
     <item
         android:id="@+id/reportslist_activity_menu_share"
-        android:actionProviderClass="com.actionbarsherlock.widget.ShareActionProvider"
         android:icon="@android:drawable/ic_menu_share"
         android:showAsAction="ifRoom"
         android:title="@string/action_bars_share"/>

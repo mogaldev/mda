@@ -13,7 +13,6 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.widget.ShareActionProvider;
 import com.madareports.R;
 import com.madareports.db.DatabaseWrapper;
 import com.madareports.ui.reportslist.ReportsFilterTextWatcher;
@@ -89,9 +88,10 @@ public class ReportsListActivity extends BaseActivity {
 			handleDelete(this);
 			return true;
 		case R.id.reportslist_activity_menu_share:
-			ShareActionProvider shareActionProvider = (ShareActionProvider) item
-					.getActionProvider();
-			shareActionProvider.setShareIntent(getShareIntent());
+			// The ShareActionProvider of sherlock is not wirking well on Android 2.3.5 (i checked it on Galaxy 2)
+			// So here we will use the default ShareIntent
+			Intent sendIntent = getShareIntent();
+			startActivity(Intent.createChooser(sendIntent, "send to"));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
