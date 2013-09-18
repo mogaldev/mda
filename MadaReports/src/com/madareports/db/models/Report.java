@@ -3,7 +3,6 @@ package com.madareports.db.models;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,6 +10,7 @@ import android.content.res.Resources;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.madareports.R;
+import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.utils.ApplicationUtils;
 
@@ -48,29 +48,28 @@ public class Report {
 							// the variable name. the countNewReports() rely
 							// on this name right now.
 	@DatabaseField
-	private Date receivedAt; // TODO: added. update in specifications.
+	private Date receivedAt;
 	@DatabaseField
 	private String originalMessage;
 
 	public Report(Context ctx, String messageBody, long timesptamp) {
-		// TODO: currently simulate the description manually
-		//messageBody = new ReportIllustrator().getFakeReport();
+		// Simulate the description manually. for debug uses
+		// MessageBody = new ReportIllustrator().getFakeReport();
 		ReportAnalyzer rprtAnlzr = new ReportAnalyzer(messageBody);
 
 		// set info of the message in the Report object
 		setReportId(rprtAnlzr.getId());
-		setDescription(rprtAnlzr.getDescription()); // TODO cut the message body
+		setDescription(rprtAnlzr.getDescription());
 		setAddress(rprtAnlzr.getAddress());
 		setOriginalMessage(messageBody);
 
 		// set random things for debugging
-		Random rnd = new Random();
 		setReceivedAt(new Date(timesptamp));
-		setPulse(rnd.nextInt(100));
-		setBreath(rnd.nextInt(100));
-		setSugar(rnd.nextInt(100));
-		setMinBloodPressure(rnd.nextInt(50));
-		setMaxBloodPressure(rnd.nextInt(50) + 51);
+		setPulse(0);
+		setBreath(0);
+		setSugar(0);
+		setMinBloodPressure(0);
+		setMaxBloodPressure(50);
 		setRead(false);
 	}
 
@@ -94,8 +93,9 @@ public class Report {
 		// general details
 		appendLine(shareMessage, resources.getString(R.string.share_string_general_details) + " #" + getReportId(), "", resources);
 		appendLine(shareMessage, R.string.fragment_general_info_address, getAddress(), resources);
-		appendLine(shareMessage, R.string.fragment_general_info_description,  getDescription(), resources);	
-		shareMessage.append(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() + "\n");
+		appendLine(shareMessage, R.string.fragment_general_info_description,  getDescription(), resources);
+//		shareMessage.append(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() + "\n");
+		shareMessage.append(SimpleDateFormat.getDateTimeInstance().format(getReceivedAt()).toString() + "\n");
 		
 		// Separator
 		shareMessage.append("\n");
