@@ -41,6 +41,10 @@
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
+            android:name="com.madareports.ui.activities.OldSettingsActivity"
+            android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
             android:name="com.madareports.ui.activities.TreatmentsActivity"
             android:label="@string/title_activity_treatments" >
         </activity>

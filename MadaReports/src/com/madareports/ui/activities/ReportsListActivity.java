@@ -49,12 +49,6 @@ public class ReportsListActivity extends BaseActivity {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.reportslist_activity_action_bar, menu);
 
-		// settings doesnt supported on android devices preior to gingerbread so
-		// hide it
-		if (!DeviceInfoUtils.hasGingerbread()) {
-			menu.findItem(R.id.reportslist_activity_menu_settings).setVisible(false);
-		}
-
 		// initializing the search action view
 		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
 		EditText txt = (EditText) item.getActionView();
@@ -85,7 +79,11 @@ public class ReportsListActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.reportslist_activity_menu_settings:
-			MoveTo(SettingsActivity.class);
+			if (DeviceInfoUtils.hasHoneycomb()) {
+				MoveTo(SettingsActivity.class);
+			} else { 
+				MoveTo(OldSettingsActivity.class);
+			}			
 			return true;
 		case R.id.reportslist_activity_menu_delete_all:
 			handleDelete(this);

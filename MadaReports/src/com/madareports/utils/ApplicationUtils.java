@@ -45,7 +45,7 @@ public class ApplicationUtils {
 	}
 	
 	/**
-	 * Get "New Task" flags. Used by the 
+	 * Get "New Task" flags. Used by the {@link NotificationsManager}
 	 * @return
 	 */
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)

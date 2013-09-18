@@ -11,7 +11,6 @@ import android.content.res.Resources;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.madareports.R;
-import com.madareports.db.DatabaseWrapper;
 import com.madareports.db.reports.ReportAnalyzer;
 import com.madareports.utils.ApplicationUtils;
 

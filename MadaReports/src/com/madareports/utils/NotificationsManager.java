@@ -59,7 +59,7 @@ public class NotificationsManager {
 			ncBuilder.setContentIntent(resultPendingIntent);
 		}
 
-		return ncBuilder.getNotification();
+		return ncBuilder.build();
 	}
 
 	private void performNotification(Notification notification, int notificationId) {
