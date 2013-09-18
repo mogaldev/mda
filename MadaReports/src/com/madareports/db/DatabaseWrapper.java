@@ -8,11 +8,9 @@ import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
 import com.madareports.db.codetables.ICodeTable;
-import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.db.models.Treatment;
 import com.madareports.db.models.TreatmentsToReports;
-import com.madareports.ui.activities.RegionsActivity;
 import com.madareports.ui.activities.TreatmentsActivity;
 import com.madareports.utils.Logger;
 
@@ -51,8 +49,9 @@ public class DatabaseWrapper {
 	public List<Report> getAllReports() {
 		List<Report> reports = null;
 		try {
-			reports = helper.getReportDao().queryBuilder().orderByRaw(Report.ID_COLUMN_NAME + " DESC").query();			
-			//reports = helper.getReportDao().queryForAll();
+			reports = helper.getReportDao().queryBuilder()
+					.orderByRaw(Report.ID_COLUMN_NAME + " DESC").query();
+			// reports = helper.getReportDao().queryForAll();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
@@ -70,7 +69,7 @@ public class DatabaseWrapper {
 		return true;
 	}
 
-	public boolean deleteReport(Report report){
+	public boolean deleteReport(Report report) {
 		try {
 			helper.getReportDao().delete(report);
 			notifyDatabaseChanged();
@@ -80,7 +79,7 @@ public class DatabaseWrapper {
 		}
 		return true;
 	}
-	
+
 	public void createReport(Report report) {
 		try {
 			helper.getReportDao().create(report);
@@ -101,7 +100,7 @@ public class DatabaseWrapper {
 			return -1;
 		}
 	}
-	
+
 	public Report getReportById(int id) {
 		Report reportToReturn = null;
 		try {
@@ -111,7 +110,7 @@ public class DatabaseWrapper {
 		}
 		return reportToReturn;
 	}
-	
+
 	public void updateReport(Report report) {
 		try {
 			helper.getReportDao().update(report);
@@ -119,22 +118,10 @@ public class DatabaseWrapper {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 	}
-	
-	public List<Report> getReportsByRegionId(Integer regionId) {
-		List<Report> allReports = new ArrayList<Report>();
-		try {
-			allReports = helper.getReportDao().queryBuilder().where().eq(Report.REGION_ID_COLUMN_NAME, regionId).query();
-        } catch (SQLException e) {
-        	Logger.LOGE(TAG, e.getMessage());
-        }
-		
-		return allReports;
-	}
 
 	// ////////////////////////////
 	// End of Reports Functions
 	// ////////////////////////////
-
 
 	// ////////////////////////////
 	// Code Tables Functions
@@ -144,27 +131,17 @@ public class DatabaseWrapper {
 	public List<ICodeTable> getAll(String codeTableActivityName) {
 		List<ICodeTable> records = null;
 		try {
-			if (codeTableActivityName.equals(RegionsActivity.class.getName())) {
-				records = (List<ICodeTable>) (List<?>) helper.getRegionDao().queryForAll();
-			} else if (codeTableActivityName.equals(TreatmentsActivity.class.getName())) {
-				records = (List<ICodeTable>) (List<?>) helper.getTreatmentDao().queryForAll();
+			if (codeTableActivityName
+					.equals(TreatmentsActivity.class.getName())) {
+				records = (List<ICodeTable>) (List<?>) helper.getTreatmentDao()
+						.queryForAll();
 			}
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return records;
 	}
-	
-	public List<Region> getAllRegions() {
-		List<Region> regions = null;
-		try {
-			regions = helper.getRegionDao().queryForAll();
-		} catch (Exception e) {
-			Logger.LOGE(TAG, e.getMessage());
-		}
-		return regions;
-	}
-	
+
 	public List<Treatment> getAllTreatments() {
 		List<Treatment> treatments = null;
 		try {
@@ -174,27 +151,13 @@ public class DatabaseWrapper {
 		}
 		return treatments;
 	}
-	
-	public Region getRegionById(Integer regionId) {
-		Region regionById = null;
-		try {
-	        regionById = helper.getRegionDao().queryForId(regionId);
-        } catch (SQLException e) {
-			Logger.LOGE(TAG, e.getMessage());
-        }
-		
-		return regionById;
-	}
-	
+
 	public void createCodeTableRecord(ICodeTable record) {
 		try {
 			String recordClassName = record.getClass().getName();
-			if (recordClassName.equals(Region.class.getName())) {
-				helper.getRegionDao().create((Region) record);
-			} else {
-				if (recordClassName.equals(Treatment.class.getName())) {
-					helper.getTreatmentDao().create((Treatment) record);
-				}
+			if (recordClassName.equals(Treatment.class.getName())) {
+				helper.getTreatmentDao().create((Treatment) record);
+
 			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -204,18 +167,13 @@ public class DatabaseWrapper {
 	public boolean deleteCodeTableRecord(ICodeTable record) {
 		try {
 			String recordClassName = record.getClass().getName();
-			if (recordClassName.equals(Region.class.getName())) {
-				if (getReportsByRegionId(((Region) record).getId()).isEmpty()) {
-					helper.getRegionDao().delete((Region) record);
-				} else {
-					throw new SQLException("this region is foriegn key at some Reports");
-				}
-			} else if (recordClassName.equals(Treatment.class.getName())) {
-				if (getTreatmentsToReportsByTreatmentId(((Treatment) record).getId()).isEmpty()) {
+			if (recordClassName.equals(Treatment.class.getName())) {
+				if (getTreatmentsToReportsByTreatmentId(
+						((Treatment) record).getId()).isEmpty()) {
 					helper.getTreatmentDao().delete((Treatment) record);
 				} else {
 					throw new SQLException(
-					        "this treatment is foriegn key in some Reports");
+							"this treatment is foriegn key in some Reports");
 				}
 			}
 		} catch (SQLException e) {
@@ -228,79 +186,101 @@ public class DatabaseWrapper {
 	public void updateCodeTableRecord(ICodeTable record) {
 		try {
 			String recordClassName = record.getClass().getName();
-			if (recordClassName.equals(Region.class.getName())) {
-				helper.getRegionDao().update((Region) record);
-			} else {
-				if (recordClassName.equals(Treatment.class.getName())) {
-					helper.getTreatmentDao().update((Treatment) record);
-				}
+
+			if (recordClassName.equals(Treatment.class.getName())) {
+				helper.getTreatmentDao().update((Treatment) record);
 			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 	}
-	
+
 	public List<Treatment> getTreatmentsByReportId(Integer reportId) {
 		List<Treatment> treatments = new ArrayList<Treatment>();
 		try {
 			List<TreatmentsToReports> treatmentsToReportsByReportId = getTreatmentsToReportsByReportId(reportId);
 			List<Integer> TreatmentsId = new ArrayList<Integer>();
 			for (TreatmentsToReports currentTreatmentsToReports : treatmentsToReportsByReportId) {
-				TreatmentsId.add(currentTreatmentsToReports.getTreatment().getId());
-            }
-	        treatments = helper.getTreatmentDao().queryBuilder().where().in(Treatment.TREATMENT_ID_COLUMN_NAME, TreatmentsId).query();
-        } catch (SQLException e) {
+				TreatmentsId.add(currentTreatmentsToReports.getTreatment()
+						.getId());
+			}
+			treatments = helper.getTreatmentDao().queryBuilder().where()
+					.in(Treatment.TREATMENT_ID_COLUMN_NAME, TreatmentsId)
+					.query();
+		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
-        }
-		
+		}
+
 		return treatments;
 	}
-	
+
 	public List<Treatment> getAllOtherTreatments(Integer reportKey) {
 		List<Treatment> treatments = new ArrayList<Treatment>();
 		try {
-			List<TreatmentsToReports> treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().in(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportKey).query();
+			List<TreatmentsToReports> treatmentsToReports = helper
+					.getTreatmentsToReportsDao().queryBuilder().where()
+					.in(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportKey)
+					.query();
 			List<Integer> treatmentsId = new ArrayList<Integer>();
 			for (TreatmentsToReports currentTreatmentsToReports : treatmentsToReports) {
-				treatmentsId.add(currentTreatmentsToReports.getTreatment().getId());
-            }
-			treatments = helper.getTreatmentDao().queryBuilder().where().notIn(Treatment.TREATMENT_ID_COLUMN_NAME, treatmentsId).query();
+				treatmentsId.add(currentTreatmentsToReports.getTreatment()
+						.getId());
+			}
+			treatments = helper.getTreatmentDao().queryBuilder().where()
+					.notIn(Treatment.TREATMENT_ID_COLUMN_NAME, treatmentsId)
+					.query();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return treatments;
 	}
-	
-	public List<TreatmentsToReports> getTreatmentsToReportsByTreatmentId(Integer treatmentId) {
+
+	public List<TreatmentsToReports> getTreatmentsToReportsByTreatmentId(
+			Integer treatmentId) {
 		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
-        try {
-    		// Get all the reports id's of this treatment
-	        treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME, treatmentId).query();
-        } catch (SQLException e) {
+		try {
+			// Get all the reports id's of this treatment
+			treatmentsToReports = helper
+					.getTreatmentsToReportsDao()
+					.queryBuilder()
+					.where()
+					.eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
+							treatmentId).query();
+		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
-        }
+		}
 
 		return treatmentsToReports;
 	}
-	
-	public List<TreatmentsToReports> getTreatmentsToReportsByReportId(Integer reportId) {
+
+	public List<TreatmentsToReports> getTreatmentsToReportsByReportId(
+			Integer reportId) {
 		List<TreatmentsToReports> treatmentsToReports = new ArrayList<TreatmentsToReports>();
-        try {
-    		// Get all the treatments id's of this report
-	        treatmentsToReports = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportId).query();
-        } catch (SQLException e) {
+		try {
+			// Get all the treatments id's of this report
+			treatmentsToReports = helper.getTreatmentsToReportsDao()
+					.queryBuilder().where()
+					.eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportId)
+					.query();
+		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
-        }
+		}
 
 		return treatmentsToReports;
 	}
-	
+
 	public void createTreatmentToReport(TreatmentsToReports treatmentsToReports) {
 		try {
 			// Check if there is no similar row
-			List<TreatmentsToReports> query = helper.getTreatmentsToReportsDao().queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME,
-			                                                                                               treatmentsToReports.getReport().getId()).and().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
-			                                                                                                                                                 treatmentsToReports.getTreatment().getId()).query();
+			List<TreatmentsToReports> query = helper
+					.getTreatmentsToReportsDao()
+					.queryBuilder()
+					.where()
+					.eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME,
+							treatmentsToReports.getReport().getId())
+					.and()
+					.eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
+							treatmentsToReports.getTreatment().getId()).query();
 
 			// if there is no row similar, create one
 			if (query.isEmpty()) {
@@ -308,17 +288,18 @@ public class DatabaseWrapper {
 			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
-        }
+		}
 	}
-	
+
 	public void deleteTreatmentsToReportByReportId(Integer reportId) {
 		List<TreatmentsToReports> treatmentsToReportsByReportId = getTreatmentsToReportsByReportId(reportId);
 		for (TreatmentsToReports crrentTreatmentsToReports : treatmentsToReportsByReportId) {
 			deleteTreatmentToReport(crrentTreatmentsToReports);
-        }
+		}
 	}
-	
-	public boolean deleteTreatmentToReport(TreatmentsToReports treatmentsToReports) {
+
+	public boolean deleteTreatmentToReport(
+			TreatmentsToReports treatmentsToReports) {
 		try {
 			helper.getTreatmentsToReportsDao().delete(treatmentsToReports);
 		} catch (SQLException e) {
@@ -327,13 +308,19 @@ public class DatabaseWrapper {
 		}
 		return true;
 	}
-	
-	public boolean deleteTreatmentsToReportByReportAndTreatmentId(Integer reportId, Integer TreatmentId) {
+
+	public boolean deleteTreatmentsToReportByReportAndTreatmentId(
+			Integer reportId, Integer TreatmentId) {
 		try {
-			Dao<TreatmentsToReports, Integer> treatmentsToReportsDao = helper.getTreatmentsToReportsDao();
-			List<TreatmentsToReports> allTreatmentsToReports = treatmentsToReportsDao.queryBuilder().where().eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME,
-			                                                                                                    reportId).and().eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
-			                                                                                                                       TreatmentId).query();
+			Dao<TreatmentsToReports, Integer> treatmentsToReportsDao = helper
+					.getTreatmentsToReportsDao();
+			List<TreatmentsToReports> allTreatmentsToReports = treatmentsToReportsDao
+					.queryBuilder()
+					.where()
+					.eq(TreatmentsToReports.REPORT_ID_COLUMN_NAME, reportId)
+					.and()
+					.eq(TreatmentsToReports.TREATMENT_ID_COLUMN_NAME,
+							TreatmentId).query();
 			treatmentsToReportsDao.delete(allTreatmentsToReports);
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());

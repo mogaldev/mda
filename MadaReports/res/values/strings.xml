@@ -7,7 +7,6 @@
     <string name="notification_d_new_messages">%d new reports</string>
     <string name="title_activity_detail">Report Details</string>
     <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_regions">Regions</string>
     <string name="title_activity_treatments">Treatments</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
@@ -26,7 +25,6 @@
 
 
     <!-- Code Tables -->
-    <string name="code_table_dialog_region_title">Regions</string>
     <string name="code_table_dialog_treatment_title">Treatments</string>
     <string name="code_table_dialog_edit_positive_button">Save</string>
     <string name="code_table_dialog_add_positive_button">Add</string>
@@ -51,14 +49,12 @@
     <string name="prefrences_title_vibrate_enabled">Vibrate</string>
     <string name="prefrences_title_sound_enabled">Sound</string>
     <string name="prefrences_title_ringtone_uri">Ringtone</string>
-    <string name="prefrences_title_regions">Regions</string>
     <string name="prefrences_title_treatments">Treatments</string>
     <string name="prefrences_title_abort_broadcast">Abort SMS</string>
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">Enable vibrate</string>
     <string name="prefrences_summary_sound_enabled">Enable sound</string>
     <string name="prefrences_summary_ringtone_uri">Chosen ringtone</string>
-    <string name="prefrences_summary_regions">Manage Regions</string>
     <string name="prefrences_summary_treatments">Manage Treatments</string>
     <string name="prefrences_summary_abort_broadcast">Abort SMS to user</string>
     <!-- Categories -->
@@ -79,7 +75,6 @@
     <!-- General Info Fragment -->
     <string name="fragment_general_info_address">Address</string>
     <string name="fragment_general_info_report_id">Report ID</string>
-    <string name="fragment_general_info_region">Region</string>
     <string name="fragment_general_info_description">Description</string>
     <string name="fragment_general_info_notes">Notes</string>
     <string name="fragment_general_info_is_reported">Is Reported in the website?</string>

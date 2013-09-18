@@ -9,7 +9,6 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import com.madareports.R;
-import com.madareports.db.models.Region;
 import com.madareports.db.models.Report;
 import com.madareports.db.models.Treatment;
 import com.madareports.db.models.TreatmentsToReports;
@@ -29,7 +28,6 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
 	// the dao's to access the tables
 	private Dao<Report, Integer> reportsDao = null;
-	private Dao<Region, Integer> regionsDao = null;
 	private Dao<Treatment, Integer> treatmentDao = null;
 	private Dao<TreatmentsToReports, Integer> treatmentsToReports = null;
 
@@ -44,14 +42,9 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			// Create here the database tables
 			TableUtils.createTable(connectionSource, Report.class);
-			TableUtils.createTable(connectionSource, Region.class);
 			TableUtils.createTable(connectionSource, Treatment.class);
 			TableUtils.createTable(connectionSource, TreatmentsToReports.class);
 
-			// Set some Regions for debugging
-			getRegionDao().create(new Region("מרכז"));
-			getRegionDao().create(new Region("צפון"));
-			getRegionDao().create(new Region("דרום"));
 
 			// Set some default treatments
 			String[] defaultTreatments = this.context.getResources().getStringArray(R.array.default_treatments);
@@ -72,8 +65,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource,
 			int oldVersion, int newVersion) {
 		try {
-			TableUtils.createTableIfNotExists(connectionSource, Report.class);
-			TableUtils.createTableIfNotExists(connectionSource, Region.class);
+			TableUtils.createTableIfNotExists(connectionSource, Report.class);			
 			TableUtils.createTableIfNotExists(connectionSource, Treatment.class);
 			TableUtils.createTableIfNotExists(connectionSource, TreatmentsToReports.class);
 		} catch (SQLException e) {
@@ -96,16 +88,6 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 		return reportsDao;
 	}
 
-	public Dao<Region, Integer> getRegionDao() {
-		if (regionsDao == null) {
-			try {
-				regionsDao = getDao(Region.class);
-			} catch (Exception e) {
-				Logger.LOGE(TAG, e.getMessage());
-			}
-		}
-		return regionsDao;
-	}
 
 	public Dao<Treatment, Integer> getTreatmentDao() {
 		if (treatmentDao == null) {

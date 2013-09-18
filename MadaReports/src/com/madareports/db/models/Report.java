@@ -18,7 +18,6 @@ import com.madareports.utils.ApplicationUtils;
 public class Report {
 
 	public static final String TABLE_NAME = "reports";
-	public static final String REGION_ID_COLUMN_NAME = "regionId";
 	public static final String ID_COLUMN_NAME = "id";
 	public static final String IS_READ_COLUMN_NAME = "isRead";	
 
@@ -30,8 +29,6 @@ public class Report {
 	private String address;
 	@DatabaseField
 	private String description;
-	@DatabaseField(foreign = true, columnName = REGION_ID_COLUMN_NAME)
-	private Region region;
 	@DatabaseField
 	private int pulse;
 	@DatabaseField
@@ -69,7 +66,6 @@ public class Report {
 		// set random things for debugging
 		Random rnd = new Random();
 		setReceivedAt(new Date(timesptamp));
-		setRegion(DatabaseWrapper.getInstance(ctx).getAllRegions().get(0));
 		setPulse(rnd.nextInt(100));
 		setBreath(rnd.nextInt(100));
 		setSugar(rnd.nextInt(100));
@@ -91,15 +87,14 @@ public class Report {
 	 */
 	public String toShareString(Context context) {
 		String result;
-
+		// TODO: check if all the values are here + reformat
+		
 		// get the resources for the strings
 		Resources resources = context.getResources();
 
 		result = "#" + getReportId() + " : ";
 		result += resources.getString(R.string.fragment_general_info_address) + ": " + getAddress() + "\n";
 		result += resources.getString(R.string.fragment_general_info_description) + ": " + getDescription() +
-		          "\n";
-		result += resources.getString(R.string.fragment_general_info_region) + ": " + DatabaseWrapper.getInstance(context).getRegionById(getRegion().getId()).getRegion() +
 		          "\n";
 		result += new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() +
 		          "\n";
@@ -145,14 +140,6 @@ public class Report {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public Region getRegion() {
-		return region;
-	}
-
-	public void setRegion(Region region) {
-		this.region = region;
 	}
 
 	public int getPulse() {

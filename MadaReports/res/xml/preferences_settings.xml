@@ -37,14 +37,6 @@
                 android:targetClass="com.madareports.ui.activities.TreatmentsActivity"
                 android:targetPackage="com.madareports" />
         </Preference>
-        <Preference
-            android:summary="@string/prefrences_summary_regions"
-            android:title="@string/prefrences_title_regions" >
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetClass="com.madareports.ui.activities.RegionsActivity"
-                android:targetPackage="com.madareports" />
-        </Preference>
 
         <!--
         android:action="android.intent.action.VIEW" android:targetPackage="com.madareports.ui.activities"

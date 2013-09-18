@@ -17,9 +17,12 @@
     <TextView
         android:id="@+id/tvReportDescription"
         style="@style/read_list_item_text"
+        android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/imgReportIcon"
-        android:text="ת.ד בלהבלה בלה בלה בלה בלה בלהבלה בלה בלה בלה"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="אמב 61 גבעת זאב סביון\\משה,ב 2 ק 5 ד 10  9    מבוגר מצב חרום בטני חשדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדד לאפנדציט"
         android:textDirection="anyRtl" />
 
     <TextView
@@ -35,7 +38,7 @@
         android:layout_alignBaseline="@+id/tvReportId"
         android:layout_alignBottom="@+id/tvReportId"
         android:layout_alignRight="@+id/tvReportDescription"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="21/12/2013 15:11" />
 
 </RelativeLayout>

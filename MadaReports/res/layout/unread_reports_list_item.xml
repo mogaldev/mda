@@ -17,9 +17,11 @@
     <TextView
         android:id="@+id/tvReportDescription"
         style="@style/unread_list_item_text"
+        android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/imgReportIcon"
-        android:text="ת.ד בלהבלה בלה בלה בלה בלה בלהבלה בלה בלה בלה"
+        android:maxLines="2"
+        android:text="ת.ד בלהבלה דדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדדה בלה"
         android:textDirection="anyRtl" />
 
     <TextView

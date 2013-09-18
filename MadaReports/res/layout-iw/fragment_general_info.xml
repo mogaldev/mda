@@ -37,20 +37,7 @@
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:text="@string/fragment_general_info_address" />
-        </RelativeLayout>
-
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-            <Spinner
-                android:id="@+id/regionsSpinner"
-                style="@style/fragment_general_info_spinner"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="false" />
-            <TextView
-                style="@style/fragment_general_info_textview"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"                
-                android:text="@string/fragment_general_info_region" />
-        </RelativeLayout>
+        </RelativeLayout>        
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
             <EditText
