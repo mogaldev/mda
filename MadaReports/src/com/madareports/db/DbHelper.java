@@ -24,7 +24,7 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 
 	// any time you make changes to your database objects, you may have to
 	// increase the database version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// the dao's to access the tables
 	private Dao<Report, Integer> reportsDao = null;
@@ -65,9 +65,14 @@ public class DbHelper extends OrmLiteSqliteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, ConnectionSource connectionSource,
 			int oldVersion, int newVersion) {
 		try {
-			TableUtils.createTableIfNotExists(connectionSource, Report.class);			
-			TableUtils.createTableIfNotExists(connectionSource, Treatment.class);
-			TableUtils.createTableIfNotExists(connectionSource, TreatmentsToReports.class);
+			switch (newVersion) {
+				case 2:
+					TableUtils.dropTable(connectionSource, Report.class, true);
+					TableUtils.dropTable(connectionSource, Treatment.class, true);
+					TableUtils.dropTable(connectionSource, TreatmentsToReports.class, true);
+					// Create the tables again
+					onCreate(db, connectionSource);
+			}
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
 			throw new RuntimeException(e);
