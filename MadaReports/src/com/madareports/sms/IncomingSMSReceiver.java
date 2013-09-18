@@ -14,8 +14,11 @@ import com.madareports.utils.NotificationsManager;
 import com.madareports.utils.SettingsManager;
 
 public class IncomingSMSReceiver extends BroadcastReceiver {
+	static StringBuilder bufferedMsg = new StringBuilder();
+	static boolean isFinishReceiving = true;
 
-	private void raiseMessage(String smsMessageBody, long timestampMillies, Context context) {
+	private void raiseMessage(String smsMessageBody, long timestampMillies,
+			Context context) {
 		Report report = new Report(context, smsMessageBody, timestampMillies);
 
 		// add the report to the database
@@ -26,10 +29,11 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		String formattedString = String.format(
 				context.getString(R.string.notification_d_new_messages),
 				dbWrpr.countUnreadReports());
-		
+
 		if (!ApplicationUtils.isApplicationInForeground(context)) {
-			NotificationsManager.getInstance(context).raiseSmsReceivedNotification(formattedString,
-			                                                            report.getDescription());
+			NotificationsManager.getInstance(context)
+					.raiseSmsReceivedNotification(formattedString,
+							report.getDescription());
 		}
 	}
 
@@ -45,7 +49,7 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 		// TODO: check by the message structure. should be from private number
 		// (check if it could be detected) with specific scheme.
 		// return true;
-		return ReportAnalyzer.isRelevantMessage(smsMessgeBody);		
+		return ReportAnalyzer.isRelevantMessage(smsMessgeBody);
 	}
 
 	/**
@@ -54,7 +58,10 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	 */
 	public void onReceive(Context context, Intent intent) {
 		// check if the incoming message is SMS
-		if (intent.getAction().equals("android.provider.Telephony.SMS_RECEIVED")) {
+		if (intent.getAction()
+				.equals("android.provider.Telephony.SMS_RECEIVED")) {
+			isFinishReceiving = true;
+
 			Bundle bundle = intent.getExtras();
 			if (bundle != null) {
 				Object[] pdus = (Object[]) bundle.get("pdus");
@@ -65,23 +72,83 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 					messages[i] = SmsMessage.createFromPdu((byte[]) pdus[i]);
 
 				StringBuilder messageBodyBuilder = new StringBuilder();
-				
+
 				// iterate the SMS messages that was received
 				for (SmsMessage message : messages) {
-					messageBodyBuilder.append(message.getMessageBody());
-				}
-				
-				String messageBody = messageBodyBuilder.toString();
-				// check if the message is relevant and pass it on
-				if (isRelevantSms(messageBody)) {
-					raiseMessage(messageBody, messages[0].getTimestampMillis(), context);
+					String msgBody = message.getMessageBody();
 
-					if (SettingsManager.getInstance(context).getAbortBroadcast()) {
-						abortBroadcast();
+					if (isMultipartMessage(msgBody)) {
+						bufferedMsg
+								.append(getMsgWithoutMultipartPrefix(msgBody));
+
+						if (isEndMultipartMessage(msgBody)) {
+							messageBodyBuilder.append(bufferedMsg);
+							bufferedMsg = new StringBuilder();
+							isFinishReceiving = true;
+						} else {
+							isFinishReceiving = false;
+						}
+					} else {
+						messageBodyBuilder.append(msgBody);
+					}
+				}
+
+				if (isFinishReceiving) {
+					String messageBody = messageBodyBuilder.toString();
+					// check if the message is relevant and pass it on
+					if (isRelevantSms(messageBody)) {
+						raiseMessage(messageBody,
+								messages[0].getTimestampMillis(), context);
+
+						if (SettingsManager.getInstance(context)
+								.getAbortBroadcast()) {
+							abortBroadcast();
+						}
 					}
 				}
 			}
 		}
+	}
+
+	/**
+	 * Strip out the multipart prefix from an inputed message
+	 * 
+	 * @param msg
+	 *            - the message to get the information from
+	 * @return copy of the message without the multipart prefix
+	 */
+	private static String getMsgWithoutMultipartPrefix(String msg) {
+		int indexOfFirstSpace = msg.indexOf(' ');
+		return msg.substring(indexOfFirstSpace + 1, msg.length() - 1);
+	}
+
+	/**
+	 * Check if the message is the last one in the multi-part sequence. Based on
+	 * the x/y strtcture the x should be equal to y in the last message
+	 * 
+	 * @param msg
+	 *            - the message to be checked. must contains "x/y " at the
+	 *            beginning.
+	 * @return True if it is the last message, False otherwise
+	 */
+	private static boolean isEndMultipartMessage(String msg) {
+		int indexOfSlash = msg.indexOf('/');
+		return msg.substring(0, indexOfSlash).equals(
+				msg.substring(indexOfSlash + 1, msg.indexOf(' ')));
+	}
+
+	/**
+	 * Checks if the message is multi-part. The detection depends on the
+	 * structure "x/y ". so we will pass to this function sub string of the
+	 * message's body from the beginning until the first space/
+	 * 
+	 * @param msgUntilFirstSpace
+	 *            the prefix of the message body (until the first space)
+	 * @return True if the message is multi-part, False otherwise
+	 */
+	private static boolean isMultipartMessage(String msgUntilFirstSpace) {
+		// should start with int/int (space)
+		return msgUntilFirstSpace.matches("\\d/\\d .+");
 	}
 
 }
