@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.madareports"
+    package="com.mdareports"
     android:versionCode="2"
     android:versionName="1.1" >
 
@@ -27,7 +27,7 @@
 
         <!-- Activities -->
         <activity
-            android:name="com.madareports.ui.activities.ReportsListActivity"
+            android:name="com.mdareports.ui.activities.ReportsListActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -37,33 +37,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.madareports.ui.activities.SettingsActivity"
+            android:name="com.mdareports.ui.activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.madareports.ui.activities.OldSettingsActivity"
+            android:name="com.mdareports.ui.activities.OldSettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <activity
-            android:name="com.madareports.ui.activities.TreatmentsActivity"
+            android:name="com.mdareports.ui.activities.TreatmentsActivity"
             android:label="@string/title_activity_treatments" >
         </activity>
         <activity
-            android:name="com.madareports.ui.activities.details.DetailsActivity"
+            android:name="com.mdareports.ui.activities.details.DetailsActivity"
             android:label="@string/title_activity_detail"
             android:screenOrientation="portrait" >
 
             <!-- android:screenOrientation="portrait" -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.madareports.ui.activities.ReportsListActivity" />
+                android:value="com.mdareports.ui.activities.ReportsListActivity" />
         </activity>
         <!-- End of Activities -->
 
 
         <!-- Receivers -->
         <receiver
-            android:name="com.madareports.sms.IncomingSMSReceiver"
+            android:name="com.mdareports.sms.IncomingSMSReceiver"
             android:enabled="true"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS" >

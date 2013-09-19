@@ -23,7 +23,7 @@
 
         <RingtonePreference
             android:key="@string/prefrences_key_ringtone_uri"
-            android:ringtoneType="all"
+            android:ringtoneType="notification"
             android:showDefault="true"
             android:showSilent="false"
             android:summary="@string/prefrences_summary_ringtone_uri"
@@ -40,8 +40,8 @@
             android:title="@string/prefrences_title_treatments" >
             <intent
                 android:action="android.intent.action.VIEW"
-                android:targetClass="com.madareports.ui.activities.TreatmentsActivity"
-                android:targetPackage="com.madareports" />
+                android:targetClass="com.mdareports.ui.activities.TreatmentsActivity"
+                android:targetPackage="com.mdareports" />
         </Preference>
     </PreferenceCategory>
 
