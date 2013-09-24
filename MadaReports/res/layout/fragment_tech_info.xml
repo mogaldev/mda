@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.mdareports"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" >
 
@@ -8,65 +9,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
+        <com.mdareports.ui.custom.EditableSeekField
+            android:id="@+id/esfieldPulse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            custom:fieldLabel="@string/fragment_tech_info_pulse"
+            custom:maxValue="@integer/max_pulse" />
 
-            <SeekBar
-                android:id="@+id/pulseView"
-                style="@style/fragment_tech_info_seekbar"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
-                android:max="@integer/max_pulse" />
+        <com.mdareports.ui.custom.EditableSeekField
+            android:id="@+id/esfieldBreath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            custom:fieldLabel="@string/fragment_tech_info_breath"
+            custom:maxValue="@integer/max_breath" />
 
-            <TextView
-                android:id="@+id/pulseValue"
-                style="@style/fragment_tech_info_textview_value"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true" />
-
-            <TextView
-                style="@style/fragment_tech_info_textview"
-                android:text="@string/fragment_tech_info_pulse" />
-        </RelativeLayout>
-
-        <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
-
-            <SeekBar
-                android:id="@+id/sugarView"
-                style="@style/fragment_tech_info_seekbar"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
-                android:max="@integer/max_sugar" />
-
-            <TextView
-                android:id="@+id/sugarValue"
-                style="@style/fragment_tech_info_textview_value"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true" />
-
-            <TextView
-                style="@style/fragment_tech_info_textview"
-                android:text="@string/fragment_tech_info_sugar" />
-        </RelativeLayout>
-
-        <RelativeLayout style="@style/fragment_tech_info_relative_layout" >
-
-            <SeekBar
-                android:id="@+id/breathView"
-                style="@style/fragment_tech_info_seekbar"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
-                android:max="@integer/max_breath" />
-
-            <TextView
-                android:id="@+id/breathValue"
-                style="@style/fragment_tech_info_textview_value"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true" />
-
-            <TextView
-                style="@style/fragment_tech_info_textview"
-                android:text="@string/fragment_tech_info_breath" />
-        </RelativeLayout>
+        <com.mdareports.ui.custom.EditableSeekField
+            android:id="@+id/esfieldSugar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            custom:fieldLabel="@string/fragment_tech_info_sugar"
+            custom:maxValue="@integer/max_sugar" />
 
         <RelativeLayout
             android:id="@+id/bloodPressureLayout"

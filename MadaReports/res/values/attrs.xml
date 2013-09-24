@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="EditableSeekField">
+        <attr name="fieldLabel" format="string" />
+        <attr name="maxValue" format="integer" />
+        <attr name="positiveButtonText" format="reference" />
+        <attr name="negativeButtonText" format="reference" />
+    </declare-styleable>
+
+</resources>

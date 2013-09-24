@@ -47,7 +47,8 @@ public class DetailsActivity extends BaseActivity {
 		 * Init all the tabs in the DetailActivity
 		 */
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
-		treatmentsTab.setText(getString(R.string.fragment_treatments_to_report_title));
+		treatmentsTab
+				.setText(getString(R.string.fragment_treatments_to_report_title));
 		treatmentsTab
 				.setTabListener(new TabListener<TreatmentsToReportFragment>(
 						this, TreatmentsToReportFragment.class.getName(),
@@ -61,7 +62,8 @@ public class DetailsActivity extends BaseActivity {
 		supportActionBar.addTab(techInfoTab);
 
 		ActionBar.Tab generalInfotab = supportActionBar.newTab();
-		generalInfotab.setText(getString(R.string.fragment_general_info_general_info_tab_title));
+		generalInfotab
+				.setText(getString(R.string.fragment_general_info_general_info_tab_title));
 		generalInfotab.setTabListener(new TabListener<GeneralInfoFragment>(
 				this, GeneralInfoFragment.class.getName(),
 				GeneralInfoFragment.class));
@@ -134,7 +136,8 @@ public class DetailsActivity extends BaseActivity {
 			DatabaseWrapper.getInstance(this).updateReport(getCurrentReport());
 
 			// Make Toast to the user
-			Toast.makeText(this, getString(R.string.detail_activity_report_saved),
+			Toast.makeText(this,
+					getString(R.string.detail_activity_report_saved),
 					Toast.LENGTH_SHORT).show();
 			return true;
 		case R.id.detail_activity_menu_sync:
@@ -153,10 +156,14 @@ public class DetailsActivity extends BaseActivity {
 			handleDelete(this);
 			return true;
 		case R.id.detail_activity_menu_share:
-			// The ShareActionProvider of sherlock is not wirking well on Android 2.3.5 (i checked it on Galaxy 2)
+			// The ShareActionProvider of sherlock is not wirking well on
+			// Android 2.3.5 (i checked it on Galaxy 2)
 			// So here we will use the default ShareIntent
 			Intent sendIntent = getShareIntent();
-			startActivity(Intent.createChooser(sendIntent, getString(R.string.detail_activity_action_bar_share_message)));
+			startActivity(Intent
+					.createChooser(
+							sendIntent,
+							getString(R.string.detail_activity_action_bar_share_message)));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
