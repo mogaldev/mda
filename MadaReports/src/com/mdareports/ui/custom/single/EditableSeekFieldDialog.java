@@ -1,4 +1,4 @@
-package com.mdareports.ui.custom;
+package com.mdareports.ui.custom.single;
 
 import android.app.AlertDialog;
 import android.content.Context;

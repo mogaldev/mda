@@ -77,7 +77,9 @@ public class SharedPreferenceAdapter {
     }
 
     public String readString(String key, String defValue) {
-        return getSharedPreferences().getString(key, defValue);
+    	String readString = getSharedPreferences().getString(key, defValue);
+		readString = readString == null ? defValue : readString;
+        return readString;
     }
 
     public void writeString(String key, String value){

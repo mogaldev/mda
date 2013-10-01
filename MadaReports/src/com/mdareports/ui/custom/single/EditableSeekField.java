@@ -1,4 +1,4 @@
-package com.mdareports.ui.custom;
+package com.mdareports.ui.custom.single;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,14 +11,14 @@ import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mdareports.R;
 import com.mdareports.utils.Logger;
 
 /**
- * 
- *
+ * Represents regular field in the technical tab. Centralizes seek-bar in
+ * read-only mode with edit button that supplies edit dialog using seek-bar or
+ * edit-text
  */
 public class EditableSeekField extends RelativeLayout {
 	private String TAG = Logger.makeLogTag(getClass());
@@ -29,9 +29,13 @@ public class EditableSeekField extends RelativeLayout {
 	private ImageView imgEdit;
 
 	/**
+	 * Inflate the field layout, set the binding between the related views and
+	 * initialize using the attributes from the XML layout
 	 * 
 	 * @param context
+	 *            - the current context
 	 * @param attrs
+	 *            - the attributes defined in the layout
 	 */
 	public EditableSeekField(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -75,7 +79,9 @@ public class EditableSeekField extends RelativeLayout {
 							R.styleable.EditableSeekField_positiveButtonText,
 							R.string.ok), a.getResourceId(
 							R.styleable.EditableSeekField_negativeButtonText,
-							R.string.cancel));
+							R.string.cancel)); // TODO: maybe this option can be
+												// removed and set the OK and
+												// CANCEL for all of the fields
 		} finally {
 			a.recycle();
 		}
@@ -83,11 +89,18 @@ public class EditableSeekField extends RelativeLayout {
 	}
 
 	/**
+	 * Initialize the variables of the class
 	 * 
 	 * @param label
+	 *            - the name of the field
 	 * @param maxProgress
+	 *            - the maximum value of the seek-bar
 	 * @param resStrIdPositiveButton
+	 *            - the string to appear on the positive button, the default is
+	 *            R.string.ok
 	 * @param resStrIdNegativeButton
+	 *            - the string to appear on the negative button, the default is
+	 *            R.string.cancel
 	 */
 	public void initialize(final String label, int maxProgress,
 			final int resStrIdPositiveButton, final int resStrIdNegativeButton) {
@@ -116,11 +129,22 @@ public class EditableSeekField extends RelativeLayout {
 		});
 	}
 
+	/**
+	 * Set the value of the field
+	 * 
+	 * @param value
+	 *            - the value to be set
+	 */
 	public void setValue(int value) {
-		seekBarValue.setProgress(value); // the textview will be updated
+		seekBarValue.setProgress(value); // the edit-text will be updated
 											// automatically
 	}
 
+	/**
+	 * Get the current value of the field
+	 * 
+	 * @return the field's value
+	 */
 	public int getValue() {
 		return seekBarValue.getProgress();
 	}

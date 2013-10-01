@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.mdareports.R;
 import com.mdareports.db.models.Report;
-import com.mdareports.ui.custom.EditableSeekField;
+import com.mdareports.ui.custom.single.EditableSeekField;
 import com.mdareports.utils.ApplicationUtils;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.rangeseekbar.RangeSeekBar;
@@ -44,8 +44,6 @@ public class TechInfoFragment extends FragmentDetailActivity {
 
 		// get the container activity
 		Activity activity = getActivity();
-		// get the current displayed report
-		Report currentReport = getCurrentReport();
 
 		// set the fields members
 		esFieldPulse = (EditableSeekField) activity
@@ -77,14 +75,15 @@ public class TechInfoFragment extends FragmentDetailActivity {
 												R.integer.blood_pressure_view_height_dimension),
 								activity));
 		params.setMargins(0, 25, 0, 20);
-		if (DeviceInfoUtils.getDeviceLanguage(activity).equals("iw")) {
+		
+		if (DeviceInfoUtils.isCurrentLanguageHebrew(activity)) {
 			params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		} else {
 			params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 		}
 		thisLayout.addView(bloodPressureView, params);
 
-		// Init the bloodPressureValue view by the bloodPressureView
+		// initialize the bloodPressureValue view by the bloodPressureView
 		bloodPressureValue = (TextView) activity
 				.findViewById(R.id.bloodPressureValue);
 		bloodPressureValue.setText(bloodPressureView.getSelectedMinValue()
@@ -110,6 +109,8 @@ public class TechInfoFragment extends FragmentDetailActivity {
 
 		// load the details from the report into the fields
 		refreshDataWithCurrentReport();
+		
+		bloodPressureView.setEnabled(false);
 	}
 
 	/**
@@ -137,6 +138,7 @@ public class TechInfoFragment extends FragmentDetailActivity {
 				getResources().getInteger(R.integer.min_blood_pressure),
 				getResources().getInteger(R.integer.max_blood_pressure),
 				getActivity());
+		
 		newBloodPressureView.setSelectedMinValue(bloodPressureViewFromFragemnt
 				.getSelectedMinValue());
 		newBloodPressureView.setSelectedMaxValue(bloodPressureViewFromFragemnt

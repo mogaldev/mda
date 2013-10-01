@@ -81,6 +81,13 @@ public class DeviceInfoUtils {
 
 		return displayName;
 	}
+	
+	/*
+	 * Checks if the current language running on the device is hebrew
+	 */
+	public static boolean isCurrentLanguageHebrew(Context context){
+		return getDeviceLanguage(context).equals("iw");
+	}
     
     // TODO
     /*
