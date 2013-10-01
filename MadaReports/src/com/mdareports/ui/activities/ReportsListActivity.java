@@ -19,6 +19,7 @@ import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.mdareports.ui.reportslist.ReportsListAdapter;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.NotificationsManager;
+import com.mdareports.utils.SettingsManager;
 
 public class ReportsListActivity extends BaseActivity {
 
@@ -66,6 +67,8 @@ public class ReportsListActivity extends BaseActivity {
 			shareString.append(currentReport);
 			shareString.append("\n\n");
 		}
+		shareString.append(SettingsManager.getInstance(this).getVolunteerSignature());
+		
 		Intent shareIntent = new Intent();
 		shareIntent.setAction(Intent.ACTION_SEND);
 		shareIntent.putExtra(Intent.EXTRA_TEXT, shareString.toString());

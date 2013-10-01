@@ -1,6 +1,7 @@
 package com.mdareports.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.preference.PreferenceManager;
@@ -135,23 +136,118 @@ public class SettingsManager {
 		}
 		return false;
 	}
-	
+
 	/**
-	 * Check if the application should abort the broadcast when the phone getting SMS
+	 * Check if the application should abort the broadcast when the phone
+	 * getting SMS
+	 * 
 	 * @return true if should abort, otherwise false
 	 */
 	public boolean getAbortBroadcast() {
-		return getAdapterInstance().readBoolean(R.string.prefrences_key_abort_broadcast, false);
+		return getAdapterInstance().readBoolean(
+				R.string.prefrences_key_abort_broadcast, false);
 	}
-	
+
+	/**
+	 * Get the message that was received until now. Treating the situation where
+	 * there is fragmentation of messages and the SMS's received as 1/2, 2/2
+	 * etc.
+	 * 
+	 * @return The messages that was received as one string.
+	 */
 	public String getBufferedMessage() {
-		String readString = getAdapterInstance().readString("bufferedMessage", "");
+		String readString = getAdapterInstance().readString("bufferedMessage",
+				"");
+		// TODO: remove this line - unnecessary. but check a lot before publish
+		// !
 		readString = readString == null ? "" : readString;
 		return readString;
 	}
-	
+
+	/**
+	 * Save the combination of messages that was received. Treating the
+	 * situation where there is fragmentation of messages and the SMS's received
+	 * as 1/2, 2/2 etc.
+	 * 
+	 * @param value
+	 *            - Combined string of all the messages contents.
+	 */
 	public void setBufferedMessage(String value) {
 		getAdapterInstance().writeString("bufferedMessage", value);
+	}
+
+	/**
+	 * Get the volunteer signature contains its details for exporting (share
+	 * etc.)
+	 * 
+	 * @return If any of the details was supplied - the volunteer signature,
+	 *         Otherwise an empty string
+	 */
+	public String getVolunteerSignature() {
+		String vlntrId = getVolunteerId();
+		String vlntrName = getVolunteerName();
+		String vlntrMirs = getVolunteerMirs();
+
+		String resultSignature = "";
+
+		if (!(vlntrId.isEmpty() && vlntrName.isEmpty() && vlntrMirs.isEmpty())) {
+			// at least one of the details is not empty
+			Resources resources = cntx.getResources();
+			resultSignature += "\n\n";
+			if (!vlntrId.isEmpty())
+				resultSignature += resources
+						.getString(R.string.prefrences_title_volunteer_id)
+						+ " : " + vlntrId + "\n";
+
+			if (!vlntrName.isEmpty())
+				resultSignature += resources
+						.getString(R.string.prefrences_title_volunteer_name)
+						+ " : " + vlntrName + "\n";
+
+			if (!vlntrMirs.isEmpty())
+				resultSignature += resources
+						.getString(R.string.prefrences_title_volunteer_mirs)
+						+ " : " + vlntrMirs + "\n";
+
+		}
+
+		
+		Logger.LOGE("getVolunteerSignature", resultSignature);
+		return resultSignature;
+
+	}
+
+	/** Volunteer ID */
+	public String getVolunteerId() {
+		return getAdapterInstance().readString(
+				R.string.prefrences_key_volunteer_id, "");
+	}
+
+	public void setVolunteerId(String volunteerId) {
+		getAdapterInstance().writeString(R.string.prefrences_key_volunteer_id,
+				volunteerId);
+	}
+
+	/** Volunteer Name */
+	public String getVolunteerName() {
+		return getAdapterInstance().readString(
+				R.string.prefrences_key_volunteer_name, "");
+	}
+
+	public void setVolunteerName(String volunteerName) {
+		getAdapterInstance().writeString(
+				R.string.prefrences_key_volunteer_name, volunteerName);
+	}
+
+	/** Volunteer MIRS */
+	public String getVolunteerMirs() {
+		return getAdapterInstance().readString(
+				R.string.prefrences_key_volunteer_mirs, "");
+	}
+
+	public void setVolunteerMirs(String volunteerMirs) {
+		getAdapterInstance().writeString(
+				R.string.prefrences_key_volunteer_mirs, volunteerMirs);
 	}
 
 }

@@ -52,6 +52,9 @@
     <string name="prefrences_title_ringtone_uri">רינגטון</string>
     <string name="prefrences_title_treatments">טיפולים</string>
     <string name="prefrences_title_abort_broadcast">חסימת הודעה</string>
+      <string name="prefrences_title_volunteer_id">מספר כונן</string>
+    <string name="prefrences_title_volunteer_name">שם כונן</string>
+    <string name="prefrences_title_volunteer_mirs">מספר מירס</string>
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">האם לבצע רטט בעת קבלת התראה</string>
     <string name="prefrences_summary_sound_enabled">האם להפעיל את הצלצול הנבחר בעת קבלת התראה</string>
@@ -61,6 +64,7 @@
     <!-- Categories -->
     <string name="prefrences_category_notifications_title">התראות</string>
     <string name="prefrences_category_code_tables_title">טבלאות</string>
+    <string name="prefrences_category_volunteer_details_title">פרטי כונן</string>
     <!-- End of Preferences Settings -->
 
 

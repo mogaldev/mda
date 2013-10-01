@@ -30,7 +30,6 @@
             android:title="@string/prefrences_title_ringtone_uri" />
     </PreferenceCategory>
 
-    
     <!-- Code Tables Category -->
     <PreferenceCategory
         android:key="@string/prefrences_category_code_tables_key"
@@ -43,6 +42,21 @@
                 android:targetClass="com.mdareports.ui.activities.TreatmentsActivity"
                 android:targetPackage="com.mdareports" />
         </Preference>
+    </PreferenceCategory>
+
+    <!-- Volunteers Details Category -->
+    <PreferenceCategory
+        android:key="@string/prefrences_category_volunteer_details_key"
+        android:title="@string/prefrences_category_volunteer_details_title" >
+        <EditTextPreference
+            android:key="@string/prefrences_key_volunteer_id"
+            android:title="@string/prefrences_title_volunteer_id" />
+        <EditTextPreference
+            android:key="@string/prefrences_key_volunteer_name"
+            android:title="@string/prefrences_title_volunteer_name" />
+        <EditTextPreference
+            android:key="@string/prefrences_key_volunteer_mirs"
+            android:title="@string/prefrences_title_volunteer_mirs" />
     </PreferenceCategory>
 
 </PreferenceScreen>

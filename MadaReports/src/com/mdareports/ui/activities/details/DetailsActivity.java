@@ -17,6 +17,7 @@ import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.BaseActivity;
 import com.mdareports.utils.Logger;
+import com.mdareports.utils.SettingsManager;
 
 public class DetailsActivity extends BaseActivity {
 
@@ -114,8 +115,11 @@ public class DetailsActivity extends BaseActivity {
 	private Intent getShareIntent() {
 		Intent shareIntent = new Intent();
 		shareIntent.setAction(Intent.ACTION_SEND);
-		shareIntent.putExtra(Intent.EXTRA_TEXT, getCurrentReport()
-				.toShareString(this));
+		String shareString = getCurrentReport()
+				.toShareString(this);
+		shareString += SettingsManager.getInstance(this).getVolunteerSignature();
+		
+		shareIntent.putExtra(Intent.EXTRA_TEXT, shareString);
 		shareIntent.setType("text/plain");
 
 		return shareIntent;

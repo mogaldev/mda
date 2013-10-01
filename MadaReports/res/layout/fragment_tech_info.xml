@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <com.mdareports.ui.custom.EditableSeekField
+        <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldPulse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             custom:fieldLabel="@string/fragment_tech_info_pulse"
             custom:maxValue="@integer/max_pulse" />
 
-        <com.mdareports.ui.custom.EditableSeekField
+        <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldBreath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             custom:fieldLabel="@string/fragment_tech_info_breath"
             custom:maxValue="@integer/max_breath" />
 
-        <com.mdareports.ui.custom.EditableSeekField
+        <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldSugar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
