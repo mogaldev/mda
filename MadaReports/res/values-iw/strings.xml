@@ -4,7 +4,10 @@
 
     <!-- General Application Strings -->
     <string name="app_name">דיווחי מדא</string>
-    <string name="notification_d_new_messages">התקבלו %d דיווחים חדשים</string>
+    <plurals name="notification_d_new_messages">
+        <item quantity="one">דיווח אחד שלא נקרא</item>
+        <item quantity="other">%d דיווחים שלא נקראו</item>
+    </plurals>
     <string name="title_activity_detail">פרטי דיווח</string>
     <string name="title_activity_settings">הגדרות</string>
     <string name="title_activity_treatments">טיפולים</string>

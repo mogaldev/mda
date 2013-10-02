@@ -18,20 +18,26 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	static boolean isFinishReceiving = true;
 
 	private void raiseMessage(String smsMessageBody, long timestampMillies, Context context) {
+		// If the application is in Foreground, we don't need to notify to the user about the report
+		if (ApplicationUtils.isApplicationInForeground(context)) {
+			return;
+		}
+		
 		Report report = new Report(context, smsMessageBody, timestampMillies);
 
 		// add the report to the database
 		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
 		dbWrpr.createReport(report);
 
-		// notify about the new report with the number of unread reports
-		String formattedString = String.format(context.getString(R.string.notification_d_new_messages),
-		                                       dbWrpr.countUnreadReports());
+		// Get count of unread reports
+		int countUnreadReports = dbWrpr.countUnreadReports();
 
-		if (!ApplicationUtils.isApplicationInForeground(context)) {
-			NotificationsManager.getInstance(context).raiseSmsReceivedNotification(formattedString,
-			                                                                       report.getDescription());
-		}
+		// Init the formatted string
+		String formattedString = context.getResources().getQuantityString(R.plurals.notification_d_new_messages, countUnreadReports, countUnreadReports);
+
+		// Notify the user
+		NotificationsManager.getInstance(context).raiseSmsReceivedNotification(formattedString,
+		                                                                       report.getDescription());
 	}
 
 	/**

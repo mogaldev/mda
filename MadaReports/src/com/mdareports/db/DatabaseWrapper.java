@@ -92,7 +92,6 @@ public class DatabaseWrapper {
 	public int countUnreadReports() {
 		Dao<Report, Integer> dao = helper.getReportDao();
 		try {
-			// TODO find different way, not using hard-coded column name
 			return (int) dao.countOf(dao.queryBuilder().setCountOf(true)
 					.where().eq(Report.IS_READ_COLUMN_NAME, false).prepare());
 		} catch (SQLException e) {
@@ -118,7 +117,8 @@ public class DatabaseWrapper {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 	}
-
+	
+	
 	// ////////////////////////////
 	// End of Reports Functions
 	// ////////////////////////////
@@ -128,6 +128,7 @@ public class DatabaseWrapper {
 	// ////////////////////////////
 
 	@SuppressWarnings("unchecked")
+
 	public List<ICodeTable> getAll(String codeTableActivityName) {
 		List<ICodeTable> records = null;
 		try {

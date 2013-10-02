@@ -91,7 +91,6 @@ public class NotificationsManager {
 			 android.os.Vibrator vibrator = (android.os.Vibrator) context
 	                    .getSystemService(Context.VIBRATOR_SERVICE);
 	            vibrator.vibrate(500);
-			//notification.vibrate = new long[]{200, 100, 500};
 		}
 		 
 		performNotification(notification, SMS_NOTIFICATION_ID);

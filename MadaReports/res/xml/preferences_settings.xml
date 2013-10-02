@@ -57,7 +57,8 @@
             android:title="@string/prefrences_title_volunteer_name" />
         <EditTextPreference
             android:key="@string/prefrences_key_volunteer_mirs"
-            android:title="@string/prefrences_title_volunteer_mirs" />
+            android:title="@string/prefrences_title_volunteer_mirs"
+            android:inputType="number" />
     </PreferenceCategory>
 
 </PreferenceScreen>
