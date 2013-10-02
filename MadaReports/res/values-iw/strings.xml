@@ -4,10 +4,12 @@
 
     <!-- General Application Strings -->
     <string name="app_name">דיווחי מדא</string>
+
     <plurals name="notification_d_new_messages">
         <item quantity="one">דיווח אחד שלא נקרא</item>
         <item quantity="other">%d דיווחים שלא נקראו</item>
     </plurals>
+
     <string name="title_activity_detail">פרטי דיווח</string>
     <string name="title_activity_settings">הגדרות</string>
     <string name="title_activity_treatments">טיפולים</string>
@@ -20,7 +22,7 @@
     <!-- End of General Application Strings -->
 
 
-    <!-- Action Bars -->    
+    <!-- Action Bars -->
     <string name="action_bars_settings">הגדרות</string>
     <string name="action_bars_search_view_hint">חיפוש...</string>
     <string name="action_bars_add">הוספה</string>
@@ -29,7 +31,8 @@
     <string name="action_bars_search">חפש</string>
     <string name="action_bars_share">שתף</string>
     <!-- End of Action Bars -->
-    
+
+
     <!-- ReportsList Activity -->
     <!-- ReportsList Activity Action Bar -->
     <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
@@ -49,14 +52,15 @@
     <string name="code_table_deleted_successfuly">נמחק בהצלחה</string>
     <!-- End of Code Tables -->
 
-	<!-- Preferences Settings -->
-	<!-- Titles -->
+
+    <!-- Preferences Settings -->
+    <!-- Titles -->
     <string name="prefrences_title_vibrate_enabled">רטט</string>
     <string name="prefrences_title_sound_enabled">צליל</string>
     <string name="prefrences_title_ringtone_uri">רינגטון</string>
     <string name="prefrences_title_treatments">טיפולים</string>
     <string name="prefrences_title_abort_broadcast">חסימת הודעה</string>
-      <string name="prefrences_title_volunteer_id">מספר כונן</string>
+    <string name="prefrences_title_volunteer_id">מספר כונן</string>
     <string name="prefrences_title_volunteer_name">שם כונן</string>
     <string name="prefrences_title_volunteer_mirs">מספר מירס</string>
     <!-- Summaries -->
@@ -102,22 +106,23 @@
     <string name="fragment_treatments_to_report_all_treatments_in_db">רשימת טיפולים</string>
     <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו באירוע</string>
     <!-- End of Details Activity -->
-    
-     <!-- Default Treatments-->
-     <string name="treatments_oxygen_enrichment">העשרה בחמצן</string>    
-     <string name="treatments_opening_airway">פתיחת נתיב אוויר</string>
-     <string name="treatments_artificial_respiration">הנשמה</string>
-     <string name="treatments_connecting_defibrillator">חיבור לדפיברילטור</string>
-     <string name="treatments_cardiac_massage">עיסוי לב</string>
-     <string name="treatments_stopping_hemorrhage">עצירת שט\"ד</string>     
-     <string name="treatments_infusion">עירוי</string>    
-     <string name="treatments_headvise">מנייח ראש</string>
-     <string name="treatments_collar">צוארון</string>     
-     <string name="treatments_backboard">לוח גב</string>
-     <string name="treatments_deliver">קבלת לידה</string>
-     <string name="treatments_rescue">חילוץ</string>
-     <string name="treatments_administrate_glucogel">מתן גלוקוג\'ל</string>
-     <string name="treatments_administrate_aspirin">מתן אספירין</string>                
-    <!-- End of Default Treatments-->    
+
+
+    <!-- Default Treatments -->
+    <string name="treatments_oxygen_enrichment">העשרה בחמצן</string>
+    <string name="treatments_opening_airway">פתיחת נתיב אוויר</string>
+    <string name="treatments_artificial_respiration">הנשמה</string>
+    <string name="treatments_connecting_defibrillator">חיבור לדפיברילטור</string>
+    <string name="treatments_cardiac_massage">עיסוי לב</string>
+    <string name="treatments_stopping_hemorrhage">עצירת שט\"ד</string>
+    <string name="treatments_infusion">עירוי</string>
+    <string name="treatments_headvise">מנייח ראש</string>
+    <string name="treatments_collar">צוארון</string>
+    <string name="treatments_backboard">לוח גב</string>
+    <string name="treatments_deliver">קבלת לידה</string>
+    <string name="treatments_rescue">חילוץ</string>
+    <string name="treatments_administrate_glucogel">מתן גלוקוג\'ל</string>
+    <string name="treatments_administrate_aspirin">מתן אספירין</string>
+    <!-- End of Default Treatments -->
 
 </resources>

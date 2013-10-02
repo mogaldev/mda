@@ -16,16 +16,17 @@
         style="@style/fragment_tech_info_seekbar"
         android:layout_width="214dp"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="18dp"
         android:layout_marginTop="10dp"
-        android:layout_toLeftOf="@+id/tvLabelEditSeekField"
+        android:layout_toRightOf="@id/imgEditSeekField"
         android:max="@integer/max_pulse" />
 
     <TextView
         android:id="@+id/tvValueEditSeekField"
         style="@style/fragment_tech_info_textview_value"
         android:layout_centerHorizontal="true"
-        android:text="0"
-        android:layout_marginTop="45dp" />
+        android:layout_marginTop="45dp"
+        android:text="0" />
 
     <ImageView
         android:id="@+id/imgEditSeekField"
