@@ -33,20 +33,9 @@
             custom:fieldLabel="@string/fragment_tech_info_sugar"
             custom:maxValue="@integer/max_sugar" />
 
-        <RelativeLayout
-            android:id="@+id/bloodPressureLayout"
-            style="@style/fragment_tech_info_relative_layout" >
-
-            <TextView
-                android:id="@+id/bloodPressureValue"
-                style="@style/fragment_tech_info_textview_value"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true" />
-
-            <TextView
-                style="@style/fragment_tech_info_textview"
-                android:text="@string/fragment_tech_info_blood_pressure" />
-        </RelativeLayout>
+        <com.mdareports.ui.custom.bloodpressure.BloodPressureField
+            android:id="@+id/bloodPressureField"
+            style="@style/fragment_tech_info_relative_layout" />
     </LinearLayout>
 
 </ScrollView>
