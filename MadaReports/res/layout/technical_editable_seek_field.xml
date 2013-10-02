@@ -17,7 +17,7 @@
         style="@style/fragment_tech_info_seekbar"
         android:layout_width="214dp"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imgEditSeekField"     
+        android:layout_toLeftOf="@+id/imgEditSeekField"
         android:max="@integer/max_pulse" />
 
     <TextView

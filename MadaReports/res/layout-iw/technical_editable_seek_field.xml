@@ -8,30 +8,31 @@
         style="@style/fragment_tech_info_textview"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
         android:text="label" />
 
     <SeekBar
         android:id="@+id/seekEditSeekField"
         style="@style/fragment_tech_info_seekbar"
         android:layout_width="214dp"
-        android:paddingTop="25dp"
-        android:paddingBottom="20dp"        
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imgEditSeekField"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/tvLabelEditSeekField"
         android:max="@integer/max_pulse" />
 
     <TextView
         android:id="@+id/tvValueEditSeekField"
         style="@style/fragment_tech_info_textview_value"
         android:layout_centerHorizontal="true"
-        android:text="0" />
+        android:text="0"
+        android:layout_marginTop="45dp" />
 
     <ImageView
         android:id="@+id/imgEditSeekField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/seekEditSeekField"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:src="@android:drawable/ic_menu_edit" />
 
 </RelativeLayout>
