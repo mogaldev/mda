@@ -3,29 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content" >
 
-    <ImageView
-        android:id="@+id/imgEditBloodPressureField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tvLabelBloodPressure"
+        style="@style/fragment_tech_info_textview"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="19dp"
-        android:src="@android:drawable/ic_menu_edit" />
+        android:text="לחץ דם" />
 
     <LinearLayout
         android:id="@+id/llBpValuesContainer"
         android:layout_width="wrap_content"
         android:layout_height="75dp"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imgEditBloodPressureField"
+        android:layout_toLeftOf="@+id/tvLabelBloodPressure"
         android:gravity="center"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="60dp">
+        android:padding="20dp"
+        android:layout_marginRight="50dp" >
 
         <TextView
             android:id="@+id/tvBloodPressureValueHigh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:text="120"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -42,16 +41,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="60"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvLabelBloodPressure"
-        style="@style/fragment_tech_info_textview"
+    <ImageView
+        android:id="@+id/imgEditBloodPressureField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/llBpValuesContainer"
         android:layout_alignParentLeft="true"
-        android:text="Blood Pressure" />
+        android:layout_marginBottom="20dp"
+        android:src="@android:drawable/ic_menu_edit" />
 
 </RelativeLayout>

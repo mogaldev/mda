@@ -50,8 +50,7 @@ public class EditableSeekFieldDialog extends RelativeLayout {
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 
-				if (fromUser) {
-					Logger.LOGE(TAG, "onProgressChanged: " + progress);
+				if (fromUser) {					
 					commonValue = progress;
 					editText.setText(String.valueOf(commonValue));
 				}
@@ -71,8 +70,7 @@ public class EditableSeekFieldDialog extends RelativeLayout {
 			}
 
 			@Override
-			public void afterTextChanged(Editable s) {
-				Logger.LOGE(TAG, "afterTextChanged: " + s.toString());
+			public void afterTextChanged(Editable s) {				
 				try {
 					commonValue = Integer.parseInt(s.toString());
 					if (commonValue > seekBar.getMax())

@@ -9,6 +9,7 @@
     <string name="title_activity_settings">הגדרות</string>
     <string name="title_activity_treatments">טיפולים</string>
     <string name="yes">כן</string>
+    <string name="ok">אישור</string>
     <string name="cancel">ביטול</string>
     <string name="share_string_general_details">פרטי מקרה</string>
     <string name="share_string_technical_details">פרטים טכניים</string>
