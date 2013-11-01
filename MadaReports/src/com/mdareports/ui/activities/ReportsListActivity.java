@@ -13,6 +13,8 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.ads.AdRequest;
+import com.google.ads.AdView;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
@@ -24,13 +26,20 @@ import com.mdareports.utils.SettingsManager;
 public class ReportsListActivity extends BaseActivity {
 
 	private ReportsListAdapter reportsAdapter;
-	ListView listView;
+	private ListView listView;
+	private AdView adView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_reports_list_view);
+		
+		// Find the listView in the activity's layout for future use
 		listView = (ListView) findViewById(R.id.listView);
+		
+		// Find the AdView in the activity's layout Load the AdView with an ad request
+		adView = (AdView) findViewById(R.id.adView);
+//		adView.loadAd(new AdRequest());
 	}
 
 	@Override
@@ -42,6 +51,16 @@ public class ReportsListActivity extends BaseActivity {
 
 		// Just remove the SMS Received Notification
 		NotificationsManager.getInstance(this).removeSmsReceivedNotification();
+	}
+
+	@Override
+	public void onDestroy() {
+		// Handle the AdView
+		if (adView != null) {
+			adView.destroy();
+		}
+		
+		super.onDestroy();
 	}
 
 	@Override

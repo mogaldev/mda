@@ -13,6 +13,9 @@
     <!-- Maybe this permission can be removed -->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- Permissions for Google AdMobs -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -62,6 +65,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mdareports.ui.activities.ReportsListActivity" />
         </activity>
+
+        <activity android:name="com.google.ads.AdActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
         <!-- End of Activities -->
 
 
