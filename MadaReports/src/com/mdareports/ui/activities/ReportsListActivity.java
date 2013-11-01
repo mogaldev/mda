@@ -13,7 +13,6 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
@@ -39,7 +38,17 @@ public class ReportsListActivity extends BaseActivity {
 		
 		// Find the AdView in the activity's layout Load the AdView with an ad request
 		adView = (AdView) findViewById(R.id.adView);
-//		adView.loadAd(new AdRequest());
+		
+		
+		/**
+		 * When the loadAdOnCreate=false in the com.google.ads.AdView in the layout,
+		 * we should initialize the AdView from the code, with the AdRequest Object 
+		 */
+		// Create the AdRequest and add parameters to it
+//		AdRequest adRequest = new AdRequest();
+//	    adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // All emulators
+//		adRequest.addTestDevice("8E940041CA56DCF10D0F5218CD835405"); // Gal's Device id
+//		adView.loadAd(adRequest);
 	}
 
 	@Override
