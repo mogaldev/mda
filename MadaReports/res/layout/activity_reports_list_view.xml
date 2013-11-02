@@ -21,7 +21,6 @@
         android:layout_weight="1"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-4977178584544616/5048287889"
-        ads:testDevices="8E940041CA56DCF10D0F5218CD835405"
         ads:loadAdOnCreate="true" />
 
 </LinearLayout>

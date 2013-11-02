@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.ads.AdRequest;
 import com.google.ads.AdView;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
@@ -41,8 +42,10 @@ public class ReportsListActivity extends BaseActivity {
 		
 		
 		/**
+		 * We can "Edit" the AdView from the code, with the AdRequest object.
 		 * When the loadAdOnCreate=false in the com.google.ads.AdView in the layout,
-		 * we should initialize the AdView from the code, with the AdRequest Object 
+		 * we have to initialize the AdView from the code, with the AdRequest Object.
+		 * When the loadAdOnCreate=true, we don't have to edit the AdRequest from the code
 		 */
 		// Create the AdRequest and add parameters to it
 //		AdRequest adRequest = new AdRequest();
