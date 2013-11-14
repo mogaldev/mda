@@ -2,13 +2,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -30,8 +30,9 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    
+
     <!-- DetailActivity Style -->
+
 
     <!-- General Info Fragment Style -->
     <style name="fragment_general_info_relative_layout">
@@ -90,6 +91,7 @@
     </style>
 
     <style name="fragment_tech_info_seekbar">
+
         <!-- Important! keep the paddingTop and paddingBottom because without it the SeekBar is distorted -->
         <item name="android:paddingTop">25dp</item>
         <item name="android:paddingBottom">20dp</item>
@@ -97,31 +99,53 @@
         <item name="android:layout_height">75dp</item>
         <item name="android:gravity">center</item>
     </style>
-    
+
     <integer name="blood_pressure_view_width_dimension">200</integer>
     <integer name="blood_pressure_view_height_dimension">75</integer>
+
     <dimen name="blood_pressure_view_height_dimension_dialog">80dp</dimen>
     <!-- End of Tech Info Fragment Style -->
 
-	<!-- Treatments Fragment -->
-	
-	<!-- End of Treatments Fragment -->
+
+    <!-- Treatments Fragment -->
+
+
+    <!-- End of Treatments Fragment -->
+
 
     <!-- End of DetailActivity Style -->
-    
-    
-    <!-- Style for the Show Original Message button  -->
+
+
+    <!-- PatientReportActivity Style -->
+    <style name="activity_patient_report_textview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
+        <item name="android:textDirection" tools:targetApi="17">rtl</item>
+    </style>
+
+    <style name="activity_patient_report_edittext">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <!-- End of PatientReportActivity Style -->
+
+
+    <!-- Style for the Show Original Message button -->
     <style name="btnStyleOrange" parent="@android:style/Widget.Button">
-       <item name="android:textSize">15sp</item>
-       <item name="android:textStyle">bold</item>
-       <item name="android:textColor">#FFFFFF</item>
-       <item name="android:gravity">center</item>
-       <item name="android:shadowColor">#000000</item>
-       <item name="android:shadowDx">1</item>
-       <item name="android:shadowDy">1</item>
-       <item name="android:shadowRadius">0.6</item>
-       <item name="android:background">@drawable/custom_btn_orange</item>
-       <item name="android:padding">10dip</item>
-   </style>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">0.6</item>
+        <item name="android:background">@drawable/custom_btn_orange</item>
+        <item name="android:padding">10dip</item>
+    </style>
 
 </resources>

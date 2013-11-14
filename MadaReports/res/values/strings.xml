@@ -4,13 +4,16 @@
 
     <!-- General Application Strings -->
     <string name="app_name">MDA Reports</string>
+
     <plurals name="notification_d_new_messages">
         <item quantity="one">one unread report</item>
         <item quantity="other">%d unread reports</item>
     </plurals>
+
     <string name="title_activity_detail">Report Details</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_treatments">Treatments</string>
+    <string name="title_activity_patient_report">Patient Report</string>
     <string name="yes">Yes</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
@@ -28,6 +31,7 @@
     <string name="action_bars_delete">Delete</string>
     <string name="action_bars_search">Search</string>
     <string name="action_bars_share">Share</string>
+    <string name="action_bars_patient_report">Patient Report</string>
     <!-- End of Action Bars -->
 
 
@@ -61,6 +65,7 @@
     <string name="prefrences_key_volunteer_id">VOLUNTEER_ID</string>
     <string name="prefrences_key_volunteer_name">VOLUNTEER_NAME</string>
     <string name="prefrences_key_volunteer_mirs">VOLUNTEER_MIRS</string>
+    <string name="prefrences_key_spatial_telephony_center_number">SPATIAL_TELE_CENTER_NUMBER</string>
     <!-- Titles -->
     <string name="prefrences_title_vibrate_enabled">Vibrate</string>
     <string name="prefrences_title_sound_enabled">Sound</string>
@@ -70,13 +75,15 @@
     <string name="prefrences_title_volunteer_id">Volunteer ID</string>
     <string name="prefrences_title_volunteer_name">Volunteer Name</string>
     <string name="prefrences_title_volunteer_mirs">Volunteer MIRS</string>
-    
+    <string name="prefrences_title_spatial_telephony_center_number">Sp. Center Number</string>
+
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">Enable vibrate</string>
     <string name="prefrences_summary_sound_enabled">Enable sound</string>
     <string name="prefrences_summary_ringtone_uri">Chosen ringtone</string>
     <string name="prefrences_summary_treatments">Manage Treatments</string>
     <string name="prefrences_summary_abort_broadcast">Abort SMS to user</string>
+    <string name="prefrences_summary_spatial_telephony_center_number">The spatial telephony center number which the patients reports should be sent to</string>
     <!-- Categories -->
     <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
     <string name="prefrences_category_notifications_title">Notifications</string>
@@ -84,6 +91,8 @@
     <string name="prefrences_category_code_tables_title">Tables</string>
     <string name="prefrences_category_volunteer_details_key">VOLUNTEER_DETAILS_TABLES</string>
     <string name="prefrences_category_volunteer_details_title">Volunteer Details</string>
+    <string name="prefrences_category_spatial_telephony_center_key">SPATIAL_TELEPHONY_CENTER_DETAILS_TABLES</string>
+    <string name="prefrences_category_spatial_telephony_center_title">Spatial Telephony Center</string>
     <!-- End of Preferences Settings -->
 
 
@@ -135,5 +144,18 @@
     <string name="treatments_administrate_glucogel">Administrate GlucoGel</string>
     <string name="treatments_administrate_aspirin">Administrate Aspirin</string>
     <!-- End of Default Treatments -->
+
+
+    <!-- Patient Report Activity -->
+    <string name="patient_report_activity_address">Address</string>
+    <string name="patient_report_activity_visa_number">Visa</string>
+    <string name="patient_report_activity_commitment">Commitment</string>
+    <string name="patient_report_activity_sum">Sum</string>
+    <string name="patient_report_activity_form_number">Form</string>
+    <string name="patient_report_activity_code">Code</string>
+    <string name="patient_report_activity_first_name">First Name</string>
+    <string name="patient_report_activity_family_name">Family Name</string>
+    <string name="patient_report_activity_send">Send</string>
+    <!-- End of Patient Report Activity -->
 
 </resources>

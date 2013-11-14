@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!-- Visa -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportVisa"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="number" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_visa_number" />
+        </RelativeLayout>
+        <!-- End of Visa -->
+
+
+        <!-- Commitment -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportCommitment"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="number" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_commitment" />
+        </RelativeLayout>
+        <!-- End of Commitment -->
+
+
+        <!-- Form -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportForm"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="number" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_form_number" />
+        </RelativeLayout>
+        <!-- End of Form -->
+
+
+        <!-- Code -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportCode"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="number" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_code" />
+        </RelativeLayout>
+        <!-- End of Code -->
+
+
+        <!-- Sum -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportSum"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="number" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_sum" />
+        </RelativeLayout>
+        <!-- End of Sum -->
+
+
+        <!-- Address -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportAddress"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="textShortMessage" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_address" />
+        </RelativeLayout>
+        <!-- End of Address -->
+
+
+        <!-- First Name -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportFirstName"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="textShortMessage" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_first_name" />
+        </RelativeLayout>
+        <!-- End of First Name -->
+
+
+        <!-- Family Name -->
+
+        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
+            <EditText
+                android:id="@+id/txtPatientReportFamilyName"
+                style="@style/activity_patient_report_edittext"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="false"
+                android:inputType="textShortMessage" />
+
+            <TextView
+                style="@style/activity_patient_report_textview"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentRight="true"
+                android:text="@string/patient_report_activity_family_name" />
+        </RelativeLayout>
+        <!-- End of Family Name -->
+
+
+        <!-- Send button -->
+
+        <Button
+            android:id="@+id/btnSendReport"
+            style="@style/btnStyleOrange"
+            android:layout_width="104dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/patient_report_activity_send" />
+    </LinearLayout>
+
+</ScrollView>

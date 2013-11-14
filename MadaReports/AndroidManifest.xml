@@ -39,6 +39,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.mdareports.ui.activities.PatientReportActivity"
+            android:label="@string/title_activity_patient_report"
+            android:parentActivityName="com.mdareports.ui.activities.ReportsListActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name="com.mdareports.ui.activities.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName="com.mdareports.ui.activities.ReportsListActivity" >

@@ -126,6 +126,10 @@ public class ReportsListActivity extends BaseActivity {
 			Intent sendIntent = getShareIntent();
 			startActivity(Intent.createChooser(sendIntent, getString(R.string.reportslist_activity_action_bar_share_message)));
 			return true;
+			
+		case R.id.reportslist_activity_patient_report:
+			MoveTo(PatientReportActivity.class);
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}

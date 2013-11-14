@@ -13,6 +13,7 @@
     <string name="title_activity_detail">פרטי דיווח</string>
     <string name="title_activity_settings">הגדרות</string>
     <string name="title_activity_treatments">טיפולים</string>
+    <string name="title_activity_patient_report">טופס חולה/נפגע</string>
     <string name="yes">כן</string>
     <string name="ok">אישור</string>
     <string name="cancel">ביטול</string>
@@ -30,6 +31,7 @@
     <string name="action_bars_delete">מחיקה</string>
     <string name="action_bars_search">חפש</string>
     <string name="action_bars_share">שתף</string>
+    <string name="action_bars_patient_report">טופס חולה/נפגע</string>
     <!-- End of Action Bars -->
 
 
@@ -63,16 +65,19 @@
     <string name="prefrences_title_volunteer_id">מספר כונן</string>
     <string name="prefrences_title_volunteer_name">שם כונן</string>
     <string name="prefrences_title_volunteer_mirs">מספר מירס</string>
+    <string name="prefrences_title_spatial_telephony_center_number">מספר מוקד מרחבי</string>
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">האם לבצע רטט בעת קבלת התראה</string>
     <string name="prefrences_summary_sound_enabled">האם להפעיל את הצלצול הנבחר בעת קבלת התראה</string>
     <string name="prefrences_summary_ringtone_uri">הצלצול הנבחר בעת קבלת התראה</string>
     <string name="prefrences_summary_treatments">ניהול טיפולים</string>
     <string name="prefrences_summary_abort_broadcast">האם למנוע מאפליקציות SMS קבלת ההודעה</string>
+    <string name="prefrences_summary_spatial_telephony_center_number">המספר הסלולרי  של המוקד המרחבי אליו נשלחים דיווחי המטופלים</string>
     <!-- Categories -->
     <string name="prefrences_category_notifications_title">התראות</string>
     <string name="prefrences_category_code_tables_title">טבלאות</string>
     <string name="prefrences_category_volunteer_details_title">פרטי כונן</string>
+    <string name="prefrences_category_spatial_telephony_center_title">מוקד מרחבי</string>
     <!-- End of Preferences Settings -->
 
 
@@ -124,5 +129,18 @@
     <string name="treatments_administrate_glucogel">מתן גלוקוג\'ל</string>
     <string name="treatments_administrate_aspirin">מתן אספירין</string>
     <!-- End of Default Treatments -->
+
+
+    <!-- Patient Report Activity -->
+    <string name="patient_report_activity_address">רחוב</string>
+    <string name="patient_report_activity_visa_number">ויזה</string>
+    <string name="patient_report_activity_commitment">התחייבות</string>
+    <string name="patient_report_activity_sum">סכום</string>
+    <string name="patient_report_activity_form_number">מס. טופס</string>
+    <string name="patient_report_activity_code">קוד</string>
+    <string name="patient_report_activity_first_name">שם פרטי</string>
+    <string name="patient_report_activity_family_name">שם משפחה</string>
+    <string name="patient_report_activity_send">שליחה</string>
+    <!-- End of Patient Report Activity -->
 
 </resources>

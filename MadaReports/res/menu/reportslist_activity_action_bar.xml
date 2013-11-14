@@ -23,5 +23,10 @@
         android:icon="@android:drawable/ic_menu_share"
         android:showAsAction="ifRoom"
         android:title="@string/action_bars_share"/>
+    <item
+        android:id="@+id/reportslist_activity_patient_report"
+        android:icon="@android:drawable/ic_menu_directions"
+        android:showAsAction="ifRoom"
+        android:title="@string/action_bars_patient_report"/>
 
 </menu>

@@ -15,26 +15,27 @@ public class SettingsActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_settings);
-		
+
 		// Set the home button in the action bar as enabled
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
 
 		// Display the fragment instead of the FrameLayout in the
 		// activity_settings layout
-		getFragmentManager().beginTransaction().replace(R.id.settings_frame_layout,
-		                                                new SettingsFragment()).commit();
+		getFragmentManager().beginTransaction()
+				.replace(R.id.settings_frame_layout, new SettingsFragment())
+				.commit();
 
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-			case android.R.id.home:
-				NavUtils.navigateUpFromSameTask(this);
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+		case android.R.id.home:
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
 	}
 }

@@ -211,7 +211,6 @@ public class SettingsManager {
 
 		}
 
-		
 		Logger.LOGE("getVolunteerSignature", resultSignature);
 		return resultSignature;
 
@@ -248,6 +247,19 @@ public class SettingsManager {
 	public void setVolunteerMirs(String volunteerMirs) {
 		getAdapterInstance().writeString(
 				R.string.prefrences_key_volunteer_mirs, volunteerMirs);
+	}
+
+	/** Spatial Telephony Center */
+	public String getSpatialTelephonyCenterNumber() {
+		return getAdapterInstance().readString(
+				R.string.prefrences_key_spatial_telephony_center_number, "");
+	}
+
+	public void setSpatialTelephonyCenterNumber(String number) {
+		getAdapterInstance()
+				.writeString(
+						R.string.prefrences_key_spatial_telephony_center_number,
+						number);
 	}
 
 }
