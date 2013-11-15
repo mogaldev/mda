@@ -15,8 +15,6 @@
             <EditText
                 android:id="@+id/txtPatientReportVisa"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="number" />
 
             <TextView
@@ -33,8 +31,6 @@
             <EditText
                 android:id="@+id/txtPatientReportCommitment"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="number" />
 
             <TextView
@@ -51,8 +47,6 @@
             <EditText
                 android:id="@+id/txtPatientReportForm"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="number" />
 
             <TextView
@@ -69,8 +63,6 @@
             <EditText
                 android:id="@+id/txtPatientReportCode"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="number" />
 
             <TextView
@@ -87,8 +79,6 @@
             <EditText
                 android:id="@+id/txtPatientReportSum"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="number" />
 
             <TextView
@@ -105,8 +95,6 @@
             <EditText
                 android:id="@+id/txtPatientReportAddress"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="textShortMessage" />
 
             <TextView
@@ -123,8 +111,6 @@
             <EditText
                 android:id="@+id/txtPatientReportFirstName"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="textShortMessage" />
 
             <TextView
@@ -141,8 +127,6 @@
             <EditText
                 android:id="@+id/txtPatientReportFamilyName"
                 style="@style/activity_patient_report_edittext"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
                 android:inputType="textShortMessage" />
 
             <TextView

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.view.MenuItem;
 import com.mdareports.R;
+import com.mdareports.sms.SmsSender;
 import com.mdareports.utils.Logger;
 import com.mdareports.utils.SettingsManager;
 
@@ -32,14 +33,16 @@ public class PatientReportActivity extends BaseActivity {
 			public void onClick(View v) {
 				String reportMsg = getReportMessage();
 
-				// send the report in the native SMS application
-				Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-				sendIntent.setData(Uri.parse("sms:"
-						+ SettingsManager.getInstance(v.getContext())
-								.getSpatialTelephonyCenterNumber()));
-				sendIntent.putExtra("sms_body", reportMsg);
-
-				startActivity(sendIntent);
+//				// send the report in the native SMS application
+//				Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+//				sendIntent.setData(Uri.parse("sms:"
+//						+ SettingsManager.getInstance(v.getContext())
+//								.getSpatialTelephonyCenterNumber()));
+//				sendIntent.putExtra("sms_body", reportMsg);
+//
+//				startActivity(sendIntent);				
+				
+				SmsSender.send(v.getContext(), reportMsg);
 
 				Toast.makeText(v.getContext(), reportMsg, Toast.LENGTH_SHORT)
 						.show();
