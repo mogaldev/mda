@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -25,28 +26,32 @@
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
             <EditText
                 android:id="@+id/addressEditText"
                 style="@style/fragment_general_info_edittext"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="false"
-                android:layout_height="100dp"
                 android:inputType="textMultiLine" />
+
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:text="@string/fragment_general_info_address" />
-        </RelativeLayout>        
+        </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
             <EditText
                 android:id="@+id/descriptionEditText"
                 style="@style/fragment_general_info_edittext_big"
+                android:layout_height="150dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="false"
-                android:layout_height="150dp"
                 android:inputType="textMultiLine" />
+
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:layout_alignParentLeft="false"
@@ -59,9 +64,9 @@
             <EditText
                 android:id="@+id/notesEditText"
                 style="@style/fragment_general_info_edittext_big"
+                android:layout_height="75dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="false"
-                android:layout_height="75dp"
                 android:inputType="textMultiLine" />
 
             <TextView
@@ -85,6 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/fragment_general_info_show_original_message" />
+
+     <include layout="@layout/admob_footer" />
     </LinearLayout>
 
 </ScrollView>

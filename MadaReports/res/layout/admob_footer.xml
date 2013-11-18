@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.google.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-4977178584544616/5048287889"
+        ads:loadAdOnCreate="true"
+        ads:testDevices="TEST_EMULATOR, 1672CE270A7CDA8B7CA4AFCBF2E5A0D8, 8E940041CA56DCF10D0F5218CD835405" />
+
+</LinearLayout>

@@ -145,6 +145,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/patient_report_activity_send" />
+
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="asd111"/>
+        <include layout="@layout/admob_footer" />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="asd"/>
     </LinearLayout>
 
 </ScrollView>

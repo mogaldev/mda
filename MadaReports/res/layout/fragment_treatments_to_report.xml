@@ -37,4 +37,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@id/treatment_of_report_textview" />
 
+    <include
+        android:layout_alignParentBottom="true"
+        layout="@layout/admob_footer" />
+
 </RelativeLayout>

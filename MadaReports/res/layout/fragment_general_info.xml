@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -9,18 +10,21 @@
         android:orientation="vertical" >
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
             <EditText
                 android:id="@+id/reportIdEditText"
                 style="@style/fragment_general_info_edittext"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="numberSigned" />
+
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_report_id" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
             <EditText
                 android:id="@+id/addressEditText"
                 style="@style/fragment_general_info_edittext"
@@ -28,12 +32,14 @@
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
+
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_address" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
             <EditText
                 android:id="@+id/descriptionEditText"
                 style="@style/fragment_general_info_edittext_big"
@@ -41,19 +47,22 @@
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
+
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_description" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+
             <EditText
                 android:id="@+id/notesEditText"
                 style="@style/fragment_general_info_edittext_big"
+                android:layout_height="75dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
-                android:layout_height="75dp"
                 android:inputType="textMultiLine" />
+
             <TextView
                 style="@style/fragment_general_info_textview"
                 android:text="@string/fragment_general_info_notes" />
@@ -68,11 +77,13 @@
 
         <Button
             android:id="@+id/showOriginalMessageButton"
-            style= "@style/btnStyleOrange"
+            style="@style/btnStyleOrange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/fragment_general_info_show_original_message" />
+
+     <include layout="@layout/admob_footer" />
     </LinearLayout>
 
 </ScrollView>
