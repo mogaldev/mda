@@ -7,10 +7,9 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.actionbarsherlock.view.MenuItem;
-import com.google.ads.AdRequest;
-import com.google.ads.AdView;
 import com.mdareports.R;
 import com.mdareports.sms.SmsSender;
+import com.mdareports.ui.custom.patient.report.PatientReportField;
 
 public class PatientReportActivity extends BaseActivity {
 
@@ -29,15 +28,7 @@ public class PatientReportActivity extends BaseActivity {
 			public void onClick(View v) {
 				String reportMsg = getReportMessage();
 
-//				// send the report in the native SMS application
-//				Intent sendIntent = new Intent(Intent.ACTION_VIEW);
-//				sendIntent.setData(Uri.parse("sms:"
-//						+ SettingsManager.getInstance(v.getContext())
-//								.getSpatialTelephonyCenterNumber()));
-//				sendIntent.putExtra("sms_body", reportMsg);
-//
-//				startActivity(sendIntent);				
-				
+				// send the report in the native SMS application
 				SmsSender.send(v.getContext(), reportMsg);
 
 				Toast.makeText(v.getContext(), reportMsg, Toast.LENGTH_SHORT)
@@ -47,8 +38,8 @@ public class PatientReportActivity extends BaseActivity {
 
 	}
 
-	private String getContent(int resId) {
-		return getEditText(resId).getText().toString();
+	private String getContent(int resId) {					
+		return ((PatientReportField)findViewById(resId)).getContent();
 	}
 
 	private String getReportMessage() {
@@ -56,7 +47,7 @@ public class PatientReportActivity extends BaseActivity {
 		String visa, address, commitment, sum, form, code, firstName, familyName;
 
 		// get the values from the fields
-		visa = getContent(R.id.txtPatientReportVisa);
+		visa = getContent(R.id.prFieldVisa);
 		code = getContent(R.id.txtPatientReportCode);
 		commitment = getContent(R.id.txtPatientReportCommitment);
 		form = getContent(R.id.txtPatientReportForm);

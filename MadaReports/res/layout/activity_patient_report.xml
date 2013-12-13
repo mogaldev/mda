@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.mdareports"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
@@ -10,7 +11,13 @@
 
         <!-- Visa -->
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldVisa"
+            style="@style/activity_patient_report_field"
+            custom:inputType="number"
+            custom:labelText="@string/patient_report_activity_visa_number" />
+
+      <!--   <RelativeLayout style="@style/fragment_general_info_relative_layout" >
 
             <EditText
                 android:id="@+id/txtPatientReportVisa"
@@ -20,7 +27,8 @@
             <TextView
                 style="@style/activity_patient_report_textview"
                 android:text="@string/patient_report_activity_visa_number" />
-        </RelativeLayout>
+        </RelativeLayout> -->
+
         <!-- End of Visa -->
 
 
@@ -146,9 +154,8 @@
             android:layout_gravity="center"
             android:text="@string/patient_report_activity_send" />
 
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="asd111"/>
-        <include layout="@layout/admob_footer" />
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="asd"/>
+        <!-- <include layout="@layout/admob_footer" /> -->
+
     </LinearLayout>
 
 </ScrollView>

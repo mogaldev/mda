@@ -29,32 +29,6 @@ public class BloodPressureDialog extends RelativeLayout {
 		txtValueHigh = (EditText) findViewById(R.id.txtBloodPressureValueHigh);
 		txtValueLow = (EditText) findViewById(R.id.txtBloodPressureValueLow);
 
-		// change the seek-bar value each time the edit-text is changed
-		// txtValueHigh.addTextChangedListener(new TextWatcher() {
-		// @Override
-		// public void onTextChanged(CharSequence s, int start, int before,
-		// int count) {
-		// }
-		//
-		// @Override
-		// public void beforeTextChanged(CharSequence s, int start, int count,
-		// int after) {
-		// }
-		//
-		// @Override
-		// public void afterTextChanged(Editable s) {
-		// Logger.LOGE(TAG, "afterTextChanged: " + s.toString());
-		// /*
-		// * try { commonValue = Integer.parseInt(s.toString()); if
-		// * (commonValue > seekBar.getMax()) commonValue =
-		// * seekBar.getMax();
-		// *
-		// * seekBar.setProgress(commonValue); } catch (Exception e) {
-		// * Logger.LOGE(TAG, e.getMessage()); } s.toString();
-		// */
-		// }
-		// });
-
 	}
 
 	public void openDialog(Context context, String title,

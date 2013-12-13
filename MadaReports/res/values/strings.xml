@@ -157,5 +157,6 @@
     <string name="patient_report_activity_family_name">Family Name</string>
     <string name="patient_report_activity_send">Send</string>
     <!-- End of Patient Report Activity -->
+    <string name="hello_world_">Hello, world!</string>
 
 </resources>
