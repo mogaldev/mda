@@ -17,132 +17,51 @@
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_visa_number" />
 
-      <!--   <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-            <EditText
-                android:id="@+id/txtPatientReportVisa"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="number" />
-
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_visa_number" />
-        </RelativeLayout> -->
-
-        <!-- End of Visa -->
-
-
         <!-- Commitment -->
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-            <EditText
-                android:id="@+id/txtPatientReportCommitment"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="number" />
-
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_commitment" />
-        </RelativeLayout>
-        <!-- End of Commitment -->
-
-
-        <!-- Form -->
-
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-            <EditText
-                android:id="@+id/txtPatientReportForm"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="number" />
-
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_form_number" />
-        </RelativeLayout>
-        <!-- End of Form -->
-
-
-        <!-- Code -->
-
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-            <EditText
-                android:id="@+id/txtPatientReportCode"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="number" />
-
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_code" />
-        </RelativeLayout>
-        <!-- End of Code -->
-
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldCommitment"
+            style="@style/activity_patient_report_field"
+            custom:inputType="number"
+            custom:labelText="@string/patient_report_activity_commitment" />
 
         <!-- Sum -->
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldSum"
+            style="@style/activity_patient_report_field"
+            custom:inputType="number"
+            custom:labelText="@string/patient_report_activity_sum" />
 
-            <EditText
-                android:id="@+id/txtPatientReportSum"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="number" />
+        <!-- Form -->
 
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_sum" />
-        </RelativeLayout>
-        <!-- End of Sum -->
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldForm"
+            style="@style/activity_patient_report_field"
+            custom:inputType="number"
+            custom:labelText="@string/patient_report_activity_form_number" />
 
+        <!-- Code -->
 
-        <!-- Address -->
-
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-            <EditText
-                android:id="@+id/txtPatientReportAddress"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="textShortMessage" />
-
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_address" />
-        </RelativeLayout>
-        <!-- End of Address -->
-
-
-        <!-- First Name -->
-
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
-
-            <EditText
-                android:id="@+id/txtPatientReportFirstName"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="textShortMessage" />
-
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_first_name" />
-        </RelativeLayout>
-        <!-- End of First Name -->
-
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldCode"
+            style="@style/activity_patient_report_field"
+            custom:inputType="number"
+            custom:labelText="@string/patient_report_activity_code" />
 
         <!-- Family Name -->
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldFamilyName"
+            style="@style/activity_patient_report_field"
+            custom:labelText="@string/patient_report_activity_family_name" />
 
-            <EditText
-                android:id="@+id/txtPatientReportFamilyName"
-                style="@style/activity_patient_report_edittext"
-                android:inputType="textShortMessage" />
+        <!-- First Name -->
 
-            <TextView
-                style="@style/activity_patient_report_textview"
-                android:text="@string/patient_report_activity_family_name" />
-        </RelativeLayout>
-        <!-- End of Family Name -->
-
+        <com.mdareports.ui.custom.patient.report.PatientReportField
+            android:id="@+id/prFieldFirstName"
+            style="@style/activity_patient_report_field"
+            custom:labelText="@string/patient_report_activity_first_name" />
 
         <!-- Send button -->
 

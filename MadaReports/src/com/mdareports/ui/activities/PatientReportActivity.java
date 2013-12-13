@@ -38,38 +38,42 @@ public class PatientReportActivity extends BaseActivity {
 
 	}
 
-	private String getContent(int resId) {					
-		return ((PatientReportField)findViewById(resId)).getContent();
+	private String getContent(int resId) {			
+		
+		//TODO: remove
+		try {
+			return ((PatientReportField)findViewById(resId)).getContent();
+		} catch (Exception e) {
+			return getEditText(resId).getText().toString();
+		}
+		
 	}
 
 	private String getReportMessage() {
 		String result = "";
-		String visa, address, commitment, sum, form, code, firstName, familyName;
+		String visa, commitment, sum, form, code, firstName, familyName;
 
 		// get the values from the fields
 		visa = getContent(R.id.prFieldVisa);
-		code = getContent(R.id.txtPatientReportCode);
-		commitment = getContent(R.id.txtPatientReportCommitment);
-		form = getContent(R.id.txtPatientReportForm);
-		sum = getContent(R.id.txtPatientReportSum);
-		address = getContent(R.id.txtPatientReportAddress);
-		familyName = getContent(R.id.txtPatientReportFamilyName);
-		firstName = getContent(R.id.txtPatientReportFirstName);
+		commitment = getContent(R.id.prFieldCommitment);
+		sum = getContent(R.id.prFieldSum);		
+		form = getContent(R.id.prFieldForm);
+		code = getContent(R.id.prFieldCode);			
+		familyName = getContent(R.id.prFieldFamilyName);
+		firstName = getContent(R.id.prFieldFirstName);
 
 		// set the values in the report
 		if (visa != "")
 			result += "ויזה:" + visa + ", ";
 
 		result += "התחייבות:" + commitment + ", ";
-		result += "מספר טופס:" + form + ", ";
-		result += "קוד:" + code + ", ";
 		result += "סכום:" + sum + ", ";
-		result += "רחוב:" + address + ", ";
+		result += "טופס:" + form + ", ";
+		result += "קוד:" + code + ", ";
 		result += "שם פרטי:" + firstName + ", ";
 		result += "משפחה:" + familyName;
 
 		return result;
-
 	}
 
 	@Override
