@@ -132,7 +132,6 @@
 
 
     <!-- Patient Report Activity -->
-    <string name="patient_report_activity_address">רחוב</string>
     <string name="patient_report_activity_visa_number">ויזה</string>
     <string name="patient_report_activity_commitment">התחייבות</string>
     <string name="patient_report_activity_sum">סכום</string>

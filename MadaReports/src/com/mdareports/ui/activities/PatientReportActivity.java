@@ -16,8 +16,8 @@ public class PatientReportActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_patient_report);
-		
+		setContentView(R.layout.activity_patient_reporta);
+
 		// Get the action bar and set it up
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setHomeButtonEnabled(true);
@@ -38,15 +38,8 @@ public class PatientReportActivity extends BaseActivity {
 
 	}
 
-	private String getContent(int resId) {			
-		
-		//TODO: remove
-		try {
-			return ((PatientReportField)findViewById(resId)).getContent();
-		} catch (Exception e) {
-			return getEditText(resId).getText().toString();
-		}
-		
+	private String getContent(int resId) {
+		return ((PatientReportField) findViewById(resId)).getContent();
 	}
 
 	private String getReportMessage() {
@@ -56,9 +49,9 @@ public class PatientReportActivity extends BaseActivity {
 		// get the values from the fields
 		visa = getContent(R.id.prFieldVisa);
 		commitment = getContent(R.id.prFieldCommitment);
-		sum = getContent(R.id.prFieldSum);		
+		sum = getContent(R.id.prFieldSum);
 		form = getContent(R.id.prFieldForm);
-		code = getContent(R.id.prFieldCode);			
+		code = getContent(R.id.prFieldCode);
 		familyName = getContent(R.id.prFieldFamilyName);
 		firstName = getContent(R.id.prFieldFirstName);
 

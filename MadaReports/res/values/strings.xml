@@ -147,7 +147,6 @@
 
 
     <!-- Patient Report Activity -->
-    <string name="patient_report_activity_address">Address</string>
     <string name="patient_report_activity_visa_number">Visa</string>
     <string name="patient_report_activity_commitment">Commitment</string>
     <string name="patient_report_activity_sum">Sum</string>
@@ -157,6 +156,5 @@
     <string name="patient_report_activity_family_name">Family Name</string>
     <string name="patient_report_activity_send">Send</string>
     <!-- End of Patient Report Activity -->
-    <string name="hello_world_">Hello, world!</string>
 
 </resources>

@@ -11,28 +11,19 @@
 
         <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldPulse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
+            style="@style/fragment_tech_info_editableSeekField"
             custom:fieldLabel="@string/fragment_tech_info_pulse"
             custom:maxValue="@integer/max_pulse" />
 
         <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldBreath"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
+            style="@style/fragment_tech_info_editableSeekField"
             custom:fieldLabel="@string/fragment_tech_info_breath"
             custom:maxValue="@integer/max_breath" />
 
         <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldSugar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="10dp"
+            style="@style/fragment_tech_info_editableSeekField"
             custom:fieldLabel="@string/fragment_tech_info_sugar"
             custom:maxValue="@integer/max_sugar" />
 
@@ -42,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_gravity="center" />
 
-     <include layout="@layout/admob_footer" />
+        <include layout="@layout/admob_footer" />
     </LinearLayout>
 
 </ScrollView>

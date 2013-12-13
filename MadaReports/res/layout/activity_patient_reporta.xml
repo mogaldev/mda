@@ -73,8 +73,7 @@
             android:layout_gravity="center"
             android:text="@string/patient_report_activity_send" />
 
-        <!-- <include layout="@layout/admob_footer" /> -->
-
+        <include layout="@layout/admob_footer" />
     </LinearLayout>
 
 </ScrollView>
