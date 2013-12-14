@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="activity_bgcolor">#F5FFFA</color>
+    <color name="activity_text_color">#8B0000</color>
+    
     <color name="read_item_bgcolor">#eee9e9</color>
     <color name="read_item_textcolor">#8b8682</color>
     <color name="unread_item_bgcolor">#ffffff</color>

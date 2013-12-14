@@ -14,6 +14,7 @@
     <string name="title_activity_settings">הגדרות</string>
     <string name="title_activity_treatments">טיפולים</string>
     <string name="title_activity_patient_report">טופס חולה/נפגע</string>
+    <string name="title_activity_about_us">אודות</string>
     <string name="yes">כן</string>
     <string name="ok">אישור</string>
     <string name="cancel">ביטול</string>
@@ -32,6 +33,7 @@
     <string name="action_bars_search">חפש</string>
     <string name="action_bars_share">שתף</string>
     <string name="action_bars_patient_report">טופס חולה/נפגע</string>
+    <string name="action_bars_about_us">אודות</string>
     <!-- End of Action Bars -->
 
 
@@ -141,5 +143,12 @@
     <string name="patient_report_activity_family_name">שם משפחה</string>
     <string name="patient_report_activity_send">שליחה</string>
     <!-- End of Patient Report Activity -->
+
+
+    <!-- About Us Activity -->
+    <string name="about_us_activity_who_we_are">מי אנחנו?</string>
+    <string name="about_us_activity_about_us_details">אנו צוות MoGal Development,\nצוות מפתחים המתמחה באפליקציות מובייל וצד שרת.\nהרגישו חופשי ליצור עמנו קשר בנוגע לכל פניה, המלצה וביקורת.\nאנו נשמח לקרוא את תגובותיכם, ונשתדל לענות לפניותיכם בהקדם האפשרי.</string>
+    <string name="about_us_no_email_clients_installed">לא מותקנת אפליקציה לשליחת דואר-אלקטרוני</string>
+    <!-- End of About Us Activity -->
 
 </resources>

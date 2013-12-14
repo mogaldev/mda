@@ -134,6 +134,9 @@ public class ReportsListActivity extends BaseActivity {
 
 		case R.id.reportslist_activity_patient_report:
 			MoveTo(PatientReportActivity.class);
+			
+		case R.id.reportslist_activity_about_us:
+			MoveTo(AboutUsActivity.class);
 
 		default:
 			return super.onOptionsItemSelected(item);
