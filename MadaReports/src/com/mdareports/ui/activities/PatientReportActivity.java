@@ -16,7 +16,7 @@ public class PatientReportActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_patient_reporta);
+		setContentView(R.layout.activity_patient_report);
 
 		// Get the action bar and set it up
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
