@@ -36,21 +36,25 @@ public class ReportsListActivity extends BaseActivity {
 		// Find the listView in the activity's layout for future use
 		listView = (ListView) findViewById(R.id.listView);
 
-		 // Find the AdView in the activity's layout Load the AdView with an ad request
-		 adView = (AdView) findViewById(R.id.adView);		
-		
-		 /**
+		// Find the AdView in the activity's layout Load the AdView with an ad
+		// request
+		adView = (AdView) findViewById(R.id.adView);
+
+		/**
 		 * We can "Edit" the AdView from the code, with the AdRequest object.
-		 * When the loadAdOnCreate=false in the com.google.ads.AdView in the layout,
-		 * we have to initialize the AdView from the code, with the AdRequest Object.
-		 * When the loadAdOnCreate=true, we don't have to edit the AdRequest from the code
+		 * When the loadAdOnCreate=false in the com.google.ads.AdView in the
+		 * layout, we have to initialize the AdView from the code, with the
+		 * AdRequest Object. When the loadAdOnCreate=true, we don't have to edit
+		 * the AdRequest from the code
 		 */
-		 // Create the AdRequest and add parameters to it
-//		 AdRequest adRequest = new AdRequest();
-//		 adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // All emulators
-//		 adRequest.addTestDevice("8E940041CA56DCF10D0F5218CD835405"); // Gal's Device id
-//		 adRequest.addTestDevice("1672CE270A7CDA8B7CA4AFCBF2E5A0D8"); // Moshe's Device id
-//		 adView.loadAd(adRequest);
+		// Create the AdRequest and add parameters to it
+		// AdRequest adRequest = new AdRequest();
+		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // All emulators
+		// adRequest.addTestDevice("8E940041CA56DCF10D0F5218CD835405"); // Gal's
+		// Device id
+		// adRequest.addTestDevice("1672CE270A7CDA8B7CA4AFCBF2E5A0D8"); //
+		// Moshe's Device id
+		// adView.loadAd(adRequest);
 	}
 
 	@Override
@@ -111,6 +115,7 @@ public class ReportsListActivity extends BaseActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+
 		case R.id.reportslist_activity_menu_settings:
 			if (DeviceInfoUtils.hasHoneycomb()) {
 				MoveTo(SettingsActivity.class);
@@ -121,8 +126,9 @@ public class ReportsListActivity extends BaseActivity {
 		case R.id.reportslist_activity_menu_delete_all:
 			handleDelete(this);
 			return true;
+
 		case R.id.reportslist_activity_menu_share:
-			// The ShareActionProvider of sherlock is not wirking well on
+			// The ShareActionProvider of sherlock is not working well on
 			// Android 2.3.5 (i checked it on Galaxy 2)
 			// So here we will use the default ShareIntent
 			Intent sendIntent = getShareIntent();
@@ -132,11 +138,11 @@ public class ReportsListActivity extends BaseActivity {
 							getString(R.string.reportslist_activity_action_bar_share_message)));
 			return true;
 
-		case R.id.reportslist_activity_patient_report:
+		case R.id.reportslist_activity_menu_patient_report:
 			MoveTo(PatientReportActivity.class);
 			return true;
-			
-		case R.id.reportslist_activity_about_us:
+
+		case R.id.reportslist_activity_menu_about_us:
 			MoveTo(AboutUsActivity.class);
 			return true;
 

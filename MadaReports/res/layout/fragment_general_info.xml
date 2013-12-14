@@ -73,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
+            android:textColor="@color/activity_text_color"
             android:text="@string/fragment_general_info_is_reported" />
 
         <Button

@@ -24,12 +24,12 @@
         android:showAsAction="ifRoom"
         android:title="@string/action_bars_share"/>
     <item
-        android:id="@+id/reportslist_activity_patient_report"
+        android:id="@+id/reportslist_activity_menu_patient_report"
         android:icon="@android:drawable/ic_menu_directions"
         android:showAsAction="ifRoom"
         android:title="@string/action_bars_patient_report"/>
      <item
-        android:id="@+id/reportslist_activity_about_us"
+        android:id="@+id/reportslist_activity_menu_about_us"
         android:icon="@android:drawable/ic_dialog_email"
         android:showAsAction="ifRoom"
         android:title="@string/action_bars_about_us"/> 
