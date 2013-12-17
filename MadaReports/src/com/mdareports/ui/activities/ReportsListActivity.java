@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.google.ads.AdView;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
@@ -25,6 +27,7 @@ import com.mdareports.utils.SettingsManager;
 public class ReportsListActivity extends BaseActivity {
 
 	private ReportsListAdapter reportsAdapter;
+	private ReportsFilterTextWatcher reportsFilterTextWatcher;
 	private ListView listView;
 	private AdView adView;
 
@@ -35,7 +38,7 @@ public class ReportsListActivity extends BaseActivity {
 
 		// Find the listView in the activity's layout for future use
 		listView = (ListView) findViewById(R.id.listView);
-
+		
 		// Find the AdView in the activity's layout Load the AdView with an ad
 		// request
 		adView = (AdView) findViewById(R.id.adView);
@@ -80,15 +83,39 @@ public class ReportsListActivity extends BaseActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getSupportMenuInflater();
+		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.reportslist_activity_action_bar, menu);
 
+		// TODO: fix!!! with v7 support library
 		// initializing the search action view
 		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
-		EditText txt = (EditText) item.getActionView();
-
-		// enable the 'real-time' filtering on the edit text
-		txt.addTextChangedListener(new ReportsFilterTextWatcher(reportsAdapter));
+		final EditText txt = (EditText) MenuItemCompat.getActionView(item);
+		MenuItemCompat.setOnActionExpandListener(item, new OnActionExpandListener() {
+			
+			@Override
+			public boolean onMenuItemActionExpand(MenuItem item) {
+				txt.requestFocus();
+				txt.setHint(R.string.action_bars_search_view_hint);
+				txt.setEms(20);
+				
+				// enable the 'real-time' filtering on the edit text
+				reportsFilterTextWatcher = new ReportsFilterTextWatcher(reportsAdapter);
+				txt.addTextChangedListener(reportsFilterTextWatcher);
+				
+				return true;
+			}
+			
+			@Override
+			public boolean onMenuItemActionCollapse(MenuItem item) {
+				// Erase the text in the Search EditText in the ActionBar
+				txt.setText("");
+				
+				// Remove the TextWatcher
+				txt.removeTextChangedListener(reportsFilterTextWatcher);
+				
+				return true;
+			}
+		});
 
 		return true;
 	}

@@ -2,10 +2,11 @@
 <EditText xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/txtSearchView"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:cursorVisible="true"
     android:hint="@string/action_bars_search_view_hint"
     android:imeOptions="actionDone"
     android:inputType="text"
-    android:textCursorDrawable="@android:color/black" />
-   
+    android:textCursorDrawable="@android:color/black" >
+
+</EditText>

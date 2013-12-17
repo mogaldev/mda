@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:mada="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/codetable_activity_menu_add"
         android:icon="@android:drawable/ic_menu_add"
-        android:showAsAction="ifRoom|collapseActionView"
+        mada:showAsAction="ifRoom|collapseActionView"
         android:title="@string/action_bars_settings"/>  
 
 </menu>

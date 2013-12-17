@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:mada="http://schemas.android.com/apk/res-auto" >
 
     <item
         android:id="@+id/reportslist_activity_menu_search"
-        android:actionLayout="@layout/searchview_reportslist"
+        mada:actionLayout="@layout/searchview_reportslist"
         android:icon="@android:drawable/ic_menu_search"
-        android:orderInCategory="0"
-        android:showAsAction="always|collapseActionView"
+        mada:showAsAction="always|collapseActionView"
+        mada:actionViewClass="android.widget.EditText"
         android:title="@string/action_bars_search"/>
     <item
         android:id="@+id/reportslist_activity_menu_settings"
         android:icon="@android:drawable/ic_menu_preferences"
-        android:showAsAction="ifRoom|collapseActionView"
+        mada:showAsAction="ifRoom|collapseActionView"
         android:title="@string/action_bars_settings"/>
     <item
         android:id="@+id/reportslist_activity_menu_delete_all"
         android:icon="@android:drawable/ic_menu_delete"
-        android:showAsAction="ifRoom|collapseActionView"
+        mada:showAsAction="ifRoom|collapseActionView"
         android:title="@string/action_bars_delete"/>
     <item
         android:id="@+id/reportslist_activity_menu_share"
         android:icon="@android:drawable/ic_menu_share"
-        android:showAsAction="ifRoom"
+        mada:showAsAction="ifRoom"
         android:title="@string/action_bars_share"/>
     <item
         android:id="@+id/reportslist_activity_menu_patient_report"
         android:icon="@android:drawable/ic_menu_directions"
-        android:showAsAction="ifRoom"
+        mada:showAsAction="ifRoom"
         android:title="@string/action_bars_patient_report"/>
      <item
         android:id="@+id/reportslist_activity_menu_about_us"
         android:icon="@android:drawable/ic_dialog_email"
-        android:showAsAction="ifRoom"
+        mada:showAsAction="ifRoom"
         android:title="@string/action_bars_about_us"/> 
 
 </menu>

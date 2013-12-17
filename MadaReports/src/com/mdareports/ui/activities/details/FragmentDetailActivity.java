@@ -1,13 +1,14 @@
 package com.mdareports.ui.activities.details;
 
-import com.actionbarsherlock.app.SherlockFragment;
+import android.support.v4.app.Fragment;
+
 import com.mdareports.db.models.Report;
 
 /**
  * Abstract class that the fragment that suppose to be tabs in the
  * {@link DetailsActivity} should extend from if</br> 
  */
-public abstract class FragmentDetailActivity extends SherlockFragment {
+public abstract class FragmentDetailActivity extends Fragment {
 
 	@Override
 	public void onPause() {

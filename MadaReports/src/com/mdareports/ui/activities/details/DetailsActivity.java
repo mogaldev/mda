@@ -6,12 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
@@ -51,21 +51,21 @@ public class DetailsActivity extends BaseActivity {
 		treatmentsTab
 				.setText(getString(R.string.fragment_treatments_to_report_title));
 		treatmentsTab
-				.setTabListener(new TabListener<TreatmentsToReportFragment>(
+				.setTabListener(new MadaTabListener<TreatmentsToReportFragment>(
 						this, TreatmentsToReportFragment.class.getName(),
 						TreatmentsToReportFragment.class));
 		supportActionBar.addTab(treatmentsTab);
 
 		ActionBar.Tab techInfoTab = supportActionBar.newTab();
 		techInfoTab.setText(getString(R.string.fragment_tech_info_title));
-		techInfoTab.setTabListener(new TabListener<TechInfoFragment>(this,
+		techInfoTab.setTabListener(new MadaTabListener<TechInfoFragment>(this,
 				TechInfoFragment.class.getName(), TechInfoFragment.class));
 		supportActionBar.addTab(techInfoTab);
 
 		ActionBar.Tab generalInfotab = supportActionBar.newTab();
 		generalInfotab
 				.setText(getString(R.string.fragment_general_info_general_info_tab_title));
-		generalInfotab.setTabListener(new TabListener<GeneralInfoFragment>(
+		generalInfotab.setTabListener(new MadaTabListener<GeneralInfoFragment>(
 				this, GeneralInfoFragment.class.getName(),
 				GeneralInfoFragment.class));
 		supportActionBar.addTab(generalInfotab, true);
@@ -106,7 +106,7 @@ public class DetailsActivity extends BaseActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		MenuInflater inflater = getSupportMenuInflater();
+		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.details_activity_action_bar, menu);
 
 		return true;

@@ -2,11 +2,11 @@ package com.mdareports.ui.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
-import com.actionbarsherlock.view.MenuItem;
 import com.mdareports.R;
 import com.mdareports.sms.SmsSender;
 import com.mdareports.ui.custom.patient.report.PatientReportField;
