@@ -70,10 +70,15 @@ public class ReportsListActivity extends BaseActivity {
 	private void setListEmptyView() {
 		View empty = getLayoutInflater().inflate(
 				R.layout.empty_report_list_item, null, false);
-		
+
 		// set the view's text font
-		FontTypeFaceManager.getInstance(this).setFont((TextView)empty.findViewById(R.id.emptyViewLabel), CustomFonts.RobotoThin);
-		
+		FontTypeFaceManager
+				.getInstance(this)
+				.setFont(
+						(TextView) empty.findViewById(R.id.emptyViewLabel),
+						DeviceInfoUtils.isCurrentLanguageHebrew(this) ? CustomFonts.YoavRegular
+								: CustomFonts.RobotoThin);
+
 		addContentView(empty, new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT));
 		listView.setEmptyView(empty);

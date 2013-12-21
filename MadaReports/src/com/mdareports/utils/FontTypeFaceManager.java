@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class FontTypeFaceManager {
 	public enum CustomFonts {
-		RobotoLight, RobotoRegular, RobotoThin
+		RobotoLight, RobotoRegular, RobotoThin, 
+		YoavRegular, YoavBold
 	};
 
 	private HashMap<CustomFonts, Typeface> fontsMap;
@@ -24,8 +25,15 @@ public class FontTypeFaceManager {
 				context.getAssets(), "fonts/Roboto-Light.ttf"));
 		fontsMap.put(CustomFonts.RobotoRegular, Typeface.createFromAsset(
 				context.getAssets(), "fonts/Roboto-Regular.ttf"));
-		fontsMap.put(CustomFonts.RobotoThin, Typeface.createFromAsset(
+		fontsMap.put(CustomFonts.RobotoThin, Typeface.createFromAsset(					
 				context.getAssets(), "fonts/Roboto-Thin.ttf"));
+		
+		// hebrew fonts
+		fontsMap.put(CustomFonts.YoavBold, Typeface.createFromAsset(
+				context.getAssets(), "fonts/heb/YOAV_BOLD.TTF"));
+		fontsMap.put(CustomFonts.YoavRegular, Typeface.createFromAsset(
+				context.getAssets(), "fonts/heb/YOAV_REGULAR.TTF"));
+
 
 		defaultFont = fontsMap.get(CustomFonts.RobotoRegular);
 	}

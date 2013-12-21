@@ -7,7 +7,7 @@
     android:layout_centerInParent="true" >
 
     <TextView
-         android:id="@+id/emptyViewLabel"
+        android:id="@+id/emptyViewLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -15,5 +15,5 @@
         android:text="@string/no_reports"
         android:textColor="@color/activity_text_color"
         android:textSize="50sp" />
-
+ 
 </RelativeLayout>
