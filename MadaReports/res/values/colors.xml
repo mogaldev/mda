@@ -7,6 +7,7 @@
     <color name="read_item_textcolor">#8b8682</color>
     <color name="unread_item_textcolor">#000</color>    
     <color name="tab_text_color">#0000FF</color>    
+    <color name="actionbar_color">#E72328</color>    
     
     <!-- unused - delete -->
     <color name="unselected_tab">#FA0000</color>

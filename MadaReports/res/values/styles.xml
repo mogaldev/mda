@@ -5,24 +5,32 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:textColor">@color/activity_text_color</item>
+        <item name="android:actionBarStyle" tools:targetApi="11">@style/MadaActionBar</item>
         <item name="android:actionBarTabStyle" tools:targetApi="11">@style/MadaActionBarTab</item>
         <item name="android:actionBarTabTextStyle" tools:targetApi="11">@style/MadaActionBarTabText</item>
 
         <!-- Support library compatibility -->
+        <item name="actionBarStyle">@style/MadaActionBar</item>
         <item name="actionBarTabStyle">@style/MadaActionBarTab</item>
         <item name="actionBarTabTextStyle">@style/MadaActionBarTabText</item>
     </style>
 
     <!-- ActionBar styles -->
-    <style name="MadaActionBarTab" parent="@style/Widget.AppCompat.ActionBar.TabView">
-        <!-- tab indicator -->
+    <style name="MadaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@color/actionbar_color</item>
+
+        <!-- Support library compatibility -->
+        <item name="background">@color/actionbar_color</item>
+    </style>
+    
+    <style name="MadaActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/details_fragment_tab_selector</item>
 
         <!-- Support library compatibility -->
         <item name="background">@drawable/details_fragment_tab_selector</item>
     </style>
     
-     <style name="MadaActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
+     <style name="MadaActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
         <item name="android:textColor">@color/tab_text_color</item>
     </style>
     <!-- ActionBar styles -->
