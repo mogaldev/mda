@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,11 +26,14 @@ public class DetailsActivity extends BaseActivity {
 	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
 	// Instance of the report of this DetailActivity
 	private Report sentReport;
+	private MadaPagerAdapter madaPagerAdapter;
+	ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		setContentView(R.layout.activity_details);
+		
 		// Get the sent report from the intent
 		sentReport = getReportFromIntent();
 
@@ -38,37 +42,32 @@ public class DetailsActivity extends BaseActivity {
 		DatabaseWrapper.getInstance(this).updateReport(sentReport);
 
 		// Get the action bar and set it up
-		ActionBar supportActionBar = getSupportActionBar();
+		final ActionBar supportActionBar = getSupportActionBar();
 		supportActionBar.setDisplayHomeAsUpEnabled(true);
-
-		// Set navigation mode
 		supportActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-		/*
-		 * Init all the tabs in the DetailActivity
-		 */
+		// init the ViewPager and the Adapter
+		madaPagerAdapter = new MadaPagerAdapter(getSupportFragmentManager(), this);
+		viewPager = (ViewPager) findViewById(R.id.details_pager);
+		viewPager.setAdapter(madaPagerAdapter);
+		viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+	                @Override
+	                public void onPageSelected(int position) {
+	                	supportActionBar.setSelectedNavigationItem(position);
+	                }
+	            });
+		
+		// Init all the tabs in the DetailActivity
+		initNewActionBarTab(supportActionBar, getString(R.string.fragment_treatments_to_report_title));
+		initNewActionBarTab(supportActionBar, getString(R.string.fragment_tech_info_title));
+		initNewActionBarTab(supportActionBar, getString(R.string.fragment_general_info_general_info_tab_title));
+	}
+	
+	private void initNewActionBarTab(ActionBar supportActionBar, String tabText) {
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
-		treatmentsTab
-				.setText(getString(R.string.fragment_treatments_to_report_title));
-		treatmentsTab
-				.setTabListener(new MadaTabListener<TreatmentsToReportFragment>(
-						this, TreatmentsToReportFragment.class.getName(),
-						TreatmentsToReportFragment.class));
+		treatmentsTab.setText(tabText);
+		treatmentsTab.setTabListener(new MadaTabListener(viewPager));
 		supportActionBar.addTab(treatmentsTab);
-
-		ActionBar.Tab techInfoTab = supportActionBar.newTab();
-		techInfoTab.setText(getString(R.string.fragment_tech_info_title));
-		techInfoTab.setTabListener(new MadaTabListener<TechInfoFragment>(this,
-				TechInfoFragment.class.getName(), TechInfoFragment.class));
-		supportActionBar.addTab(techInfoTab);
-
-		ActionBar.Tab generalInfotab = supportActionBar.newTab();
-		generalInfotab
-				.setText(getString(R.string.fragment_general_info_general_info_tab_title));
-		generalInfotab.setTabListener(new MadaTabListener<GeneralInfoFragment>(
-				this, GeneralInfoFragment.class.getName(),
-				GeneralInfoFragment.class));
-		supportActionBar.addTab(generalInfotab, true);
 	}
 
 	/**
