@@ -12,8 +12,11 @@ import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.ads.AdView;
 import com.mdareports.R;
@@ -21,8 +24,11 @@ import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.mdareports.ui.reportslist.ReportsListAdapter;
 import com.mdareports.utils.DeviceInfoUtils;
+import com.mdareports.utils.FontTypeFaceManager;
+import com.mdareports.utils.Logger;
 import com.mdareports.utils.NotificationsManager;
 import com.mdareports.utils.SettingsManager;
+import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 public class ReportsListActivity extends BaseActivity {
 
@@ -38,7 +44,8 @@ public class ReportsListActivity extends BaseActivity {
 
 		// Find the listView in the activity's layout for future use
 		listView = (ListView) findViewById(R.id.listView);
-		
+		setListEmptyView();
+
 		// Find the AdView in the activity's layout Load the AdView with an ad
 		// request
 		adView = (AdView) findViewById(R.id.adView);
@@ -58,6 +65,18 @@ public class ReportsListActivity extends BaseActivity {
 		// adRequest.addTestDevice("1672CE270A7CDA8B7CA4AFCBF2E5A0D8"); //
 		// Moshe's Device id
 		// adView.loadAd(adRequest);
+	}
+
+	private void setListEmptyView() {
+		View empty = getLayoutInflater().inflate(
+				R.layout.empty_report_list_item, null, false);
+		
+		// set the view's text font
+		FontTypeFaceManager.getInstance(this).setFont((TextView)empty.findViewById(R.id.emptyViewLabel), CustomFonts.RobotoThin);
+		
+		addContentView(empty, new LayoutParams(LayoutParams.MATCH_PARENT,
+				LayoutParams.MATCH_PARENT));
+		listView.setEmptyView(empty);
 	}
 
 	@Override
@@ -90,32 +109,35 @@ public class ReportsListActivity extends BaseActivity {
 		// initializing the search action view
 		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
 		final EditText txt = (EditText) MenuItemCompat.getActionView(item);
-		MenuItemCompat.setOnActionExpandListener(item, new OnActionExpandListener() {
-			
-			@Override
-			public boolean onMenuItemActionExpand(MenuItem item) {
-				txt.requestFocus();
-				txt.setHint(R.string.action_bars_search_view_hint);
-				txt.setEms(20);
-				
-				// enable the 'real-time' filtering on the edit text
-				reportsFilterTextWatcher = new ReportsFilterTextWatcher(reportsAdapter);
-				txt.addTextChangedListener(reportsFilterTextWatcher);
-				
-				return true;
-			}
-			
-			@Override
-			public boolean onMenuItemActionCollapse(MenuItem item) {
-				// Erase the text in the Search EditText in the ActionBar
-				txt.setText("");
-				
-				// Remove the TextWatcher
-				txt.removeTextChangedListener(reportsFilterTextWatcher);
-				
-				return true;
-			}
-		});
+		MenuItemCompat.setOnActionExpandListener(item,
+				new OnActionExpandListener() {
+
+					@Override
+					public boolean onMenuItemActionExpand(MenuItem item) {
+						txt.requestFocus();
+						txt.setHint(R.string.action_bars_search_view_hint);
+						txt.setEms(20);
+
+						// enable the 'real-time' filtering on the edit text
+						reportsFilterTextWatcher = new ReportsFilterTextWatcher(
+								reportsAdapter);
+						txt.addTextChangedListener(reportsFilterTextWatcher);
+
+						return true;
+					}
+
+					@Override
+					public boolean onMenuItemActionCollapse(MenuItem item) {
+						// Erase the text in the Search EditText in the
+						// ActionBar
+						txt.setText("");
+
+						// Remove the TextWatcher
+						txt.removeTextChangedListener(reportsFilterTextWatcher);
+
+						return true;
+					}
+				});
 
 		return true;
 	}

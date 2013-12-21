@@ -38,6 +38,7 @@
 
 
     <!-- ReportsList Activity -->
+    <string name="no_reports">אין דיווחים...</string>
     <!-- ReportsList Activity Action Bar -->
     <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
     <!-- End of ReportsList Activity -->

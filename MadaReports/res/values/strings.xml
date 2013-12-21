@@ -36,8 +36,8 @@
     <string name="action_bars_about_us">About Us</string>
     <!-- End of Action Bars -->
 
-
     <!-- ReportsList Activity -->
+      <string name="no_reports">No Reports...</string>
     <!-- ReportsList Activity Action Bar -->
     <string name="reportslist_activity_action_bar_share_message">Send all reports details to...</string>
     <!-- End of ReportsList Activity -->
@@ -96,7 +96,6 @@
     <string name="prefrences_category_spatial_telephony_center_key">SPATIAL_TELEPHONY_CENTER_DETAILS_TABLES</string>
     <string name="prefrences_category_spatial_telephony_center_title">Spatial Telephony Center</string>
     <!-- End of Preferences Settings -->
-
 
     <!-- Details Activity -->
     <string name="detail_activity_report_saved">Report saved</string>
@@ -165,5 +164,6 @@
     <string name="about_us_activity_about_us_details">MoGal Development is a developers team that experts mobile and server-side applications.\nFeel free contact us for every kind of request, review and recommendation.\nWe will be more than happy read your comments and reply them as soon as we can.</string>
     <string name="about_us_no_email_clients_installed">There are no email clients installed</string>
     <!-- End of About Us Activity -->
+
 
 </resources>
