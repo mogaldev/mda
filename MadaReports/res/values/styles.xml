@@ -17,16 +17,16 @@
 
     <!-- ActionBar styles -->
     <style name="MadaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="android:background">@color/actionbar_color</item>
+        <item name="android:background">@drawable/tab_unselected_unpressed</item>
         <item name="android:titleTextStyle" tools:targetApi="11">@style/MadaActionBarTextStyle</item>
 
         <!-- Support library compatibility -->
-        <item name="background">@color/actionbar_color</item>
+        <item name="background">@drawable/tab_unselected_unpressed</item>
         <item name="titleTextStyle">@style/MadaActionBarTextStyle</item>
     </style>
     
      <style name="MadaActionBarTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textColor">@color/tab_text_color</item>
+        <item name="android:textColor">@color/actionbar_text_color</item>
     </style>
     
     <style name="MadaActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
@@ -37,7 +37,7 @@
     </style>
     
      <style name="MadaActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
-        <item name="android:textColor">@color/tab_text_color</item>
+        <item name="android:textColor">@color/actionbar_text_color</item>
     </style>
     <!-- ActionBar styles -->
 
