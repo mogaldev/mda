@@ -5,20 +5,27 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:textColor">@color/activity_text_color</item>
-        <item name="android:actionBarTabStyle" tools:targetApi="11">@style/MadaActionBarTabs</item>
+        <item name="android:actionBarTabStyle" tools:targetApi="11">@style/MadaActionBarTab</item>
+        <item name="android:actionBarTabTextStyle" tools:targetApi="11">@style/MadaActionBarTabText</item>
 
         <!-- Support library compatibility -->
-        <item name="actionBarTabStyle">@style/MadaActionBarTabs</item>
+        <item name="actionBarTabStyle">@style/MadaActionBarTab</item>
+        <item name="actionBarTabTextStyle">@style/MadaActionBarTabText</item>
     </style>
 
     <!-- ActionBar styles -->
-    <style name="MadaActionBarTabs" parent="@style/Widget.AppCompat.ActionBar.TabView">
+    <style name="MadaActionBarTab" parent="@style/Widget.AppCompat.ActionBar.TabView">
         <!-- tab indicator -->
         <item name="android:background">@drawable/details_fragment_tab_selector</item>
 
         <!-- Support library compatibility -->
         <item name="background">@drawable/details_fragment_tab_selector</item>
     </style>
+    
+     <style name="MadaActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
+        <item name="android:textColor">@color/tab_text_color</item>
+    </style>
+    <!-- ActionBar styles -->
 
     <style name="unread_list_item_text">
         <!-- <item name="android:textColor">@color/unread_item_textcolor</item> -->
