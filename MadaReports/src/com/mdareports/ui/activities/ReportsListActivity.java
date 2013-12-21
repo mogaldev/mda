@@ -25,10 +25,9 @@ import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.mdareports.ui.reportslist.ReportsListAdapter;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.FontTypeFaceManager;
-import com.mdareports.utils.Logger;
+import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 import com.mdareports.utils.NotificationsManager;
 import com.mdareports.utils.SettingsManager;
-import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 public class ReportsListActivity extends BaseActivity {
 
