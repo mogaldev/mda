@@ -3,3 +3,5 @@
 */gen/
 */.settings/
 */gen/
+*/.classpath
+*/.project
