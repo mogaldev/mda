@@ -6,20 +6,21 @@ import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
 
 public class MadaTabListener implements TabListener {
-	
-	ViewPager viewPager;
-	
+	private ViewPager viewPager;
+
     public MadaTabListener(ViewPager viewPager) {
     	this.viewPager = viewPager;
     }
 
+    /* The following are each of the ActionBar.TabListener callbacks */
     public void onTabSelected(Tab tab, FragmentTransaction ft) {
-    	this.viewPager.setCurrentItem(tab.getPosition());
+        this.viewPager.setCurrentItem(tab.getPosition());
     }
 
     public void onTabUnselected(Tab tab, FragmentTransaction ft) {
     }
 
     public void onTabReselected(Tab tab, FragmentTransaction ft) {
+        // User selected the already selected tab. Usually do nothing.
     }
 }
