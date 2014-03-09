@@ -13,7 +13,6 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import com.mdareports.R;
-import com.mdareports.utils.Logger;
 
 /**
  * Represents regular field in the technical tab. Centralizes seek-bar in
@@ -21,7 +20,6 @@ import com.mdareports.utils.Logger;
  * edit-text
  */
 public class EditableSeekField extends RelativeLayout {
-	private String TAG = Logger.makeLogTag(getClass());
 
 	private TextView tvLabel;
 	private SeekBar seekBarValue;
