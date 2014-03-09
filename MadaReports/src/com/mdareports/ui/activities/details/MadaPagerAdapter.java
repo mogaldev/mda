@@ -1,5 +1,7 @@
 package com.mdareports.ui.activities.details;
 
+import com.mdareports.R;
+
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,20 +9,35 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class MadaPagerAdapter extends FragmentPagerAdapter {
 
-	private FragmentDetailActivity[] array = new FragmentDetailActivity[3];
+	private Context context;
 	
 	public MadaPagerAdapter(FragmentManager fm, Context context) {
 		super(fm);
-		
-		// Init the tabs with the Fragments of Mda
-		array[0] = new TreatmentsToReportFragment();
-		array[1] = new TechInfoFragment();
-		array[2] = new GeneralInfoFragment();
+		this.context = context;
 	}
 
 	@Override
 	public Fragment getItem(int position) {
-		return array[position];
+		switch (position) {
+		case 0:
+			return new TreatmentsToReportFragment();
+		case 1:
+			return new TechInfoFragment();
+		default:
+			return new GeneralInfoFragment();
+		}
+	}
+
+	@Override
+	public CharSequence getPageTitle(int position) {
+		switch (position) {
+		case 0:
+			return this.context.getString(R.string.fragment_treatments_to_report_title);
+		case 1:
+			return this.context.getString(R.string.fragment_tech_info_title);
+		default:
+			return this.context.getString(R.string.fragment_general_info_general_info_tab_title);
+		}
 	}
 
 	@Override

@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.mdareports.R;
+import com.mdareports.utils.Logger;
 
 public class BloodPressureDialog extends RelativeLayout {
+	private String TAG = Logger.makeLogTag(getClass());
 
 	private EditText txtValueHigh;
 	private EditText txtValueLow;
