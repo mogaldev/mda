@@ -24,10 +24,11 @@ public class DetailsActivity extends BaseActivity {
 
 	private final String TAG = Logger.makeLogTag(this.getClass());
 	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
+	
 	// Instance of the report of this DetailActivity
 	private Report sentReport;
 	private MadaPagerAdapter madaPagerAdapter;
-	ViewPager viewPager;
+	private ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +59,12 @@ public class DetailsActivity extends BaseActivity {
 	            });
 		
 		// Init all the tabs in the DetailActivity
-		initNewActionBarTab(supportActionBar, getString(R.string.fragment_treatments_to_report_title));
-		initNewActionBarTab(supportActionBar, getString(R.string.fragment_tech_info_title));
-		initNewActionBarTab(supportActionBar, getString(R.string.fragment_general_info_general_info_tab_title));
+		initNewActionBarTab(supportActionBar, getString(R.string.fragment_treatments_to_report_title), TreatmentsToReportFragment.class);
+		initNewActionBarTab(supportActionBar, getString(R.string.fragment_tech_info_title), TechInfoFragment.class);
+		initNewActionBarTab(supportActionBar, getString(R.string.fragment_general_info_general_info_tab_title), GeneralInfoFragment.class);
 	}
 	
-	private void initNewActionBarTab(ActionBar supportActionBar, String tabText) {
+	private void initNewActionBarTab(ActionBar supportActionBar, String tabText, Class<? extends FragmentDetailActivity> fragmentClass) {
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
 		treatmentsTab.setText(tabText);
 		treatmentsTab.setTabListener(new MadaTabListener(viewPager));
@@ -209,23 +210,21 @@ public class DetailsActivity extends BaseActivity {
 		// try to get each fragment because maybe not all the fragment were
 		// loaded
 		try {
-			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) getSupportFragmentManager()
-					.findFragmentByTag(GeneralInfoFragment.class.getName());
-			generalInfoFragment.saveCurrentReport();
+			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) madaPagerAdapter.getItem(0);
+			treatmentFragment.saveCurrentReport();
+			treatmentFragment.saveTreatments();
 		} catch (Exception e) {
 		}
+		
 		try {
-			TechInfoFragment techInfoFragment = (TechInfoFragment) getSupportFragmentManager()
-					.findFragmentByTag(TechInfoFragment.class.getName());
+			TechInfoFragment techInfoFragment = (TechInfoFragment) madaPagerAdapter.getItem(1);
 			techInfoFragment.saveCurrentReport();
 		} catch (Exception e) {
 		}
+		
 		try {
-			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) getSupportFragmentManager()
-					.findFragmentByTag(
-							TreatmentsToReportFragment.class.getName());
-			treatmentFragment.saveCurrentReport();
-			treatmentFragment.saveTreatments();
+			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) madaPagerAdapter.getItem(2);
+			generalInfoFragment.saveCurrentReport();
 		} catch (Exception e) {
 		}
 	}
