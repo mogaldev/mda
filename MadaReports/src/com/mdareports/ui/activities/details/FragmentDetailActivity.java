@@ -10,13 +10,6 @@ import com.mdareports.db.models.Report;
  */
 public abstract class FragmentDetailActivity extends Fragment {
 
-	@Override
-	public void onPause() {
-		super.onPause();
-		// call saveCurrentReport so the data about the report from the fragment will not destroy
-		saveCurrentReport();
-	}
-
 	/**
 	 * Call the current report of the DetailActivity
 	 * @return The Report of the DetailActivity
