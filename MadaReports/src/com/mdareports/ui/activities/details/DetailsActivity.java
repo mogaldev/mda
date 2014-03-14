@@ -189,7 +189,7 @@ public class DetailsActivity extends BaseActivity {
 										databaseWrapper
 												.deleteTreatmentsToReportByReportId(getCurrentReport()
 														.getId());
-										writeShortTimeMessage(R.string.code_table_deleted_successfuly);
+										writeShortTimeMessage(R.string.deleted_successfuly);
 										finish();
 									}
 								}

@@ -23,8 +23,7 @@ import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.details.DetailsActivity;
 import com.mdareports.utils.Logger;
 
-
-public class ReportsListAdapter extends BaseAdapter implements Filterable, 
+public class ReportsListAdapter extends BaseAdapter implements Filterable,
 		DbChangedNotifier {
 	private String TAG = Logger.makeLogTag(getClass());
 	private Context context;
@@ -36,7 +35,8 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 		this.context = context;
 		this.reportsList = (ArrayList<Report>) reports;
 		this.originalReportsList = this.reportsList;
-		this.mInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		this.mInflater = (LayoutInflater) getContext().getSystemService(
+				Context.LAYOUT_INFLATER_SERVICE);
 
 		DatabaseWrapper.getInstance(context).setDbChangedListener(this);
 	}
@@ -44,13 +44,17 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 	public ReportsListAdapter(Context context) {
 		this(context, DatabaseWrapper.getInstance(context).getAllReports());
 	}
-	
+
 	public Context getContext() {
 		return this.context;
 	}
 
 	public void resetData() {
 		reportsList = originalReportsList;
+	}
+
+	public Report[] getReports() {
+		return (Report[]) originalReportsList.toArray();
 	}
 
 	/**
@@ -67,18 +71,22 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 			// choose the layout to be inflated according to the report
 			// properties
 			if (report.isRead()) {
-				itemView = mInflater.inflate(R.layout.read_reports_list_item, null);
+				itemView = mInflater.inflate(R.layout.list_item_read_reports,
+						null);
 				initItemView(itemView, report);
 			} else { // unread mode
-				itemView = mInflater.inflate(R.layout.unread_reports_list_item, null);
+				itemView = mInflater.inflate(R.layout.list_item_unread_reports,
+						null);
 				initItemView(itemView, report);
 			}
-			
+
 			itemView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(v.getContext(), DetailsActivity.class);
-					intent.putExtra(DetailsActivity.REPORT_ID_EXTRA, report.getId());
+					Intent intent = new Intent(v.getContext(),
+							DetailsActivity.class);
+					intent.putExtra(DetailsActivity.REPORT_ID_EXTRA,
+							report.getId());
 					v.getContext().startActivity(intent);
 				}
 			});
@@ -90,7 +98,7 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 	}
 
 	@SuppressLint("SimpleDateFormat")
-    private void initItemView(View view, Report report) {
+	private void initItemView(View view, Report report) {
 		// initialize the views members
 		TextView tvId = (TextView) view.findViewById(R.id.tvReportId);
 		TextView tvReceivedAt = (TextView) view.findViewById(R.id.tvReceivedAt);
@@ -99,7 +107,8 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 
 		// set the values into the views
 		tvId.setText(report.getReportId() + "#");
-		tvReceivedAt.setText(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(report.getReceivedAt()));
+		tvReceivedAt.setText(new SimpleDateFormat("E dd-MM-yyyy hh:mm")
+				.format(report.getReceivedAt()));
 		tvDescription.setText(report.getDescription(),
 				TextView.BufferType.SPANNABLE);
 	}
@@ -169,19 +178,19 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 	public List<String> getToShareStringOfReports() {
 		List<String> returnList = new ArrayList<String>();
 		for (Report report : reportsList) {
-	        returnList.add(report.toShareString(getContext()));
-        }
-		
+			returnList.add(report.toShareString(getContext()));
+		}
+
 		return returnList;
 	}
 
 	@Override
-    public Object getItem(int position) {
+	public Object getItem(int position) {
 		return this.originalReportsList.get(position);
-    }
+	}
 
 	@Override
-    public long getItemId(int position) {
+	public long getItemId(int position) {
 		return this.originalReportsList.get(position).getId();
-    }
+	}
 }

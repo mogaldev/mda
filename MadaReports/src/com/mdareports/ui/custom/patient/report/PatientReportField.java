@@ -22,7 +22,7 @@ public class PatientReportField extends LinearLayout {
 		// inflate the layout
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		inflater.inflate(R.layout.patient_report_field, this, true);
+		inflater.inflate(R.layout.field_patient_report, this, true);
 
 		// set the views members
 		txtValue = (EditText) findViewById(R.id.txtPatientReportValue);

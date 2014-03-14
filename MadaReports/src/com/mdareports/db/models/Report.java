@@ -20,6 +20,7 @@ public class Report {
 	public static final String TABLE_NAME = "reports";
 	public static final String ID_COLUMN_NAME = "id";
 	public static final String IS_READ_COLUMN_NAME = "isRead";	
+	public static final String IS_REPORTED_COLUMN_NAME = "isReported";
 
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
 	private int id;

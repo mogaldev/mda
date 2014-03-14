@@ -36,7 +36,7 @@ public class BloodPressureField extends RelativeLayout {
 		// inflate the layout
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		inflater.inflate(R.layout.technical_editable_blood_pressure_field, this, true);
+		inflater.inflate(R.layout.field_technical_editable_blood_pressure, this, true);
 
 		// set the views members
 		tvLabel = (TextView) findViewById(R.id.tvLabelBloodPressure);

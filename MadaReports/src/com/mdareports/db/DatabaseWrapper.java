@@ -2,6 +2,7 @@ package com.mdareports.db;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import android.content.Context;
@@ -77,8 +78,8 @@ public class DatabaseWrapper {
 		}
 		return reports;
 	}
-
-
+	
+	
 	
 	
 	public boolean deleteAllReports() {
@@ -92,6 +93,20 @@ public class DatabaseWrapper {
 		return true;
 	}
 
+	public boolean deleteReports(Report[] reports){
+		try {				
+			for (Report r : reports) {
+				helper.getReportDao().delete(r);	
+			}
+						
+			notifyDatabaseChanged();
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
 	public boolean deleteReport(Report report) {
 		try {
 			helper.getReportDao().delete(report);

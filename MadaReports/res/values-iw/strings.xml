@@ -4,7 +4,9 @@
 
     <!-- General Application Strings -->
     <string name="app_name">דיווחי מדא</string>
-
+	
+	<string name="deleted_successfuly">נמחק בהצלחה</string>    
+    
     <plurals name="notification_d_new_messages">
         <item quantity="one">דיווח אחד שלא נקרא</item>
         <item quantity="other">%d דיווחים שלא נקראו</item>
@@ -53,8 +55,7 @@
     <string name="code_table_dialog_delete_success">הרשומה נמחקה</string>
     <string name="code_table_dialog_delete_unsuccess">לא ניתן למחוק רשומה</string>
     <string name="code_table_dialog_options_edit">עריכה</string>
-    <string name="code_table_dialog_options_delete">מחיקה</string>
-    <string name="code_table_deleted_successfuly">נמחק בהצלחה</string>
+    <string name="code_table_dialog_options_delete">מחיקה</string>    
     <!-- End of Code Tables -->
 
 

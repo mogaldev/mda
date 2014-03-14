@@ -43,7 +43,7 @@ public class EditableSeekField extends RelativeLayout {
 		// inflate the layout
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		inflater.inflate(R.layout.technical_editable_seek_field, this, true);
+		inflater.inflate(R.layout.field_technical_editable_seek, this, true);
 
 		// set the views members
 		tvLabel = (TextView) findViewById(R.id.tvLabelEditSeekField);

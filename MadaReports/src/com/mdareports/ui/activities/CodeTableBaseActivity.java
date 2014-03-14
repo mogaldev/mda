@@ -38,7 +38,6 @@ public abstract class CodeTableBaseActivity extends BaseActivity {
 
 		// display all the records
 		displayRecords();
-
 	}
 
 	@Override

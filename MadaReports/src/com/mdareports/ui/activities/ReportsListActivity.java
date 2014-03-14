@@ -18,9 +18,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.ads.AdView;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
+import com.mdareports.ui.fragments.reportslists.AllReportsFragment;
+import com.mdareports.ui.fragments.reportslists.BaseReportsListFragment;
+import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
+import com.mdareports.ui.fragments.reportslists.UnreadReportsFragment;
+import com.mdareports.ui.fragments.reportslists.UnreportedReportsFragment;
 import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
 import com.mdareports.ui.reportslist.ReportsListAdapter;
 import com.mdareports.utils.DeviceInfoUtils;
@@ -31,77 +35,52 @@ import com.mdareports.utils.SettingsManager;
 
 public class ReportsListActivity extends BaseActivity {
 
-	private ReportsListAdapter reportsAdapter;
 	private ReportsFilterTextWatcher reportsFilterTextWatcher;
-	private ListView listView;
-	private AdView adView;
+	public static final String REPORTS_LIST_ARGS = "REPORTS_LIST_ARGS";
+	private static BaseReportsListFragment currentFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_reports_list_view);
+		setContentView(R.layout.activity_reports_list);
 
-		// Find the listView in the activity's layout for future use
-		listView = (ListView) findViewById(R.id.listView);
-		setListEmptyView();
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 
-		// Find the AdView in the activity's layout Load the AdView with an ad
-		// request
-		adView = (AdView) findViewById(R.id.adView);
+		currentFragment = getFragmentToDisplay();
+		if (currentFragment != null) {
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.reportsListFrgmtContainer, currentFragment)
+					.commit();
+		}
 
-		/**
-		 * We can "Edit" the AdView from the code, with the AdRequest object.
-		 * When the loadAdOnCreate=false in the com.google.ads.AdView in the
-		 * layout, we have to initialize the AdView from the code, with the
-		 * AdRequest Object. When the loadAdOnCreate=true, we don't have to edit
-		 * the AdRequest from the code
-		 */
-		// Create the AdRequest and add parameters to it
-		// AdRequest adRequest = new AdRequest();
-		// adRequest.addTestDevice(AdRequest.TEST_EMULATOR); // All emulators
-		// adRequest.addTestDevice("8E940041CA56DCF10D0F5218CD835405"); // Gal's
-		// Device id
-		// adRequest.addTestDevice("1672CE270A7CDA8B7CA4AFCBF2E5A0D8"); //
-		// Moshe's Device id
-		// adView.loadAd(adRequest);
 	}
 
-	private void setListEmptyView() {
-		View empty = getLayoutInflater().inflate(
-				R.layout.empty_report_list_item, null, false);
+	private BaseReportsListFragment getFragmentToDisplay() {
+		Intent intent = getIntent();
 
-		// set the view's text font
-		FontTypeFaceManager
-				.getInstance(this)
-				.setFont(
-						(TextView) empty.findViewById(R.id.emptyViewLabel),
-						DeviceInfoUtils.isCurrentLanguageHebrew(this) ? CustomFonts.YoavRegular
-								: CustomFonts.RobotoThin);
+		if (intent != null && intent.hasExtra(REPORTS_LIST_ARGS)) {
+			ReportsListsFilters filter = ReportsListsFilters.values()[intent
+					.getIntExtra(REPORTS_LIST_ARGS, -1)];
 
-		addContentView(empty, new LayoutParams(LayoutParams.MATCH_PARENT,
-				LayoutParams.MATCH_PARENT));
-		listView.setEmptyView(empty);
+			if (filter == ReportsListsFilters.All) {
+				return new AllReportsFragment();
+			} else if (filter == ReportsListsFilters.Unread) {
+				return new UnreadReportsFragment();
+			} else if (filter == ReportsListsFilters.Unreported) {
+				return new UnreportedReportsFragment();
+			}
+		}
+
+		return currentFragment;
 	}
 
 	@Override
 	protected void onStart() {
 		super.onStart();
 
-		reportsAdapter = new ReportsListAdapter(this);
-		listView.setAdapter(reportsAdapter);
-
 		// Just remove the SMS Received Notification
 		NotificationsManager.getInstance(this).removeSmsReceivedNotification();
-	}
-
-	@Override
-	public void onDestroy() {
-		// Handle the AdView
-		if (adView != null) {
-			adView.destroy();
-		}
-
-		super.onDestroy();
 	}
 
 	@Override
@@ -113,6 +92,7 @@ public class ReportsListActivity extends BaseActivity {
 		// initializing the search action view
 		MenuItem item = menu.findItem(R.id.reportslist_activity_menu_search);
 		final EditText txt = (EditText) MenuItemCompat.getActionView(item);
+
 		MenuItemCompat.setOnActionExpandListener(item,
 				new OnActionExpandListener() {
 
@@ -124,16 +104,24 @@ public class ReportsListActivity extends BaseActivity {
 
 						// enable the 'real-time' filtering on the edit text
 						reportsFilterTextWatcher = new ReportsFilterTextWatcher(
-								reportsAdapter);
+								currentFragment.getAdapter());
 						txt.addTextChangedListener(reportsFilterTextWatcher);
 
 						return true;
 					}
 
 					@Override
-					public boolean onMenuItemActionCollapse(MenuItem item) {
-						// Erase the text in the Search EditText in the
-						// ActionBar
+					public boolean onMenuItemActionCollapse(MenuItem item) { // Erase
+																				// the
+																				// text
+																				// in
+																				// the
+																				// Search
+																				// EditText
+																				// in
+																				// the
+																				// //
+																				// ActionBar
 						txt.setText("");
 
 						// Remove the TextWatcher
@@ -146,32 +134,13 @@ public class ReportsListActivity extends BaseActivity {
 		return true;
 	}
 
-	private Intent getShareIntent() {
-		StringBuffer shareString = new StringBuffer();
-		List<String> reportsOnScreen = reportsAdapter
-				.getToShareStringOfReports();
-		for (String currentReport : reportsOnScreen) {
-			shareString.append(currentReport);
-			shareString.append("\n\n");
-		}
-		shareString.append(SettingsManager.getInstance(this)
-				.getVolunteerSignature());
-
-		Intent shareIntent = new Intent();
-		shareIntent.setAction(Intent.ACTION_SEND);
-		shareIntent.putExtra(Intent.EXTRA_TEXT, shareString.toString());
-		shareIntent.setType("text/plain");
-
-		return shareIntent;
-	}
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 
 		case R.id.reportslist_activity_menu_settings:
 			if (DeviceInfoUtils.hasHoneycomb()) {
-				MoveTo(SettingsActivity.class);
+				// TODO MoveTo(SettingsActivity.class);
 			} else {
 				MoveTo(OldSettingsActivity.class);
 			}
@@ -184,7 +153,7 @@ public class ReportsListActivity extends BaseActivity {
 			// The ShareActionProvider of sherlock is not working well on
 			// Android 2.3.5 (i checked it on Galaxy 2)
 			// So here we will use the default ShareIntent
-			Intent sendIntent = getShareIntent();
+			Intent sendIntent = currentFragment.getShareIntent();
 			startActivity(Intent
 					.createChooser(
 							sendIntent,
@@ -193,10 +162,6 @@ public class ReportsListActivity extends BaseActivity {
 
 		case R.id.reportslist_activity_menu_patient_report:
 			MoveTo(PatientReportActivity.class);
-			return true;
-
-		case R.id.reportslist_activity_menu_about_us:
-			MoveTo(AboutUsActivity.class);
 			return true;
 
 		default:
@@ -213,11 +178,7 @@ public class ReportsListActivity extends BaseActivity {
 							public void onClick(DialogInterface dialog, int item) {
 								if (item == DialogInterface.BUTTON_POSITIVE) {
 									// perform the delete
-									if (DatabaseWrapper.getInstance(context)
-											.deleteAllReports()) {
-
-										writeShortTimeMessage(R.string.code_table_deleted_successfuly);
-									}
+									currentFragment.removeDisplayedReportes();
 								}
 								dialog.dismiss();
 							}
