@@ -57,7 +57,30 @@ public class DatabaseWrapper {
 		}
 		return reports;
 	}
+	
+	public List<Report> getUnreadReports() {
+		List<Report> reports = null;
+		try {
+			reports = helper.getReportDao().queryForEq(Report.IS_READ_COLUMN_NAME, false);			
+		} catch (Exception e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+		return reports;
+	}
+	
+	public List<Report> getUnreportedReports() {
+		List<Report> reports = null;
+		try {
+			reports = helper.getReportDao().queryForEq(Report.IS_REPORTED_COLUMN_NAME, false);			
+		} catch (Exception e) {
+			Logger.LOGE(TAG, e.getMessage());
+		}
+		return reports;
+	}
 
+
+	
+	
 	public boolean deleteAllReports() {
 		try {
 			helper.getReportDao().delete(getAllReports());
