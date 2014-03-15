@@ -19,7 +19,6 @@ import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.ui.fragments.reportslists.UnreadReportsFragment;
 import com.mdareports.ui.fragments.reportslists.UnreportedReportsFragment;
 import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
-import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.NotificationsManager;
 
 public class ReportsListActivity extends BaseActivity {
