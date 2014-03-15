@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mdareports.R;
@@ -21,27 +22,36 @@ import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.DbChangedNotifier;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.details.DetailsActivity;
+import com.mdareports.utils.FontTypeFaceManager;
+import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 import com.mdareports.utils.Logger;
 
-public class ReportsListAdapter extends BaseAdapter implements Filterable,
+public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 		DbChangedNotifier {
-	private String TAG = Logger.makeLogTag(getClass());
 	private Context context;
 	private ArrayList<Report> reportsList;
 	private ArrayList<Report> originalReportsList;
-	LayoutInflater mInflater;
+	LayoutInflater inflater;
 
-	public ReportsListAdapter(Context context, List<Report> reports) {
+	static class ViewHolder {
+		TextView tvId;
+		TextView tvReportReceivedAt;
+		TextView tvReportDescription;
+		ImageView imgReportIsReported;
+		ImageView imgReportIcon;
+	}
+
+	public ReportsListCardAdapter(Context context, List<Report> reports) {
 		this.context = context;
 		this.reportsList = (ArrayList<Report>) reports;
 		this.originalReportsList = this.reportsList;
-		this.mInflater = (LayoutInflater) getContext().getSystemService(
+		this.inflater = (LayoutInflater) getContext().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
 
 		DatabaseWrapper.getInstance(context).setDbChangedListener(this);
 	}
 
-	public ReportsListAdapter(Context context) {
+	public ReportsListCardAdapter(Context context) {
 		this(context, DatabaseWrapper.getInstance(context).getAllReports());
 	}
 
@@ -63,24 +73,64 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View itemView = null;
-		try {
-			// get the report that this item represents
-			final Report report = reportsList.get(position);
 
-			// choose the layout to be inflated according to the report
-			// properties
-			if (report.isRead()) {
-				itemView = mInflater.inflate(R.layout.list_item_read_reports,
-						null);
-				initItemView(itemView, report);
-			} else { // unread mode
-				itemView = mInflater.inflate(R.layout.list_item_unread_reports,
-						null);
-				initItemView(itemView, report);
-			}
+		ViewHolder holder;
+		if (convertView == null) {
+			convertView = inflater.inflate(R.layout.list_item_card_report,
+					parent, false);
 
-			itemView.setOnClickListener(new OnClickListener() {
+			// bind the view holder to the proper widgets
+			holder = new ViewHolder();
+			holder.imgReportIcon = (ImageView) convertView
+					.findViewById(R.id.imgReportIcon);
+			holder.tvId = (TextView) convertView.findViewById(R.id.tvReportId);
+			holder.tvReportReceivedAt = (TextView) convertView
+					.findViewById(R.id.tvReportReceivedAt);
+			holder.tvReportDescription = (TextView) convertView
+					.findViewById(R.id.tvReportDescription);
+			holder.imgReportIsReported = (ImageView) convertView
+					.findViewById(R.id.imgReportIsReported);
+
+			// set custom fonts
+			FontTypeFaceManager ftfm = FontTypeFaceManager.getInstance(context);
+			ftfm.setFont(holder.tvId, CustomFonts.RobotoThin);
+			ftfm.setFont(holder.tvReportReceivedAt, CustomFonts.RobotoThin);
+
+			convertView.setTag(holder);
+			
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+
+		// populate the item with values
+		final Report report = (Report) getItem(position);
+		if (report != null) {
+			holder.tvId.setText(report.getReportId() + "#");
+			holder.tvReportReceivedAt.setText(new SimpleDateFormat(
+					"E dd-MM-yyyy hh:mm").format(report.getReceivedAt()));
+			holder.tvReportDescription.setText(report.getDescription(),
+					TextView.BufferType.SPANNABLE);
+
+			// set the text color and the icon according to the read status
+			holder.imgReportIcon
+					.setImageResource(report.isRead() ? R.drawable.medical_report_gray
+							: R.drawable.medical_report);
+
+			int textColor = context.getResources().getColor(
+					report.isRead() ? R.color.reports_list_item_read_textcolor
+							: R.color.reports_list_item_unread_textcolor);
+
+			holder.tvReportDescription.setTextColor(textColor);
+			holder.tvId.setTextColor(textColor);
+			holder.tvReportReceivedAt.setTextColor(textColor);
+
+			// set the is-reported icon
+			holder.imgReportIsReported
+					.setImageResource(report.isReported() ? R.drawable.green_checked_icon
+							: R.drawable.exclamation_basic_yellow);
+
+			// register to the on-click event
+			convertView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(v.getContext(),
@@ -90,27 +140,9 @@ public class ReportsListAdapter extends BaseAdapter implements Filterable,
 					v.getContext().startActivity(intent);
 				}
 			});
-		} catch (Exception e) {
-			Logger.LOGE(TAG, e.getMessage());
+
 		}
-
-		return itemView;
-	}
-
-	@SuppressLint("SimpleDateFormat")
-	private void initItemView(View view, Report report) {
-		// initialize the views members
-		TextView tvId = (TextView) view.findViewById(R.id.tvReportId);
-		TextView tvReceivedAt = (TextView) view.findViewById(R.id.tvReceivedAt);
-		TextView tvDescription = (TextView) view
-				.findViewById(R.id.tvReportDescription);
-
-		// set the values into the views
-		tvId.setText(report.getReportId() + "#");
-		tvReceivedAt.setText(new SimpleDateFormat("E dd-MM-yyyy hh:mm")
-				.format(report.getReceivedAt()));
-		tvDescription.setText(report.getDescription(),
-				TextView.BufferType.SPANNABLE);
+		return convertView;
 	}
 
 	// TODO: check about more efficient filter mechanism

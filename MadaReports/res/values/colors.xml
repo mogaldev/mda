@@ -2,12 +2,15 @@
 <resources>
 
     <color name="activity_bgcolor">#F5FFFA</color>
-    <color name="activity_text_color">#ED1C24</color>
-    <color name="read_item_bgcolor">#eee9e9</color>
-    <color name="read_item_textcolor">#8b8682</color>
-    <color name="unread_item_textcolor">#000</color>    
+    <color name="activity_text_color">#ED1C24</color>    
+    <color name="reports_list_item_read_textcolor">#8b8682</color>
+    <color name="reports_list_item_unread_textcolor">@color/activity_text_color</color>    
     <color name="actionbar_text_color">#FFFFFF</color>    
     <color name="actionbar_color">#E72328</color>    
+             
+    <!-- Reports List -->
+    <color name="reports_list_item_footer_background">#fafafa</color>    
+   
     
     <!-- unused - delete -->
     <color name="unselected_tab">#FA0000</color>

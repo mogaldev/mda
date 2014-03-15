@@ -1,6 +1,6 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
 
-	<style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light"></style>
+    <style name="AppBaseTheme" parent="@style/Theme.AppCompat.Light"></style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
@@ -15,7 +15,7 @@
         <item name="actionBarTabTextStyle">@style/MadaActionBarTabText</item>
     </style>
 
-    <!-- ActionBar styles -->
+    <!-- ActionBar -->
     <style name="MadaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@drawable/tab_unselected_unpressed</item>
         <item name="android:titleTextStyle" tools:targetApi="11">@style/MadaActionBarTextStyle</item>
@@ -24,41 +24,43 @@
         <item name="background">@drawable/tab_unselected_unpressed</item>
         <item name="titleTextStyle">@style/MadaActionBarTextStyle</item>
     </style>
-    
-     <style name="MadaActionBarTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+
+    <style name="MadaActionBarTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
         <item name="android:textColor">@color/actionbar_text_color</item>
     </style>
-    
+
     <style name="MadaActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/details_fragment_tab_selector</item>
 
         <!-- Support library compatibility -->
         <item name="background">@drawable/details_fragment_tab_selector</item>
     </style>
-    
-     <style name="MadaActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
+
+    <style name="MadaActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
         <item name="android:textColor">@color/actionbar_text_color</item>
     </style>
-    <!-- ActionBar styles -->
 
-    <style name="unread_list_item_text">
-        <!-- <item name="android:textColor">@color/unread_item_textcolor</item> -->
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    <!-- Reports List -->
+
+    <style name="reportsListCardFooterText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="read_list_item_text">
-        <item name="android:textColor">@color/read_item_textcolor</item>
-        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+    <style name="reportsListCardHeaderText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
-    <!-- DetailActivity Style -->
+
+    <!-- DetailActivity -->
 
 
-    <!-- General Info Fragment Style -->
+    <!-- General Info Fragment -->
     <style name="fragment_general_info_relative_layout">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -88,7 +90,7 @@
     <!-- End of General Info Fragment Style -->
 
 
-    <!-- Tech Info Fragment Style -->
+    <!-- Tech Info Fragment -->
     <style name="fragment_tech_info_relative_layout">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -124,18 +126,18 @@
         <item name="android:gravity">center</item>
     </style>
 
-        <style name="fragment_tech_info_editableSeekField">                
+    <style name="fragment_tech_info_editableSeekField">
         <item name="android:padding">10dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
     </style>
-    
+
     <integer name="blood_pressure_view_width_dimension">200</integer>
     <integer name="blood_pressure_view_height_dimension">75</integer>
 
     <dimen name="blood_pressure_view_height_dimension_dialog">80dp</dimen>
-    <!-- End of Tech Info Fragment Style -->
+    <!-- End of Tech Info Fragment -->
 
 
     <!-- Treatments Fragment -->
@@ -144,17 +146,17 @@
     <!-- End of Treatments Fragment -->
 
 
-    <!-- End of DetailActivity Style -->
+    <!-- End of DetailActivity -->
 
 
-    <!-- PatientReportActivity Style -->
+    <!-- Patient Report -->
     <style name="activity_patient_report_field">
-       <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">10dp</item>
     </style>
-    
+
     <style name="activity_patient_report_textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">50dp</item>
@@ -168,10 +170,10 @@
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_alignParentLeft">false</item>
-        <item name="android:layout_alignParentRight">true</item>                
+        <item name="android:layout_alignParentRight">true</item>
     </style>
 
-    <!-- End of PatientReportActivity Style -->
+    <!-- End of Patient Report -->
 
 
     <!-- Style for the Show Original Message button -->

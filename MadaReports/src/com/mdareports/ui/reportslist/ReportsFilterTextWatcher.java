@@ -7,9 +7,9 @@ import android.text.TextWatcher;
  * Implies the 'real time' filtering on the edit-text
  */
 public class ReportsFilterTextWatcher implements TextWatcher {
-	private ReportsListAdapter adapter;
+	private ReportsListCardAdapter adapter;
 
-	public ReportsFilterTextWatcher(ReportsListAdapter adapter) {
+	public ReportsFilterTextWatcher(ReportsListCardAdapter adapter) {
 		this.adapter = adapter;
 	}
 

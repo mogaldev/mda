@@ -14,13 +14,13 @@ import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.fragments.BaseFragment;
-import com.mdareports.ui.reportslist.ReportsListAdapter;
+import com.mdareports.ui.reportslist.ReportsListCardAdapter;
 import com.mdareports.utils.NotificationsManager;
 import com.mdareports.utils.SettingsManager;
 
 public abstract class BaseReportsListFragment extends BaseFragment {
 
-	protected ReportsListAdapter reportsAdapter;
+	protected ReportsListCardAdapter reportsAdapter;
 	protected ListView listView;
 
 	@Override
@@ -39,7 +39,7 @@ public abstract class BaseReportsListFragment extends BaseFragment {
 	public void onStart() {
 		super.onStart();
 
-		reportsAdapter = new ReportsListAdapter(getActivity(), getReports());
+		reportsAdapter = new ReportsListCardAdapter(getActivity(), getReports());
 		listView.setAdapter(reportsAdapter);
 
 		// Just remove the SMS Received Notification
@@ -76,7 +76,7 @@ public abstract class BaseReportsListFragment extends BaseFragment {
 		return shareIntent;
 	}
 
-	public ReportsListAdapter getAdapter() {
+	public ReportsListCardAdapter getAdapter() {
 		return reportsAdapter;
 	}
 

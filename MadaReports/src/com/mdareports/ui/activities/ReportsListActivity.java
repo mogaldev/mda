@@ -1,7 +1,5 @@
 package com.mdareports.ui.activities;
 
-import java.util.List;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,26 +10,17 @@ import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.mdareports.R;
-import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.ui.fragments.reportslists.AllReportsFragment;
 import com.mdareports.ui.fragments.reportslists.BaseReportsListFragment;
 import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.ui.fragments.reportslists.UnreadReportsFragment;
 import com.mdareports.ui.fragments.reportslists.UnreportedReportsFragment;
 import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
-import com.mdareports.ui.reportslist.ReportsListAdapter;
 import com.mdareports.utils.DeviceInfoUtils;
-import com.mdareports.utils.FontTypeFaceManager;
-import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 import com.mdareports.utils.NotificationsManager;
-import com.mdareports.utils.SettingsManager;
 
 public class ReportsListActivity extends BaseActivity {
 
