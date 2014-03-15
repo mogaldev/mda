@@ -2,19 +2,35 @@ package com.mdareports.ui.drawer;
 
 import com.mdareports.ui.activities.MdaDrawerActivity;
 
-public class DrawerItem {	
+public class DrawerItem {
 	private int position;
 	private int resIdTitle;
 	private int resIdIcon;
-	private MdaDrawerActivity.DrawerMenuItems itemCode; // used for the switch-case when switching fragments	
+	private boolean isTitle;
+	private MdaDrawerActivity.DrawerMenuItems itemCode; // used for the
+														// switch-case when
+														// switching fragments
 
-	public DrawerItem(int position, int resIdTitle, int resIdIcon, MdaDrawerActivity.DrawerMenuItems itemCode) {
+	public DrawerItem(int position, int resIdTitle, int resIdIcon,
+			MdaDrawerActivity.DrawerMenuItems itemCode, boolean isTitle) {
 		this.position = position;
 		this.resIdTitle = resIdTitle;
 		this.resIdIcon = resIdIcon;
-		this.itemCode = itemCode;		
+		this.itemCode = itemCode;
+		this.isTitle = isTitle;
+	}
+
+	public DrawerItem(int position, int resIdTitle, int resIdIcon,
+			MdaDrawerActivity.DrawerMenuItems itemCode) {
+		this(position, resIdTitle, resIdIcon, itemCode, false);
 	}
 	
+	public DrawerItem(int position, int resIdTitle) {
+		this(position, resIdTitle, -1, MdaDrawerActivity.DrawerMenuItems.Home, true);
+	}
+	
+	
+
 	public int getPosition() {
 		return position;
 	}
@@ -39,6 +55,10 @@ public class DrawerItem {
 		this.resIdIcon = resIdIcon;
 	}
 
+	public boolean isTitle() {
+		return isTitle;
+	}
+
 	public MdaDrawerActivity.DrawerMenuItems getItemCode() {
 		return itemCode;
 	}
@@ -46,6 +66,5 @@ public class DrawerItem {
 	public void setItemCode(MdaDrawerActivity.DrawerMenuItems itemCode) {
 		this.itemCode = itemCode;
 	}
-
 
 }

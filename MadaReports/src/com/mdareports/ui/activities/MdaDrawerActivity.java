@@ -15,8 +15,6 @@ import com.mdareports.ui.fragments.PatientReportFragment;
 import com.mdareports.ui.fragments.SettingsFragment;
 import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.utils.DeviceInfoUtils;
-import com.mdareports.utils.FontTypeFaceManager;
-import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 /**
  * Responsible for building the application drawer. any application specific
@@ -105,34 +103,37 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 		 * Reports Filters
 		 */
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_home,
-				R.drawable.ic_menu_home,
-				DrawerMenuItems.Home));
-		
+				R.drawable.ic_menu_home, DrawerMenuItems.Home));
+
+		items.add(new DrawerItem(++i,
+				R.string.drawer_menu_item_category_reports));
+
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_reports_all,
-				android.R.drawable.ic_menu_preferences,
+				android.R.drawable.ic_menu_sort_by_size,
 				DrawerMenuItems.AllReports));
 
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_reports_unread,
-				android.R.drawable.ic_menu_preferences,
-				DrawerMenuItems.UnreadReports));
+				R.drawable.ic_menu_unread, DrawerMenuItems.UnreadReports));
 
 		items.add(new DrawerItem(++i,
 				R.string.drawer_menu_item_reports_unreported,
-				android.R.drawable.ic_menu_preferences,
+				R.drawable.ic_menu_unreported,
 				DrawerMenuItems.UnreportedReports));
 
 		items.add(new DrawerItem(++i,
+				R.string.drawer_menu_item_category_general));
+
+		items.add(new DrawerItem(++i,
 				R.string.drawer_menu_item_patience_report,
-				R.drawable.ic_menu_friendslist,
-				DrawerMenuItems.PatientReport));
+				R.drawable.ic_menu_friendslist, DrawerMenuItems.PatientReport));
 
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_settings,
 				android.R.drawable.ic_menu_preferences,
 				DrawerMenuItems.Settings));
 
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_about_us,
-				android.R.drawable.ic_menu_info_details, DrawerMenuItems.AboutUs));		
-		
+				android.R.drawable.ic_menu_info_details,
+				DrawerMenuItems.AboutUs));
 
 		return items;
 	}

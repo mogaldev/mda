@@ -18,7 +18,11 @@ import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 public class DrawerItemsAdapter extends BaseAdapter {
 
-	static class ViewHolder {
+	static class ViewHolderCategory {
+		TextView tvDrawerCategory;
+	}
+
+	static class ViewHolderItem {
 		ImageView imgDrawerItemIcon;
 		TextView tvDrawerItemDescription;
 	}
@@ -38,35 +42,107 @@ public class DrawerItemsAdapter extends BaseAdapter {
 		this(context, new ArrayList<DrawerItem>());
 	}
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		ViewHolder holder;
+	private View setCategory(DrawerItem item, View convertView, ViewGroup parent) {
+		ViewHolderCategory holder;
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.list_item_drawer_menu,
+			convertView = inflater.inflate(R.layout.list_item_drawer_category,
 					parent, false);
 
 			// bind the view holder to the proper widgets
-			holder = new ViewHolder();
+			holder = new ViewHolderCategory();
+			holder.tvDrawerCategory = (TextView) convertView
+					.findViewById(R.id.tvDrawerCategory);	
+
+			// set custom fonts for non-hebrew version
+			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
+					.getContext())) {
+				FontTypeFaceManager.getInstance(convertView.getContext())
+						.setFont(holder.tvDrawerCategory,
+								CustomFonts.RobotoThin);
+			}
+
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolderCategory) convertView.getTag();
+		}
+
+		// populate the item with values		
+		holder.tvDrawerCategory.setText(item.getTitleResourceId());
+		
+		return convertView;
+	}
+
+	private View setItem(DrawerItem item, View convertView, ViewGroup parent) {
+		ViewHolderItem holder;
+		if (convertView == null) {
+			convertView = inflater.inflate(R.layout.list_item_drawer,
+					parent, false);
+
+			// bind the view holder to the proper widgets
+			holder = new ViewHolderItem();
 			holder.imgDrawerItemIcon = (ImageView) convertView
 					.findViewById(R.id.imgDrawerItemIcon);
 			holder.tvDrawerItemDescription = (TextView) convertView
 					.findViewById(R.id.tvDrawerItemDescription);
 
 			// set custom fonts for non-hebrew version
-			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView.getContext())){				
-				FontTypeFaceManager.getInstance(convertView.getContext()).setFont(holder.tvDrawerItemDescription, CustomFonts.RobotoThin);				
+			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
+					.getContext())) {
+				FontTypeFaceManager.getInstance(convertView.getContext())
+						.setFont(holder.tvDrawerItemDescription,
+								CustomFonts.RobotoThin);
 			}
-			
+
 			convertView.setTag(holder);
 		} else {
-			holder = (ViewHolder) convertView.getTag();
+			holder = (ViewHolderItem) convertView.getTag();
 		}
-	
-		
+
 		// populate the item with values
-		DrawerItem item = (DrawerItem) getItem(position);
 		holder.imgDrawerItemIcon.setImageResource(item.getIconResourceId());
 		holder.tvDrawerItemDescription.setText(item.getTitleResourceId());
+		
+		return convertView;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		DrawerItem item = (DrawerItem) getItem(position);
+		if (item.isTitle()) {
+			convertView = setCategory(item, convertView, parent);
+		} else {
+			convertView = setItem(item, convertView, parent);
+		}
+			
+		
+//		 ViewHolderItem holder;
+//		 if (convertView == null) {
+//		 convertView = inflater.inflate(R.layout.list_item_drawer_menu,
+//		 parent, false);
+//		
+//		 // bind the view holder to the proper widgets
+//		 holder = new ViewHolderItem();
+//		 holder.imgDrawerItemIcon = (ImageView) convertView
+//		 .findViewById(R.id.imgDrawerItemIcon);
+//		 holder.tvDrawerItemDescription = (TextView) convertView
+//		 .findViewById(R.id.tvDrawerItemDescription);
+//		
+//		 // set custom fonts for non-hebrew version
+//		 if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
+//		 .getContext())) {
+//		 FontTypeFaceManager.getInstance(convertView.getContext())
+//		 .setFont(holder.tvDrawerItemDescription,
+//		 CustomFonts.RobotoThin);
+//		 }
+//		
+//		 convertView.setTag(holder);
+//		 } else {
+//		 holder = (ViewHolderItem) convertView.getTag();
+//		 }
+		
+//		 // populate the item with values		 
+//		 holder.imgDrawerItemIcon.setImageResource(item.getIconResourceId());
+//		 holder.tvDrawerItemDescription.setText(item.getTitleResourceId());
 
 		notifyDataSetChanged();
 
