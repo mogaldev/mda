@@ -19,7 +19,6 @@ import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.ui.fragments.reportslists.UnreadReportsFragment;
 import com.mdareports.ui.fragments.reportslists.UnreportedReportsFragment;
 import com.mdareports.ui.reportslist.ReportsFilterTextWatcher;
-import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.NotificationsManager;
 
 public class ReportsListActivity extends BaseActivity {
@@ -127,13 +126,6 @@ public class ReportsListActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 
-		case R.id.reportslist_activity_menu_settings:
-			if (DeviceInfoUtils.hasHoneycomb()) {
-				// TODO MoveTo(SettingsActivity.class);
-			} else {
-				MoveTo(OldSettingsActivity.class);
-			}
-			return true;
 		case R.id.reportslist_activity_menu_delete_all:
 			handleDelete(this);
 			return true;
@@ -147,10 +139,6 @@ public class ReportsListActivity extends BaseActivity {
 					.createChooser(
 							sendIntent,
 							getString(R.string.reportslist_activity_action_bar_share_message)));
-			return true;
-
-		case R.id.reportslist_activity_menu_patient_report:
-			MoveTo(PatientReportActivity.class);
 			return true;
 
 		default:
