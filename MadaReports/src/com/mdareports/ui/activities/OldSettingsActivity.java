@@ -3,8 +3,8 @@ package com.mdareports.ui.activities;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-import com.google.analytics.tracking.android.EasyTracker;
 import com.mdareports.R;
+import com.mdareports.utils.MdaAnalytics;
 
 public class OldSettingsActivity extends PreferenceActivity {
 
@@ -18,13 +18,13 @@ public class OldSettingsActivity extends PreferenceActivity {
 	@Override
 	protected void onStart() {		
 		super.onStart();
-		EasyTracker.getInstance(this).activityStart(this);
+		MdaAnalytics.activityStart(this);
 	}
 	
 	@Override
 	protected void onStop() {	
 		super.onStop();
-		EasyTracker.getInstance(this).activityStop(this);
+		MdaAnalytics.activityStop(this);
 	}
 	
 	
