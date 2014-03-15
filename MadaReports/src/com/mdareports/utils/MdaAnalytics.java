@@ -10,6 +10,9 @@ import com.google.analytics.tracking.android.MapBuilder;
 
 public class MdaAnalytics {
 	
+	public static final String EVENT_CATEGORY_SMS = "Sms";
+	public static final String EVENT_CATEGORY_REPORT = "Report";
+	
 	/**
 	 * Get an instance of the EasyTracker
 	 * @param context
@@ -52,11 +55,16 @@ public class MdaAnalytics {
 		getEasyTrackerInstance(activity).activityStop(activity);
 	}
 	
-	/**
-	 * SMS received event
-	 * @param context
-	 */
 	public static void smsReceivedEvent(Context context) {
-		createEvent(context, "sms_action", "sms_received", "raiseMessage", null);
+		createEvent(context, EVENT_CATEGORY_SMS, "Received", "Raise notification", null);
 	}
+	
+	public static void reportSaved(Context context) {
+		createEvent(context, EVENT_CATEGORY_REPORT, "Saved", "Save Button", null);
+	}
+	
+	public static void reportRollback(Context context) {
+		createEvent(context, EVENT_CATEGORY_REPORT, "Rollback", "Save Button", null);
+	}
+	
 }

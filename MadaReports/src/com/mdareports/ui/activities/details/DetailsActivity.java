@@ -17,12 +17,11 @@ import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.BaseActivity;
-import com.mdareports.utils.Logger;
+import com.mdareports.utils.MdaAnalytics;
 import com.mdareports.utils.SettingsManager;
 
 public class DetailsActivity extends BaseActivity {
 
-	private final String TAG = Logger.makeLogTag(this.getClass());
 	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
 	
 	// Instance of the report of this DetailActivity
@@ -208,6 +207,9 @@ public class DetailsActivity extends BaseActivity {
 	 * {@link FragmentDetailActivity} abstract class.
 	 */
 	public void saveCurrentReport() {
+		// Save report event on Google Analytics
+		MdaAnalytics.reportSaved(this);
+		
 		// try to get each fragment because maybe not all the fragment were
 		// loaded
 		try {
@@ -215,7 +217,8 @@ public class DetailsActivity extends BaseActivity {
 			treatmentFragment.saveCurrentReport();
 			treatmentFragment.saveTreatments();
 		} catch (Exception e) {
-		}		
+		}
+		
 		try {
 			TechInfoFragment techInfoFragment = (TechInfoFragment) madaPagerAdapter.getItem(1);
 			techInfoFragment.saveCurrentReport();
@@ -236,37 +239,29 @@ public class DetailsActivity extends BaseActivity {
 	 * abstract class.
 	 */
 	public void rollbackCurrentReport() {
+		// Rollback report event on Google Analytics
+		MdaAnalytics.reportRollback(this);
+		
 		// try to get each fragment because maybe not all the fragment were
 		// loaded
 		try {
-			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) getSupportFragmentManager()
-					.findFragmentByTag(GeneralInfoFragment.class.getName());
-			generalInfoFragment.refreshDataWithCurrentReport();
-		} catch (Exception e) {
-			Logger.LOGW(TAG,
-					"The Fragment " + GeneralInfoFragment.class.getName()
-							+ " was not created");
-		}
-		try {
-			TechInfoFragment techInfoFragment = (TechInfoFragment) getSupportFragmentManager()
-					.findFragmentByTag(TechInfoFragment.class.getName());
-			techInfoFragment.refreshDataWithCurrentReport();
-		} catch (Exception e) {
-			Logger.LOGW(TAG, "The Fragment " + TechInfoFragment.class.getName()
-					+ " was not created");
-		}
-		try {
-			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) getSupportFragmentManager()
-					.findFragmentByTag(
-							TreatmentsToReportFragment.class.getName());
+			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) madaPagerAdapter.getItem(0);
 			treatmentFragment.refreshDataWithCurrentReport();
 		} catch (Exception e) {
-			Logger.LOGW(
-					TAG,
-					"The Fragment "
-							+ TreatmentsToReportFragment.class.getName()
-							+ " was not created");
 		}
+		
+		try {
+			TechInfoFragment techInfoFragment = (TechInfoFragment) madaPagerAdapter.getItem(1);
+			techInfoFragment.refreshDataWithCurrentReport();
+		} catch (Exception e) {
+		}
+		
+		try {
+			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) madaPagerAdapter.getItem(2);
+			generalInfoFragment.refreshDataWithCurrentReport();
+		} catch (Exception e) {
+		}
+
 	}
 
 }
