@@ -57,6 +57,15 @@ public class MdaAnalytics {
 	 * @param context
 	 */
 	public static void smsReceivedEvent(Context context) {
-		createEvent(context, "sms_action", "sms_received", "raiseMessage", null);
+		createEvent(context, "SMS", "Received", "Raise notification", null);
 	}
+	
+	public static void reportSaved(Context context) {
+		createEvent(context, "Report", "Saved", "Save Button", null);
+	}
+	
+	public static void reportRollback(Context context) {
+		createEvent(context, "Report", "Rollback", "Save Button", null);
+	}
+	
 }

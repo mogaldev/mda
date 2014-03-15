@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Treatment;
