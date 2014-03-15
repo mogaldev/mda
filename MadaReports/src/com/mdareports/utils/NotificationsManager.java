@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.mdareports.R;
+import com.mdareports.ui.activities.MdaDrawerActivity;
 import com.mdareports.ui.activities.ReportsListActivity;
 
 public class NotificationsManager {
@@ -74,7 +75,7 @@ public class NotificationsManager {
 	public void raiseSmsReceivedNotification(String title, String description) {
 
 		Notification notification = createNotification(true, title, description,
-		                                               R.drawable.ic_report_unread,
+		                                               R.drawable.ic_launcher,
 		                                               ReportsListActivity.class);
 
 		// Hide the notification after its selected

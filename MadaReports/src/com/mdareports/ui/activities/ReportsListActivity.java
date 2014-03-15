@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.MenuItemCompat.OnActionExpandListener;
 import android.view.Menu;
@@ -58,6 +60,9 @@ public class ReportsListActivity extends BaseActivity {
 			} else if (filter == ReportsListsFilters.Unreported) {
 				return new UnreportedReportsFragment();
 			}
+		} else // Default is All
+		{
+			return new AllReportsFragment();
 		}
 
 		return currentFragment;
@@ -139,6 +144,25 @@ public class ReportsListActivity extends BaseActivity {
 					.createChooser(
 							sendIntent,
 							getString(R.string.reportslist_activity_action_bar_share_message)));
+			return true;
+
+			// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			Intent upIntent = NavUtils.getParentActivityIntent(this);
+			if (NavUtils.shouldUpRecreateTask(this, upIntent)) {
+				// This activity is NOT part of this app's task, so create a new
+				// task
+				// when navigating up, with a synthesized back stack.
+				TaskStackBuilder.create(this)
+				// Add all of this activity's parents to the back stack
+						.addNextIntentWithParentStack(upIntent)
+						// Navigate up to the closest parent
+						.startActivities();
+			} else {
+				// This activity is part of this app's task, so simply
+				// navigate up to the logical parent activity.
+				NavUtils.navigateUpTo(this, upIntent);
+			}
 			return true;
 
 		default:
