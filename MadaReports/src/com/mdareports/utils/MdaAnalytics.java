@@ -55,10 +55,6 @@ public class MdaAnalytics {
 		getEasyTrackerInstance(activity).activityStop(activity);
 	}
 	
-	/**
-	 * SMS received event
-	 * @param context
-	 */
 	public static void smsReceivedEvent(Context context) {
 		createEvent(context, EVENT_CATEGORY_SMS, "Received", "Raise notification", null);
 	}
