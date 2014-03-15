@@ -28,7 +28,13 @@
         <activity
             android:name="com.mdareports.ui.activities.ReportsListActivity"
             android:label="@string/app_name"
+            android:parentActivityName="com.mdareports.ui.activities.MdaDrawerActivity"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.mdareports.ui.activities.MdaDrawerActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,24 +42,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mdareports.ui.activities.AboutUsActivity"
-            android:label="@string/title_activity_about_us"
-            android:parentActivityName="com.mdareports.ui.activities.ReportsListActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="com.mdareports.ui.activities.PatientReportActivity"
             android:label="@string/title_activity_patient_report"
             android:parentActivityName="com.mdareports.ui.activities.ReportsListActivity"
             android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.mdareports.ui.activities.SettingsActivity"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName="com.mdareports.ui.activities.ReportsListActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.mdareports.ui.activities.ReportsListActivity" />
         </activity>
         <activity
             android:name="com.mdareports.ui.activities.OldSettingsActivity"
@@ -75,10 +67,6 @@
                 android:value="com.mdareports.ui.activities.ReportsListActivity" />
         </activity>
 
-        <!-- AdMobActivity definition -->
-        <activity
-            android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <!-- End of Activities -->
 
 

@@ -64,6 +64,7 @@ public class DetailsActivity extends BaseActivity {
 		initNewActionBarTab(supportActionBar, getString(R.string.fragment_general_info_general_info_tab_title), GeneralInfoFragment.class);
 	}
 	
+
 	private void initNewActionBarTab(ActionBar supportActionBar, String tabText, Class<? extends FragmentDetailActivity> fragmentClass) {
 		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
 		treatmentsTab.setText(tabText);
@@ -190,7 +191,7 @@ public class DetailsActivity extends BaseActivity {
 										databaseWrapper
 												.deleteTreatmentsToReportByReportId(getCurrentReport()
 														.getId());
-										writeShortTimeMessage(R.string.code_table_deleted_successfuly);
+										writeShortTimeMessage(R.string.deleted_successfuly);
 										finish();
 									}
 								}
@@ -214,8 +215,7 @@ public class DetailsActivity extends BaseActivity {
 			treatmentFragment.saveCurrentReport();
 			treatmentFragment.saveTreatments();
 		} catch (Exception e) {
-		}
-		
+		}		
 		try {
 			TechInfoFragment techInfoFragment = (TechInfoFragment) madaPagerAdapter.getItem(1);
 			techInfoFragment.saveCurrentReport();

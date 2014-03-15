@@ -4,7 +4,10 @@
 
     <!-- General Application Strings -->
     <string name="app_name">MDA Reports</string>
-
+	<string name="our_email_address">MoGal.Development@gmail.com</string>
+    
+	<string name="deleted_successfuly">Deleted Successfully</string>
+	
     <plurals name="notification_d_new_messages">
         <item quantity="one">one unread report</item>
         <item quantity="other">%d unread reports</item>
@@ -35,6 +38,19 @@
     <string name="action_bars_patient_report">Patient Report</string>
     <string name="action_bars_about_us">About Us</string>
     <!-- End of Action Bars -->
+    
+      <!-- Drawer -->
+    <string name="drawer_open_accessibility">Open</string>
+    <string name="drawer_close_accessibility">Close</string>
+    <!-- Drawer - Menu Items -->
+	<string name="drawer_menu_item_home">Home</string>
+    <string name="drawer_menu_item_reports_all">All</string>
+    <string name="drawer_menu_item_reports_unread">Unread</string>
+    <string name="drawer_menu_item_reports_unreported">Unreported</string>    
+    <string name="drawer_menu_item_patience_report">Patience Report</string>
+    <string name="drawer_menu_item_settings">Settings</string>
+    <string name="drawer_menu_item_about_us">About Us</string>                         
+    <!-- End of Drawer -->
 
     <!-- ReportsList Activity -->
       <string name="no_reports">No Reports...</string>
@@ -52,8 +68,7 @@
     <string name="code_table_dialog_delete_success">Record was deleted</string>
     <string name="code_table_dialog_delete_unsuccess">Cannot delete this record</string>
     <string name="code_table_dialog_options_edit">Edit</string>
-    <string name="code_table_dialog_options_delete">Delete</string>
-    <string name="code_table_deleted_successfuly">Deleted Successfully</string>
+    <string name="code_table_dialog_options_delete">Delete</string>    
     <!-- End of Code Tables -->
 
 
@@ -163,6 +178,7 @@
     <string name="about_us_activity_who_we_are">Who we Are?</string>
     <string name="about_us_activity_about_us_details">MoGal Development is a developers team that experts mobile and server-side applications.\nFeel free contact us for every kind of request, review and recommendation.\nWe will be more than happy read your comments and reply them as soon as we can.</string>
     <string name="about_us_no_email_clients_installed">There are no email clients installed</string>
+    <string name="about_us_sending_email_dialog">Sending Email</string>
     <!-- End of About Us Activity -->
 
 
