@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
+
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.db.reports.ReportAnalyzer;
 import com.mdareports.utils.ApplicationUtils;
+import com.mdareports.utils.MdaAnalytics;
 import com.mdareports.utils.NotificationsManager;
 import com.mdareports.utils.SettingsManager;
 
@@ -18,16 +20,19 @@ public class IncomingSMSReceiver extends BroadcastReceiver {
 	static boolean isFinishReceiving = true;
 
 	private void raiseMessage(String smsMessageBody, long timestampMillies, Context context) {
+		// Create new Report object and insert to DB
+		Report report = new Report(context, smsMessageBody, timestampMillies);
+		
+		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
+		dbWrpr.createReport(report);
+		
+		// Create SMS received for Google Analytics
+		MdaAnalytics.smsReceivedEvent(context);
+		
 		// If the application is in Foreground, we don't need to notify to the user about the report
 		if (ApplicationUtils.isApplicationInForeground(context)) {
 			return;
 		}
-		
-		Report report = new Report(context, smsMessageBody, timestampMillies);
-
-		// add the report to the database
-		DatabaseWrapper dbWrpr = DatabaseWrapper.getInstance(context);
-		dbWrpr.createReport(report);
 
 		// Get count of unread reports
 		int countUnreadReports = dbWrpr.countUnreadReports();
