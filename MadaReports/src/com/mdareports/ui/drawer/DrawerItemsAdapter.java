@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mdareports.R;
+import com.mdareports.utils.DeviceInfoUtils;
+import com.mdareports.utils.FontTypeFaceManager;
+import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 public class DrawerItemsAdapter extends BaseAdapter {
 
@@ -51,11 +52,17 @@ public class DrawerItemsAdapter extends BaseAdapter {
 			holder.tvDrawerItemDescription = (TextView) convertView
 					.findViewById(R.id.tvDrawerItemDescription);
 
+			// set custom fonts for non-hebrew version
+			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView.getContext())){				
+				FontTypeFaceManager.getInstance(convertView.getContext()).setFont(holder.tvDrawerItemDescription, CustomFonts.RobotoThin);				
+			}
+			
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
-
+	
+		
 		// populate the item with values
 		DrawerItem item = (DrawerItem) getItem(position);
 		holder.imgDrawerItemIcon.setImageResource(item.getIconResourceId());
