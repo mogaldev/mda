@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical" >
-
+    android:layout_height="match_parent" >
+    
+    <com.mdareports.utils.AnimatedQuickReturnListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null" />
+    
     <include
+        android:id="@+id/reportsListLegend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/reports_list_legend" />
+        layout="@layout/reports_list_legend" 
+        android:layout_alignParentBottom="true"/>
 
     <include
         android:id="@android:id/empty"
         layout="@layout/empty_reports_list" />
 
-    <ListView
-        android:id="@android:id/list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:dividerHeight="0dp" />
-
-</LinearLayout>
+</RelativeLayout>

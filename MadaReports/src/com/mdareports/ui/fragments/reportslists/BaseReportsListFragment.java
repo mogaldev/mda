@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +15,7 @@ import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.fragments.BaseFragment;
 import com.mdareports.ui.reportslist.ReportsListCardAdapter;
+import com.mdareports.utils.AnimatedQuickReturnListView;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.FontTypeFaceManager;
 import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
@@ -25,7 +25,7 @@ import com.mdareports.utils.SettingsManager;
 public abstract class BaseReportsListFragment extends BaseFragment {
 
 	protected ReportsListCardAdapter reportsAdapter;
-	protected ListView listView;
+	protected AnimatedQuickReturnListView listView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,7 +33,7 @@ public abstract class BaseReportsListFragment extends BaseFragment {
 		final View rootView = inflater.inflate(
 				R.layout.fragment_reports_list_view, container, false);
 
-		listView = (ListView) rootView.findViewById(android.R.id.list);
+		listView = (AnimatedQuickReturnListView) rootView.findViewById(android.R.id.list);
 
 		// set the empty list view
 		View empty = rootView.findViewById(android.R.id.empty);
@@ -49,6 +49,14 @@ public abstract class BaseReportsListFragment extends BaseFragment {
 		return rootView;
 	}
 
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {	
+		super.onActivityCreated(savedInstanceState);
+		
+		listView.initialize(getActivity().findViewById(R.id.reportsListLegend));
+		
+	}
+	
 	@Override
 	public void onStart() {
 		super.onStart();
