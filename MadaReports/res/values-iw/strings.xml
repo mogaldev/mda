@@ -38,6 +38,21 @@
     <string name="action_bars_about_us">אודות</string>
     <!-- End of Action Bars -->
 
+	<!-- Drawer -->
+    <string name="drawer_open_accessibility">פתיחה</string>
+    <string name="drawer_close_accessibility">סגירה</string>
+    <!-- Drawer - Menu Items -->
+	<string name="drawer_menu_item_home">ראשי</string>
+	<string name="drawer_menu_item_category_reports">דיווחים</string>
+	<string name="drawer_menu_item_category_general">כללי</string>
+    <string name="drawer_menu_item_reports_all">הכל</string>
+    <string name="drawer_menu_item_reports_unread">לא נקראו</string>
+    <string name="drawer_menu_item_reports_unreported">לא דווחו</string>    
+    <string name="drawer_menu_item_patience_report">דוח מטופל</string>
+    <string name="drawer_menu_item_settings">הגדרות</string>
+    <string name="drawer_menu_item_about_us">אודות</string>                         
+    <!-- End of Drawer -->
+
 
     <!-- ReportsList Activity -->
     <string name="no_reports">אין דיווחים...</string>

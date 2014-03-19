@@ -4,16 +4,18 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    
     <!-- Reports List -->
     <dimen name="reports_list_item_image_size">100dp</dimen>
     <dimen name="reports_list_item_card_margin_sides">15dp</dimen>
-    <dimen name="reports_list_item_card_margin_between_cards">10dp</dimen>
+    <dimen name="reports_list_item_card_margin_between_cards">8dp</dimen>
     <dimen name="reports_list_item_card_footer_margin_top">5dp</dimen>
     <dimen name="reports_list_item_card_textual_info_margin_left">15dp</dimen>
     <dimen name="reports_list_item_card_reported_icon_width">35dp</dimen>
     <dimen name="reports_list_item_card_reported_icon_height">28dp</dimen>
-    
 
+    <!-- Drawer -->
+    <dimen name="drawer_menu_width">230dp</dimen>
+    <dimen name="drawer_divider_height">15dp</dimen>
+    
     
 </resources>

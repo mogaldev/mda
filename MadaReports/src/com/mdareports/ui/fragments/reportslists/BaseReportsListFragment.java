@@ -49,8 +49,6 @@ public abstract class BaseReportsListFragment extends BaseFragment {
 		return rootView;
 	}
 
-
-
 	@Override
 	public void onStart() {
 		super.onStart();

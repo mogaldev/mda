@@ -37,7 +37,7 @@
     <string name="action_bars_share">Share</string>    
     <!-- End of Action Bars -->
     
-      <!-- Drawer -->
+    <!-- Drawer -->
     <string name="drawer_open_accessibility">Open</string>
     <string name="drawer_close_accessibility">Close</string>
     <!-- Drawer - Menu Items -->
