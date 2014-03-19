@@ -17,6 +17,9 @@ import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.BaseActivity;
+import com.mdareports.ui.fragments.details.GeneralInfoFragment;
+import com.mdareports.ui.fragments.details.TechInfoFragment;
+import com.mdareports.ui.fragments.details.TreatmentsToReportFragment;
 import com.mdareports.utils.MdaAnalytics;
 import com.mdareports.utils.SettingsManager;
 

@@ -1,5 +1,9 @@
 package com.mdareports.ui.activities.details;
 
+import com.mdareports.ui.fragments.details.GeneralInfoFragment;
+import com.mdareports.ui.fragments.details.TechInfoFragment;
+import com.mdareports.ui.fragments.details.TreatmentsToReportFragment;
+
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
