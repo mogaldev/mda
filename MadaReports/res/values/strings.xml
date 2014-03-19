@@ -52,10 +52,13 @@
     <string name="drawer_menu_item_about_us">About Us</string>                         
     <!-- End of Drawer -->
 
-    <!-- ReportsList Activity -->
+    <!-- ReportsList -->
       <string name="no_reports">No Reports...</string>
-    <!-- ReportsList Activity Action Bar -->
+    <!-- ReportsList Action Bar -->
     <string name="reportslist_activity_action_bar_share_message">Send all reports details to...</string>
+    <!-- ReportsList Legend -->
+    <string name="reports_list_legend_reported">Reported</string>
+    <string name="reports_list_legend_unreported">Unreported</string>
     <!-- End of ReportsList Activity -->
 
 

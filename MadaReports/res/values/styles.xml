@@ -55,7 +55,21 @@
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
         <item name="android:textSize">12sp</item>
     </style>
+    
+    <!-- Legend -->
+    
+    <style name="reportsListLegendIcon">
+        <item name="android:layout_width">@dimen/reports_list_legend_icon_size</item>
+        <item name="android:layout_height">@dimen/reports_list_legend_icon_size</item>        
+    </style>
+    <style name="reportsListLegendText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>        
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>        
+    </style>
 
+    
+    
 
     <!-- DetailActivity -->
 

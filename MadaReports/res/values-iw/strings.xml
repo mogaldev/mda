@@ -53,11 +53,13 @@
     <string name="drawer_menu_item_about_us">אודות</string>                         
     <!-- End of Drawer -->
 
-
-    <!-- ReportsList Activity -->
-    <string name="no_reports">אין דיווחים...</string>
-    <!-- ReportsList Activity Action Bar -->
-    <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
+    <!-- ReportsList -->
+  	<string name="no_reports">אין דיווחים...</string>
+    <!-- ReportsList Action Bar -->
+     <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
+    <!-- ReportsList Legend -->
+    <string name="reports_list_legend_reported">דווח</string>
+    <string name="reports_list_legend_unreported">לא דווח</string>
     <!-- End of ReportsList Activity -->
 
 

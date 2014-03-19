@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bgcolor"
+    android:gravity="center"
+    android:padding="5dp" >
+
+    <ImageView
+        android:id="@+id/imgReportsListLegenedReported"
+        style="@style/reportsListLegendIcon"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="@dimen/reports_list_legend_margin_between_text_and_icon"
+        android:src="@drawable/green_checked_icon" />
+
+    <TextView
+        android:id="@+id/tvReportsListLegenedReported"
+        style="@style/reportsListLegendText"
+        android:layout_alignBottom="@+id/imgReportsListLegenedReported"
+        android:layout_marginRight="@dimen/reports_list_legend_margin_between_parts"
+        android:layout_toRightOf="@id/imgReportsListLegenedReported"
+        android:text="@string/reports_list_legend_reported" />
+
+    <ImageView
+        android:id="@+id/imgReportsListLegenedNotReported"
+        style="@style/reportsListLegendIcon"
+        android:layout_marginRight="@dimen/reports_list_legend_margin_between_text_and_icon"
+        android:layout_toRightOf="@id/tvReportsListLegenedReported"
+        android:src="@drawable/exclamation_basic_yellow" />
+
+    <TextView
+        android:id="@+id/tvReportsListLegenedNotReported"
+        style="@style/reportsListLegendText"
+        android:layout_alignBottom="@+id/imgReportsListLegenedNotReported"
+        android:layout_toRightOf="@id/imgReportsListLegenedNotReported"
+        android:text="@string/reports_list_legend_unreported" />
+
+</RelativeLayout>
