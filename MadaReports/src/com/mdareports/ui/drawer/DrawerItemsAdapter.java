@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mdareports.R;
+import com.mdareports.ui.activities.MdaDrawerActivity;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.FontTypeFaceManager;
 import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
@@ -182,6 +183,19 @@ public class DrawerItemsAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
+	
+	public int getItemPosition(MdaDrawerActivity.DrawerMenuItems item){
+		// TODO: not efficient. consider change the List to Array / ArrayList.
+		int listSize = drawerItemsList.size();
+		for (int i = 0; i < listSize; i++) {
+			if (((DrawerItem)drawerItemsList.get(i)).getItemCode().equals(item))
+				return i;
+		}
+		
+		return -1;			
+	}
+	
+	
 	@Override
 	public int getCount() {
 		return this.drawerItemsList.size();

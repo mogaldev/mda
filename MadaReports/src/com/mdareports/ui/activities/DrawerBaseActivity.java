@@ -28,9 +28,9 @@ public class DrawerBaseActivity extends BaseActivity {
 		setContentView(R.layout.activity_drawer_main);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
-		// TODO: setDisplayHomeAsUpEnabled(true);		
+		// TODO: setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		
+
 		// Find the DrawerLayout view and the DrawerList view
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		drawerList = (ListView) findViewById(R.id.drawerMenu);
@@ -137,4 +137,18 @@ public class DrawerBaseActivity extends BaseActivity {
 
 		return super.onOptionsItemSelected(item);
 	}
+
+	/**
+	 * Change the content fragment or moving to new activity if needed.
+	 * 
+	 * @param item
+	 *            - the chosen menu item
+	 */
+	public void MoveTo(MdaDrawerActivity.DrawerMenuItems item) {
+		int position = drawerAdapter.getItemPosition(item);
+		if (position != -1){
+			onDrawerLayoutItemSelected((DrawerItem)drawerAdapter.getItem(position));			
+		}
+	}
+
 }
