@@ -17,6 +17,7 @@ import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.BaseActivity;
+import com.mdareports.ui.fragments.details.BaseDetailFragment;
 import com.mdareports.ui.fragments.details.GeneralInfoFragment;
 import com.mdareports.ui.fragments.details.TechInfoFragment;
 import com.mdareports.ui.fragments.details.TreatmentsToReportFragment;
@@ -26,17 +27,17 @@ import com.mdareports.utils.SettingsManager;
 public class DetailsActivity extends BaseActivity {
 
 	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
-	
+
 	// Instance of the report of this DetailActivity
 	private Report sentReport;
-	private MadaPagerAdapter madaPagerAdapter;
+	private MdaPagerAdapter mdaPagerAdapter;
 	private ViewPager viewPager;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_details);
-		
+
 		// Get the sent report from the intent
 		sentReport = getReportFromIntent();
 
@@ -50,28 +51,20 @@ public class DetailsActivity extends BaseActivity {
 		supportActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// init the ViewPager and the Adapter
-		madaPagerAdapter = new MadaPagerAdapter(getSupportFragmentManager(), this);
-		viewPager = (ViewPager) findViewById(R.id.details_pager);
-		viewPager.setAdapter(madaPagerAdapter);
-		viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-	                @Override
-	                public void onPageSelected(int position) {
-	                	supportActionBar.setSelectedNavigationItem(position);
-	                }
-	            });
-		
-		// Init all the tabs in the DetailActivity
-		initNewActionBarTab(supportActionBar, getString(R.string.fragment_treatments_to_report_title), TreatmentsToReportFragment.class);
-		initNewActionBarTab(supportActionBar, getString(R.string.fragment_tech_info_title), TechInfoFragment.class);
-		initNewActionBarTab(supportActionBar, getString(R.string.fragment_general_info_general_info_tab_title), GeneralInfoFragment.class);
-	}
-	
+		mdaPagerAdapter = new MdaPagerAdapter(getSupportFragmentManager(),
+				this);
+		viewPager = (ViewPager) findViewById(R.id.detailsPager);
+		viewPager.setAdapter(mdaPagerAdapter);
+		viewPager
+				.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+					@Override
+					public void onPageSelected(int position) {
+						supportActionBar.setSelectedNavigationItem(position);
+					}
+				});
 
-	private void initNewActionBarTab(ActionBar supportActionBar, String tabText, Class<? extends FragmentDetailActivity> fragmentClass) {
-		ActionBar.Tab treatmentsTab = supportActionBar.newTab();
-		treatmentsTab.setText(tabText);
-		treatmentsTab.setTabListener(new MadaTabListener(viewPager));
-		supportActionBar.addTab(treatmentsTab);
+		// add the tabs to the action bar
+		mdaPagerAdapter.initActionBar(supportActionBar, viewPager);
 	}
 
 	/**
@@ -118,10 +111,10 @@ public class DetailsActivity extends BaseActivity {
 	private Intent getShareIntent() {
 		Intent shareIntent = new Intent();
 		shareIntent.setAction(Intent.ACTION_SEND);
-		String shareString = getCurrentReport()
-				.toShareString(this);
-		shareString += SettingsManager.getInstance(this).getVolunteerSignature();
-		
+		String shareString = getCurrentReport().toShareString(this);
+		shareString += SettingsManager.getInstance(this)
+				.getVolunteerSignature();
+
 		shareIntent.putExtra(Intent.EXTRA_TEXT, shareString);
 		shareIntent.setType("text/plain");
 
@@ -134,6 +127,7 @@ public class DetailsActivity extends BaseActivity {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+			
 		case R.id.detail_activity_menu_save:
 			// Save the data of the report from all the tab's fragments to the
 			// instance of the currentReport of this activity
@@ -147,6 +141,7 @@ public class DetailsActivity extends BaseActivity {
 					getString(R.string.detail_activity_report_saved),
 					Toast.LENGTH_SHORT).show();
 			return true;
+
 		case R.id.detail_activity_menu_sync:
 			// Get the unchanged Report from the DataBase
 			Report currentReportFromDataBase = DatabaseWrapper
@@ -159,9 +154,11 @@ public class DetailsActivity extends BaseActivity {
 			// Refresh all the tabs in the activity
 			rollbackCurrentReport();
 			return true;
+			
 		case R.id.detail_activity_menu_delete:
 			handleDelete(this);
 			return true;
+			
 		case R.id.detail_activity_menu_share:
 			// The ShareActionProvider of sherlock is not wirking well on
 			// Android 2.3.5 (i checked it on Galaxy 2)
@@ -172,6 +169,7 @@ public class DetailsActivity extends BaseActivity {
 							sendIntent,
 							getString(R.string.detail_activity_action_bar_share_message)));
 			return true;
+			
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -207,64 +205,94 @@ public class DetailsActivity extends BaseActivity {
 	 * {@link DetailsActivity} by calling the method: "saveCurrentReport" in
 	 * each fragment</br> !!IMPORTANT: When adding a tab that use the
 	 * currentReport of this activity, </br></br> please extend from the
-	 * {@link FragmentDetailActivity} abstract class.
+	 * {@link BaseDetailFragment} abstract class.
 	 */
 	public void saveCurrentReport() {
 		// Save report event on Google Analytics
 		MdaAnalytics.reportSaved(this);
-		
+
 		// try to get each fragment because maybe not all the fragment were
 		// loaded
 		try {
-			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) madaPagerAdapter.getItem(0);
+			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) mdaPagerAdapter
+					.getItem(0);
 			treatmentFragment.saveCurrentReport();
 			treatmentFragment.saveTreatments();
 		} catch (Exception e) {
 		}
-		
+
 		try {
-			TechInfoFragment techInfoFragment = (TechInfoFragment) madaPagerAdapter.getItem(1);
+			TechInfoFragment techInfoFragment = (TechInfoFragment) mdaPagerAdapter
+					.getItem(1);
 			techInfoFragment.saveCurrentReport();
 		} catch (Exception e) {
 		}
-		
+
 		try {
-			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) madaPagerAdapter.getItem(2);
+			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) mdaPagerAdapter
+					.getItem(2);
 			generalInfoFragment.saveCurrentReport();
 		} catch (Exception e) {
 		}
+
+//		try {
+//			ReportLocationMapFragment locationFragment = (ReportLocationMapFragment) madaPagerAdapter
+//					.getItem(3);
+//			locationFragment.saveCurrentReport();
+//		} catch (Exception e) {
+//		}
+
+		// TODO: refactor this code. Use enum instead of magic numbers.
+		// Also, check if it can be performed inside loop (the try-catch in the
+		// loop scope for each element)
+		// consider using the adapter for this part
+
 	}
 
 	/**
 	 * Rollback the data in the fragments in this DetailActivity.</br></br>
 	 * !!IMPORTANT: When adding a tab that use the currentReport of this
-	 * activity, </br> please extend from the {@link FragmentDetailActivity}
+	 * activity, </br> please extend from the {@link BaseDetailFragment}
 	 * abstract class.
 	 */
 	public void rollbackCurrentReport() {
 		// Rollback report event on Google Analytics
 		MdaAnalytics.reportRollback(this);
-		
+
 		// try to get each fragment because maybe not all the fragment were
 		// loaded
 		try {
-			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) madaPagerAdapter.getItem(0);
+			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) mdaPagerAdapter
+					.getItem(0);
 			treatmentFragment.refreshDataWithCurrentReport();
 		} catch (Exception e) {
 		}
-		
+
 		try {
-			TechInfoFragment techInfoFragment = (TechInfoFragment) madaPagerAdapter.getItem(1);
+			TechInfoFragment techInfoFragment = (TechInfoFragment) mdaPagerAdapter
+					.getItem(1);
 			techInfoFragment.refreshDataWithCurrentReport();
 		} catch (Exception e) {
 		}
-		
+
 		try {
-			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) madaPagerAdapter.getItem(2);
+			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) mdaPagerAdapter
+					.getItem(2);
 			generalInfoFragment.refreshDataWithCurrentReport();
 		} catch (Exception e) {
 		}
 
+//		try {
+//			ReportLocationMapFragment locationFragment = (ReportLocationMapFragment) madaPagerAdapter
+//					.getItem(3);
+//			locationFragment.refreshDataWithCurrentReport();
+//		} catch (Exception e) {
+//		}
+
+		// TODO: refactor this code. Use enum instead of magic numbers.
+		// Also, check if it can be performed inside loop (the try-catch in the
+		// loop scope for each element)
+		// consider using the adapter for this part
 	}
 
 }

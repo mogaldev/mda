@@ -13,6 +13,17 @@
         android:text="Long press to pin the location"
         android:padding="2dp"
         android:textSize="20sp" />
+    
+     <AutoCompleteTextView
+        android:id="@+id/from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:completionThreshold="3" />
 
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        class="com.google.android.gms.maps.SupportMapFragment" />
 
 </LinearLayout>

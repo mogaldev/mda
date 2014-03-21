@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 
 import com.mdareports.R;
 import com.mdareports.db.models.Report;
-import com.mdareports.ui.activities.details.FragmentDetailActivity;
 import com.mdareports.ui.custom.bloodpressure.BloodPressureField;
 import com.mdareports.ui.custom.single.EditableSeekField;
 
-public class TechInfoFragment extends FragmentDetailActivity {
+public class TechInfoFragment extends BaseDetailFragment {
 
 	private EditableSeekField esFieldPulse;
 	private EditableSeekField esFieldSugar;
@@ -76,4 +75,9 @@ public class TechInfoFragment extends FragmentDetailActivity {
 
 	}
 
+	@Override
+	public int getTabTitleResourceId() {
+		return R.string.fragment_tech_info_title;
+	}
+	
 }

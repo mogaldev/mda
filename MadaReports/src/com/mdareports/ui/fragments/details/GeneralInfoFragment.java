@@ -12,9 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mdareports.R;
-import com.mdareports.ui.activities.details.FragmentDetailActivity;
 
-public class GeneralInfoFragment extends FragmentDetailActivity {
+public class GeneralInfoFragment extends BaseDetailFragment {
 
 	private EditText reportIdEditText;	
 	private EditText addressEditText;
@@ -90,6 +89,11 @@ public class GeneralInfoFragment extends FragmentDetailActivity {
 		descriptionEditText.setText(String.valueOf(getCurrentReport().getDescription()));
 		notesEditText.setText(String.valueOf(getCurrentReport().getNotes()));
 		isReportedCheckBox.setChecked(getCurrentReport().isReported());
+	}
+
+	@Override
+	public int getTabTitleResourceId() {
+		return R.string.fragment_general_info_general_info_tab_title;
 	}
 
 }

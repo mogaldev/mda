@@ -13,6 +13,7 @@ import com.mdareports.ui.fragments.AboutUsFragment;
 import com.mdareports.ui.fragments.HomeFragment;
 import com.mdareports.ui.fragments.PatientReportFragment;
 import com.mdareports.ui.fragments.SettingsFragment;
+import com.mdareports.ui.fragments.details.ReportLocationMapFragment;
 import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.utils.DeviceInfoUtils;
 

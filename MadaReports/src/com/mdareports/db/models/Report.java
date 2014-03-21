@@ -7,6 +7,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.mdareports.R;
@@ -51,6 +52,8 @@ public class Report {
 	@DatabaseField
 	private Date receivedAt;
 	@DatabaseField
+	private String location; // latitue;longtitude	
+	@DatabaseField
 	private String originalMessage;
 
 	public Report(Context ctx, String messageBody, long timesptamp) {
@@ -72,6 +75,7 @@ public class Report {
 		setMinBloodPressure(0);
 		setMaxBloodPressure(50);
 		setRead(false);
+		setLocation("");
 	}
 
 	public Report() {
@@ -252,4 +256,22 @@ public class Report {
 		this.originalMessage = originalMessage;
 	}
 
+	public LatLng getLocation(){
+		String strLocation = ApplicationUtils.NVL(location);
+		String[] parts = strLocation.split(";");		
+		try {
+			return new LatLng(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]));
+		} catch (Exception e) {
+			return null; 
+		}					
+	}
+	
+	public void setLocation(String loc){
+		location = loc;		
+	}
+		
+	public void setLocation(LatLng loc){
+		location = "" + loc.latitude + ";" + loc.longitude;		
+	}
+	
 }
