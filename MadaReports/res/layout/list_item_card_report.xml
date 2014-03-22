@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="@dimen/reports_list_item_card_margin_between_cards"
         android:layout_marginLeft="@dimen/reports_list_item_card_margin_sides"
         android:layout_marginRight="@dimen/reports_list_item_card_margin_sides"
@@ -42,17 +42,15 @@
 
             <TextView
                 android:id="@+id/tvReportDescription"
-                style="@style/reportsListCardHeaderText"
+                style="@style/ReportsList_CardHeaderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_toLeftOf="@id/imgReportIcon"
                 android:layout_toRightOf="@id/imgReportIsReported"
-                android:ellipsize="end"
-                android:maxLines="3"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus nulla nunc, non molestie orci blandit vel. Nunc blandit pharetra tellus, a lacinia est vulputate non"
-                android:textDirection="anyRtl"
-                android:textSize="12sp" />
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus nulla nunc, non molestie orci blandit vel. Nunc blandit pharetra tellus, a lacinia est vulputate non" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -71,13 +69,13 @@
 
             <TextView
                 android:id="@+id/tvReportId"
-                style="@style/reportsListCardFooterText"
+                style="@style/ReportsList_CardFooterText"
                 android:layout_alignParentLeft="true"
                 android:text="12#" />
 
             <TextView
                 android:id="@+id/tvReportReceivedAt"
-                style="@style/reportsListCardFooterText"
+                style="@style/ReportsList_CardFooterText"
                 android:layout_alignBaseline="@id/tvReportId"
                 android:layout_alignBottom="@id/tvReportId"
                 android:layout_alignParentRight="true"

@@ -91,12 +91,13 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 					.findViewById(R.id.imgReportIsReported);
 
 			// set custom fonts
-			FontTypeFaceManager ftfm = FontTypeFaceManager.getInstance(context);
-			ftfm.setFont(holder.tvId, CustomFonts.RobotoThin);
-			ftfm.setFont(holder.tvReportReceivedAt, CustomFonts.RobotoThin);
+			// FontTypeFaceManager ftfm =
+			// FontTypeFaceManager.getInstance(context);
+			// ftfm.setFont(holder.tvId, CustomFonts.RobotoThin);
+			// ftfm.setFont(holder.tvReportReceivedAt, CustomFonts.RobotoThin);
 
 			convertView.setTag(holder);
-			
+
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
@@ -110,10 +111,19 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			holder.tvReportDescription.setText(report.getDescription(),
 					TextView.BufferType.SPANNABLE);
 
-			// set the text color and the icon according to the read status
-			holder.imgReportIcon
-					.setImageResource(report.isRead() ? R.drawable.medical_report_gray
-							: R.drawable.medical_report);
+			// set the text and the icon according to the read status
+			if (report.isRead()) {
+				holder.imgReportIcon
+						.setImageResource(R.drawable.medical_report_gray);
+				holder.tvReportDescription.setTextAppearance(getContext(),
+						R.style.ReportsList_CardHeaderTextRead);
+			} else {
+				holder.imgReportIcon
+						.setImageResource(R.drawable.medical_report);
+				holder.tvReportDescription.setTextAppearance(getContext(),
+						R.style.ReportsList_CardHeaderTextUnread);
+			}
+
 
 			int textColor = context.getResources().getColor(
 					report.isRead() ? R.color.reports_list_item_read_textcolor

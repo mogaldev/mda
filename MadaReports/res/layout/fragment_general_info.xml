@@ -9,62 +9,62 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
                 android:id="@+id/reportIdEditText"
-                style="@style/fragment_general_info_edittext"
+                style="@style/ReportDetails_General_edittext"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="numberSigned" />
 
             <TextView
-                style="@style/fragment_general_info_textview"
+                style="@style/ReportDetails_General_textview"
                 android:text="@string/fragment_general_info_report_id" />
         </RelativeLayout>
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
                 android:id="@+id/addressEditText"
-                style="@style/fragment_general_info_edittext"
+                style="@style/ReportDetails_General_edittext"
                 android:layout_height="100dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
             <TextView
-                style="@style/fragment_general_info_textview"
+                style="@style/ReportDetails_General_textview"
                 android:text="@string/fragment_general_info_address" />
         </RelativeLayout>
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
                 android:id="@+id/descriptionEditText"
-                style="@style/fragment_general_info_edittext_big"
+                style="@style/ReportDetails_General_edittext_big"
                 android:layout_height="150dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
             <TextView
-                style="@style/fragment_general_info_textview"
+                style="@style/ReportDetails_General_textview"
                 android:text="@string/fragment_general_info_description" />
         </RelativeLayout>
 
-        <RelativeLayout style="@style/fragment_general_info_relative_layout" >
+        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
                 android:id="@+id/notesEditText"
-                style="@style/fragment_general_info_edittext_big"
+                style="@style/ReportDetails_General_edittext_big"
                 android:layout_height="75dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
             <TextView
-                style="@style/fragment_general_info_textview"
+                style="@style/ReportDetails_General_textview"
                 android:text="@string/fragment_general_info_notes" />
         </RelativeLayout>
 
@@ -83,8 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/fragment_general_info_show_original_message" />
-
-     <include layout="@layout/admob_footer" />
+     
     </LinearLayout>
 
 </ScrollView>

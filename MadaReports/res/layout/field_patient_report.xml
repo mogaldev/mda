@@ -5,12 +5,12 @@
 
     <EditText
         android:id="@+id/txtPatientReportValue"
-        style="@style/activity_patient_report_edittext"
+        style="@style/PatientReport_edittext"
         android:inputType="textShortMessage" />
 
     <TextView
         android:id="@+id/tvPatientReportLabel"
-        style="@style/activity_patient_report_textview"
+        style="@style/PatientReport_textview"
         android:text="@string/patient_report_activity_family_name" />    
 
 </RelativeLayout>

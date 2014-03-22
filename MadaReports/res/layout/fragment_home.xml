@@ -3,16 +3,114 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/transparent_background_pattern">
 
     <TextView
         android:id="@+id/textView1"
+        style="@style/TextHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Long press to pin the location"
         android:padding="2dp"
+        android:text="TextHeader שלום"
         android:textSize="20sp" />
 
+    <TextView
+        style="@style/TextHeader2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="TextHeader2 שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/TextHeader3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="TextHeader3 שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/TextHeaderSub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="TextHeaderSub שלום"
+        android:textSize="20sp" />
+
+    <View
+        android:id="@+id/vHrSeperator"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentTop="true"
+        android:background="#e5e5e5" />
+
+    <TextView
+        style="@style/ListItemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemTitle שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/ListItemTitle.ComplexContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemTitle.ComplexContent שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/ListItemTitle.ComplexContent.Inset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemTitle.ComplexContent.Inset שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/ListItemSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemSubtitle שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/ListItemSubtitleBold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemSubtitleBold שלום"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/ListItemTitle.Inverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemTitle.Inverse שלום"
+        android:textSize="20sp" />
+    
+        <TextView
+        style="@style/ListItemSubtitle.Inverse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="2dp"
+        android:text="ListItemSubtitle.Inverse שלום"
+        android:textSize="20sp" />
 
 </LinearLayout>

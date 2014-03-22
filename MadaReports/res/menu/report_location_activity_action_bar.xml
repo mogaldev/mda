@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:mda="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/reportLocation_activity_menu_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/action_bars_search"
+        mda:actionLayout="@layout/searchview_reportslist"
+        mda:actionViewClass="com.mdareports.ui.custom.ArrayAdapterSearchView"
+        mda:showAsAction="always|collapseActionView"/>
+    <item
+        android:id="@+id/reportLocation_activity_menu_save"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/action_bars_save"
+        mda:showAsAction="ifRoom|collapseActionView"/>
+    <item
+        android:id="@+id/reportLocation_activity_menu_sync"
+        android:icon="@drawable/ic_menu_refresh"
+        android:title="@string/detail_activity_action_bar_refresh_data"
+        mda:showAsAction="ifRoom|collapseActionView"/>
+
+</menu>

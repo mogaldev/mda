@@ -4,7 +4,7 @@
 
     <!-- General Application Strings -->
     <string name="app_name">MDA Reports</string>
-	<string name="our_email_address">MoGal.Development@gmail.com</string>
+	<string name="our_email_address">MoGal.Development@gmail.com</string>	
     
 	<string name="deleted_successfuly">Deleted Successfully</string>
 	
@@ -126,8 +126,8 @@
     <string name="fragment_tech_info_title">Technical</string>
     <string name="fragment_treatments_to_report_title">Treatments</string>
     <!-- General Info Fragment -->
-    <string name="fragment_general_info_address">Address</string>
     <string name="fragment_general_info_report_id">Report ID</string>
+    <string name="fragment_general_info_address">Address</string>    
     <string name="fragment_general_info_description">Description</string>
     <string name="fragment_general_info_notes">Notes</string>
     <string name="fragment_general_info_is_reported">Is Reported in the website?</string>

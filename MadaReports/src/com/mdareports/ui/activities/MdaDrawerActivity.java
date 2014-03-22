@@ -9,11 +9,9 @@ import android.support.v4.app.Fragment;
 
 import com.mdareports.R;
 import com.mdareports.ui.drawer.DrawerItem;
-import com.mdareports.ui.fragments.AboutUsFragment;
 import com.mdareports.ui.fragments.HomeFragment;
 import com.mdareports.ui.fragments.PatientReportFragment;
 import com.mdareports.ui.fragments.SettingsFragment;
-import com.mdareports.ui.fragments.details.ReportLocationMapFragment;
 import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.utils.DeviceInfoUtils;
 
@@ -75,7 +73,8 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 			break;
 
 		case AboutUs:
-			frgmt = new AboutUsFragment();
+			//frgmt = new AboutUsFragment();
+			startActivity(new Intent(this, ReportLocationActivity.class));
 			break;
 
 		case Settings:

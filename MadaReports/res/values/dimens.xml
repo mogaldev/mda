@@ -1,4 +1,13 @@
 <resources>
+    
+    <!-- body content -->
+    <dimen name="element_spacing_normal">8dp</dimen>
+    <dimen name="content_padding_normal">16dp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="text_size_diff_large_small">6sp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -12,15 +21,19 @@
     <dimen name="reports_list_item_card_textual_info_margin_left">15dp</dimen>
     <dimen name="reports_list_item_card_reported_icon_width">35dp</dimen>
     <dimen name="reports_list_item_card_reported_icon_height">28dp</dimen>
-	<!-- Reports List - Legend  -->
-	<dimen name="reports_list_legend_icon_size">20dp</dimen>
-	<dimen name="reports_list_legend_margin_between_text_and_icon">5dp</dimen>
-	<dimen name="reports_list_legend_margin_between_parts">25dp</dimen>
-    
-    
+    <!-- Reports List - Legend -->
+    <dimen name="reports_list_legend_icon_size">20dp</dimen>
+    <dimen name="reports_list_legend_margin_between_text_and_icon">5dp</dimen>
+    <dimen name="reports_list_legend_margin_between_parts">25dp</dimen>
+
     <!-- Drawer -->
     <dimen name="drawer_menu_width">230dp</dimen>
     <dimen name="drawer_divider_height">15dp</dimen>
     
+    <!-- Blood Pressure Field -->
+    <dimen name="blood_pressure_view_width_dimension">175dp</dimen>
+    <dimen name="blood_pressure_view_width_dimension">75dp</dimen>
     
+    <dimen name="blood_pressure_view_height_dimension_dialog">80dp</dimen>
+
 </resources>
