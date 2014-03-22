@@ -211,41 +211,7 @@ public class DetailsActivity extends BaseActivity {
 		// Save report event on Google Analytics
 		MdaAnalytics.reportSaved(this);
 
-		// try to get each fragment because maybe not all the fragment were
-		// loaded
-		try {
-			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) mdaPagerAdapter
-					.getItem(0);
-			treatmentFragment.saveCurrentReport();
-			treatmentFragment.saveTreatments();
-		} catch (Exception e) {
-		}
-
-		try {
-			TechInfoFragment techInfoFragment = (TechInfoFragment) mdaPagerAdapter
-					.getItem(1);
-			techInfoFragment.saveCurrentReport();
-		} catch (Exception e) {
-		}
-
-		try {
-			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) mdaPagerAdapter
-					.getItem(2);
-			generalInfoFragment.saveCurrentReport();
-		} catch (Exception e) {
-		}
-
-//		try {
-//			ReportLocationMapFragment locationFragment = (ReportLocationMapFragment) madaPagerAdapter
-//					.getItem(3);
-//			locationFragment.saveCurrentReport();
-//		} catch (Exception e) {
-//		}
-
-		// TODO: refactor this code. Use enum instead of magic numbers.
-		// Also, check if it can be performed inside loop (the try-catch in the
-		// loop scope for each element)
-		// consider using the adapter for this part
+		mdaPagerAdapter.saveAllTabs();
 
 	}
 

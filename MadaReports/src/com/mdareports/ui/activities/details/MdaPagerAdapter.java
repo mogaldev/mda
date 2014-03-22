@@ -36,6 +36,12 @@ public class MdaPagerAdapter extends FragmentPagerAdapter {
 					.setTabListener(new MadaTabListener(viewPager)));
 		}
 	}
+	
+	public void saveAllTabs() {
+		for (BaseDetailFragment baseDetailsFragment : tabPages) {
+			baseDetailsFragment.saveCurrentReport();
+		}
+	}
 
 	@Override
 	public Fragment getItem(int position) { 

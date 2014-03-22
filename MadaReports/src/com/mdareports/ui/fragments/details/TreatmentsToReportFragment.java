@@ -16,7 +16,6 @@ import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Treatment;
 import com.mdareports.db.models.TreatmentsToReports;
-import com.mdareports.ui.activities.details.DetailsActivity;
 
 public class TreatmentsToReportFragment extends BaseDetailFragment {
 
@@ -175,15 +174,21 @@ public class TreatmentsToReportFragment extends BaseDetailFragment {
 
 	@Override
 	public void saveCurrentReport() {
-		/**
-		 * this method is not called because in the onPause callback we don't
-		 * need to save a thing because we have: List<TreatmentsToReports>
-		 * treatmentsIdToAdd; List<TreatmentsToReports> treatmentsIdToDelete; in
-		 * order to know what to add and what to delete.
-		 * 
-		 * when the user click on the save button the DetailActivity call
-		 * saveTreatments method
-		 */
+		int size = treatmentsIdToAdd.size();
+		DatabaseWrapper databaseWrapper = DatabaseWrapper
+				.getInstance(getActivity());
+		for (int i = 0; i < size; i++) {
+			int treatmentId = treatmentsIdToAdd.keyAt(i);
+			int state = treatmentsIdToAdd.get(treatmentId);
+			if (state == ADD) {
+				TreatmentsToReports newTreatmentsToReports = new TreatmentsToReports(
+						getCurrentReport(), new Treatment(treatmentId));
+				databaseWrapper.createTreatmentToReport(newTreatmentsToReports);
+			} else if (state == DELETE) {
+				databaseWrapper.deleteTreatmentsToReportByReportAndTreatmentId(
+						getCurrentReport().getId(), treatmentId);
+			}
+		}
 	}
 
 	@Override
@@ -210,29 +215,6 @@ public class TreatmentsToReportFragment extends BaseDetailFragment {
 				.setOnItemClickListener(getAllTreatmentsListViewOnClickListener());
 		treatmentsOfReportListView
 				.setOnItemClickListener(getTreatmentsOfReportListViewOnClickListener());
-	}
-
-	/**
-	 * Save the {@link TreatmentsToReports} Rows in the DB This method is called
-	 * from the {@link DetailsActivity} when the user click on the save button.
-	 * </br>
-	 */
-	public void saveTreatments() {
-		int size = treatmentsIdToAdd.size();
-		DatabaseWrapper databaseWrapper = DatabaseWrapper
-				.getInstance(getActivity());
-		for (int i = 0; i < size; i++) {
-			int treatmentId = treatmentsIdToAdd.keyAt(i);
-			int state = treatmentsIdToAdd.get(treatmentId);
-			if (state == ADD) {
-				TreatmentsToReports newTreatmentsToReports = new TreatmentsToReports(
-						getCurrentReport(), new Treatment(treatmentId));
-				databaseWrapper.createTreatmentToReport(newTreatmentsToReports);
-			} else if (state == DELETE) {
-				databaseWrapper.deleteTreatmentsToReportByReportAndTreatmentId(
-						getCurrentReport().getId(), treatmentId);
-			}
-		}
 	}
 
 	@Override
