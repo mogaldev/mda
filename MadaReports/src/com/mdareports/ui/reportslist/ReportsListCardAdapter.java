@@ -22,8 +22,6 @@ import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.DbChangedNotifier;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.details.DetailsActivity;
-import com.mdareports.utils.FontTypeFaceManager;
-import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 		DbChangedNotifier {

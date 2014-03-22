@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
 import com.mdareports.R;
-import com.mdareports.ui.activities.MdaDrawerActivity;
 import com.mdareports.ui.activities.ReportsListActivity;
 
 public class NotificationsManager {
