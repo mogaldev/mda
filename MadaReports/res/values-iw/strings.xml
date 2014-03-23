@@ -106,8 +106,9 @@
     <string name="detail_activity_dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
     <string name="detail_activity_report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
-    <string name="detail_activity_action_bar_refresh_data">רענן נתונים</string>
-    <string name="detail_activity_action_bar_share_message">שלח את פרטי הדיווח ל...</string>
+    <string name="menu_refresh_data">רענן נתונים</string>
+    <string name="menu_share_message">שלח את פרטי הדיווח ל...</string>
+    <string name="menu_show_original_message">הצג הודעה מקורית</string>
     <!-- Tabs Titles -->
     <string name="fragment_general_info_general_info_tab_title">כללי</string>
     <string name="fragment_tech_info_title">טכני</string>
@@ -117,8 +118,7 @@
     <string name="fragment_general_info_report_id">מספר מקרה</string>
     <string name="fragment_general_info_description">תיאור</string>
     <string name="fragment_general_info_notes">הערות</string>
-    <string name="fragment_general_info_is_reported">דווח באתר?</string>
-    <string name="fragment_general_info_show_original_message">הצג הודעה מקורית</string>
+    <string name="fragment_general_info_is_reported">דווח באתר?</string>    
     <string name="fragment_general_info_title_dialog_original_message">הודעה מקורית</string>
     <!-- Tech Info Fragment -->
     <string name="fragment_tech_info_pulse">דופק</string>

@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -42,16 +41,17 @@ public class ReportLocationActivity extends BaseActivity {
 	 */
 	@Override
 	protected void onNewIntent(Intent intent) {
-		super.onNewIntent(intent);		
+		super.onNewIntent(intent);
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 			String query = intent.getStringExtra(SearchManager.QUERY);
-			searchView.setText(query); 
-			
+			searchView.setText(query);
+
 			// TODO: remove
 			Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
 			Logger.LOGE("handleIntent", "action search: " + query);
 		}
 	}
+
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
@@ -115,7 +115,7 @@ public class ReportLocationActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			NavUtils.navigateUpFromSameTask(this);
+			finish();
 			return true;
 
 		case R.id.reportLocation_activity_menu_save:
@@ -128,15 +128,15 @@ public class ReportLocationActivity extends BaseActivity {
 			return true;
 
 		case R.id.reportLocation_activity_menu_sync:
-			 displayReportLocationOnMap();
-			 return true;
-			 
+			displayReportLocationOnMap();
+			return true;
+
 		case R.id.reportLocation_activity_menu_search:
 			if (!DeviceInfoUtils.hasHoneycomb()) {
-				startSearch(null, false, Bundle.EMPTY, false);				
+				startSearch(null, false, Bundle.EMPTY, false);
 			}
-			return true;			
-			
+			return true;
+
 		case R.id.reportLocation_activity_menu_delete:
 			reportMapFragment.removeMarker();
 			return true;
@@ -166,11 +166,23 @@ public class ReportLocationActivity extends BaseActivity {
 		Address address = GeocodingUtils.getSingleAddreesByLocation(this,
 				location, false);
 		if (address != null) {
-			report.setAddress(address.getFeatureName());
+			report.setAddress(getAddressToDisplay(address));
 		}
 
 		// update the database
 		db.updateReport(report);
+	}
+
+	private String getAddressToDisplay(Address address) {
+		
+		// check if the feature name is numeric
+		if (address.getFeatureName().replace('-', '0').matches("-?\\d+(\\.\\d+)?")) {
+
+			return address.getLocality() + "," + address.getThoroughfare();
+		} else {
+			return address.getFeatureName();
+		}
+
 	}
 
 	/************************

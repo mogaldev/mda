@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mdareports.R;
@@ -18,9 +21,6 @@ import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.BaseActivity;
 import com.mdareports.ui.fragments.details.BaseDetailFragment;
-import com.mdareports.ui.fragments.details.GeneralInfoFragment;
-import com.mdareports.ui.fragments.details.TechInfoFragment;
-import com.mdareports.ui.fragments.details.TreatmentsToReportFragment;
 import com.mdareports.utils.MdaAnalytics;
 import com.mdareports.utils.SettingsManager;
 
@@ -39,7 +39,7 @@ public class DetailsActivity extends BaseActivity {
 		setContentView(R.layout.activity_details);
 
 		// Get the sent report from the intent
-		sentReport = getReportFromIntent();
+		loadCurrentReportFromDb(getIntent().getExtras().getInt(REPORT_ID_EXTRA));		
 
 		// Set read on the report and update it
 		sentReport.setRead(true);
@@ -51,8 +51,7 @@ public class DetailsActivity extends BaseActivity {
 		supportActionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
 		// init the ViewPager and the Adapter
-		mdaPagerAdapter = new MdaPagerAdapter(getSupportFragmentManager(),
-				this);
+		mdaPagerAdapter = new MdaPagerAdapter(getSupportFragmentManager(), this);
 		viewPager = (ViewPager) findViewById(R.id.detailsPager);
 		viewPager.setAdapter(mdaPagerAdapter);
 		viewPager
@@ -67,18 +66,9 @@ public class DetailsActivity extends BaseActivity {
 		mdaPagerAdapter.initActionBar(supportActionBar, viewPager);
 	}
 
-	/**
-	 * Get the id of the report that was sent from the intent. then find this
-	 * report in the DB
-	 * 
-	 * @return Report object that was find from the DB
-	 */
-	private Report getReportFromIntent() {
-		int id = getIntent().getExtras().getInt(REPORT_ID_EXTRA);
-		DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(this);
-		Report reportById = databaseWrapper.getReportById(id);
-
-		return reportById;
+	@Override
+	protected void onStart() {
+		super.onStart();
 	}
 
 	/**
@@ -100,10 +90,14 @@ public class DetailsActivity extends BaseActivity {
 		sentReport = report;
 	}
 
+	public void loadCurrentReportFromDb(int reportId) {
+		setCurrentReport(DatabaseWrapper.getInstance(this).getReportById(reportId));
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.details_activity_action_bar, menu);
+		inflater.inflate(R.menu.details, menu);
 
 		return true;
 	}
@@ -127,8 +121,8 @@ public class DetailsActivity extends BaseActivity {
 		case android.R.id.home:
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
-			
-		case R.id.detail_activity_menu_save:
+
+		case R.id.menu_save:
 			// Save the data of the report from all the tab's fragments to the
 			// instance of the currentReport of this activity
 			saveCurrentReport();
@@ -142,7 +136,7 @@ public class DetailsActivity extends BaseActivity {
 					Toast.LENGTH_SHORT).show();
 			return true;
 
-		case R.id.detail_activity_menu_sync:
+		case R.id.menu_sync:
 			// Get the unchanged Report from the DataBase
 			Report currentReportFromDataBase = DatabaseWrapper
 					.getInstance(this)
@@ -154,22 +148,24 @@ public class DetailsActivity extends BaseActivity {
 			// Refresh all the tabs in the activity
 			rollbackCurrentReport();
 			return true;
-			
-		case R.id.detail_activity_menu_delete:
+
+		case R.id.menu_delete:
 			handleDelete(this);
 			return true;
-			
-		case R.id.detail_activity_menu_share:
-			// The ShareActionProvider of sherlock is not wirking well on
+
+		case R.id.menu_share:
+			// The ShareActionProvider of sherlock is not working well on
 			// Android 2.3.5 (i checked it on Galaxy 2)
 			// So here we will use the default ShareIntent
 			Intent sendIntent = getShareIntent();
-			startActivity(Intent
-					.createChooser(
-							sendIntent,
-							getString(R.string.detail_activity_action_bar_share_message)));
+			startActivity(Intent.createChooser(sendIntent,
+					getString(R.string.menu_share_message)));
 			return true;
-			
+
+		case R.id.menu_show_original_message:
+			showOriginalMessageDialog();
+			return true;
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -200,6 +196,26 @@ public class DetailsActivity extends BaseActivity {
 						}).setNegativeButton(R.string.cancel, null).show();
 	}
 
+	public void showOriginalMessageDialog() {
+		// build the dialog layout
+		LayoutInflater inflater = (LayoutInflater) this
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		final View originalMessageDialogView = inflater.inflate(
+				R.layout.dialog_original_message, null, false);
+
+		TextView originalMessageTextView = (TextView) originalMessageDialogView
+				.findViewById(R.id.originalMessageTextView);
+		originalMessageTextView
+				.setText(getCurrentReport().getOriginalMessage());
+
+		// the alert dialog
+		new AlertDialog.Builder(this)
+				.setView(originalMessageDialogView)
+				.setTitle(
+						getString(R.string.fragment_general_info_title_dialog_original_message))
+				.show();
+	}
+
 	/**
 	 * Get all the information from all the fragments in this
 	 * {@link DetailsActivity} by calling the method: "saveCurrentReport" in
@@ -225,40 +241,7 @@ public class DetailsActivity extends BaseActivity {
 		// Rollback report event on Google Analytics
 		MdaAnalytics.reportRollback(this);
 
-		// try to get each fragment because maybe not all the fragment were
-		// loaded
-		try {
-			TreatmentsToReportFragment treatmentFragment = (TreatmentsToReportFragment) mdaPagerAdapter
-					.getItem(0);
-			treatmentFragment.refreshDataWithCurrentReport();
-		} catch (Exception e) {
-		}
-
-		try {
-			TechInfoFragment techInfoFragment = (TechInfoFragment) mdaPagerAdapter
-					.getItem(1);
-			techInfoFragment.refreshDataWithCurrentReport();
-		} catch (Exception e) {
-		}
-
-		try {
-			GeneralInfoFragment generalInfoFragment = (GeneralInfoFragment) mdaPagerAdapter
-					.getItem(2);
-			generalInfoFragment.refreshDataWithCurrentReport();
-		} catch (Exception e) {
-		}
-
-//		try {
-//			ReportLocationMapFragment locationFragment = (ReportLocationMapFragment) madaPagerAdapter
-//					.getItem(3);
-//			locationFragment.refreshDataWithCurrentReport();
-//		} catch (Exception e) {
-//		}
-
-		// TODO: refactor this code. Use enum instead of magic numbers.
-		// Also, check if it can be performed inside loop (the try-catch in the
-		// loop scope for each element)
-		// consider using the adapter for this part
+		mdaPagerAdapter.refreshAllTabs();
 	}
 
 }

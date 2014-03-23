@@ -25,17 +25,29 @@
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
-            <EditText
-                android:id="@+id/addressEditText"
-                style="@style/ReportDetails_General_edittext"
-                android:layout_height="100dp"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentRight="true"
-                android:inputType="textMultiLine" />
-
             <TextView
                 style="@style/ReportDetails_General_textview"
                 android:text="@string/fragment_general_info_address" />
+
+            <EditText
+                android:id="@+id/addressEditText"
+                style="@style/ReportDetails_General_edittext_big"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:inputType="textMultiLine" >
+
+                <requestFocus />
+            </EditText>
+
+            <Button
+                android:id="@+id/btnPinLocation"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@id/addressEditText"
+                android:background="@drawable/map_background"
+                android:fontFamily="sans-serif-light"
+                android:scaleType="centerCrop"
+                android:text="Pin Location" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
@@ -43,7 +55,7 @@
             <EditText
                 android:id="@+id/descriptionEditText"
                 style="@style/ReportDetails_General_edittext_big"
-                android:layout_height="150dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="false"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
@@ -72,18 +84,11 @@
             android:id="@+id/isReportedCheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:textColor="@color/activity_text_color"
-            android:text="@string/fragment_general_info_is_reported" />
-
-        <Button
-            android:id="@+id/showOriginalMessageButton"
-            style="@style/btnStyleOrange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/fragment_general_info_show_original_message" />
-     
+            android:text="@string/fragment_general_info_is_reported"
+            android:textColor="@color/activity_text_color"                        
+            android:drawableRight="@drawable/green_checked_icon"/>
+      
     </LinearLayout>
 
 </ScrollView>
