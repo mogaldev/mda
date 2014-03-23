@@ -40,10 +40,14 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <!-- Moshe debug -->
+        <!-- <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAduPo4dXLOVPgySvD-2yHqal8nF2KsTbc" /> -->
+        <!-- Gal debug -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAduPo4dXLOVPgySvD-2yHqal8nF2KsTbc" />
-
+            android:value="AIzaSyAFcO22fVvMbd6pqWUCZwkbIaUPQd1Sj9Y" />
         <!-- Activities -->
         <activity
             android:name="com.mdareports.ui.activities.MdaDrawerActivity"
