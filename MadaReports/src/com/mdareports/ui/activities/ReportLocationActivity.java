@@ -7,14 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
-import android.speech.RecognizerIntent;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.MenuItemCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -26,44 +24,39 @@ import com.google.android.gms.maps.model.LatLng;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
-import com.mdareports.ui.custom.ArrayAdapterSearchView;
+import com.mdareports.ui.custom.CustomAdapterSearchView;
 import com.mdareports.ui.fragments.details.ReportLocationMapFragment;
+import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.GeocodingUtils;
 import com.mdareports.utils.Logger;
 
 public class ReportLocationActivity extends BaseActivity {
+	private CustomAdapterSearchView searchView;
 	private ReportLocationMapFragment reportMapFragment;
 	int currentReportId;
 
 	public static final String REPORT_ID_EXTRA = "REPORT_ID_EXTRA";
 
-//	@Override
-//	protected void onNewIntent(Intent intent) {
-//		super.onNewIntent(intent);
-//		final String queryAction = intent.getAction();
-//		if (Intent.ACTION_SEARCH.equals(queryAction)) {
-//			this.handleIntent(intent);
-//		} else if (Intent.ACTION_VIEW.equals(queryAction)) {
-//			this.doView(intent);
-//		}
-//	}
-//
-//	public void doView(Intent intent) {
-//		Logger.LOGE("action view", " suggestion ");
-//
-//	}
-//
-//	private void handleIntent(Intent intent) {
-//		Toast.makeText(this, "Inside handleIntent", Toast.LENGTH_SHORT).show();
-//		Logger.LOGE("handleIntent", "HERE");
-//		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-//			String query = intent.getStringExtra(SearchManager.QUERY);
-//			// doSearch(query);
-//			Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
-//			Logger.LOGE("handleIntent", "action search: " + query);
-//		}
-//
-//	}
+	/**
+	 * For the voice search handling
+	 */
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);		
+		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+			String query = intent.getStringExtra(SearchManager.QUERY);
+			searchView.setText(query); 
+			
+			// TODO: remove
+			Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
+			Logger.LOGE("handleIntent", "action search: " + query);
+		}
+	}
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+		onNewIntent(getIntent());
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +72,6 @@ public class ReportLocationActivity extends BaseActivity {
 				.findFragmentById(R.id.reportLocationMap);
 
 		displayReportLocationOnMap();
-
-		//handleIntent(getIntent());
 	}
 
 	@Override
@@ -90,12 +81,32 @@ public class ReportLocationActivity extends BaseActivity {
 
 		// initializing the search action view
 		MenuItem item = menu.findItem(R.id.reportLocation_activity_menu_search);
-		final ArrayAdapterSearchView searchView = (ArrayAdapterSearchView) MenuItemCompat
+
+		searchView = (CustomAdapterSearchView) MenuItemCompat
 				.getActionView(item);
 
-		searchView.setAdapter(new PlacesAutoCompleteAdapter(this,
-				android.R.layout.simple_list_item_1));
+		searchView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Address address = ((PlacesAutoCompleteAdapter) parent
+						.getAdapter()).getAddressItem(position);
+				reportMapFragment.zoomIntoLocation(new LatLng(address
+						.getLatitude(), address.getLongitude()));
+			}
+		});
 
+		if (DeviceInfoUtils.hasHoneycomb()) {
+			if (searchView != null) {
+				searchView
+						.setSearchableInfo(((SearchManager) getSystemService(SEARCH_SERVICE))
+								.getSearchableInfo(getComponentName()));
+				searchView.setQueryRefinementEnabled(true);
+			}
+		}
+
+		searchView.setAdapter(new PlacesAutoCompleteAdapter(this,
+				android.R.layout.simple_dropdown_item_1line));
 
 		return true;
 	}
@@ -118,9 +129,14 @@ public class ReportLocationActivity extends BaseActivity {
 
 		case R.id.reportLocation_activity_menu_sync:
 			 displayReportLocationOnMap();
-			//startVoiceRecognitionActivity();
-			return true;
-
+			 return true;
+			 
+		case R.id.reportLocation_activity_menu_search:
+			if (!DeviceInfoUtils.hasHoneycomb()) {
+				startSearch(null, false, Bundle.EMPTY, false);				
+			}
+			return true;			
+			
 		case R.id.reportLocation_activity_menu_delete:
 			reportMapFragment.removeMarker();
 			return true;
@@ -157,49 +173,6 @@ public class ReportLocationActivity extends BaseActivity {
 		db.updateReport(report);
 	}
 
-	private static final int REQUEST_CODE = 1234;
-
-	/**
-	 * Called with the activity is first created.
-	 */
-
-	private boolean hasVoiceRecognition() {
-		return (getPackageManager().queryIntentActivities(
-				new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH), 0).size() > 0);
-	}
-
-	/**
-	 * Fire an intent to start the voice recognition activity.
-	 */
-	private void startVoiceRecognitionActivity() {
-		Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-		intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-				RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-		intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-				"Voice recognition Demo...");
-		startActivityForResult(intent, REQUEST_CODE);
-	}
-
-	/**
-	 * Handle the results from the voice recognition activity.
-	 */
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-			// Populate the wordsList with the String values the recognition
-			// engine thought it heard
-			ArrayList<String> matches = data
-					.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-
-			String temp = "";
-			for (String s : matches) {
-				temp += s + "\n";
-			}
-			Toast.makeText(this, temp, Toast.LENGTH_SHORT).show();
-		}
-		super.onActivityResult(requestCode, resultCode, data);
-	}
-
 	/************************
 	 * Auto Complete Adapter
 	 ************************/
@@ -215,7 +188,10 @@ public class ReportLocationActivity extends BaseActivity {
 
 		@Override
 		public int getCount() {
-			return resultList.size();
+			if (resultList == null)
+				return 0;
+			else
+				return resultList.size();
 		}
 
 		@Override

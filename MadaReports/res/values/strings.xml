@@ -185,4 +185,8 @@
     <!-- End of About Us Activity -->
 
 
+<!-- Searchable  -->
+<string name="searchable_label">Search label</string>
+<string name="searchable_hint">Search hint</string>
+
 </resources>
