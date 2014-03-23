@@ -32,8 +32,7 @@
             style="@style/fragment_tech_info_relative_layout"
             android:layout_width="match_parent"
             android:layout_gravity="center" />
-
-        <include layout="@layout/admob_footer" />
+        
     </LinearLayout>
 
 </ScrollView>

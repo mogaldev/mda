@@ -140,8 +140,7 @@
         <item name="android:textSize">@dimen/text_size_small</item>
         <!--
              <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-        <item name="android:textSize">12sp</item>
-        -->
+        <item name="android:textSize">12sp</item>        -->
 
     </style>
 
@@ -181,7 +180,7 @@
 
     <!-- General Info Fragment -->
     <style name="ReportDetails_General_relative_layout">
-        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">10dp</item>

@@ -119,8 +119,9 @@
     <string name="detail_activity_report_saved">Report saved</string>
     <string name="detail_activity_dialog_delete_are_you_sure">Are you sure you want to delete?</string>
     <!-- Detail Activity Action Bar -->
-    <string name="detail_activity_action_bar_refresh_data">Refresh Details</string>
-    <string name="detail_activity_action_bar_share_message">Send reports detail to...</string>
+    <string name="menu_refresh_data">Refresh Details</string>
+    <string name="menu_share_message">Send reports detail to...</string>
+    <string name="menu_show_original_message">Show original message</string>
     <!-- Tabs Titles -->
     <string name="fragment_general_info_general_info_tab_title">General</string>
     <string name="fragment_tech_info_title">Technical</string>
@@ -130,8 +131,7 @@
     <string name="fragment_general_info_address">Address</string>    
     <string name="fragment_general_info_description">Description</string>
     <string name="fragment_general_info_notes">Notes</string>
-    <string name="fragment_general_info_is_reported">Is Reported in the website?</string>
-    <string name="fragment_general_info_show_original_message">Show original message</string>
+    <string name="fragment_general_info_is_reported">Is Reported in the website?</string>    
     <string name="fragment_general_info_title_dialog_original_message">Original message</string>
     <!-- Tech Info Fragment -->
     <string name="fragment_tech_info_pulse">Pulse</string>

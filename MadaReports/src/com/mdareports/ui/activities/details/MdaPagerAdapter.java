@@ -43,6 +43,17 @@ public class MdaPagerAdapter extends FragmentPagerAdapter {
 		}
 	}
 
+	public void refreshAllTabs(){
+		for (BaseDetailFragment baseDetailsFragment : tabPages) {
+			// TODO: treatments throws exceptions. check why
+			try {
+				baseDetailsFragment.refreshDataWithCurrentReport();	
+			} catch (Exception e) {
+				
+			}			
+		}
+	}
+	
 	@Override
 	public Fragment getItem(int position) { 
 		return tabPages.get(position);

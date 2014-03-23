@@ -84,13 +84,6 @@
             android:textColor="@color/activity_text_color"
             android:text="@string/fragment_general_info_is_reported" />
 
-        <Button
-            android:id="@+id/showOriginalMessageButton"
-            style="@style/btnStyleOrange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/fragment_general_info_show_original_message" />
      
     </LinearLayout>
 
