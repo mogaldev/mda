@@ -20,7 +20,7 @@ public class Report {
 
 	public static final String TABLE_NAME = "reports";
 	public static final String ID_COLUMN_NAME = "id";
-	public static final String IS_READ_COLUMN_NAME = "isRead";	
+	public static final String IS_READ_COLUMN_NAME = "isRead";
 	public static final String IS_REPORTED_COLUMN_NAME = "isReported";
 
 	@DatabaseField(generatedId = true, columnName = ID_COLUMN_NAME)
@@ -52,7 +52,7 @@ public class Report {
 	@DatabaseField
 	private Date receivedAt;
 	@DatabaseField
-	private String location; // latitue;longtitude	
+	private String location; // latitue;longtitude
 	@DatabaseField
 	private String originalMessage;
 
@@ -90,58 +90,78 @@ public class Report {
 	 * @return string represents the report for the share description
 	 */
 	public String toShareString(Context context) {
-		StringBuilder shareMessage = new StringBuilder();		
-		
+		StringBuilder shareMessage = new StringBuilder();
+
 		// get the resources for the strings
 		Resources resources = context.getResources();
 
 		// general details
-		appendLine(shareMessage, resources.getString(R.string.share_string_general_details) + " #" + getReportId(), "", resources);
-		appendLine(shareMessage, R.string.fragment_general_info_address, getAddress(), resources);
-		appendLine(shareMessage, R.string.fragment_general_info_description,  getDescription(), resources);
-//		shareMessage.append(new SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString() + "\n");
-		shareMessage.append(SimpleDateFormat.getDateTimeInstance().format(getReceivedAt()).toString() + "\n");
-		
+		appendLine(shareMessage,
+				resources.getString(R.string.share_string_general_details)
+						+ " #" + getReportId(), "", resources);
+		appendLine(shareMessage, R.string.fragment_general_info_address,
+				getAddress(), resources);
+		appendLine(shareMessage, R.string.fragment_general_info_description,
+				getDescription(), resources);
+		// shareMessage.append(new
+		// SimpleDateFormat("E dd-MM-yyyy hh:mm").format(getReceivedAt()).toString()
+		// + "\n");
+		shareMessage.append(SimpleDateFormat.getDateTimeInstance()
+				.format(getReceivedAt()).toString()
+				+ "\n");
+
 		// Separator
 		shareMessage.append("\n");
-		
+
 		// technical details
-		appendLine(shareMessage, R.string.share_string_technical_details, "", resources);
-		appendLine(shareMessage, R.string.fragment_tech_info_pulse, getPulse(), resources);
-		appendLine(shareMessage, R.string.fragment_tech_info_sugar, getSugar(), resources);
-		appendLine(shareMessage, R.string.fragment_tech_info_breath, getBreath(), resources);
-		appendLine(shareMessage, R.string.fragment_tech_info_blood_pressure, getMinBloodPressure() + " \\ " + getMaxBloodPressure(), resources);
-		
+		appendLine(shareMessage, R.string.share_string_technical_details, "",
+				resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_pulse, getPulse(),
+				resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_sugar, getSugar(),
+				resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_breath,
+				getBreath(), resources);
+		appendLine(shareMessage, R.string.fragment_tech_info_blood_pressure,
+				getMinBloodPressure() + " \\ " + getMaxBloodPressure(),
+				resources);
+
 		// Separator
 		shareMessage.append("\n");
-		
-		 // treatment
-		List<Treatment> treatments = DatabaseWrapper.getInstance(context).getTreatmentsByReportId(id);
-		appendLine(shareMessage, R.string.share_string_treatments, "", resources);
+
+		// treatment
+		List<Treatment> treatments = DatabaseWrapper.getInstance(context)
+				.getTreatmentsByReportId(id);
+		appendLine(shareMessage, R.string.share_string_treatments, "",
+				resources);
 		for (Treatment treatment : treatments) {
 			shareMessage.append(treatment + "\n");
 		}
-		
+
 		// Separator
 		shareMessage.append("\n");
-		
-		appendLine(shareMessage, R.string.fragment_general_info_notes, getNotes(), resources);			
+
+		appendLine(shareMessage, R.string.fragment_general_info_notes,
+				getNotes(), resources);
 
 		return shareMessage.toString();
 	}
 
-	private void appendLine(StringBuilder sb, int keyResourceId, int value, Resources resources){
+	private void appendLine(StringBuilder sb, int keyResourceId, int value,
+			Resources resources) {
 		appendLine(sb, keyResourceId, value + "", resources);
 	}
-	
-	private void appendLine(StringBuilder sb, int keyResourceId, String value, Resources resources){
+
+	private void appendLine(StringBuilder sb, int keyResourceId, String value,
+			Resources resources) {
 		sb.append(resources.getString(keyResourceId) + ": " + value + "\n");
 	}
-	
-	private void appendLine(StringBuilder sb, String key, String value, Resources resources){
+
+	private void appendLine(StringBuilder sb, String key, String value,
+			Resources resources) {
 		sb.append(key + ": " + value + "\n");
 	}
-	
+
 	// Setters & Getters
 
 	public int getId() {
@@ -256,22 +276,27 @@ public class Report {
 		this.originalMessage = originalMessage;
 	}
 
-	public LatLng getLocation(){
+	public LatLng getLocation() {
 		String strLocation = ApplicationUtils.NVL(location);
-		String[] parts = strLocation.split(";");		
+		String[] parts = strLocation.split(";");
 		try {
-			return new LatLng(Double.parseDouble(parts[0]), Double.parseDouble(parts[1]));
+			return new LatLng(Double.parseDouble(parts[0]),
+					Double.parseDouble(parts[1]));
 		} catch (Exception e) {
-			return null; 
-		}					
+			return null;
+		}
 	}
-	
-	public void setLocation(String loc){
-		location = loc;		
+
+	public void setLocation(String loc) {
+		location = loc;
 	}
-		
-	public void setLocation(LatLng loc){
-		location = "" + loc.latitude + ";" + loc.longitude;		
+
+	public void setLocation(LatLng loc) {
+		if (loc != null) {
+			location = "" + loc.latitude + ";" + loc.longitude;
+		} else {
+			location = "";
+		}
 	}
-	
+
 }
