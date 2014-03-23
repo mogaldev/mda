@@ -12,30 +12,26 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 import com.mdareports.R;
+import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.ReportLocationActivity;
 import com.mdareports.ui.activities.details.DetailsActivity;
 import com.mdareports.utils.DeviceInfoUtils;
 
 public class GeneralInfoFragment extends BaseDetailFragment {
 
-	private EditText reportIdEditText;
-	private EditText addressEditText;
-	private EditText descriptionEditText;
-	private EditText notesEditText;
-	private CheckBox isReportedCheckBox;
+	private EditText txtReportId;
+	private EditText txtAddress;
+	private EditText txtDescription;
+	private EditText txtNotes;
+	private CheckBox ckbIsReported;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_general_info, container,
-				false);
-	}
+		View rootView = inflater.inflate(R.layout.fragment_general_info,
+				container, false);
 
-	@Override
-	public void onStart() {
-		super.onStart();
-
-		getActivity().findViewById(R.id.btnPinLocation).setOnClickListener(
+		rootView.findViewById(R.id.btnPinLocation).setOnClickListener(
 				new OnClickListener() {
 					@Override
 					public void onClick(View v) {
@@ -47,31 +43,14 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 					}
 				});
 
-		// set the report id edit text
-		reportIdEditText = (EditText) getActivity().findViewById(
-				R.id.reportIdEditText);
-		reportIdEditText.setText(String.valueOf(getCurrentReport()
-				.getReportId()));
+		txtReportId = (EditText) rootView.findViewById(R.id.reportIdEditText);
+		txtAddress = (EditText) rootView.findViewById(R.id.addressEditText);
+		txtDescription = (EditText) rootView
+				.findViewById(R.id.descriptionEditText);
+		txtNotes = (EditText) rootView.findViewById(R.id.notesEditText);
+		ckbIsReported = (CheckBox) rootView
+				.findViewById(R.id.isReportedCheckBox);
 
-		// set the address edit text
-		addressEditText = (EditText) getActivity().findViewById(
-				R.id.addressEditText);
-		addressEditText.setText(getCurrentReport().getAddress());
-
-		// set the description edit text
-		descriptionEditText = (EditText) getActivity().findViewById(
-				R.id.descriptionEditText);
-		descriptionEditText.setText(getCurrentReport().getDescription());
-
-		// set the notes edit text
-		notesEditText = (EditText) getActivity().findViewById(
-				R.id.notesEditText);
-		notesEditText.setText(getCurrentReport().getNotes());
-
-		// set the is read check box
-		isReportedCheckBox = (CheckBox) getActivity().findViewById(
-				R.id.isReportedCheckBox);
-				
 		OnCheckedChangeListener isReportedCheckedChangedListener = new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
@@ -79,57 +58,75 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 
 				int resId = (isChecked ? R.drawable.green_checked_icon
 						: R.drawable.exclamation_basic_yellow);
-				
+
 				// TODO: maybe use isRtl method instead (implement one)
 				if (DeviceInfoUtils.isCurrentLanguageHebrew(buttonView
 						.getContext())) {
 					// set drawable left
-					isReportedCheckBox.setCompoundDrawablesWithIntrinsicBounds(resId, 0, 0, 0);
+					ckbIsReported.setCompoundDrawablesWithIntrinsicBounds(
+							resId, 0, 0, 0);
 				} else {
 					// set drawable right
-					isReportedCheckBox.setCompoundDrawablesWithIntrinsicBounds(0, 0, resId, 0);
+					ckbIsReported.setCompoundDrawablesWithIntrinsicBounds(0, 0,
+							resId, 0);
 				}
 
-				
 			}
-		};	
-		isReportedCheckBox.setChecked(getCurrentReport().isReported());
+		};
+
 		// first call to onChecked change to initialize the icon
-		isReportedCheckedChangedListener.onCheckedChanged(isReportedCheckBox, getCurrentReport().isReported());
-		isReportedCheckBox.setOnCheckedChangeListener(isReportedCheckedChangedListener);			
+		isReportedCheckedChangedListener.onCheckedChanged(ckbIsReported,
+				getCurrentReport().isReported());
+		ckbIsReported
+				.setOnCheckedChangeListener(isReportedCheckedChangedListener);
+
+		return rootView;
 	}
 
 	@Override
-	public void onResume() {	
-		super.onResume();		
+	public void onStart() {
+		super.onStart();
+
+		Report currentReport = getCurrentReport();
 		
+		txtReportId.setText(String.valueOf(currentReport.getReportId()));
+		txtAddress.setText(currentReport.getAddress());
+		txtDescription.setText(currentReport.getDescription());
+		txtNotes.setText(currentReport.getNotes());
+		ckbIsReported.setChecked(currentReport.isReported());
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+
 		// report information (like the address) might be changed in
 		// the map activity so re-load it from the DB and refresh the fields
-		((DetailsActivity)getActivity()).loadCurrentReportFromDb(getCurrentReport().getId());		
+		((DetailsActivity) getActivity())
+				.loadCurrentReportFromDb(getCurrentReport().getId());
 		refreshDataWithCurrentReport();
 	}
-	
+
 	@Override
 	public void saveCurrentReport() {
-		getCurrentReport().setReportId(
-				Integer.valueOf(reportIdEditText.getText().toString()));
-		getCurrentReport().setAddress(addressEditText.getText().toString());
-		getCurrentReport().setDescription(
-				descriptionEditText.getText().toString());
-		getCurrentReport().setNotes(notesEditText.getText().toString());
-		getCurrentReport().setReported(isReportedCheckBox.isChecked());
+		Report currentReport = getCurrentReport();
+		
+		currentReport.setReportId(
+				Integer.valueOf(txtReportId.getText().toString()));
+		currentReport.setAddress(txtAddress.getText().toString());
+		currentReport.setDescription(txtDescription.getText().toString());
+		currentReport.setNotes(txtNotes.getText().toString());
+		currentReport.setReported(ckbIsReported.isChecked());
 	}
 
 	@Override
 	public void refreshDataWithCurrentReport() {
-		reportIdEditText.setText(String.valueOf(getCurrentReport()
-				.getReportId()));
-		addressEditText
-				.setText(getCurrentReport().getAddress());
-		descriptionEditText.setText(String.valueOf(getCurrentReport()
+		txtReportId.setText(String.valueOf(getCurrentReport().getReportId()));
+		txtAddress.setText(getCurrentReport().getAddress());
+		txtDescription.setText(String.valueOf(getCurrentReport()
 				.getDescription()));
-		notesEditText.setText(getCurrentReport().getNotes());
-		isReportedCheckBox.setChecked(getCurrentReport().isReported());
+		txtNotes.setText(getCurrentReport().getNotes());
+		ckbIsReported.setChecked(getCurrentReport().isReported());
 	}
 
 	@Override
