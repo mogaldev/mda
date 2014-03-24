@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.mdareports.R;
 import com.mdareports.db.models.Report;
+import com.mdareports.ui.activities.ReportLocationActivity;
 import com.mdareports.ui.fragments.BaseFragment;
 
 public class ReportLocationMapFragment extends BaseFragment {
@@ -36,6 +37,7 @@ public class ReportLocationMapFragment extends BaseFragment {
 			@Override
 			public void onMapLongClick(LatLng point) {
 				markerReportLocation(point);
+				((ReportLocationActivity)getActivity()).onLocationMarkered();
 			}
 		});
 
@@ -48,6 +50,7 @@ public class ReportLocationMapFragment extends BaseFragment {
 		if (currentMarker != null){
 			currentMarker.remove();
 		}
+		currentMarker = null;
 	}
 
 	public void markerReportLocation(LatLng location) {

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
-                android:id="@+id/reportIdEditText"
+                android:id="@+id/txtReportId"
                 style="@style/ReportDetails_General_edittext"
-                android:layout_alignParentLeft="false"
+                android:layout_width="@dimen/general_info_fields_width"
                 android:layout_alignParentRight="true"
                 android:inputType="numberSigned" />
 
@@ -25,38 +25,36 @@
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
-            <TextView
-                style="@style/ReportDetails_General_textview"
-                android:text="@string/fragment_general_info_address" />
-
             <EditText
-                android:id="@+id/addressEditText"
-                style="@style/ReportDetails_General_edittext_big"
-                android:layout_alignParentRight="true"
-                android:ems="10"
-                android:inputType="textMultiLine" >
+                android:id="@+id/txtAddress"
+                android:layout_width="@dimen/general_info_fields_width"
+                android:layout_height="@dimen/general_info_address_height"
+                android:layout_alignParentRight="true" >
 
                 <requestFocus />
             </EditText>
 
+            <TextView
+                style="@style/ReportDetails_General_textview"
+                android:text="@string/fragment_general_info_address" />
+
             <Button
                 android:id="@+id/btnPinLocation"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/addressEditText"
+                android:layout_height="@dimen/general_info_pin_location_height"
+                android:layout_below="@id/txtAddress"
                 android:background="@drawable/map_background"
                 android:fontFamily="sans-serif-light"
                 android:scaleType="centerCrop"
-                android:text="Pin Location" />
+                android:text="@string/fragment_general_info_pin_location" />
         </RelativeLayout>
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
-                android:id="@+id/descriptionEditText"
-                style="@style/ReportDetails_General_edittext_big"
-                android:layout_height="100dp"
-                android:layout_alignParentLeft="false"
+                android:id="@+id/txtDescription"
+               android:layout_width="@dimen/general_info_fields_width"
+                android:layout_height="@dimen/general_info_description_height"                                
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
@@ -68,10 +66,9 @@
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
-                android:id="@+id/notesEditText"
-                style="@style/ReportDetails_General_edittext_big"
-                android:layout_height="75dp"
-                android:layout_alignParentLeft="false"
+                android:id="@+id/txtNotes"
+                android:layout_width="@dimen/general_info_fields_width"
+                android:layout_height="@dimen/general_info_notes_height"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
@@ -80,15 +77,24 @@
                 android:text="@string/fragment_general_info_notes" />
         </RelativeLayout>
 
-        <CheckBox
-            android:id="@+id/isReportedCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/fragment_general_info_is_reported"
-            android:textColor="@color/activity_text_color"                        
-            android:drawableRight="@drawable/green_checked_icon"/>
-      
+        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
+
+            <CheckBox
+                android:id="@+id/ckbIsReported"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/fragment_general_info_is_reported"
+                android:textColor="@color/activity_text_color" />
+
+            <ImageView
+                android:id="@+id/imgIsReportedIcon"
+                android:layout_width="@dimen/general_info_is_reported_icon_size"
+                android:layout_height="@dimen/general_info_is_reported_icon_size"
+                android:layout_alignParentRight="true"
+                android:layout_alignBottom="@id/ckbIsReported"
+                android:src="@drawable/exclamation_basic_yellow" />
+        </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>

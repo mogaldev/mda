@@ -275,7 +275,7 @@ public class Report {
 	public void setOriginalMessage(String originalMessage) {
 		this.originalMessage = originalMessage;
 	}
-
+	
 	public LatLng getLocation() {
 		String strLocation = ApplicationUtils.NVL(location);
 		String[] parts = strLocation.split(";");
@@ -287,6 +287,10 @@ public class Report {
 		}
 	}
 
+	public boolean hasLocation(){
+		return (getLocation() != null);
+	}
+	
 	public void setLocation(String loc) {
 		location = loc;
 	}

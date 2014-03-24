@@ -63,6 +63,9 @@ public class QuickReturnListView extends ListView {
 	}
 
 	public int getComputedScrollY() {
+		if (mItemCount == 0)
+			return 0;
+		
 		int pos, nScrollY, nItemY;
 		View view = null;
 		pos = getFirstVisiblePosition();
