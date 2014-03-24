@@ -7,14 +7,14 @@
 
     <ImageView
         android:id="@+id/imgReportsListLegenedReported"
-        style="@style/ReportsList_LegendIcon"
+        style="@style/ReportsList.Legend.Icon"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="@dimen/reports_list_legend_margin_between_text_and_icon"
         android:src="@drawable/green_checked_icon" />
 
     <TextView
         android:id="@+id/tvReportsListLegenedReported"
-        style="@style/ReportsList_LegendText"
+        style="@style/ReportsList.Legend.Text"
         android:layout_alignBottom="@+id/imgReportsListLegenedReported"
         android:layout_marginRight="@dimen/reports_list_legend_margin_between_parts"
         android:layout_toRightOf="@id/imgReportsListLegenedReported"
@@ -22,14 +22,14 @@
 
     <ImageView
         android:id="@+id/imgReportsListLegenedNotReported"
-        style="@style/ReportsList_LegendIcon"
+        style="@style/ReportsList.Legend.Icon"
         android:layout_marginRight="@dimen/reports_list_legend_margin_between_text_and_icon"
         android:layout_toRightOf="@id/tvReportsListLegenedReported"
         android:src="@drawable/exclamation_basic_yellow" />
 
     <TextView
         android:id="@+id/tvReportsListLegenedNotReported"
-        style="@style/ReportsList_LegendText"
+        style="@style/ReportsList.Legend.Text"
         android:layout_alignBottom="@+id/imgReportsListLegenedNotReported"
         android:layout_toRightOf="@id/imgReportsListLegenedNotReported"
         android:text="@string/reports_list_legend_unreported" />

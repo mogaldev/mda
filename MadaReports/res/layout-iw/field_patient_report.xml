@@ -4,14 +4,14 @@
 
     <EditText
         android:id="@+id/txtPatientReportValue"
-        style="@style/PatientReport_edittext"
+        style="@style/PatientReportField.Edittext"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="false"
         android:inputType="textShortMessage" />
 
     <TextView
         android:id="@+id/tvPatientReportLabel"
-        style="@style/PatientReport_textview"
+        style="@style/PatientReportField.Textview"
         android:layout_alignParentLeft="false"
         android:layout_alignParentRight="true"
         android:text="@string/patient_report_activity_family_name" />

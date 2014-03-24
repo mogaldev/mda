@@ -5,18 +5,18 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="android:textColor">@color/activity_text_color</item>
-        <item name="android:actionBarStyle" tools:targetApi="11">@style/MdaTheme.ActionBar</item>
+        <item name="android:actionBarStyle" tools:targetApi="11">@style/MdaActionBar</item>
         <item name="android:actionBarTabStyle" tools:targetApi="11">@style/MdaActionBarTab</item>
         <item name="android:actionBarTabTextStyle" tools:targetApi="11">@style/MdaActionBarTabText</item>
 
         <!-- Support library compatibility -->
-        <item name="actionBarStyle">@style/MdaTheme.ActionBar</item>
+        <item name="actionBarStyle">@style/MdaActionBar</item>
         <item name="actionBarTabStyle">@style/MdaActionBarTab</item>
         <item name="actionBarTabTextStyle">@style/MdaActionBarTabText</item>
     </style>
 
     <!-- ActionBar -->
-    <style name="MdaTheme.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+    <style name="MdaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@drawable/tab_unselected_unpressed</item>
         <item name="android:titleTextStyle" tools:targetApi="11">@style/MdaActionBarTextStyle</item>
 
@@ -45,7 +45,7 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
         <item name="android:textColor">#aaa</item>
     </style>
-
+    
     <!-- Body content -->
     <style name="TextHeader">
         <item name="android:textSize">@dimen/text_size_xlarge</item>
@@ -89,15 +89,18 @@
         <item name="android:textAlignment" tools:targetApi="17">textStart</item>
     </style>
 
-    <!-- List item text -->
-    <style name="ListItemTitle">
+    <style name="TextTitle">
         <item name="android:textSize">@dimen/text_size_large</item>
         <item name="android:textColor">@color/body_text_1</item>
         <item name="android:fontFamily" tools:targetApi="16">sans-serif-light</item>
         <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
     </style>
+    
+    <!-- List item text -->
+    <style name="ListItemTitle" parent="TextTitle">
+    </style>
 
-    <style name="ListItemTitle.ComplexContent" parent="ListItemTitle">
+    <style name="ListItemTitle.ComplexContent">
         <item name="android:paddingLeft">?listPreferredItemPaddingLeft</item>
         <item name="android:paddingRight">?listPreferredItemPaddingRight</item>
         <item name="android:paddingTop">8dp</item>
@@ -105,20 +108,9 @@
         <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
     </style>
 
-    <style name="ListItemTitle.ComplexContent.Inset" parent="ListItemTitle.ComplexContent">
+    <style name="ListItemTitle.ComplexContent.Inset">
         <item name="android:paddingLeft">0dp</item>
         <item name="android:paddingRight">0dp</item>
-    </style>
-
-    <style name="ListItemSubtitle">
-        <item name="android:textSize">@dimen/text_size_medium</item>
-        <item name="android:textColor">@color/body_text_2</item>
-        <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
-    </style>
-
-    <style name="ListItemSubtitleBold" parent="ListItemSubtitle">
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/body_text_2</item>
     </style>
 
     <style name="ListItemTitle.Inverse">
@@ -127,48 +119,57 @@
         <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
     </style>
 
+    <style name="ListItemSubtitle">
+        <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:textColor">@color/body_text_2</item>
+        <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
+    </style>
+
+    <style name="ListItemSubtitle.Bold">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/body_text_2</item>
+    </style>
+
     <style name="ListItemSubtitle.Inverse">
         <item name="android:textColor">@color/body_text_2_inverse</item>
         <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
     </style>
 
     <!-- Reports List -->
-
-    <style name="ReportsList_CardFooterText" parent="@style/ListItemTitle">
+    <style name="ReportsList"></style>
+    
+    <style name="ReportsListItem.FooterText" parent="@style/ListItemTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/text_size_small</item>
-        <!--
-             <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
-        <item name="android:textSize">12sp</item>        -->
-
     </style>
 
-    <style name="ReportsList_CardHeaderText" parent="@style/ListItemSubtitle">
+    <style name="ReportsListItem.HeaderText" parent="@style/ListItemSubtitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
     </style>
 
-    <style name="ReportsList_CardHeaderTextUnread" parent="ReportsList_CardHeaderText">
+    <style name="ReportsListItem.HeaderText.Unread">
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="ReportsList_CardHeaderTextRead" parent="ReportsList_CardHeaderText">
+    <style name="ReportsListItem.HeaderText.Read">
         <item name="android:textStyle">normal</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">3</item>
     </style>
 
     <!-- Legend -->
-
-    <style name="ReportsList_LegendIcon">
+    <style name="ReportsList.Legend"></style>
+    
+    <style name="ReportsList.Legend.Icon">
         <item name="android:layout_width">@dimen/reports_list_legend_icon_size</item>
         <item name="android:layout_height">@dimen/reports_list_legend_icon_size</item>
     </style>
 
-    <style name="ReportsList_LegendText" parent="@style/ListItemTitle">
+    <style name="ReportsList.Legend.Text" parent="@style/TextTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <!-- <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>    -->     
@@ -176,7 +177,6 @@
     </style>
 
     <!-- DetailActivity -->
-
 
     <!-- General Info Fragment -->
     <style name="ReportDetails_General_relative_layout">
@@ -250,29 +250,23 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
     </style>
-
-   
     <!-- End of Tech Info Fragment -->
 
-
     <!-- Treatments Fragment -->
-
-
     <!-- End of Treatments Fragment -->
-
 
     <!-- End of DetailActivity -->
 
 
     <!-- Patient Report -->
-    <style name="PatientReport_field">
+    <style name="PatientReportField">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">10dp</item>
     </style>
-
-    <style name="PatientReport_textview">
+    
+    <style name="PatientReportField.Textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:gravity">center</item>
@@ -281,13 +275,10 @@
         <item name="android:textDirection" tools:targetApi="17">rtl</item>
     </style>
 
-    <style name="PatientReport_edittext">
+    <style name="PatientReportField.Edittext">
         <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">50dp</item>
-        <item name="android:layout_alignParentLeft">false</item>
-        <item name="android:layout_alignParentRight">true</item>
     </style>
-
     <!-- End of Patient Report -->
 
 

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    style="@style/ReportDetails_General_relative_layout" > 
 
     <EditText
         android:id="@+id/txtPatientReportValue"
-        style="@style/PatientReport_edittext"
+        style="@style/PatientReportField.Edittext"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
         android:inputType="textShortMessage" />
 
     <TextView
         android:id="@+id/tvPatientReportLabel"
-        style="@style/PatientReport_textview"
+        style="@style/PatientReportField.Textview"
         android:text="@string/patient_report_activity_family_name" />    
 
 </RelativeLayout>

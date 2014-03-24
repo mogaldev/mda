@@ -114,12 +114,12 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 				holder.imgReportIcon
 						.setImageResource(R.drawable.medical_report_gray);
 				holder.tvReportDescription.setTextAppearance(getContext(),
-						R.style.ReportsList_CardHeaderTextRead);
+						R.style.ReportsListItem_HeaderText_Read);
 			} else {
 				holder.imgReportIcon
 						.setImageResource(R.drawable.medical_report);
 				holder.tvReportDescription.setTextAppearance(getContext(),
-						R.style.ReportsList_CardHeaderTextUnread);
+						R.style.ReportsListItem_HeaderText_Unread);
 			}
 
 

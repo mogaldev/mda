@@ -13,7 +13,7 @@
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldVisa"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_visa_number" />
 
@@ -21,7 +21,7 @@
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldCommitment"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_commitment" />
 
@@ -29,7 +29,7 @@
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldSum"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_sum" />
 
@@ -37,7 +37,7 @@
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldForm"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_form_number" />
 
@@ -45,7 +45,7 @@
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldCode"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_code" />
 
@@ -53,14 +53,14 @@
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldFamilyName"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:labelText="@string/patient_report_activity_family_name" />
 
         <!-- First Name -->
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldFirstName"
-            style="@style/PatientReport_field"
+            style="@style/PatientReportField"
             custom:labelText="@string/patient_report_activity_first_name" />
 
         <!-- Send button -->
