@@ -98,6 +98,7 @@
     
     <!-- List item text -->
     <style name="ListItemTitle" parent="TextTitle">
+        <item name="android:textSize">@dimen/text_size_medium</item>
     </style>
 
     <style name="ListItemTitle.ComplexContent">
@@ -144,7 +145,14 @@
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 
-    <style name="ReportsListItem.HeaderText" parent="@style/ListItemSubtitle">
+    <style name="ReportsListItem.HeaderText" parent="@style/ListItemSubtitle.Bold">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
+        <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
+    </style>
+    
+	<style name="ReportsListItem.SubHeaderText" parent="@style/ListItemSubtitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>

@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="@dimen/reports_list_item_card_margin_between_cards"
         android:layout_marginLeft="@dimen/reports_list_item_card_margin_sides"
         android:layout_marginRight="@dimen/reports_list_item_card_margin_sides"
@@ -42,11 +42,11 @@
 
             <ImageView
                 android:id="@+id/imgHasLocation"
-                android:layout_marginTop="5dp"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/imgReportIsReported"
+                android:layout_marginTop="5dp"
                 android:src="@drawable/maps_pin" />
 
             <TextView
@@ -59,15 +59,19 @@
                 android:layout_marginRight="5dp"
                 android:layout_toLeftOf="@id/imgReportIcon"
                 android:layout_toRightOf="@id/imgReportIsReported"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus nulla nunc, non molestie orci blandit vel. Nunc blandit pharetra tellus, a lacinia est vulputate non" />
 
-            <ImageView
-                android:id="@+id/ImageView01"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/green_checked_icon" />
+            <TextView
+                android:id="@+id/tvReportAddress"
+                style="@style/ReportsListItem.SubHeaderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"      
+                android:layout_toLeftOf="@id/imgReportIcon"
+                android:layout_toRightOf="@id/imgReportIsReported"      
+                android:layout_below="@+id/tvReportDescription"        
+                android:text="Lorem ipsum dolor sit ameta lacinia est vulputate non" />
         </RelativeLayout>
 
         <RelativeLayout

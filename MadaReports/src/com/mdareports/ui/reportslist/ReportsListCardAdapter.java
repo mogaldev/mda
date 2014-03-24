@@ -7,6 +7,7 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +35,7 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 		TextView tvId;
 		TextView tvReportReceivedAt;
 		TextView tvReportDescription;
+		TextView tvReportAddress;
 		ImageView imgReportIsReported;
 		ImageView imgReportIcon;
 		ImageView imgHasLocation;
@@ -90,6 +92,8 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 					.findViewById(R.id.imgReportIsReported);
 			holder.imgHasLocation = (ImageView) convertView
 					.findViewById(R.id.imgHasLocation);
+			holder.tvReportAddress = (TextView) convertView
+					.findViewById(R.id.tvReportAddress);
 
 			convertView.setTag(holder);
 
@@ -103,8 +107,8 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			holder.tvId.setText(report.getReportId() + "#");
 			holder.tvReportReceivedAt.setText(new SimpleDateFormat(
 					"E dd-MM-yyyy hh:mm").format(report.getReceivedAt()));
-			holder.tvReportDescription.setText(report.getDescription(),
-					TextView.BufferType.SPANNABLE);
+			holder.tvReportDescription.setText(report.getDescription());
+			holder.tvReportAddress.setText(report.getAddress());
 
 			// set the text and the icon according to the read status
 			if (report.isRead()) {
@@ -123,6 +127,9 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 					report.isRead() ? R.color.reports_list_item_read_textcolor
 							: R.color.reports_list_item_unread_textcolor);
 
+			holder.tvReportDescription.setEllipsize(TextUtils.TruncateAt.END);
+			holder.tvReportDescription.setMaxLines(2);
+
 			holder.tvReportDescription.setTextColor(textColor);
 			holder.tvId.setTextColor(textColor);
 			holder.tvReportReceivedAt.setTextColor(textColor);
@@ -131,9 +138,11 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			holder.imgReportIsReported
 					.setImageResource(report.isReported() ? R.drawable.green_checked_icon
 							: R.drawable.exclamation_basic_yellow);
-			
+
 			// set the has-location icon visibility
-			holder.imgHasLocation.setVisibility(report.hasLocation() ? View.VISIBLE : View.GONE);								
+			holder.imgHasLocation
+					.setVisibility(report.hasLocation() ? View.VISIBLE
+							: View.GONE);
 
 			// register to the on-click event
 			convertView.setOnClickListener(new OnClickListener() {

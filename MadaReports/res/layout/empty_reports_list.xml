@@ -15,5 +15,12 @@
         android:text="@string/no_reports"
         android:textColor="@color/activity_text_color"
         android:textSize="50sp" />
- 
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/emptyViewLabel"
+         android:layout_centerInParent="true" 
+        android:src="@drawable/ic_report_read" />
+
 </RelativeLayout>
