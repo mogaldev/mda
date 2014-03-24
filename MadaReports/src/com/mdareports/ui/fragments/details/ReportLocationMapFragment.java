@@ -48,6 +48,7 @@ public class ReportLocationMapFragment extends BaseFragment {
 		if (currentMarker != null){
 			currentMarker.remove();
 		}
+		currentMarker = null;
 	}
 
 	public void markerReportLocation(LatLng location) {

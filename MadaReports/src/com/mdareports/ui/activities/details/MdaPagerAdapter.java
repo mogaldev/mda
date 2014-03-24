@@ -23,9 +23,10 @@ public class MdaPagerAdapter extends FragmentPagerAdapter {
 
 		tabPages = new ArrayList<BaseDetailFragment>();
 
-		tabPages.add(new TreatmentsToReportFragment());
-		tabPages.add(new TechInfoFragment());
 		tabPages.add(new GeneralInfoFragment());
+		tabPages.add(new TechInfoFragment());
+		tabPages.add(new TreatmentsToReportFragment());
+
 	}
 
 	public void initActionBar(ActionBar supportActionBar, ViewPager viewPager) {
@@ -36,26 +37,31 @@ public class MdaPagerAdapter extends FragmentPagerAdapter {
 					.setTabListener(new MadaTabListener(viewPager)));
 		}
 	}
-	
-	public void saveAllTabs() {
-		for (BaseDetailFragment baseDetailsFragment : tabPages) {
-			baseDetailsFragment.saveCurrentReport();
-		}
-	}
 
-	public void refreshAllTabs(){
+	public void saveAllTabs() {
 		for (BaseDetailFragment baseDetailsFragment : tabPages) {
 			// TODO: treatments throws exceptions. check why
 			try {
-				baseDetailsFragment.refreshDataWithCurrentReport();	
+				baseDetailsFragment.saveCurrentReport();
 			} catch (Exception e) {
-				
-			}			
+
+			}
 		}
 	}
-	
+
+	public void refreshAllTabs() {
+		for (BaseDetailFragment baseDetailsFragment : tabPages) {
+			// TODO: treatments throws exceptions. check why
+			try {
+				baseDetailsFragment.refreshDataWithCurrentReport();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+
 	@Override
-	public Fragment getItem(int position) { 
+	public Fragment getItem(int position) {
 		return tabPages.get(position);
 	}
 

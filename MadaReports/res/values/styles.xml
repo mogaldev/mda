@@ -192,7 +192,7 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
-        <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
+        <item name="android:textDirection" tools:targetApi="17">anyRtl</item>        
     </style>
 
     <style name="ReportDetails_General_edittext">
@@ -201,7 +201,7 @@
     </style>
 
     <style name="ReportDetails_General_edittext_big" parent="@style/ReportDetails_General_edittext">
-        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_height">120dp</item>
     </style>
 
     <style name="ReportDetails_General_spinner" parent="ReportDetails_General_edittext" />

@@ -26,13 +26,29 @@
     <dimen name="reports_list_legend_margin_between_text_and_icon">5dp</dimen>
     <dimen name="reports_list_legend_margin_between_parts">25dp</dimen>
 
+    <!-- Details  -->
+    
+    <!-- General Info -->
+    <dimen name="general_info_fields_width">200dp</dimen>
+    <dimen name="general_info_pin_location_height">40dp</dimen>
+    <dimen name="general_info_address_height">80dp</dimen>
+    <dimen name="general_info_description_height">150dp</dimen>
+    <dimen name="general_info_notes_height">100dp</dimen>
+    
+    <dimen name="general_info_is_reported_icon_size">40dp</dimen>
+    
+    <!--  -->
+    
+    <!-- End Of Details  -->
+    
+    
     <!-- Drawer -->
     <dimen name="drawer_menu_width">230dp</dimen>
     <dimen name="drawer_divider_height">15dp</dimen>
     
     <!-- Blood Pressure Field -->
     <dimen name="blood_pressure_view_width_dimension">175dp</dimen>
-    <dimen name="blood_pressure_view_width_dimension">75dp</dimen>
+    <dimen name="blood_pressure_view_height_dimension">75dp</dimen>
     
     <dimen name="blood_pressure_view_height_dimension_dialog">80dp</dimen>
 

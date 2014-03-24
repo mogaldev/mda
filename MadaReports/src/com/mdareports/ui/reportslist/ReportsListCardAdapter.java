@@ -36,6 +36,7 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 		TextView tvReportDescription;
 		ImageView imgReportIsReported;
 		ImageView imgReportIcon;
+		ImageView imgHasLocation;
 	}
 
 	public ReportsListCardAdapter(Context context, List<Report> reports) {
@@ -87,12 +88,8 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 					.findViewById(R.id.tvReportDescription);
 			holder.imgReportIsReported = (ImageView) convertView
 					.findViewById(R.id.imgReportIsReported);
-
-			// set custom fonts
-			// FontTypeFaceManager ftfm =
-			// FontTypeFaceManager.getInstance(context);
-			// ftfm.setFont(holder.tvId, CustomFonts.RobotoThin);
-			// ftfm.setFont(holder.tvReportReceivedAt, CustomFonts.RobotoThin);
+			holder.imgHasLocation = (ImageView) convertView
+					.findViewById(R.id.imgHasLocation);
 
 			convertView.setTag(holder);
 
@@ -122,7 +119,6 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 						R.style.ReportsList_CardHeaderTextUnread);
 			}
 
-
 			int textColor = context.getResources().getColor(
 					report.isRead() ? R.color.reports_list_item_read_textcolor
 							: R.color.reports_list_item_unread_textcolor);
@@ -135,6 +131,9 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			holder.imgReportIsReported
 					.setImageResource(report.isReported() ? R.drawable.green_checked_icon
 							: R.drawable.exclamation_basic_yellow);
+			
+			// set the has-location icon visibility
+			holder.imgHasLocation.setVisibility(report.hasLocation() ? View.VISIBLE : View.GONE);								
 
 			// register to the on-click event
 			convertView.setOnClickListener(new OnClickListener() {

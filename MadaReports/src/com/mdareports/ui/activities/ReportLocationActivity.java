@@ -160,13 +160,15 @@ public class ReportLocationActivity extends BaseActivity {
 		Report report = db.getReportById(currentReportId);
 
 		// set the location information
-		report.setLocation(reportMapFragment.getCurrentLocation());
 		LatLng location = reportMapFragment.getCurrentLocation();
+		report.setLocation(location);
 
-		Address address = GeocodingUtils.getSingleAddreesByLocation(this,
-				location, false);
-		if (address != null) {
-			report.setAddress(getAddressToDisplay(address));
+		if (location != null) {
+			Address address = GeocodingUtils.getSingleAddreesByLocation(this,
+					location, false);
+			if (address != null) {
+				report.setAddress(getAddressToDisplay(address));
+			}
 		}
 
 		// update the database
@@ -174,9 +176,10 @@ public class ReportLocationActivity extends BaseActivity {
 	}
 
 	private String getAddressToDisplay(Address address) {
-		
+
 		// check if the feature name is numeric
-		if (address.getFeatureName().replace('-', '0').matches("-?\\d+(\\.\\d+)?")) {
+		if (address.getFeatureName().replace('-', '0')
+				.matches("-?\\d+(\\.\\d+)?")) {
 
 			return address.getLocality() + "," + address.getThoroughfare();
 		} else {

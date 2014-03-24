@@ -10,12 +10,12 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.mdareports.R;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.ReportLocationActivity;
 import com.mdareports.ui.activities.details.DetailsActivity;
-import com.mdareports.utils.DeviceInfoUtils;
 
 public class GeneralInfoFragment extends BaseDetailFragment {
 
@@ -24,6 +24,7 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 	private EditText txtDescription;
 	private EditText txtNotes;
 	private CheckBox ckbIsReported;
+	private ImageView imgIsReportedIcon;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,34 +44,21 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 					}
 				});
 
-		txtReportId = (EditText) rootView.findViewById(R.id.reportIdEditText);
-		txtAddress = (EditText) rootView.findViewById(R.id.addressEditText);
-		txtDescription = (EditText) rootView
-				.findViewById(R.id.descriptionEditText);
-		txtNotes = (EditText) rootView.findViewById(R.id.notesEditText);
-		ckbIsReported = (CheckBox) rootView
-				.findViewById(R.id.isReportedCheckBox);
+		txtReportId = (EditText) rootView.findViewById(R.id.txtReportId);
+		txtAddress = (EditText) rootView.findViewById(R.id.txtAddress);
+		txtDescription = (EditText) rootView.findViewById(R.id.txtDescription);
+		txtNotes = (EditText) rootView.findViewById(R.id.txtNotes);
+		ckbIsReported = (CheckBox) rootView.findViewById(R.id.ckbIsReported);
+		imgIsReportedIcon = (ImageView) rootView
+				.findViewById(R.id.imgIsReportedIcon);
 
 		OnCheckedChangeListener isReportedCheckedChangedListener = new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
-
-				int resId = (isChecked ? R.drawable.green_checked_icon
-						: R.drawable.exclamation_basic_yellow);
-
-				// TODO: maybe use isRtl method instead (implement one)
-				if (DeviceInfoUtils.isCurrentLanguageHebrew(buttonView
-						.getContext())) {
-					// set drawable left
-					ckbIsReported.setCompoundDrawablesWithIntrinsicBounds(
-							resId, 0, 0, 0);
-				} else {
-					// set drawable right
-					ckbIsReported.setCompoundDrawablesWithIntrinsicBounds(0, 0,
-							resId, 0);
-				}
-
+				imgIsReportedIcon
+						.setImageResource((isChecked ? R.drawable.green_checked_icon
+								: R.drawable.exclamation_basic_yellow));
 			}
 		};
 
@@ -88,7 +76,7 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 		super.onStart();
 
 		Report currentReport = getCurrentReport();
-		
+
 		txtReportId.setText(String.valueOf(currentReport.getReportId()));
 		txtAddress.setText(currentReport.getAddress());
 		txtDescription.setText(currentReport.getDescription());
@@ -110,9 +98,9 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 	@Override
 	public void saveCurrentReport() {
 		Report currentReport = getCurrentReport();
-		
-		currentReport.setReportId(
-				Integer.valueOf(txtReportId.getText().toString()));
+
+		currentReport.setReportId(Integer.valueOf(txtReportId.getText()
+				.toString()));
 		currentReport.setAddress(txtAddress.getText().toString());
 		currentReport.setDescription(txtDescription.getText().toString());
 		currentReport.setNotes(txtNotes.getText().toString());
