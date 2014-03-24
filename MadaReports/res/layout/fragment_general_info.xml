@@ -25,11 +25,22 @@
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
+            <ImageView
+                android:id="@+id/imgPinLocation"
+                android:layout_width="@dimen/general_info_is_reported_icon_size"
+                android:layout_height="50dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/rounded_corners_background"                
+                android:src="@drawable/maps_pin_disabled" 
+                android:contentDescription="@string/fragment_general_info_pin_location"/>
+
             <EditText
                 android:id="@+id/txtAddress"
-                android:layout_width="@dimen/general_info_fields_width"
+                android:layout_width="160dp"
                 android:layout_height="@dimen/general_info_address_height"
-                android:layout_alignParentRight="true" >
+                android:layout_toLeftOf="@id/imgPinLocation" >
 
                 <requestFocus />
             </EditText>
@@ -37,24 +48,15 @@
             <TextView
                 style="@style/ReportDetails_General_textview"
                 android:text="@string/fragment_general_info_address" />
-
-            <Button
-                android:id="@+id/btnPinLocation"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/general_info_pin_location_height"
-                android:layout_below="@id/txtAddress"
-                android:background="@drawable/map_background"
-                android:fontFamily="sans-serif-light"
-                android:scaleType="centerCrop"
-                android:text="@string/fragment_general_info_pin_location" />
+            
         </RelativeLayout>
 
         <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
 
             <EditText
                 android:id="@+id/txtDescription"
-               android:layout_width="@dimen/general_info_fields_width"
-                android:layout_height="@dimen/general_info_description_height"                                
+                android:layout_width="@dimen/general_info_fields_width"
+                android:layout_height="@dimen/general_info_description_height"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
@@ -91,8 +93,8 @@
                 android:id="@+id/imgIsReportedIcon"
                 android:layout_width="@dimen/general_info_is_reported_icon_size"
                 android:layout_height="@dimen/general_info_is_reported_icon_size"
-                android:layout_alignParentRight="true"
                 android:layout_alignBottom="@id/ckbIsReported"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/exclamation_basic_yellow" />
         </RelativeLayout>
     </LinearLayout>

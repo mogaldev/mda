@@ -10,7 +10,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Long press to pin the location"
-        android:padding="2dp"
+        android:padding="2dp"        
+        android:fontFamily="sans-serif-light"
+        android:background="@drawable/transparent_background_pattern"
         android:textSize="20sp" />
 
     <fragment

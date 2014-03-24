@@ -25,6 +25,7 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 	private EditText txtNotes;
 	private CheckBox ckbIsReported;
 	private ImageView imgIsReportedIcon;
+	private ImageView imgPinLocation;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +33,7 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 		View rootView = inflater.inflate(R.layout.fragment_general_info,
 				container, false);
 
-		rootView.findViewById(R.id.btnPinLocation).setOnClickListener(
+		rootView.findViewById(R.id.imgPinLocation).setOnClickListener(
 				new OnClickListener() {
 					@Override
 					public void onClick(View v) {
@@ -51,6 +52,7 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 		ckbIsReported = (CheckBox) rootView.findViewById(R.id.ckbIsReported);
 		imgIsReportedIcon = (ImageView) rootView
 				.findViewById(R.id.imgIsReportedIcon);
+		imgPinLocation = (ImageView) rootView.findViewById(R.id.imgPinLocation);
 
 		OnCheckedChangeListener isReportedCheckedChangedListener = new OnCheckedChangeListener() {
 			@Override
@@ -115,6 +117,7 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 				.getDescription()));
 		txtNotes.setText(getCurrentReport().getNotes());
 		ckbIsReported.setChecked(getCurrentReport().isReported());
+		imgPinLocation.setImageResource(getCurrentReport().hasLocation() ? R.drawable.maps_pin : R.drawable.maps_pin_disabled);
 	}
 
 	@Override

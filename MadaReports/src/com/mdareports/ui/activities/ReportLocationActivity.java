@@ -1,6 +1,7 @@
 package com.mdareports.ui.activities;
 
 import java.util.ArrayList;
+
 import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.Context;
@@ -19,16 +20,17 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.Toast;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.custom.CustomAdapterSearchView;
 import com.mdareports.ui.fragments.details.ReportLocationMapFragment;
+import com.mdareports.utils.ApplicationUtils;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.GeocodingUtils;
 import com.mdareports.utils.Logger;
-
 
 public class ReportLocationActivity extends BaseActivity {
 	private MenuItem searchItem;
@@ -44,11 +46,8 @@ public class ReportLocationActivity extends BaseActivity {
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-			String query = intent.getStringExtra(SearchManager.QUERY);			
-			getSearchWidget().setText(query);						
-			// TODO: remove
-			Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
-			Logger.LOGE("handleIntent", "action search: " + query);
+			String query = intent.getStringExtra(SearchManager.QUERY);
+			getSearchWidget().setText(query);
 		}
 	}
 
@@ -83,7 +82,7 @@ public class ReportLocationActivity extends BaseActivity {
 		searchItem = menu.findItem(R.id.reportLocation_activity_menu_search);
 
 		CustomAdapterSearchView searchView = getSearchWidget();
-		
+
 		searchView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -146,15 +145,16 @@ public class ReportLocationActivity extends BaseActivity {
 	}
 
 	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-	public void onLocationMarkered(){
+	public void onLocationMarkered() {
 		if (searchItem != null && DeviceInfoUtils.hasICS())
 			searchItem.collapseActionView();
 	}
 
-	private CustomAdapterSearchView getSearchWidget(){
-		return (CustomAdapterSearchView)MenuItemCompat.getActionView(searchItem);
+	private CustomAdapterSearchView getSearchWidget() {
+		return (CustomAdapterSearchView) MenuItemCompat
+				.getActionView(searchItem);
 	}
-	
+
 	private void displayReportLocationOnMap() {
 		DatabaseWrapper db = DatabaseWrapper.getInstance(this);
 		Report report = db.getReportById(currentReportId);
@@ -190,7 +190,27 @@ public class ReportLocationActivity extends BaseActivity {
 		if (address.getFeatureName().replace('-', '0')
 				.matches("-?\\d+(\\.\\d+)?")) {
 
-			return address.getLocality() + "," + address.getThoroughfare();
+			String result = "";
+
+			String locality = ApplicationUtils.NVL(address.getLocality());
+			String thoroughfare = ApplicationUtils.NVL(address
+					.getThoroughfare());
+			// check if the result is not empty
+			if (locality.length() > 0) {
+				result += locality;
+			}
+
+			// display the ',' only if both parts exists
+			if (result.length() > 0 && thoroughfare.length() > 0) {
+				result += ", ";
+			}
+
+			if (thoroughfare.length() > 0) {
+				result += locality;
+			}
+
+			return result;
+			
 		} else {
 			return address.getFeatureName();
 		}
