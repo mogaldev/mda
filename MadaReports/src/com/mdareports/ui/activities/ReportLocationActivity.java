@@ -1,11 +1,12 @@
 package com.mdareports.ui.activities;
 
 import java.util.ArrayList;
-
+import android.annotation.TargetApi;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.view.Menu;
@@ -18,7 +19,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.Toast;
-
 import com.google.android.gms.maps.model.LatLng;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
@@ -29,8 +29,9 @@ import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.GeocodingUtils;
 import com.mdareports.utils.Logger;
 
+
 public class ReportLocationActivity extends BaseActivity {
-	private CustomAdapterSearchView searchView;
+	private MenuItem searchItem;
 	private ReportLocationMapFragment reportMapFragment;
 	int currentReportId;
 
@@ -43,9 +44,8 @@ public class ReportLocationActivity extends BaseActivity {
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-			String query = intent.getStringExtra(SearchManager.QUERY);
-			searchView.setText(query);
-
+			String query = intent.getStringExtra(SearchManager.QUERY);			
+			getSearchWidget().setText(query);						
 			// TODO: remove
 			Toast.makeText(this, query, Toast.LENGTH_SHORT).show();
 			Logger.LOGE("handleIntent", "action search: " + query);
@@ -80,11 +80,10 @@ public class ReportLocationActivity extends BaseActivity {
 		inflater.inflate(R.menu.report_location, menu);
 
 		// initializing the search action view
-		MenuItem item = menu.findItem(R.id.reportLocation_activity_menu_search);
+		searchItem = menu.findItem(R.id.reportLocation_activity_menu_search);
 
-		searchView = (CustomAdapterSearchView) MenuItemCompat
-				.getActionView(item);
-
+		CustomAdapterSearchView searchView = getSearchWidget();
+		
 		searchView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -146,6 +145,16 @@ public class ReportLocationActivity extends BaseActivity {
 		}
 	}
 
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+	public void onLocationMarkered(){
+		if (searchItem != null && DeviceInfoUtils.hasICS())
+			searchItem.collapseActionView();
+	}
+
+	private CustomAdapterSearchView getSearchWidget(){
+		return (CustomAdapterSearchView)MenuItemCompat.getActionView(searchItem);
+	}
+	
 	private void displayReportLocationOnMap() {
 		DatabaseWrapper db = DatabaseWrapper.getInstance(this);
 		Report report = db.getReportById(currentReportId);

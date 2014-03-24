@@ -28,7 +28,7 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 	private Context context;
 	private ArrayList<Report> reportsList;
 	private ArrayList<Report> originalReportsList;
-	LayoutInflater inflater;
+	private LayoutInflater inflater;
 
 	static class ViewHolder {
 		TextView tvId;
