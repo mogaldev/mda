@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.espian.showcaseview.ShowcaseView;
+import com.espian.showcaseview.targets.ActionViewTarget;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.ui.drawer.DrawerItem;
@@ -15,6 +17,7 @@ import com.mdareports.ui.fragments.PatientReportFragment;
 import com.mdareports.ui.fragments.SettingsFragment;
 import com.mdareports.ui.fragments.reportslists.ReportsListsFilters;
 import com.mdareports.utils.DeviceInfoUtils;
+import com.mdareports.utils.HelpUtils;
 
 /**
  * Responsible for building the application drawer. any application specific
@@ -39,6 +42,20 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 			super.putContentFragment(onItemSelected(items.get(drawerAdapter
 					.getSelectedIndex())));
 		}
+
+
+		ShowcaseView.ConfigOptions mOptions = new ShowcaseView.ConfigOptions();
+		mOptions.block = false;
+		ActionViewTarget target = new ActionViewTarget(this,
+				ActionViewTarget.Type.HOME);
+		ShowcaseView sv = ShowcaseView.insertShowcaseView(target, this,
+				R.string.help_showcase_drawer_menu_title,
+				R.string.help_showcase_drawer_menu_description, mOptions);
+		sv.setShowcase(target, true);
+
+//		HelpUtils.showHelp(drawerList,
+//				R.string.help_showcase_drawer_menu_title,
+//				R.string.help_showcase_drawer_menu_description, this);
 	}
 
 	private void moveToReportsList(ReportsListsFilters filter) {
@@ -75,12 +92,11 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 
 		case AboutUs:
 			// frgmt = new AboutUsFragment();
-			 Intent i = new Intent(this, ReportLocationActivity.class);
-			 i.putExtra(ReportLocationActivity.REPORT_ID_EXTRA,
-			 DatabaseWrapper.getInstance(this).getAllReports().get(0).getId());
-			 startActivity(i);
+			Intent i = new Intent(this, ReportLocationActivity.class);
+			i.putExtra(ReportLocationActivity.REPORT_ID_EXTRA, DatabaseWrapper
+					.getInstance(this).getAllReports().get(0).getId());
+			startActivity(i);
 
-			
 			break;
 
 		case Settings:
@@ -88,7 +104,7 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 				frgmt = new SettingsFragment();
 			} else {
 				startActivity(new Intent(this, OldSettingsActivity.class));
-			}			
+			}
 			break;
 
 		default:

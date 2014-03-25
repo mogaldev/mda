@@ -15,6 +15,19 @@
         <item name="actionBarTabTextStyle">@style/MdaActionBarTabText</item>
     </style>
 
+    <!-- Help showcase -->
+    <style name="ShowcaseView">
+        <item name="sv_backgroundColor">#7733B5E5</item>
+    </style>
+
+    <style name="ShowcaseView.Light">
+        <item name="sv_backgroundColor">#3333B5E5</item>
+    </style>
+
+    <style name="TextAppearance.ShowcaseView.Title" parent="android:style/TextAppearance.Large">
+        <item name="android:textColor">#33B5E5</item>        
+    </style>
+
     <!-- ActionBar -->
     <style name="MdaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@drawable/tab_unselected_unpressed</item>
@@ -45,7 +58,7 @@
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
         <item name="android:textColor">#aaa</item>
     </style>
-    
+
     <!-- Body content -->
     <style name="TextHeader">
         <item name="android:textSize">@dimen/text_size_xlarge</item>
@@ -95,7 +108,7 @@
         <item name="android:fontFamily" tools:targetApi="16">sans-serif-light</item>
         <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
     </style>
-    
+
     <!-- List item text -->
     <style name="ListItemTitle" parent="TextTitle">
         <item name="android:textSize">@dimen/text_size_medium</item>
@@ -138,7 +151,7 @@
 
     <!-- Reports List -->
     <style name="ReportsList"></style>
-    
+
     <style name="ReportsListItem.FooterText" parent="@style/ListItemTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -151,8 +164,8 @@
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
     </style>
-    
-	<style name="ReportsListItem.SubHeaderText" parent="@style/ListItemSubtitle">
+
+    <style name="ReportsListItem.SubHeaderText" parent="@style/ListItemSubtitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
@@ -171,7 +184,7 @@
 
     <!-- Legend -->
     <style name="ReportsList.Legend"></style>
-    
+
     <style name="ReportsList.Legend.Icon">
         <item name="android:layout_width">@dimen/reports_list_legend_icon_size</item>
         <item name="android:layout_height">@dimen/reports_list_legend_icon_size</item>
@@ -180,11 +193,12 @@
     <style name="ReportsList.Legend.Text" parent="@style/TextTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <!-- <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>    -->     
+        <!-- <item name="android:textAppearance">?android:attr/textAppearanceSmall</item> -->
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 
     <!-- DetailActivity -->
+
 
     <!-- General Info Fragment -->
     <style name="ReportDetails_General_relative_layout">
@@ -260,8 +274,10 @@
     </style>
     <!-- End of Tech Info Fragment -->
 
+
     <!-- Treatments Fragment -->
     <!-- End of Treatments Fragment -->
+
 
     <!-- End of DetailActivity -->
 
@@ -273,7 +289,7 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:padding">10dp</item>
     </style>
-    
+
     <style name="PatientReportField.Textview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">50dp</item>

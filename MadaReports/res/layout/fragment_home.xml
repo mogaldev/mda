@@ -6,7 +6,7 @@
     android:orientation="vertical" 
     android:background="@drawable/transparent_background_pattern">
 
-    <TextView
+  <!--   <TextView
         android:id="@+id/textView1"
         style="@style/TextHeader"
         android:layout_width="match_parent"
@@ -111,6 +111,6 @@
         android:gravity="center"
         android:padding="2dp"
         android:text="ListItemSubtitle.Inverse שלום"
-        android:textSize="20sp" />
+        android:textSize="20sp" /> -->
 
 </LinearLayout>
