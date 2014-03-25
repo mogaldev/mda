@@ -11,28 +11,34 @@
 
         <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldPulse"
-            style="@style/fragment_tech_info_editableSeekField"
+            style="@style/TechInfoContainer.EditableSeekField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             custom:fieldLabel="@string/fragment_tech_info_pulse"
             custom:maxValue="@integer/max_pulse" />
 
         <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldBreath"
-            style="@style/fragment_tech_info_editableSeekField"
+            style="@style/TechInfoContainer.EditableSeekField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             custom:fieldLabel="@string/fragment_tech_info_breath"
             custom:maxValue="@integer/max_breath" />
 
         <com.mdareports.ui.custom.single.EditableSeekField
             android:id="@+id/esfieldSugar"
-            style="@style/fragment_tech_info_editableSeekField"
+            style="@style/TechInfoContainer.EditableSeekField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             custom:fieldLabel="@string/fragment_tech_info_sugar"
             custom:maxValue="@integer/max_sugar" />
 
         <com.mdareports.ui.custom.bloodpressure.BloodPressureField
             android:id="@+id/bloodPressureField"
-            style="@style/fragment_tech_info_relative_layout"
             android:layout_width="match_parent"
-            android:layout_gravity="center" />
-        
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="10dp" />
     </LinearLayout>
 
 </ScrollView>

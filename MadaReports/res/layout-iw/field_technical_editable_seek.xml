@@ -5,7 +5,8 @@
 
     <TextView
         android:id="@+id/tvLabelEditSeekField"
-        style="@style/fragment_tech_info_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="19dp"
@@ -13,19 +14,23 @@
 
     <SeekBar
         android:id="@+id/seekEditSeekField"
-        style="@style/fragment_tech_info_seekbar"
+        style="@style/TechInfoContainer.Seekbar"
         android:layout_width="214dp"
+        android:layout_height="75dp"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/imgEditSeekField"
         android:max="@integer/max_pulse" />
 
     <TextView
         android:id="@+id/tvValueEditSeekField"
-        style="@style/fragment_tech_info_textview_value"
+        style="@style/TechInfoContainer.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginRight="75dp"
+        android:layout_marginTop="30dp"
         android:text="0" />
 
     <ImageView

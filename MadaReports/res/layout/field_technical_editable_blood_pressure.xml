@@ -17,10 +17,10 @@
         android:layout_width="wrap_content"
         android:layout_height="75dp"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/imgEditBloodPressureField"
-        android:gravity="center"
+        android:layout_marginLeft="60dp"
         android:layout_marginRight="40dp"
-        android:layout_marginLeft="60dp">
+        android:layout_toLeftOf="@+id/imgEditBloodPressureField"
+        android:gravity="center" >
 
         <TextView
             android:id="@+id/tvBloodPressureValueHigh"
@@ -44,12 +44,13 @@
             android:paddingLeft="5dp"
             android:text="60"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/tvLabelBloodPressure"
-        style="@style/fragment_tech_info_textview"
+        style="@style/TechInfoContainer.TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignBottom="@+id/llBpValuesContainer"
         android:layout_alignParentLeft="true"
         android:text="Blood Pressure" />

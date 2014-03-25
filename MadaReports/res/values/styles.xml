@@ -25,7 +25,7 @@
     </style>
 
     <style name="TextAppearance.ShowcaseView.Title" parent="android:style/TextAppearance.Large">
-        <item name="android:textColor">#33B5E5</item>        
+        <item name="android:textColor">#33B5E5</item>
     </style>
 
     <!-- ActionBar -->
@@ -202,7 +202,7 @@
 
     <!-- General Info Fragment -->
     <style name="GeneralInfoContainer"></style>
-    
+
     <style name="GeneralInfoContainer.ComponentLayout">
         <item name="android:padding">10dp</item>
     </style>
@@ -213,57 +213,32 @@
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
     </style>
-
     <!-- End of General Info Fragment Style -->
 
 
     <!-- Tech Info Fragment -->
-    <style name="fragment_tech_info_relative_layout">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:padding">10dp</item>
-    </style>
+    <style name="TechInfoContainer"></style>
 
-    <style name="fragment_tech_info_textview" parent="@style/TextHeader">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">70dp</item>
+    <style name="TechInfoContainer.TextView" parent="@style/TextHeader">
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="fragment_tech_info_textview_value" parent="@style/TextHeader">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:layout_marginTop">30dp</item>
-        <item name="android:layout_marginBottom">5dp</item>
-        <item name="android:layout_marginRight">75dp</item>
-        <item name="android:layout_marginLeft">75dp</item>
+    <style name="TechInfoContainer.TextView.Value">
     </style>
 
-    <style name="fragment_tech_info_seekbar">
-
+    <style name="TechInfoContainer.Seekbar">
         <!-- Important! keep the paddingTop and paddingBottom because without it the SeekBar is distorted -->
         <item name="android:paddingTop">25dp</item>
         <item name="android:paddingBottom">20dp</item>
-        <item name="android:layout_width">175dp</item>
-        <item name="android:layout_height">75dp</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="fragment_tech_info_editableSeekField">
+    <style name="TechInfoContainer.EditableSeekField">
         <item name="android:padding">10dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
     </style>
     <!-- End of Tech Info Fragment -->
-
-
-    <!-- Treatments Fragment -->
-    <!-- End of Treatments Fragment -->
 
 
     <!-- End of DetailActivity -->
