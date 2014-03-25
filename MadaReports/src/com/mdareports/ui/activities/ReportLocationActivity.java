@@ -7,6 +7,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -30,7 +31,6 @@ import com.mdareports.ui.fragments.details.ReportLocationMapFragment;
 import com.mdareports.utils.ApplicationUtils;
 import com.mdareports.utils.DeviceInfoUtils;
 import com.mdareports.utils.GeocodingUtils;
-import com.mdareports.utils.Logger;
 
 public class ReportLocationActivity extends BaseActivity {
 	private MenuItem searchItem;
@@ -117,12 +117,7 @@ public class ReportLocationActivity extends BaseActivity {
 			return true;
 
 		case R.id.reportLocation_activity_menu_save:
-			saveReportLocation();
-
-			// Make Toast to the user
-			Toast.makeText(this,
-					getString(R.string.detail_activity_report_saved),
-					Toast.LENGTH_SHORT).show();
+			saveReportLocation();			
 			return true;
 
 		case R.id.reportLocation_activity_menu_sync:
@@ -164,24 +159,40 @@ public class ReportLocationActivity extends BaseActivity {
 		reportMapFragment.zoomIntoCurrentLocation();
 	}
 
-	private void saveReportLocation() {
-		DatabaseWrapper db = DatabaseWrapper.getInstance(this);
-		Report report = db.getReportById(currentReportId);
+	private void saveReportLocation() {				
+		Report report = DatabaseWrapper.getInstance(this).getReportById(currentReportId);
+		report.setLocation(reportMapFragment.getCurrentLocation());
+						
+		// save the report on separate thread
+		new AsyncTask<Object, Void, Void>() {
+			private Context context;
+			
+			@Override
+			protected Void doInBackground(Object... params) {
+				context = (Context)params[0];
+				Report report = (Report)params[1];
 
-		// set the location information
-		LatLng location = reportMapFragment.getCurrentLocation();
-		report.setLocation(location);
+				LatLng location = report.getLocation();
+				if (location != null) {
+					Address address = GeocodingUtils
+							.getSingleAddreesByLocation(context, location,
+									false);
+					if (address != null) {
+						report.setAddress(getAddressToDisplay(address));
+					}
+				}
 
-		if (location != null) {
-			Address address = GeocodingUtils.getSingleAddreesByLocation(this,
-					location, false);
-			if (address != null) {
-				report.setAddress(getAddressToDisplay(address));
+				// update the database
+				DatabaseWrapper.getInstance(context).updateReport(report);
+				return null;
 			}
-		}
-
-		// update the database
-		db.updateReport(report);
+			
+			protected void onPostExecute(Void result) { 
+				Toast.makeText(context,
+						getString(R.string.detail_activity_report_saved),
+						Toast.LENGTH_SHORT).show();
+			};
+		}.execute(this, report);
 	}
 
 	private String getAddressToDisplay(Address address) {
@@ -210,7 +221,7 @@ public class ReportLocationActivity extends BaseActivity {
 			}
 
 			return result;
-			
+
 		} else {
 			return address.getFeatureName();
 		}
