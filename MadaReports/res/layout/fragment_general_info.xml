@@ -9,21 +9,29 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
+        <RelativeLayout style="@style/GeneralInfoContainer.ComponentLayout" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <EditText
                 android:id="@+id/txtReportId"
-                style="@style/ReportDetails_General_edittext"
                 android:layout_width="@dimen/general_info_fields_width"
+                android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:inputType="numberSigned" />
 
             <TextView
-                style="@style/ReportDetails_General_textview"
+                style="@style/GeneralInfoContainer.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:text="@string/fragment_general_info_report_id" />
         </RelativeLayout>
 
-        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
+        <RelativeLayout style="@style/GeneralInfoContainer.ComponentLayout" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/imgPinLocation"
@@ -40,18 +48,24 @@
                 android:id="@+id/txtAddress"
                 android:layout_width="160dp"
                 android:layout_height="@dimen/general_info_address_height"
-                android:layout_toLeftOf="@id/imgPinLocation" >
+                android:layout_toLeftOf="@id/imgPinLocation"
+                android:inputType="text" >
 
                 <requestFocus />
             </EditText>
 
             <TextView
-                style="@style/ReportDetails_General_textview"
+                style="@style/GeneralInfoContainer.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:text="@string/fragment_general_info_address" />
             
         </RelativeLayout>
 
-        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
+        <RelativeLayout style="@style/GeneralInfoContainer.ComponentLayout" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <EditText
                 android:id="@+id/txtDescription"
@@ -61,11 +75,16 @@
                 android:inputType="textMultiLine" />
 
             <TextView
-                style="@style/ReportDetails_General_textview"
+                style="@style/GeneralInfoContainer.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:text="@string/fragment_general_info_description" />
         </RelativeLayout>
 
-        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
+        <RelativeLayout style="@style/GeneralInfoContainer.ComponentLayout" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <EditText
                 android:id="@+id/txtNotes"
@@ -75,11 +94,16 @@
                 android:inputType="textMultiLine" />
 
             <TextView
-                style="@style/ReportDetails_General_textview"
+                style="@style/GeneralInfoContainer.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:text="@string/fragment_general_info_notes" />
         </RelativeLayout>
 
-        <RelativeLayout style="@style/ReportDetails_General_relative_layout" >
+        <RelativeLayout style="@style/GeneralInfoContainer.ComponentLayout" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <CheckBox
                 android:id="@+id/ckbIsReported"

@@ -201,32 +201,19 @@
 
 
     <!-- General Info Fragment -->
-    <style name="ReportDetails_General_relative_layout">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
+    <style name="GeneralInfoContainer"></style>
+    
+    <style name="GeneralInfoContainer.ComponentLayout">
         <item name="android:padding">10dp</item>
     </style>
 
-    <style name="ReportDetails_General_textview">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">50dp</item>
+    <style name="GeneralInfoContainer.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
     </style>
 
-    <style name="ReportDetails_General_edittext">
-        <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">50dp</item>
-    </style>
-
-    <style name="ReportDetails_General_edittext_big" parent="@style/ReportDetails_General_edittext">
-        <item name="android:layout_height">75dp</item>
-    </style>
-
-    <style name="ReportDetails_General_spinner" parent="ReportDetails_General_edittext" />
     <!-- End of General Info Fragment Style -->
 
 
