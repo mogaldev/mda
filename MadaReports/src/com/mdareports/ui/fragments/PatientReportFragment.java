@@ -18,7 +18,7 @@ public class PatientReportFragment extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {	
-		final View rootView = inflater.inflate(R.layout.activity_patient_report,
+		final View rootView = inflater.inflate(R.layout.fragment_patient_report,
 				container, false);
 		
 		rootView.findViewById(R.id.btnSendReport).setOnClickListener(new OnClickListener() {

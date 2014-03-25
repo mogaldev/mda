@@ -224,10 +224,10 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TechInfoContainer.TextView.Value">
-    </style>
+    <style name="TechInfoContainer.TextView.Value"></style>
 
     <style name="TechInfoContainer.Seekbar">
+
         <!-- Important! keep the paddingTop and paddingBottom because without it the SeekBar is distorted -->
         <item name="android:paddingTop">25dp</item>
         <item name="android:paddingBottom">20dp</item>
@@ -245,26 +245,16 @@
 
 
     <!-- Patient Report -->
-    <style name="PatientReportField">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:padding">10dp</item>
-    </style>
 
-    <style name="PatientReportField.Textview">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">50dp</item>
+    <style name="PatientReportField"></style>
+
+    <style name="PatientReportField.TextView" parent="@style/TextHeaderSub">
         <item name="android:gravity">center</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
+        <item name="android:textSize">18sp</item>
+          <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">rtl</item>
     </style>
 
-    <style name="PatientReportField.Edittext">
-        <item name="android:layout_width">150dp</item>
-        <item name="android:layout_height">50dp</item>
-    </style>
     <!-- End of Patient Report -->
 
 

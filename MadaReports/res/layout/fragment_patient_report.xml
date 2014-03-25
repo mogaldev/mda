@@ -1,66 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/com.mdareports"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"    >
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <!-- Visa -->
-
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldVisa"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_visa_number" />
 
-        <!-- Commitment -->
-
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldCommitment"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_commitment" />
 
-        <!-- Sum -->
-
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldSum"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_sum" />
 
-        <!-- Form -->
-
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldForm"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_form_number" />
 
-        <!-- Code -->
-
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldCode"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:inputType="number"
             custom:labelText="@string/patient_report_activity_code" />
 
-        <!-- Family Name -->
-
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldFamilyName"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:labelText="@string/patient_report_activity_family_name" />
-
-        <!-- First Name -->
 
         <com.mdareports.ui.custom.patient.report.PatientReportField
             android:id="@+id/prFieldFirstName"
-            style="@style/PatientReportField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/patient_report_padding_between_fields"
             custom:labelText="@string/patient_report_activity_first_name" />
 
         <!-- Send button -->
@@ -68,11 +75,10 @@
         <Button
             android:id="@+id/btnSendReport"
             style="@style/btnStyleOrange"
-            android:layout_width="104dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"            
             android:layout_gravity="center"
             android:text="@string/patient_report_activity_send" />
-        
     </LinearLayout>
 
 </ScrollView>
