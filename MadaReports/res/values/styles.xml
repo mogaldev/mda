@@ -17,7 +17,7 @@
 
     <!-- Help showcase -->
     <style name="ShowcaseView">
-        <item name="sv_backgroundColor">#7733B5E5</item>
+        <item name="sv_backgroundColor">#6633B5E5</item>
     </style>
 
     <style name="ShowcaseView.Light">

@@ -1,18 +1,20 @@
 package com.mdareports.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
-
 import com.mdareports.R;
 
 /**
  * Wrapper for the SharedPreferenceAdaper for easily get the saved values.
  * Implements the Single-tone design pattern.
  */
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 public class SettingsManager {
 	private static SettingsManager instance;
 	private Context cntx;
@@ -55,21 +57,12 @@ public class SettingsManager {
 		String defaultRingtone = RingtoneManager.getDefaultUri(
 				RingtoneManager.TYPE_ALARM).toString();
 
-		boolean exists = PreferenceManager.getDefaultSharedPreferences(
-				this.cntx).contains(
-				cntx.getResources().getString(
-						R.string.prefrences_key_ringtone_uri));
-
-		Log.e("getRingtoneUri-IsExists", exists + "");
-
 		String valueFromPref = getAdapterInstance().readString(
 				R.string.prefrences_key_ringtone_uri, defaultRingtone);
-		Log.e("getRingtoneUri", valueFromPref);
 		return Uri.parse(valueFromPref);
 	}
 
 	public void setRingtoneUri(Uri ringtoneUri) {
-		Log.e("setRingtoneUri", ringtoneUri.toString());
 		getAdapterInstance().writeString(R.string.prefrences_key_ringtone_uri,
 				ringtoneUri.toString());
 	}
@@ -261,5 +254,18 @@ public class SettingsManager {
 						R.string.prefrences_key_spatial_telephony_center_number,
 						number);
 	}
+
+	/** Help */
+	private final String HAS_SEEN_BASE_KEY ="HAS_SEEN_";
+	
+	public boolean hasSeenHelp(Class<?> cls) {			
+		return getAdapterInstance().readBoolean(HAS_SEEN_BASE_KEY + cls.getName(), false);
+	}
+	
+	public void setSeenHelp(Class<?> cls){
+		getAdapterInstance().writeBoolean(HAS_SEEN_BASE_KEY + cls.getName(), true);
+	}
+	
+		
 
 }

@@ -1,6 +1,5 @@
 package com.mdareports.ui.fragments.details;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,30 +20,29 @@ public class TechInfoFragment extends BaseDetailFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_tech_info, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_tech_info,
+				container, false);
+
+		// set the fields members
+		esFieldPulse = (EditableSeekField) rootView
+				.findViewById(R.id.esfieldPulse);
+		esFieldSugar = (EditableSeekField) rootView
+				.findViewById(R.id.esfieldSugar);
+		esFieldBreath = (EditableSeekField) rootView
+				.findViewById(R.id.esfieldBreath);
+
+		bloodPressureField = (BloodPressureField) rootView
+				.findViewById(R.id.bloodPressureField);
+
+		return rootView;
 	}
 
 	@Override
 	public void onStart() {
 		super.onStart();
 
-		// get the container activity
-		Activity activity = getActivity();
-
-		// set the fields members
-		esFieldPulse = (EditableSeekField) activity
-				.findViewById(R.id.esfieldPulse);
-		esFieldSugar = (EditableSeekField) activity
-				.findViewById(R.id.esfieldSugar);
-		esFieldBreath = (EditableSeekField) activity
-				.findViewById(R.id.esfieldBreath);
-
-		bloodPressureField = (BloodPressureField) activity
-				.findViewById(R.id.bloodPressureField);
-
 		// load the details from the report into the fields
 		refreshDataWithCurrentReport();
-
 	}
 
 	@Override
@@ -79,5 +77,5 @@ public class TechInfoFragment extends BaseDetailFragment {
 	public int getTabTitleResourceId() {
 		return R.string.fragment_tech_info_title;
 	}
-	
+
 }
