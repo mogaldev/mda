@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.espian.showcaseview.ShowcaseView;
 import com.espian.showcaseview.targets.ActionViewTarget;
+import com.espian.showcaseview.targets.Target;
 import com.espian.showcaseview.targets.ViewTarget;
 
 public class HelpUtils {
@@ -24,22 +25,11 @@ public class HelpUtils {
 			showHelp(view, resIdTitle, resIdDescription, activity);
 	}
 
-	public static void showHelp(ViewTarget target, int resIdTitle,
-			int resIdDescription, Activity activity) {
-		ShowcaseView.ConfigOptions mOptions = new ShowcaseView.ConfigOptions();
-		mOptions.block = false;
-
-		ShowcaseView sv = ShowcaseView.insertShowcaseView(target, activity,
-				resIdTitle, resIdDescription, mOptions);
-		sv.setShowcase(target, true);
-	}
-
-	public static void showHelp(ActionViewTarget target, int resIdTitle,
+	public static void showHelp(Target target, int resIdTitle,
 			int resIdDescription, Activity activity) {
 
 		SettingsManager sm = SettingsManager.getInstance(activity);
-		Class<?> cls = activity.getClass();
-		
+		Class<?> cls = activity.getClass();			
 		
 		if (!sm.hasSeenHelp(cls)) {
 			ShowcaseView.ConfigOptions mOptions = new ShowcaseView.ConfigOptions();
