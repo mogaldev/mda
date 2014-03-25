@@ -16,6 +16,7 @@ import com.mdareports.R;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.ReportLocationActivity;
 import com.mdareports.ui.activities.details.DetailsActivity;
+import com.mdareports.utils.HelpUtils;
 
 public class GeneralInfoFragment extends BaseDetailFragment {
 
@@ -70,6 +71,11 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 		ckbIsReported
 				.setOnCheckedChangeListener(isReportedCheckedChangedListener);
 
+		HelpUtils.showHelp(imgPinLocation,
+				R.string.help_showcase_report_details_location_title,
+				R.string.help_showcase_report_details_location_description,
+				getActivity());
+
 		return rootView;
 	}
 
@@ -117,7 +123,9 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 				.getDescription()));
 		txtNotes.setText(getCurrentReport().getNotes());
 		ckbIsReported.setChecked(getCurrentReport().isReported());
-		imgPinLocation.setImageResource(getCurrentReport().hasLocation() ? R.drawable.maps_pin : R.drawable.maps_pin_disabled);
+		imgPinLocation
+				.setImageResource(getCurrentReport().hasLocation() ? R.drawable.maps_pin
+						: R.drawable.maps_pin_disabled);
 	}
 
 	@Override

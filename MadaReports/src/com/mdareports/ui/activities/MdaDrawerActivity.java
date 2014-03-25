@@ -43,19 +43,9 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 					.getSelectedIndex())));
 		}
 
-
-		ShowcaseView.ConfigOptions mOptions = new ShowcaseView.ConfigOptions();
-		mOptions.block = false;
-		ActionViewTarget target = new ActionViewTarget(this,
-				ActionViewTarget.Type.HOME);
-		ShowcaseView sv = ShowcaseView.insertShowcaseView(target, this,
+		HelpUtils.showHelpOnHomeAction(
 				R.string.help_showcase_drawer_menu_title,
-				R.string.help_showcase_drawer_menu_description, mOptions);
-		sv.setShowcase(target, true);
-
-//		HelpUtils.showHelp(drawerList,
-//				R.string.help_showcase_drawer_menu_title,
-//				R.string.help_showcase_drawer_menu_description, this);
+				R.string.help_showcase_drawer_menu_description, this);
 	}
 
 	private void moveToReportsList(ReportsListsFilters filter) {

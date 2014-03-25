@@ -24,10 +24,6 @@
     <!-- unused - delete -->
     <color name="unselected_tab">#FA0000</color>
     <color name="selected_tab">#960000</color>
-    <color name="unread_item_bgcolor">#ffffff</color>
-
-    <!-- Help - showcase -->
-    <string name="help_showcase_drawer_menu_title">Menu</string>
-    <string name="help_showcase_drawer_menu_description">The menu can be shown and hide by clicking the application icon or swiping the menu from the side</string>
+    <color name="unread_item_bgcolor">#ffffff</color>   
 
 </resources>
