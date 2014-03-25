@@ -65,12 +65,12 @@ public class QuickReturnListView extends ListView {
 	public int getComputedScrollY() {
 		if (mItemCount == 0)
 			return 0;
-		
+
 		int pos, nScrollY, nItemY;
 		View view = null;
 		pos = getFirstVisiblePosition();
 		view = getChildAt(0);
-		nItemY = view.getTop();
+		nItemY = (view != null) ? view.getTop() : 0;
 		nScrollY = mItemOffsetY[pos] - nItemY;
 		return nScrollY;
 	}
