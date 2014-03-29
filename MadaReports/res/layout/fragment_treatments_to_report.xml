@@ -12,7 +12,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="20dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        style="@style/TextHeader2"
+        android:gravity="center"
         android:text="@string/fragment_treatments_to_report_all_treatments_in_db" />
 
     <TextView
@@ -22,7 +23,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="20dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        style="@style/TextHeader2"
         android:text="@string/fragment_treatments_to_report_current_treatments_to_report" />
 
     <ListView

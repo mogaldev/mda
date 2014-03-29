@@ -113,12 +113,12 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			// set the text and the icon according to the read status
 			if (report.isRead()) {
 				holder.imgReportIcon
-						.setImageResource(R.drawable.medical_report_gray);
+						.setImageResource(R.drawable.ic_action_read);
 				holder.tvReportDescription.setTextAppearance(getContext(),
 						R.style.ReportsListItem_HeaderText_Read);
 			} else {
 				holder.imgReportIcon
-						.setImageResource(R.drawable.medical_report);
+						.setImageResource(R.drawable.ic_action_unread);
 				holder.tvReportDescription.setTextAppearance(getContext(),
 						R.style.ReportsListItem_HeaderText_Unread);
 			}
@@ -137,7 +137,7 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			// set the is-reported icon
 			holder.imgReportIsReported
 					.setImageResource(report.isReported() ? R.drawable.green_checked_icon
-							: R.drawable.exclamation_basic_yellow);
+							: R.drawable.ic_action_warning);
 
 			// set the has-location icon visibility
 			holder.imgHasLocation

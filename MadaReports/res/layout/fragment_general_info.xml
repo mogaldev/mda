@@ -47,9 +47,9 @@
             <EditText
                 android:id="@+id/txtAddress"
                 android:layout_width="160dp"
-                android:layout_height="@dimen/general_info_address_height"
+                android:layout_height="wrap_content"
                 android:layout_toLeftOf="@id/imgPinLocation"
-                android:inputType="text" >
+                android:inputType="textMultiLine" >
 
                 <requestFocus />
             </EditText>
@@ -70,7 +70,7 @@
             <EditText
                 android:id="@+id/txtDescription"
                 android:layout_width="@dimen/general_info_fields_width"
-                android:layout_height="@dimen/general_info_description_height"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 
@@ -89,7 +89,7 @@
             <EditText
                 android:id="@+id/txtNotes"
                 android:layout_width="@dimen/general_info_fields_width"
-                android:layout_height="@dimen/general_info_notes_height"
+                android:layout_height="wrap_content"                
                 android:layout_alignParentRight="true"
                 android:inputType="textMultiLine" />
 

@@ -17,6 +17,6 @@
 <shape
   xmlns:android="http://schemas.android.com/apk/res/android">
     <corners android:radius="50dp" />    
-    <solid android:color="#d8d9db"/>
-    <stroke android:color="#d8d9db" android:width="5dp"/>   
+    <solid android:color="#dfe1e3"/>
+    <stroke android:color="#dfe1e3" android:width="5dp"/>   
 </shape>

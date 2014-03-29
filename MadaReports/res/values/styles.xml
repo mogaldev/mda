@@ -30,7 +30,7 @@
 
     <!-- ActionBar -->
     <style name="MdaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
-        <item name="android:background">@drawable/tab_unselected_unpressed</item>
+        <item name="android:background">@color/actionbar_color</item>
         <item name="android:titleTextStyle" tools:targetApi="11">@style/MdaActionBarTextStyle</item>
 
         <!-- Support library compatibility -->
@@ -83,7 +83,7 @@
         <item name="android:textColor">@color/accent_1</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingBottom">4dp</item>
-        <item name="android:background">@drawable/accent_bottom_border</item>
+        <item name="android:background">@drawable/text_bottom_border</item>
         <item name="android:textAllCaps" tools:targetApi="14">true</item>
     </style>
 
@@ -212,14 +212,15 @@
         <item name="android:textSize">18sp</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
-    </style>
+    </style>   
+    
     <!-- End of General Info Fragment Style -->
 
 
     <!-- Tech Info Fragment -->
     <style name="TechInfoContainer"></style>
 
-    <style name="TechInfoContainer.TextView" parent="@style/TextHeader">
+    <style name="TechInfoContainer.TextView">
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
     </style>

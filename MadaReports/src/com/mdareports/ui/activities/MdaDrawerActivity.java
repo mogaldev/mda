@@ -7,11 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.espian.showcaseview.ShowcaseView;
-import com.espian.showcaseview.targets.ActionViewTarget;
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.ui.drawer.DrawerItem;
+import com.mdareports.ui.fragments.DonateUsFragment;
 import com.mdareports.ui.fragments.HomeFragment;
 import com.mdareports.ui.fragments.PatientReportFragment;
 import com.mdareports.ui.fragments.SettingsFragment;
@@ -26,7 +25,7 @@ import com.mdareports.utils.HelpUtils;
 public class MdaDrawerActivity extends DrawerBaseActivity {
 
 	public enum DrawerMenuItems {
-		Home, AllReports, UnreadReports, UnreportedReports, PatientReport, Settings, AboutUs
+		Home, AllReports, UnreadReports, UnreportedReports, PatientReport, DonateUs, Settings, AboutUs
 	}
 
 	@Override
@@ -80,6 +79,18 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 			frgmt = new PatientReportFragment();
 			break;
 
+		case DonateUs:
+			frgmt = new DonateUsFragment();
+			break;
+			
+		case Settings:
+			if (DeviceInfoUtils.hasHoneycomb()) {
+				frgmt = new SettingsFragment();
+			} else {
+				startActivity(new Intent(this, OldSettingsActivity.class));
+			}
+			break;
+			
 		case AboutUs:
 			// frgmt = new AboutUsFragment();
 			Intent i = new Intent(this, ReportLocationActivity.class);
@@ -89,13 +100,7 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 
 			break;
 
-		case Settings:
-			if (DeviceInfoUtils.hasHoneycomb()) {
-				frgmt = new SettingsFragment();
-			} else {
-				startActivity(new Intent(this, OldSettingsActivity.class));
-			}
-			break;
+		
 
 		default:
 			break;
@@ -120,15 +125,15 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 				R.string.drawer_menu_item_category_reports));
 
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_reports_all,
-				android.R.drawable.ic_menu_sort_by_size,
+				R.drawable.ic_action_view_as_list,
 				DrawerMenuItems.AllReports));
 
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_reports_unread,
-				R.drawable.ic_menu_unread, DrawerMenuItems.UnreadReports));
+				R.drawable.ic_action_unread, DrawerMenuItems.UnreadReports));
 
 		items.add(new DrawerItem(++i,
 				R.string.drawer_menu_item_reports_unreported,
-				R.drawable.ic_menu_unreported,
+				R.drawable.ic_action_warning,
 				DrawerMenuItems.UnreportedReports));
 
 		items.add(new DrawerItem(++i,
@@ -142,6 +147,10 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 				android.R.drawable.ic_menu_preferences,
 				DrawerMenuItems.Settings));
 
+		items.add(new DrawerItem(++i, R.string.drawer_menu_item_donate_us,
+				R.drawable.ic_action_favorite,
+				DrawerMenuItems.DonateUs));
+		
 		items.add(new DrawerItem(++i, R.string.drawer_menu_item_about_us,
 				android.R.drawable.ic_menu_info_details,
 				DrawerMenuItems.AboutUs));

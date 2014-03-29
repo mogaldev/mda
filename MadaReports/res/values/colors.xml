@@ -9,14 +9,16 @@
     <color name="body_text_1_inverse">#ffffffff</color>
     <color name="body_text_2_inverse">#99ffffff</color>
     <color name="body_text_1_positive">#ff4CAA47</color>
-    <color name="accent_1">#ff4d90fe</color>
+    <!-- <color name="accent_1">#ff4d90fe</color> -->
+    <color name="accent_1">#ffff614c</color>
     <color name="dark_divider">#32000000</color>
     <color name="activity_bgcolor">#F5FFFA</color>
-    <color name="activity_text_color">#ED1C24</color>
+    <!-- <color name="activity_text_color">#ED1C24</color> -->
+    <color name="activity_text_color">@color/body_text_2</color>
     <color name="reports_list_item_read_textcolor">#8b8682</color>
     <color name="reports_list_item_unread_textcolor">@color/activity_text_color</color>
     <color name="actionbar_text_color">#FFFFFF</color>
-    <color name="actionbar_color">#E72328</color>
+    <color name="actionbar_color">#99E72328</color>    
 
     <!-- Reports List -->
     <color name="reports_list_item_footer_background">#fafafa</color>

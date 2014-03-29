@@ -30,7 +30,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:background="@drawable/medical_report" />
+                android:src="@drawable/medical_report" />
 
             <ImageView
                 android:id="@+id/imgReportIsReported"
@@ -47,7 +47,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/imgReportIsReported"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/maps_pin" />
+                android:src="@drawable/ic_action_place" />
 
             <TextView
                 android:id="@+id/tvReportDescription"

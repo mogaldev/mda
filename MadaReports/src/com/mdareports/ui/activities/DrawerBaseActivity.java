@@ -28,7 +28,6 @@ public class DrawerBaseActivity extends BaseActivity {
 		setContentView(R.layout.activity_drawer_main);
 
 		// enable ActionBar app icon to behave as action to toggle nav drawer
-		// TODO: setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		// Find the DrawerLayout view and the DrawerList view
@@ -42,7 +41,7 @@ public class DrawerBaseActivity extends BaseActivity {
 		// between the sliding drawer and the action bar app icon
 		actionBarDrawerToggle = new ActionBarDrawerToggle(this, /* host Activity */
 		drawerLayout, /* DrawerLayout object */
-		android.R.drawable.ic_menu_more, /*
+		R.drawable.ic_drawer, /*
 										 * nav drawer image to replace 'Up'
 										 * caret
 										 */
