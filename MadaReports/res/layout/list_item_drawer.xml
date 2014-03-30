@@ -20,7 +20,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/imgDrawerItemIcon"
-        android:text="Settings"
+        android:text="Settings"        
+        style="@style/TextTitle"
         android:textSize="20sp" />
 
 </RelativeLayout>

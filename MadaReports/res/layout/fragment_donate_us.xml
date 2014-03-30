@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/transparent_background_pattern" >
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvDonateSum"
@@ -14,20 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
         android:text="5$"
-        android:textSize="36sp" />
-
-    <RatingBar
-        android:id="@+id/ratingBarDonation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:numStars="5"
-        android:progressDrawable="@drawable/custom_ratingbar_selector"
-        android:rating="3.0"
-        android:background="@drawable/bottom_line_background"
-        android:stepSize="1.0" />
+        android:textSize="60sp" />
 
     <ImageView
         android:id="@+id/imgGoodRate"
@@ -46,6 +32,8 @@
         android:src="@drawable/ic_action_bad" />
 
     <Button
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:id="@+id/btnSendReport"
         style="@style/btnStyleOrange"
         android:layout_width="match_parent"
@@ -54,5 +42,17 @@
         android:layout_below="@+id/tvDonateSum"
         android:layout_marginTop="69dp"
         android:text="Donate !" />
+
+    <RatingBar
+        android:id="@+id/ratingBarDonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/bottom_line_background"
+        android:numStars="5"
+        android:progressDrawable="@drawable/custom_ratingbar_selector"
+        android:stepSize="1.0" />
 
 </RelativeLayout>

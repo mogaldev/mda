@@ -50,37 +50,37 @@ public class DatabaseWrapper {
 		List<Report> reports = null;
 		try {
 			reports = helper.getReportDao().queryBuilder()
-					.orderByRaw(Report.ID_COLUMN_NAME + " DESC").query();
-			// reports = helper.getReportDao().queryForAll();
+					.orderBy(Report.ID_COLUMN_NAME, false).query();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return reports;
 	}
-	
+
 	public List<Report> getUnreadReports() {
 		List<Report> reports = null;
 		try {
-			reports = helper.getReportDao().queryForEq(Report.IS_READ_COLUMN_NAME, false);			
+			reports = helper.getReportDao().queryBuilder()
+					.orderBy(Report.ID_COLUMN_NAME, false).where()
+					.eq(Report.IS_READ_COLUMN_NAME, false).query();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return reports;
 	}
-	
+
 	public List<Report> getUnreportedReports() {
 		List<Report> reports = null;
 		try {
-			reports = helper.getReportDao().queryForEq(Report.IS_REPORTED_COLUMN_NAME, false);			
+			reports = helper.getReportDao().queryBuilder()
+					.orderBy(Report.ID_COLUMN_NAME, false).where()
+					.eq(Report.IS_REPORTED_COLUMN_NAME, false).query();
 		} catch (Exception e) {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 		return reports;
 	}
-	
-	
-	
-	
+
 	public boolean deleteAllReports() {
 		try {
 			helper.getReportDao().delete(getAllReports());
@@ -92,12 +92,12 @@ public class DatabaseWrapper {
 		return true;
 	}
 
-	public boolean deleteReports(Report[] reports){
-		try {				
+	public boolean deleteReports(Report[] reports) {
+		try {
 			for (Report r : reports) {
-				helper.getReportDao().delete(r);	
+				helper.getReportDao().delete(r);
 			}
-						
+
 			notifyDatabaseChanged();
 		} catch (SQLException e) {
 			Logger.LOGE(TAG, e.getMessage());
@@ -105,7 +105,7 @@ public class DatabaseWrapper {
 		}
 		return true;
 	}
-	
+
 	public boolean deleteReport(Report report) {
 		try {
 			helper.getReportDao().delete(report);
@@ -154,8 +154,7 @@ public class DatabaseWrapper {
 			Logger.LOGE(TAG, e.getMessage());
 		}
 	}
-	
-	
+
 	// ////////////////////////////
 	// End of Reports Functions
 	// ////////////////////////////
@@ -165,7 +164,6 @@ public class DatabaseWrapper {
 	// ////////////////////////////
 
 	@SuppressWarnings("unchecked")
-
 	public List<ICodeTable> getAll(String codeTableActivityName) {
 		List<ICodeTable> records = null;
 		try {

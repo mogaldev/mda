@@ -1,46 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/transparent_background_pattern" >
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ratingBar1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="86dp"
-        android:text="5$"
-        android:textSize="30sp" />
-
-    <RatingBar
-        android:id="@+id/ratingBar1"
+    <ImageView
+        android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:numStars="5"
-        android:progressDrawable="@drawable/custom_ratingbar_selector"
-        android:rating="3.0"
-        android:stepSize="1.0" />
+        android:layout_centerInParent="true"
+        android:src="@drawable/mda_icon" />
 
-    <ImageView
-        android:id="@+id/ImageView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/ratingBar1"
-        android:layout_below="@+id/ratingBar1"
-        android:src="@drawable/ic_action_good" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ratingBar1"
-        android:layout_alignTop="@+id/ImageView01"
-        android:src="@drawable/ic_action_bad" />
 
 </RelativeLayout>
