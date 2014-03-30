@@ -16,6 +16,8 @@ public class AboutUsFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+		changeTitle(R.string.title_about_us);
+		
 		final View rootView = inflater.inflate(R.layout.fragment_about_us,
 				container, false);
 

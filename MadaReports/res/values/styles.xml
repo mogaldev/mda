@@ -196,7 +196,7 @@
     <style name="ReportsList.Legend.Text" parent="@style/TextTitle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <!-- <item name="android:textAppearance">?android:attr/textAppearanceSmall</item> -->
+        <item name="android:textColor">@android:color/white</item>        
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 

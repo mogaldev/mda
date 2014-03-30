@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.mdareports.R;
-import com.mdareports.db.DatabaseWrapper;
 import com.mdareports.ui.drawer.DrawerItem;
+import com.mdareports.ui.fragments.AboutUsFragment;
 import com.mdareports.ui.fragments.DonateUsFragment;
 import com.mdareports.ui.fragments.HomeFragment;
 import com.mdareports.ui.fragments.PatientReportFragment;
@@ -92,12 +92,7 @@ public class MdaDrawerActivity extends DrawerBaseActivity {
 			break;
 			
 		case AboutUs:
-			// frgmt = new AboutUsFragment();
-			Intent i = new Intent(this, ReportLocationActivity.class);
-			i.putExtra(ReportLocationActivity.REPORT_ID_EXTRA, DatabaseWrapper
-					.getInstance(this).getAllReports().get(0).getId());
-			startActivity(i);
-
+			frgmt = new AboutUsFragment();		
 			break;
 
 		

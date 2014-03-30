@@ -24,6 +24,8 @@ public class DonateUsFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+		changeTitle(R.string.title_donate_us);
+		
 		final View rootView = inflater.inflate(R.layout.fragment_donate_us,
 				container, false);
 

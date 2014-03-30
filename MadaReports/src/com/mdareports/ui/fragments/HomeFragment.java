@@ -20,6 +20,8 @@ public class HomeFragment extends BaseFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
+		changeTitle(R.string.app_name);
+		
 		final View rootView = inflater.inflate(R.layout.fragment_home,
 				container, false);
 

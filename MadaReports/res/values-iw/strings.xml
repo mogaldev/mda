@@ -12,11 +12,14 @@
         <item quantity="other">%d דיווחים שלא נקראו</item>
     </plurals>
 
-    <string name="title_activity_detail">פרטי דיווח</string>
-    <string name="title_activity_settings">הגדרות</string>
-    <string name="title_activity_treatments">טיפולים</string>
-    <string name="title_activity_patient_report">טופס חולה/נפגע</string>
-    <string name="title_activity_about_us">אודות</string>
+    
+    <string name="title_report_detail">פרטי דיווח</string>
+    <string name="title_settings">הגדרות</string>
+    <string name="title_treatments">טיפולים</string>
+    <string name="title_patient_report">טופס חולה/נפגע</string>
+    <string name="title_about_us">אודות</string>
+    <string name="title_donate_us">עזרו לנו</string>    
+    
     <string name="yes">כן</string>
     <string name="ok">אישור</string>
     <string name="cancel">ביטול</string>

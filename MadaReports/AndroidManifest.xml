@@ -66,21 +66,16 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.mdareports.ui.activities.PatientReportActivity"
-            android:label="@string/title_activity_patient_report"            
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="com.mdareports.ui.activities.OldSettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:label="@string/title_settings" >
         </activity>
         <activity
             android:name="com.mdareports.ui.activities.TreatmentsActivity"
-            android:label="@string/title_activity_treatments" >
+            android:label="@string/title_treatments" >
         </activity>
         <activity
             android:name="com.mdareports.ui.activities.details.DetailsActivity"
-            android:label="@string/title_activity_detail"
+            android:label="@string/title_report_detail"
             android:parentActivityName="com.mdareports.ui.activities.ReportsListActivity"
             android:screenOrientation="portrait" >
 

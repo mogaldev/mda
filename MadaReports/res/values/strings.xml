@@ -12,11 +12,12 @@
         <item quantity="other">%d unread reports</item>
     </plurals>
 
-    <string name="title_activity_detail">Report Details</string>
-    <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_treatments">Treatments</string>
-    <string name="title_activity_patient_report">Patient Report</string>
-    <string name="title_activity_about_us">About Us</string>
+    <string name="title_report_detail">Report Details</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_treatments">Treatments</string>
+    <string name="title_patient_report">Patient Report</string>
+    <string name="title_about_us">About Us</string>
+    <string name="title_donate_us">Donate Us</string>
     <string name="yes">Yes</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>

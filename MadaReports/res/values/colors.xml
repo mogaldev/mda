@@ -18,7 +18,7 @@
     <color name="reports_list_item_read_textcolor">#8b8682</color>
     <color name="reports_list_item_unread_textcolor">@color/activity_text_color</color>
     <color name="actionbar_text_color">#FFFFFF</color>
-    <color name="actionbar_color">#99E72328</color>    
+    <color name="actionbar_color">#eeE72328</color>    
 
     <!-- Reports List -->
     <color name="reports_list_item_footer_background">#fafafa</color>
@@ -28,7 +28,6 @@
     <color name="selected_tab">#960000</color>
     <color name="unread_item_bgcolor">#ffffff</color>   
 
-    
-    <color name="sticky_block_background">#ddffffff</color>
+    <color name="reports_list_legened_background">#E72328</color>        
     
 </resources>
