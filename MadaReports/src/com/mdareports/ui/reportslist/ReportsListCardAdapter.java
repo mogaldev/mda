@@ -116,7 +116,7 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			// set the text and the icon according to the read status
 			if (report.isRead()) {
 				holder.imgReportIcon
-						.setImageResource(R.drawable.test_read_red);
+						.setImageResource(R.drawable.ic_action_read);
 				holder.tvReportDescription.setTextAppearance(getContext(),
 						R.style.ReportsListItem_HeaderText_Read);
 			} else {
