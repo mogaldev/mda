@@ -54,13 +54,13 @@ public class DrawerItemsAdapter extends BaseAdapter {
 			holder.tvDrawerCategory = (TextView) convertView
 					.findViewById(R.id.tvDrawerCategory);	
 
-			// set custom fonts for non-hebrew version
-			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
-					.getContext())) {
-				FontTypeFaceManager.getInstance(convertView.getContext())
-						.setFont(holder.tvDrawerCategory,
-								CustomFonts.RobotoThin);
-			}
+//			// set custom fonts for non-hebrew version
+//			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
+//					.getContext())) {
+//				FontTypeFaceManager.getInstance(convertView.getContext())
+//						.setFont(holder.tvDrawerCategory,
+//								CustomFonts.RobotoThin);
+//			}
 
 			convertView.setTag(holder);
 		} else {
@@ -86,13 +86,13 @@ public class DrawerItemsAdapter extends BaseAdapter {
 			holder.tvDrawerItemDescription = (TextView) convertView
 					.findViewById(R.id.tvDrawerItemDescription);
 
-			// set custom fonts for non-hebrew version
-			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
-					.getContext())) {
-				FontTypeFaceManager.getInstance(convertView.getContext())
-						.setFont(holder.tvDrawerItemDescription,
-								CustomFonts.RobotoThin);
-			}
+//			// set custom fonts for non-hebrew version
+//			if (!DeviceInfoUtils.isCurrentLanguageHebrew(convertView
+//					.getContext())) {
+//				FontTypeFaceManager.getInstance(convertView.getContext())
+//						.setFont(holder.tvDrawerItemDescription,
+//								CustomFonts.RobotoThin);
+//			}
 
 			convertView.setTag(holder);
 		} else {

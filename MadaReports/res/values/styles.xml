@@ -13,7 +13,7 @@
         <item name="actionBarStyle">@style/MdaActionBar</item>
         <item name="actionBarTabStyle">@style/MdaActionBarTab</item>
         <item name="actionBarTabTextStyle">@style/MdaActionBarTabText</item>
-    </style>
+    </style>  
 
     <!-- Help showcase -->
     <style name="ShowcaseView">
@@ -212,8 +212,8 @@
         <item name="android:textSize">18sp</item>
         <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">anyRtl</item>
-    </style>   
-    
+    </style>
+
     <!-- End of General Info Fragment Style -->
 
 
@@ -252,7 +252,7 @@
     <style name="PatientReportField.TextView" parent="@style/TextHeaderSub">
         <item name="android:gravity">center</item>
         <item name="android:textSize">18sp</item>
-          <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
+        <item name="android:layoutDirection" tools:targetApi="17">rtl</item>
         <item name="android:textDirection" tools:targetApi="17">rtl</item>
     </style>
 

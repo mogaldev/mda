@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@drawable/transparent_background_pattern" >
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="190dp"
+    <TextView
+        android:id="@+id/tvDonateSum"
+        style="@style/TextHeader2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBarDonation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:text="5$"
+        android:textSize="36sp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarDonation"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="143dp"        
-        android:src="@drawable/ic_action_favorite" />
+        android:layout_marginTop="62dp"
+        android:numStars="5"
+        android:progressDrawable="@drawable/custom_ratingbar_selector"
+        android:rating="3.0"
+        android:background="@drawable/bottom_line_background"
+        android:stepSize="1.0" />
+
+    <ImageView
+        android:id="@+id/imgGoodRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ratingBarDonation"
+        android:layout_below="@+id/ratingBarDonation"
+        android:src="@drawable/ic_action_good" />
+
+    <ImageView
+        android:id="@+id/imgBadRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ratingBarDonation"
+        android:layout_alignTop="@+id/imgGoodRate"
+        android:src="@drawable/ic_action_bad" />
+
+    <Button
+        android:id="@+id/btnSendReport"
+        style="@style/btnStyleOrange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvDonateSum"
+        android:layout_marginTop="69dp"
+        android:text="Donate !" />
 
 </RelativeLayout>

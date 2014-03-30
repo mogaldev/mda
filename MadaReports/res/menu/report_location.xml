@@ -6,7 +6,7 @@
         android:id="@+id/reportLocation_activity_menu_search"
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/action_bars_search"                
-        mda:actionViewClass="com.mdareports.ui.custom.CustomAdapterSearchView"
+        mda:actionViewClass="com.mdareports.ui.general.CustomAdapterSearchView"
         mda:showAsAction="always|collapseActionView"/>
     <item
         android:id="@+id/reportLocation_activity_menu_save"

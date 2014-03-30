@@ -1,116 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/transparent_background_pattern">
+    android:background="@drawable/transparent_background_pattern" >
 
-  <!--   <TextView
+    <TextView
         android:id="@+id/textView1"
-        style="@style/TextHeader"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="TextHeader שלום"
-        android:textSize="20sp" />
+        android:layout_below="@+id/ratingBar1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp"
+        android:text="5$"
+        android:textSize="30sp" />
 
-    <TextView
-        style="@style/TextHeader2"
-        android:layout_width="match_parent"
+    <RatingBar
+        android:id="@+id/ratingBar1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="TextHeader2 שלום"
-        android:textSize="20sp" />
-
-    <TextView
-        style="@style/TextHeader3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="TextHeader3 שלום"
-        android:textSize="20sp" />
-
-    <TextView
-        style="@style/TextHeaderSub"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="TextHeaderSub שלום"
-        android:textSize="20sp" />
-
-    <View
-        android:id="@+id/vHrSeperator"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
         android:layout_alignParentTop="true"
-        android:background="#e5e5e5" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"
+        android:numStars="5"
+        android:progressDrawable="@drawable/custom_ratingbar_selector"
+        android:rating="3.0"
+        android:stepSize="1.0" />
 
-    <TextView
-        style="@style/ListItemTitle"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/ImageView01"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemTitle שלום"
-        android:textSize="20sp" />
+        android:layout_alignRight="@+id/ratingBar1"
+        android:layout_below="@+id/ratingBar1"
+        android:src="@drawable/ic_action_good" />
 
-    <TextView
-        style="@style/ListItemTitle.ComplexContent"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemTitle.ComplexContent שלום"
-        android:textSize="20sp" />
+        android:layout_alignLeft="@+id/ratingBar1"
+        android:layout_alignTop="@+id/ImageView01"
+        android:src="@drawable/ic_action_bad" />
 
-    <TextView
-        style="@style/ListItemTitle.ComplexContent.Inset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemTitle.ComplexContent.Inset שלום"
-        android:textSize="20sp" />
-
-    <TextView
-        style="@style/ListItemSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemSubtitle שלום"
-        android:textSize="20sp" />
-
-    <TextView
-        style="@style/ListItemSubtitle.Bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemSubtitleBold שלום"
-        android:textSize="20sp" />
-
-    <TextView
-        style="@style/ListItemTitle.Inverse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemTitle.Inverse שלום"
-        android:textSize="20sp" />
-    
-        <TextView
-        style="@style/ListItemSubtitle.Inverse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="2dp"
-        android:text="ListItemSubtitle.Inverse שלום"
-        android:textSize="20sp" /> -->
-
-</LinearLayout>
+</RelativeLayout>

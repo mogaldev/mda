@@ -60,8 +60,8 @@ public class GeneralInfoFragment extends BaseDetailFragment {
 			public void onCheckedChanged(CompoundButton buttonView,
 					boolean isChecked) {
 				imgIsReportedIcon
-						.setImageResource((isChecked ? R.drawable.green_checked_icon
-								: R.drawable.exclamation_basic_yellow));
+						.setImageResource((isChecked ? R.drawable.ic_action_accept
+								: R.drawable.ic_action_warning));
 			}
 		};
 

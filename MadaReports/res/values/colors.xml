@@ -28,4 +28,7 @@
     <color name="selected_tab">#960000</color>
     <color name="unread_item_bgcolor">#ffffff</color>   
 
+    
+    <color name="sticky_block_background">#ddffffff</color>
+    
 </resources>

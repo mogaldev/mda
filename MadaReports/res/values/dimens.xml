@@ -59,4 +59,8 @@
     
     <dimen name="blood_pressure_view_height_dimension_dialog">80dp</dimen>
 
+    
+    
+    <dimen name="rating_bar_thumb_offset">0dp</dimen>
+    
 </resources>
