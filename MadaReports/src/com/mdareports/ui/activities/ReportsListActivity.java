@@ -27,7 +27,7 @@ public class ReportsListActivity extends BaseActivity {
 
 	private ReportsFilterTextWatcher reportsFilterTextWatcher;
 	public static final String REPORTS_LIST_ARGS = "REPORTS_LIST_ARGS";
-	private static BaseReportsListFragment currentFragment;
+	private BaseReportsListFragment currentFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

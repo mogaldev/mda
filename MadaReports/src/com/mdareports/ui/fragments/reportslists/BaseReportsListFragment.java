@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
+import com.mdareports.db.DbChangedNotifier;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.fragments.BaseFragment;
 import com.mdareports.ui.reportslist.ReportsListCardAdapter;
@@ -22,7 +23,7 @@ import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 import com.mdareports.utils.NotificationsManager;
 import com.mdareports.utils.SettingsManager;
 
-public abstract class BaseReportsListFragment extends BaseFragment {
+public abstract class BaseReportsListFragment extends BaseFragment implements DbChangedNotifier {
 
 	protected ReportsListCardAdapter reportsAdapter;
 	protected AnimatedQuickReturnListView listView;
@@ -58,15 +59,31 @@ public abstract class BaseReportsListFragment extends BaseFragment {
 	}
 	
 	@Override
-	public void onStart() {
-		super.onStart();
+	public void onResume() {
+		super.onResume();
 
 		reportsAdapter = new ReportsListCardAdapter(getActivity(), getReports());
 		listView.setAdapter(reportsAdapter);
 
+		// Register for DbChangedListener
+		DatabaseWrapper.getInstance(getActivity()).setDbChangedListener(this);
+		
 		// Just remove the SMS Received Notification
 		NotificationsManager.getInstance(getActivity())
 				.removeSmsReceivedNotification();
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		
+		// Unregister from the DbChangedListener
+		DatabaseWrapper.getInstance(getActivity()).removeDbChangedListener(this);
+	}
+
+	@Override
+	public void DbChanged() {
+		reportsAdapter.updateReports(getReports());
 	}
 
 	public abstract List<Report> getReports();

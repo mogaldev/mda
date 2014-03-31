@@ -41,6 +41,10 @@ public class DatabaseWrapper {
 	public void setDbChangedListener(DbChangedNotifier listener) {
 		listeners.add(listener);
 	}
+	
+	public void removeDbChangedListener(DbChangedNotifier listener) {
+		listeners.remove(listener);
+	}
 
 	// ////////////////////////////
 	// Reports Functions

@@ -63,6 +63,7 @@
             android:name="com.mdareports.ui.activities.ReportsListActivity"
             android:label="@string/app_name"
             android:parentActivityName="com.mdareports.ui.activities.MdaDrawerActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" >
         </activity>
         <activity

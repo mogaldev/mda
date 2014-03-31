@@ -20,15 +20,13 @@ import android.widget.TextView;
 
 import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
-import com.mdareports.db.DbChangedNotifier;
 import com.mdareports.db.models.Report;
 import com.mdareports.ui.activities.details.DetailsActivity;
 
-public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
-		DbChangedNotifier {
+public class ReportsListCardAdapter extends BaseAdapter implements Filterable {
 	private Context context;
-	private ArrayList<Report> reportsList;
-	private ArrayList<Report> originalReportsList;
+	private List<Report> reportsList;
+	private List<Report> originalReportsList;
 	private LayoutInflater inflater;
 
 	static class ViewHolder {
@@ -47,8 +45,6 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 		this.originalReportsList = this.reportsList;
 		this.inflater = (LayoutInflater) getContext().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
-
-		DatabaseWrapper.getInstance(context).setDbChangedListener(this);
 	}
 
 	public ReportsListCardAdapter(Context context) {
@@ -95,9 +91,8 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 			holder.tvReportAddress = (TextView) convertView
 					.findViewById(R.id.tvReportAddress);
 
-			
 			holder.tvReportDescription.setMaxLines(2);
-			
+
 			convertView.setTag(holder);
 
 		} else {
@@ -217,10 +212,8 @@ public class ReportsListCardAdapter extends BaseAdapter implements Filterable,
 		return reportsList.size();
 	}
 
-	@Override
-	public void DbChanged() {
-		this.originalReportsList = (ArrayList<Report>) DatabaseWrapper
-				.getInstance(getContext()).getAllReports();
+	public void updateReports(List<Report> reports) {
+		this.originalReportsList = reports;
 		resetData();
 		notifyDataSetChanged();
 	}
