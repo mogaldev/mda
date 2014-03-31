@@ -21,6 +21,6 @@
         android:layout_height="150dp"
         android:layout_below="@id/emptyViewLabel"
          android:layout_centerInParent="true" 
-        android:src="@drawable/ic_report_read" />
+        android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>

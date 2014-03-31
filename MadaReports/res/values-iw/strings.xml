@@ -175,6 +175,8 @@
     <string name="patient_report_activity_send">שליחה</string>
     <!-- End of Patient Report Activity -->
 
+    <!-- Donate Us Activity -->
+    <string name="donate_us_donation">תרום!</string>
 
     <!-- About Us Activity -->
     <string name="about_us_activity_who_we_are">מי אנחנו?</string>
