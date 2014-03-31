@@ -106,6 +106,10 @@
     <string name="prefrences_title_volunteer_name">Volunteer Name</string>
     <string name="prefrences_title_volunteer_mirs">Volunteer MIRS</string>
     <string name="prefrences_title_spatial_telephony_center_number">Sp. Center Number</string>
+    <string name="prefrences_category_notifications_key">CATGRY_NOTIFICATIONS</string>
+    <string name="prefrences_category_code_tables_key">CATGRY_CODE_TABLES</string>
+    <string name="prefrences_category_volunteer_details_key">VOLUNTEER_DETAILS_TABLES</string>
+    <string name="prefrences_category_spatial_telephony_center_key">SPATIAL_TELEPHONY_CENTER_DETAILS_TABLES</string>
 
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">Enable vibrate</string>
