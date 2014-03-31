@@ -77,7 +77,7 @@ public class EditableSeekField extends RelativeLayout {
 							R.styleable.EditableSeekField_positiveButtonText,
 							R.string.ok), a.getResourceId(
 							R.styleable.EditableSeekField_negativeButtonText,
-							R.string.cancel)); // TODO: maybe this option can be
+							android.R.string.cancel)); // TODO: maybe this option can be
 												// removed and set the OK and
 												// CANCEL for all of the fields
 		} finally {
@@ -98,7 +98,7 @@ public class EditableSeekField extends RelativeLayout {
 	 *            R.string.ok
 	 * @param resStrIdNegativeButton
 	 *            - the string to appear on the negative button, the default is
-	 *            R.string.cancel
+	 *            android.R.string.cancel
 	 */
 	public void initialize(final String label, int maxProgress,
 			final int resStrIdPositiveButton, final int resStrIdNegativeButton) {

@@ -12,34 +12,37 @@
         <item quantity="other">%d דיווחים שלא נקראו</item>
     </plurals>
 
-    
+        
+    <!-- Titles -->
     <string name="title_report_detail">פרטי דיווח</string>
     <string name="title_settings">הגדרות</string>
     <string name="title_treatments">טיפולים</string>
     <string name="title_patient_report">טופס חולה/נפגע</string>
     <string name="title_about_us">אודות</string>
     <string name="title_donate_us">עזרו לנו</string>    
-    
-    <string name="yes">כן</string>
-    <string name="ok">אישור</string>
-    <string name="cancel">ביטול</string>
-    <string name="share_string_general_details">פרטי מקרה</string>
-    <string name="share_string_technical_details">פרטים טכניים</string>
-    <string name="share_string_treatments">טיפולים שנתנו</string>
+                
+    <!-- Share exported format titles -->
+    <string name="share_title_general_details">פרטי מקרה</string>
+    <string name="share_title_technical_details">פרטים טכניים</string>
+    <string name="share_title_treatments">טיפולים שנתנו</string>
     <!-- End of General Application Strings -->
 
 
-    <!-- Action Bars -->
-    <string name="action_bars_settings">הגדרות</string>
-    <string name="action_bars_search_view_hint">חיפוש...</string>
-    <string name="action_bars_add">הוספה</string>
-    <string name="action_bars_save">שמור</string>
-    <string name="action_bars_delete">מחיקה</string>
-    <string name="action_bars_search">חפש</string>
-    <string name="action_bars_share">שתף</string>
-    <string name="action_bars_patient_report">טופס חולה/נפגע</string>
-    <string name="action_bars_about_us">אודות</string>
+    <!-- Action Bar -->
+    <string name="action_bar_settings">הגדרות</string>
+    <string name="action_bar_search_view_hint">חיפוש...</string>
+    <string name="action_bar_add">הוספה</string>
+    <string name="action_bar_save">שמור</string>
+    <string name="action_bar_delete">מחיקה</string>
+    <string name="action_bar_search">חפש</string>
+    <string name="action_bar_share">שתף</string>
+    
+    <!-- Action bar - Searchable -->
+    <string name="searchable_label">Search label</string>
+    <string name="searchable_hint">Search hint</string>    
+    
     <!-- End of Action Bars -->
+
 
 	<!-- Drawer -->
     <string name="drawer_open_accessibility">פתיחה</string>
@@ -51,7 +54,8 @@
     <string name="drawer_menu_item_reports_all">הכל</string>
     <string name="drawer_menu_item_reports_unread">לא נקראו</string>
     <string name="drawer_menu_item_reports_unreported">לא דווחו</string>    
-    <string name="drawer_menu_item_patience_report">דוח מטופל</string>
+    <string name="drawer_menu_item_patience_report">טופס חולה/נפגע</string>
+    <string name="drawer_menu_item_donate_us">עזרו לנו</string>
     <string name="drawer_menu_item_settings">הגדרות</string>
     <string name="drawer_menu_item_about_us">אודות</string>                         
     <!-- End of Drawer -->
@@ -63,6 +67,7 @@
     <!-- ReportsList Legend -->
     <string name="reports_list_legend_reported">דווח</string>
     <string name="reports_list_legend_unreported">לא דווח</string>
+    <string name="reports_list_legend_has_location">נבחר מיקום</string>
     <!-- End of ReportsList Activity -->
 
 
@@ -90,6 +95,7 @@
     <string name="prefrences_title_volunteer_name">שם כונן</string>
     <string name="prefrences_title_volunteer_mirs">מספר מירס</string>
     <string name="prefrences_title_spatial_telephony_center_number">מספר מוקד מרחבי</string>
+    
     <!-- Summaries -->
     <string name="prefrences_summary_vibrate_enabled">האם לבצע רטט בעת קבלת התראה</string>
     <string name="prefrences_summary_sound_enabled">האם להפעיל את הצלצול הנבחר בעת קבלת התראה</string>
@@ -97,6 +103,7 @@
     <string name="prefrences_summary_treatments">ניהול טיפולים</string>
     <string name="prefrences_summary_abort_broadcast">האם למנוע מאפליקציות SMS קבלת ההודעה</string>
     <string name="prefrences_summary_spatial_telephony_center_number">המספר הסלולרי  של המוקד המרחבי אליו נשלחים דיווחי המטופלים</string>
+    
     <!-- Categories -->
     <string name="prefrences_category_notifications_title">התראות</string>
     <string name="prefrences_category_code_tables_title">טבלאות</string>
@@ -110,7 +117,7 @@
     <string name="detail_activity_report_saved">הדיווח נשמר</string>
     <!-- Detail Activity Action Bar -->
     <string name="menu_refresh_data">רענן נתונים</string>
-    <string name="menu_share_message">שלח את פרטי הדיווח ל...</string>
+    <string name="menu_share_message">שלח את פרטי הדיווח ל…</string>
     <string name="menu_show_original_message">הצג הודעה מקורית</string>
     <!-- Tabs Titles -->
     <string name="fragment_general_info_general_info_tab_title">כללי</string>
@@ -152,7 +159,6 @@
     <string name="treatments_rescue">חילוץ</string>
     <string name="treatments_administrate_glucogel">מתן גלוקוג\'ל</string>
     <string name="treatments_administrate_aspirin">מתן אספירין</string>
-    <!-- End of Default Treatments -->
 
 
     <!-- Patient Report Activity -->
@@ -170,7 +176,12 @@
     <!-- About Us Activity -->
     <string name="about_us_activity_who_we_are">מי אנחנו?</string>
     <string name="about_us_activity_about_us_details">אנו, צוות MoGal Development, מתמחים באפליקציות Mobile וצד שרת.\nהרגישו חופשי ליצור עמנו קשר בנוגע לכל פניה, המלצה וביקורת.\nאנו נשמח לקרוא את תגובותיכם, ונשתדל לענות לפניותיכם בהקדם האפשרי.</string>
-    <string name="about_us_no_email_clients_installed">לא מותקנת אפליקציה לשליחת דואר-אלקטרוני</string>
-    <!-- End of About Us Activity -->
+    <string name="about_us_no_email_clients_installed">לא מותקנת אפליקציה לשליחת דואר-אלקטרוני</string>    
+    
+    <!-- Help - showcase -->
+    <string name="help_showcase_drawer_menu_title">Menu</string>
+    <string name="help_showcase_drawer_menu_description">The menu can be shown and hide by clicking the application icon or swiping the menu from the side</string>
+    <string name="help_showcase_report_details_location_title">Map</string>
+    <string name="help_showcase_report_details_location_description">The location can be determined by marking the exactly position on the map</string>
 
 </resources>

@@ -6,12 +6,12 @@
         android:id="@+id/menu_save"
         android:icon="@android:drawable/ic_menu_save"
         mada:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/action_bars_save"/>
+        android:title="@string/action_bar_save"/>
       <item
         android:id="@+id/menu_delete"
         android:icon="@android:drawable/ic_menu_delete"
         mada:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/action_bars_delete"/>
+        android:title="@string/action_bar_delete"/>
     <item
         android:id="@+id/menu_sync"
         android:icon="@drawable/ic_menu_refresh"
@@ -21,7 +21,7 @@
         android:id="@+id/menu_share"
         android:icon="@android:drawable/ic_menu_share"
         mada:showAsAction="ifRoom"
-        android:title="@string/action_bars_share"/>    
+        android:title="@string/action_bar_share"/>    
     <item
         android:id="@+id/menu_show_original_message"        
         mada:showAsAction="never"

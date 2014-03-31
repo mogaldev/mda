@@ -92,7 +92,7 @@ public class ReportsListActivity extends BaseActivity {
 					@Override
 					public boolean onMenuItemActionExpand(MenuItem item) {
 						txt.requestFocus();
-						txt.setHint(R.string.action_bars_search_view_hint);
+						txt.setHint(R.string.action_bar_search_view_hint);
 						txt.setEms(20);
 
 						// enable the 'real-time' filtering on the edit text
@@ -174,7 +174,7 @@ public class ReportsListActivity extends BaseActivity {
 		// show the options in a dialog
 		new AlertDialog.Builder(this)
 				.setMessage(R.string.detail_activity_dialog_delete_are_you_sure)
-				.setPositiveButton(R.string.yes,
+				.setPositiveButton(android.R.string.yes,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int item) {
 								if (item == DialogInterface.BUTTON_POSITIVE) {
@@ -183,7 +183,7 @@ public class ReportsListActivity extends BaseActivity {
 								}
 								dialog.dismiss();
 							}
-						}).setNegativeButton(R.string.cancel, null).show();
+						}).setNegativeButton(android.R.string.cancel, null).show();		
 	}
 
 }

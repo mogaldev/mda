@@ -97,7 +97,7 @@ public class Report {
 
 		// general details
 		appendLine(shareMessage,
-				resources.getString(R.string.share_string_general_details)
+				resources.getString(R.string.share_title_general_details)
 						+ " #" + getReportId(), "", resources);
 		appendLine(shareMessage, R.string.fragment_general_info_address,
 				getAddress(), resources);
@@ -114,7 +114,7 @@ public class Report {
 		shareMessage.append("\n");
 
 		// technical details
-		appendLine(shareMessage, R.string.share_string_technical_details, "",
+		appendLine(shareMessage, R.string.share_title_technical_details, "",
 				resources);
 		appendLine(shareMessage, R.string.fragment_tech_info_pulse, getPulse(),
 				resources);
@@ -132,7 +132,7 @@ public class Report {
 		// treatment
 		List<Treatment> treatments = DatabaseWrapper.getInstance(context)
 				.getTreatmentsByReportId(id);
-		appendLine(shareMessage, R.string.share_string_treatments, "",
+		appendLine(shareMessage, R.string.share_title_treatments, "",
 				resources);
 		for (Treatment treatment : treatments) {
 			shareMessage.append(treatment + "\n");

@@ -31,7 +31,7 @@ public class AboutUsFragment extends BaseFragment {
 						i.putExtra(
 								Intent.EXTRA_EMAIL,
 								new String[] { getResources().getString(
-										R.string.our_email_address) });
+										R.string.contact_email_address) });
 						try {
 							startActivity(Intent
 									.createChooser(

@@ -6,6 +6,6 @@
         android:id="@+id/codetable_activity_menu_add"
         android:icon="@android:drawable/ic_menu_add"
         mada:showAsAction="ifRoom|collapseActionView"
-        android:title="@string/action_bars_settings"/>  
+        android:title="@string/action_bar_settings"/>  
 
 </menu>

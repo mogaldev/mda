@@ -175,7 +175,7 @@ public class DetailsActivity extends BaseActivity {
 		// show the options in a dialog
 		new AlertDialog.Builder(this)
 				.setMessage(R.string.detail_activity_dialog_delete_are_you_sure)
-				.setPositiveButton(R.string.yes,
+				.setPositiveButton(android.R.string.yes,
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int item) {
 								if (item == DialogInterface.BUTTON_POSITIVE) {
@@ -193,7 +193,7 @@ public class DetailsActivity extends BaseActivity {
 								}
 								dialog.dismiss();
 							}
-						}).setNegativeButton(R.string.cancel, null).show();
+						}).setNegativeButton(android.R.string.cancel, null).show();
 	}
 
 	public void showOriginalMessageDialog() {

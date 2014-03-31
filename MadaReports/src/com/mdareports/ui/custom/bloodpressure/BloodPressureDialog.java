@@ -34,8 +34,8 @@ public class BloodPressureDialog extends RelativeLayout {
 		new AlertDialog.Builder(context)
 				.setView(this)
 				.setTitle(title)
-				.setPositiveButton(R.string.ok, onPositiveClick)
-				.setNegativeButton(R.string.cancel,
+				.setPositiveButton(android.R.string.ok, onPositiveClick)
+				.setNegativeButton(android.R.string.cancel,
 						new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog,

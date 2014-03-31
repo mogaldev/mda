@@ -18,14 +18,14 @@
             <EditText
                 android:id="@+id/txtReportId"
                 android:layout_width="@dimen/general_info_fields_width"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:inputType="numberSigned" />
 
             <TextView
                 style="@style/GeneralInfoContainer.TextView"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:text="@string/fragment_general_info_report_id" />
         </RelativeLayout>
 
