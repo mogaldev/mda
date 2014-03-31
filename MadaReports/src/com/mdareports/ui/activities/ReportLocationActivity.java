@@ -3,6 +3,7 @@ package com.mdareports.ui.activities;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -159,42 +160,6 @@ public class ReportLocationActivity extends BaseActivity {
 		reportMapFragment.zoomIntoCurrentLocation();
 	}
 
-	private void saveReportLocation() {				
-		Report report = DatabaseWrapper.getInstance(this).getReportById(currentReportId);
-		report.setLocation(reportMapFragment.getCurrentLocation());
-						
-		// save the report on separate thread
-		new AsyncTask<Object, Void, Void>() {
-			private Context context;
-			
-			@Override
-			protected Void doInBackground(Object... params) {
-				context = (Context)params[0];
-				Report report = (Report)params[1];
-
-				LatLng location = report.getLocation();
-				if (location != null) {
-					Address address = GeocodingUtils
-							.getSingleAddreesByLocation(context, location,
-									false);
-					if (address != null) {
-						report.setAddress(getAddressToDisplay(address));
-					}
-				}
-
-				// update the database
-				DatabaseWrapper.getInstance(context).updateReport(report);
-				return null;
-			}
-			
-			protected void onPostExecute(Void result) { 
-				Toast.makeText(context,
-						getString(R.string.detail_activity_report_saved),
-						Toast.LENGTH_SHORT).show();
-			};
-		}.execute(this, report);
-	}
-
 	private String getAddressToDisplay(Address address) {
 
 		// check if the feature name is numeric
@@ -227,6 +192,63 @@ public class ReportLocationActivity extends BaseActivity {
 		}
 
 	}
+	
+	private void saveReportLocation() {				
+		Report report = DatabaseWrapper.getInstance(this).getReportById(currentReportId);
+		report.setLocation(reportMapFragment.getCurrentLocation());
+						
+		// save the report on separate thread
+		new AsyncTask<Object, Void, Void>() {
+			private Context context;
+			private ProgressDialog dialog;			
+						
+			public AsyncTask<Object, Void, Void> init(Context context){
+				this.context = context;
+				this.dialog = new ProgressDialog(context);				
+				return this;
+			}
+			
+			protected void onPreExecute() {
+				dialog.setMessage(context.getResources().getString(R.string.report_location_saving_message));
+		        dialog.show();
+			}			
+			
+			@Override
+			protected Void doInBackground(Object... params) {
+				//context = (Context)params[0];
+				Report report = (Report)params[0];
+
+				
+				dialog.setMessage("Doing something, please wait."); // TODO: replace string
+		        dialog.show();
+				
+				LatLng location = report.getLocation();
+				if (location != null) {
+					Address address = GeocodingUtils
+							.getSingleAddreesByLocation(context, location,
+									false);
+					if (address != null) {
+						report.setAddress(getAddressToDisplay(address));
+					}
+				}
+
+				// update the database
+				DatabaseWrapper.getInstance(context).updateReport(report);
+				return null;
+			}
+			
+			protected void onPostExecute(Void result) { 
+				 if (dialog.isShowing()) {
+			            dialog.dismiss();	        
+			        }
+				Toast.makeText(context,
+						getString(R.string.detail_activity_report_saved),
+						Toast.LENGTH_SHORT).show();
+			}
+		}.init(this).execute(report);
+	}
+	
+		
 
 	/************************
 	 * Auto Complete Adapter

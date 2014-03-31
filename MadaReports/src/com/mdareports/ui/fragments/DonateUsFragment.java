@@ -1,5 +1,6 @@
 package com.mdareports.ui.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +10,10 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
-
 import com.mdareports.R;
+import com.mdareports.utils.DeviceInfoUtils;
 
+@SuppressLint("NewApi")
 public class DonateUsFragment extends BaseFragment {
 	private RatingBar ratingBarDonation;
 	private TextView tvDonateSum;
@@ -60,6 +62,11 @@ public class DonateUsFragment extends BaseFragment {
 				});
 
 		ratingBarDonation.setRating(ratingBarDonation.getMax());
+		
+		// set the rating bar correct direction
+		if (DeviceInfoUtils.isCurrentLanguageHebrew(rootView.getContext())){
+			ratingBarDonation.setScaleX(-1);
+		}
 		
 		return rootView;
 	}

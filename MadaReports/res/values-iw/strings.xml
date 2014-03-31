@@ -143,6 +143,9 @@
     <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו באירוע</string>
     <!-- End of Details Activity -->
 
+	<!-- Report Location -->
+	<string name="report_location_saving_message">שומר מיקום, רק רגע..</string>
+
 
     <!-- Default Treatments -->
     <string name="treatments_oxygen_enrichment">העשרה בחמצן</string>

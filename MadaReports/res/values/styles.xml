@@ -108,9 +108,7 @@
         <item name="android:fontFamily" tools:targetApi="16">sans-serif-light</item>
         <item name="android:textAlignment" tools:targetApi="17">viewStart</item>
     </style>
-    
-    
-    
+          
     
     <!-- List item text -->
     <style name="ListItemTitle" parent="TextTitle">

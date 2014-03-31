@@ -118,7 +118,7 @@ public class DetailsActivity extends BaseActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case android.R.id.home:
+		case android.R.id.home:			
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
 
