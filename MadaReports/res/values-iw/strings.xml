@@ -11,7 +11,6 @@
         <item quantity="one">דיווח אחד שלא נקרא</item>
         <item quantity="other">%d דיווחים שלא נקראו</item>
     </plurals>
-
         
     <!-- Titles -->
     <string name="title_report_detail">פרטי דיווח</string>
@@ -63,7 +62,7 @@
     <!-- ReportsList -->
   	<string name="no_reports">אין דיווחים...</string>
     <!-- ReportsList Action Bar -->
-     <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
+    <string name="reportslist_activity_action_bar_share_message">שלח את פרטי כל הדיווחים ל...</string>
     <!-- ReportsList Legend -->
     <string name="reports_list_legend_reported">דווח</string>
     <string name="reports_list_legend_unreported">לא דווח</string>
@@ -113,8 +112,8 @@
 
 
     <!-- Details Activity -->
-    <string name="detail_activity_dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
     <string name="detail_activity_report_saved">הדיווח נשמר</string>
+    <string name="detail_activity_dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
     <!-- Detail Activity Action Bar -->
     <string name="menu_refresh_data">רענן נתונים</string>
     <string name="menu_share_message">שלח את פרטי הדיווח ל…</string>
@@ -124,8 +123,9 @@
     <string name="fragment_tech_info_title">טכני</string>
     <string name="fragment_treatments_to_report_title">טיפולים</string>
     <!-- General Info Fragment -->
-    <string name="fragment_general_info_address">כתובת</string>
     <string name="fragment_general_info_report_id">מספר מקרה</string>
+    <string name="fragment_general_info_address">כתובת</string>
+    <string name="fragment_general_info_pin_location">בחר מיקום</string>
     <string name="fragment_general_info_description">תיאור</string>
     <string name="fragment_general_info_notes">הערות</string>
     <string name="fragment_general_info_is_reported">דווח באתר?</string>    
@@ -141,12 +141,12 @@
     <!-- Treatment To Report Fragment -->
     <string name="fragment_treatments_to_report_all_treatments_in_db">רשימת טיפולים</string>
     <string name="fragment_treatments_to_report_current_treatments_to_report">טיפולים שבוצעו באירוע</string>
+    
     <!-- End of Details Activity -->
 
 	<!-- Report Location -->
 	<string name="report_location_saving_message">שומר מיקום, רק רגע..</string>
 	<string name="report_location_marker_title">מיקום האירוע</string>
-
 
     <!-- Default Treatments -->
     <string name="treatments_oxygen_enrichment">העשרה בחמצן</string>
@@ -176,6 +176,8 @@
     <string name="patient_report_activity_send">שליחה</string>
     <!-- End of Patient Report Activity -->
 
+    <!-- Map -->
+    <string name="map_container_help">לחץ לחיצה ארוכה לבחירת מיקום</string>
 
     <!-- About Us Activity -->
     <string name="about_us_activity_who_we_are">מי אנחנו?</string>

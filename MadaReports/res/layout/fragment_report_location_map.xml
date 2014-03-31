@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Long press to pin the location"
+        android:text="@string/map_container_help"
         android:padding="2dp"        
         android:fontFamily="sans-serif-light"
         android:background="@drawable/transparent_background_pattern"

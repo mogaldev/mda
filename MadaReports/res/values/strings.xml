@@ -58,7 +58,6 @@
     <string name="drawer_menu_item_about_us">About Us</string>
     <!-- End of Drawer -->
 
-
     <!-- ReportsList -->
     <string name="no_reports">No Reports...</string>
     <!-- ReportsList Action Bar -->
@@ -157,7 +156,6 @@
     <!-- Treatment To Report Fragment -->
     <string name="fragment_treatments_to_report_all_treatments_in_db">All treatments</string>
     <string name="fragment_treatments_to_report_current_treatments_to_report">Treated</string>
-       
     
     <!-- End of Details Activity -->
 
@@ -192,6 +190,11 @@
     <string name="patient_report_activity_family_name">Family Name</string>
     <string name="patient_report_activity_send">Send</string>    
 
+    <!-- Donate Us -->
+    <string name="donate_us_donation">Donate!</string>    
+
+    <!-- Map -->
+    <string name="map_container_help">Long press to pin the location</string>
 
     <!-- About Us Activity -->
     <string name="about_us_activity_who_we_are">Who we Are?</string>
