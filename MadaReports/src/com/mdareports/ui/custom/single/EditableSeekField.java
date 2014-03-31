@@ -75,7 +75,7 @@ public class EditableSeekField extends RelativeLayout {
 					a.getInteger(R.styleable.EditableSeekField_maxValue, 0),
 					a.getResourceId(
 							R.styleable.EditableSeekField_positiveButtonText,
-							R.string.ok), a.getResourceId(
+							android.R.string.ok), a.getResourceId(
 							R.styleable.EditableSeekField_negativeButtonText,
 							android.R.string.cancel)); // TODO: maybe this option can be
 												// removed and set the OK and

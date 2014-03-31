@@ -62,8 +62,7 @@ public class ReportLocationMapFragment extends BaseFragment {
 		if (location != null) {
 			// add the new marker with the report's location
 			currentMarker = map.addMarker(new MarkerOptions()
-					.position(location).title("You are here")
-					// TODO: change title
+					.position(location).title(getActivity().getString(R.string.report_location_marker_title))
 					.icon(BitmapDescriptorFactory
 							.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 		}

@@ -28,9 +28,7 @@ public class EditableSeekFieldDialog extends RelativeLayout {
 		// inflate the layout
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		inflater.inflate(R.layout.dialog_seekbar, this, true); // TODO: change
-																// the layout
-																// name
+		inflater.inflate(R.layout.dialog_seekbar, this, true);
 
 		// set the views members
 		seekBar = (SeekBar) findViewById(R.id.dialogSeekBarView);

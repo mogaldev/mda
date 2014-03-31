@@ -215,12 +215,7 @@ public class ReportLocationActivity extends BaseActivity {
 			
 			@Override
 			protected Void doInBackground(Object... params) {
-				//context = (Context)params[0];
 				Report report = (Report)params[0];
-
-				
-				dialog.setMessage("Doing something, please wait."); // TODO: replace string
-		        dialog.show();
 				
 				LatLng location = report.getLocation();
 				if (location != null) {

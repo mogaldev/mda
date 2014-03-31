@@ -146,6 +146,7 @@
 
 	<!-- Report Location -->
 	<string name="report_location_saving_message">שומר מיקום, רק רגע..</string>
+	<string name="report_location_marker_title">מיקום האירוע</string>
 
     <!-- Default Treatments -->
     <string name="treatments_oxygen_enrichment">העשרה בחמצן</string>
