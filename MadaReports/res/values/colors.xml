@@ -20,7 +20,8 @@
     <color name="activity_text_color">@color/body_text_2</color>
     <color name="reports_list_item_read_textcolor">#8b8682</color>
     <color name="reports_list_item_unread_textcolor">@color/activity_text_color</color>
-    <color name="actionbar_text_color">#FFFFFF</color>
+    <color name="actionbar_text_color">@color/base_gray_color</color>
+    <color name="actionbar_tab_text_color">@color/base_red_color</color>
     <color name="actionbar_color">@color/base_red_color</color>
 
     <!-- Reports List -->

@@ -38,13 +38,12 @@
         <item name="android:textColor">@color/actionbar_text_color</item>
     </style>
 
-    <style name="MdaActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
-        <!-- <item name="android:background">@drawable/details_fragment_tab_selector</item> -->
+    <style name="MdaActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">        
 		<item name="android:background">@drawable/tab_indicator</item>
     </style>
 
     <style name="MdaActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
-        <item name="android:textColor">@color/actionbar_text_color</item>
+        <item name="android:textColor">@color/actionbar_tab_text_color</item>
     </style>
 
     <!-- Empty views -->
