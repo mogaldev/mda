@@ -95,9 +95,9 @@ public class HomeFragment extends BaseFragment {
 		
 		DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(getActivity());
 		Resources resources = getResources();
-		int countAllReports = 100;
-		int countUnreadReports = 50;
-		int countUnreportedReports = 20;
+		int countAllReports = databaseWrapper.countAllReports();
+		int countUnreadReports = databaseWrapper.countUnreadReports();
+		int countUnreportedReports = databaseWrapper.countUnreportedReports();
 
 		// Init the bars and the points
 		ArrayList<Bar> points = new ArrayList<Bar>();
