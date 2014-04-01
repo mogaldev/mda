@@ -75,8 +75,6 @@ public class BillingUtils {
 
 	/**
 	 * Perform the actual buying (moving to the Google-Play purchase screen)
-	 * TODO: consider change to "subs" instead of "inapp". check if more changes
-	 * should be done because of this change.
 	 * 
 	 * @param item
 	 *            - the item to be bought, corresponding to the name in the
@@ -84,11 +82,15 @@ public class BillingUtils {
 	 */
 	public void buy(String item) {
 		try {
-			Bundle buyIntentBundle = mService.getBuyIntent(API_VERSION,
-					packageName, item, "inapp",
-					// TODO: replace with our key. maybe save encrypted or
-					// calculate it at runtime (google security recommendation)
-					"bGoa+V7g/ysDXvKwqq+JTFn4uQZbPiQJo4pf9RzJ");
+			Bundle buyIntentBundle = mService
+					.getBuyIntent(API_VERSION, packageName,
+							item,
+							"inapp",
+							// TODO: maybe save encrypted
+							// or
+							// calculate it at runtime (google security
+							// recommendation)
+							"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsUjr6RVEmRwKugoyv42HrYr7RWsPHvvYkdudi6jfezUUItWgdzCobNCKkggATb3IcIyp5xdfIN68p1+/PND3pI6ZsrO5qdBT+0jsZgliNx0kATKisUFYCDE89pnwoJDlVfEjGyroOdlpbdmSmWLKh+R4w7j26pTSol3I8UnwAlf+l8O6TZMjipg6EWo7FLr0tI5miRomWzmM1QqAB5a1AC2cShOCRvs2XeNOi79tZDODfuJRqh2uFhci/fcbN2h6+6wLNXv9zLioAty/zoYR/zB178GSaKn+sYp/V6Yud0xJIgZgYzDxGRCqNq3RJspB2SQjsOvVz8GyyLleeKrBVQIDAQAB");
 			PendingIntent pendingIntent = buyIntentBundle
 					.getParcelable("BUY_INTENT");
 			if (pendingIntent != null) {
