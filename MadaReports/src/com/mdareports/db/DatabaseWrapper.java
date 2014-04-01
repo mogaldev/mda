@@ -130,6 +130,16 @@ public class DatabaseWrapper {
 		}
 	}
 
+	public int countAllReports(){
+		Dao<Report, Integer> dao = helper.getReportDao();
+		try {
+			return (int)dao.countOf();			
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+			return -1;
+		}
+	}
+	
 	public int countUnreportedReports() {
 		Dao<Report, Integer> dao = helper.getReportDao();
 		try {
