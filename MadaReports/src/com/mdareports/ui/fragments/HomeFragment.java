@@ -1,17 +1,18 @@
 package com.mdareports.ui.fragments;
 
+import java.util.ArrayList;
+
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.echo.holographlibrary.Bar;
+import com.echo.holographlibrary.BarGraph;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.mdareports.R;
+import com.mdareports.db.DatabaseWrapper;
 
 public class HomeFragment extends BaseFragment {
 	GoogleMap map;
@@ -53,9 +54,9 @@ public class HomeFragment extends BaseFragment {
 
 //		map = ((SupportMapFragment) getFragmentManager().findFragmentById(
 //				R.id.map)).getMap();
-
-		if (map != null) {
-			
+//
+//		if (map != null) {
+//			
 //			Criteria criteria = new Criteria();
 //			String bestProvider = locationManager.getBestProvider(criteria, false);
 //			Location loc = locationManager.getLastKnownLocation(bestProvider);
@@ -69,29 +70,60 @@ public class HomeFragment extends BaseFragment {
 //						new LatLng(loc.getLatitude(), loc.getLongitude()), 2));
 //			}
 //			
+//
+//			map.setMyLocationEnabled(true);
+//			Marker hamburg = map.addMarker(new MarkerOptions().position(
+//					new LatLng(-100, 50)).title("Hamburg"));
+//			Marker kiel = map.addMarker(new MarkerOptions()
+//					.position(new LatLng(-100, 120))
+//					.title("Kiel")
+//					.snippet("Kiel is cool")
+//					.icon(BitmapDescriptorFactory
+//							.fromResource(R.drawable.ic_launcher)));
+//
+//			map.setOnMapLongClickListener(new OnMapLongClickListener() {
+//				@Override
+//				public void onMapLongClick(LatLng point) {
+//					map.addMarker(new MarkerOptions()
+//							.position(point)
+//							.title("You are here")
+//							.icon(BitmapDescriptorFactory
+//									.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+//				}
+//			});
+//		}
+		
+		DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(getActivity());
+		Resources resources = getResources();
+		int countAllReports = 100;
+		int countUnreadReports = 50;
+		int countUnreportedReports = 20;
 
-			map.setMyLocationEnabled(true);
-			Marker hamburg = map.addMarker(new MarkerOptions().position(
-					new LatLng(-100, 50)).title("Hamburg"));
-			Marker kiel = map.addMarker(new MarkerOptions()
-					.position(new LatLng(-100, 120))
-					.title("Kiel")
-					.snippet("Kiel is cool")
-					.icon(BitmapDescriptorFactory
-							.fromResource(R.drawable.ic_launcher)));
+		// Init the bars and the points
+		ArrayList<Bar> points = new ArrayList<Bar>();
+		Bar allReportsBar = new Bar();
+		allReportsBar.setColor(resources.getColor(R.color.bar_color_all_reports));
+		allReportsBar.setName(resources.getString(R.string.bar_title_all));
+		allReportsBar.setValue(countAllReports);
+		Bar unreadReportsBar = new Bar();
+		unreadReportsBar.setColor(resources.getColor(R.color.bar_color_unread_reports));
+		unreadReportsBar.setName(resources.getString(R.string.bar_title_unread));
+		allReportsBar.setValue(countUnreadReports);
+		Bar unreportedBar = new Bar();
+		unreportedBar.setColor(resources.getColor(R.color.bar_color_unreported_reports));
+		unreportedBar.setName(resources.getString(R.string.bar_title_unreported));
+		allReportsBar.setValue(countUnreportedReports);
+		
+		// Add the points of the bars
+		points.add(allReportsBar);
+		points.add(unreadReportsBar);
+		points.add(unreportedBar);
 
-			map.setOnMapLongClickListener(new OnMapLongClickListener() {
-				@Override
-				public void onMapLongClick(LatLng point) {
-					map.addMarker(new MarkerOptions()
-							.position(point)
-							.title("You are here")
-							.icon(BitmapDescriptorFactory
-									.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-				}
-			});
-		}
+		// Set the bars in the Graph object
+		BarGraph g = (BarGraph)rootView.findViewById(R.id.graph);
+		g.setBars(points);
 
+		
 		return rootView;
 	}
 

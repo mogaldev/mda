@@ -111,6 +111,11 @@
     <!-- End of Preferences Settings -->
 
 
+    <!-- Home -->
+	<string name="bar_title_all">כל הדיווחים</string>
+	<string name="bar_title_unread">דיווחים שלא נקראו</string>
+	<string name="bar_title_unreported">דיווחים שלא דווחו באתר</string>
+
     <!-- Details Activity -->
     <string name="detail_activity_report_saved">הדיווח נשמר</string>
     <string name="detail_activity_dialog_delete_are_you_sure">האם ברצונך לבצע מחיקה?</string>
