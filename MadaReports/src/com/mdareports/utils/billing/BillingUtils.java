@@ -83,7 +83,9 @@ public class BillingUtils {
 	public void buy(String item) {
 		try {
 			Bundle buyIntentBundle = mService
-					.getBuyIntent(API_VERSION, packageName,
+					.getBuyIntent(
+							API_VERSION,
+							packageName,
 							item,
 							"inapp",
 							// TODO: maybe save encrypted
@@ -103,6 +105,10 @@ public class BillingUtils {
 		} catch (SendIntentException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void buy(int itemNumber) {
+		buy("donate" + itemNumber);
 	}
 
 	ServiceConnection mServiceConn = new ServiceConnection() {

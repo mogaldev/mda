@@ -181,6 +181,10 @@
     <string name="patient_report_activity_send">שליחה</string>
     <!-- End of Patient Report Activity -->
 
+	<!-- Donate Us -->
+    <string name="donate_us_donation">עזרו לנו!</string>
+    <string name="donate_us_thank_you">תודה רבה!</string>
+
     <!-- Map -->
     <string name="map_container_help">לחץ לחיצה ארוכה לבחירת מיקום</string>
 

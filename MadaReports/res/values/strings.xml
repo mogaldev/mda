@@ -195,7 +195,8 @@
     <string name="patient_report_activity_send">Send</string>    
 
     <!-- Donate Us -->
-    <string name="donate_us_donation">Donate!</string>    
+    <string name="donate_us_donation">Donate!</string>
+    <string name="donate_us_thank_you">Thank you!</string>    
 
     <!-- Map -->
     <string name="map_container_help">Long press to pin the location</string>

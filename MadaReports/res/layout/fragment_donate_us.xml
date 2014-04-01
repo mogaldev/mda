@@ -31,10 +31,10 @@
         android:layout_alignTop="@+id/imgGoodRate"
         android:src="@drawable/ic_action_bad" />
 
-    <Button
+    <Button        
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:id="@+id/btnSendReport"
+        android:id="@+id/btnDonate"
         style="@style/btnStyleOrange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
