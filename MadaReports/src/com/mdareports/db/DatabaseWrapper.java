@@ -130,6 +130,17 @@ public class DatabaseWrapper {
 		}
 	}
 
+	public int countUnreportedReports() {
+		Dao<Report, Integer> dao = helper.getReportDao();
+		try {
+			return (int) dao.countOf(dao.queryBuilder().setCountOf(true)
+					.where().eq(Report.IS_REPORTED_COLUMN_NAME, false).prepare());
+		} catch (SQLException e) {
+			Logger.LOGE(TAG, e.getMessage());
+			return -1;
+		}
+	}
+	
 	public int countUnreadReports() {
 		Dao<Report, Integer> dao = helper.getReportDao();
 		try {

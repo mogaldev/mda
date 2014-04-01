@@ -32,10 +32,6 @@
     <style name="MdaActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
         <item name="android:background">@color/actionbar_color</item>
         <item name="android:titleTextStyle" tools:targetApi="11">@style/MdaActionBarTextStyle</item>
-
-        <!-- Support library compatibility -->
-        <item name="background">@drawable/tab_unselected_unpressed</item>
-        <item name="titleTextStyle">@style/MdaActionBarTextStyle</item>
     </style>
 
     <style name="MdaActionBarTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
@@ -43,10 +39,8 @@
     </style>
 
     <style name="MdaActionBarTab" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
-        <item name="android:background">@drawable/details_fragment_tab_selector</item>
-
-        <!-- Support library compatibility -->
-        <item name="background">@drawable/details_fragment_tab_selector</item>
+        <!-- <item name="android:background">@drawable/details_fragment_tab_selector</item> -->
+		<item name="android:background">@drawable/tab_indicator</item>
     </style>
 
     <style name="MdaActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
