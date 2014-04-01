@@ -92,7 +92,7 @@ public class BillingUtils {
 							// or
 							// calculate it at runtime (google security
 							// recommendation)
-							"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsUjr6RVEmRwKugoyv42HrYr7RWsPHvvYkdudi6jfezUUItWgdzCobNCKkggATb3IcIyp5xdfIN68p1+/PND3pI6ZsrO5qdBT+0jsZgliNx0kATKisUFYCDE89pnwoJDlVfEjGyroOdlpbdmSmWLKh+R4w7j26pTSol3I8UnwAlf+l8O6TZMjipg6EWo7FLr0tI5miRomWzmM1QqAB5a1AC2cShOCRvs2XeNOi79tZDODfuJRqh2uFhci/fcbN2h6+6wLNXv9zLioAty/zoYR/zB178GSaKn+sYp/V6Yud0xJIgZgYzDxGRCqNq3RJspB2SQjsOvVz8GyyLleeKrBVQIDAQAB");
+							"XXXXX-HERE-THE-PK-XXXXX");
 			PendingIntent pendingIntent = buyIntentBundle
 					.getParcelable("BUY_INTENT");
 			if (pendingIntent != null) {
