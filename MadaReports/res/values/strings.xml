@@ -125,6 +125,10 @@
     <string name="prefrences_category_spatial_telephony_center_title">Spatial Telephony Center</string>
     <!-- End of Preferences Settings -->
 
+	<!-- Home -->
+	<string name="bar_title_all">all reports</string>
+	<string name="bar_title_unread">unread reports</string>
+	<string name="bar_title_unreported">unreported in website reports</string>
 
     <!-- Details Activity -->
     <string name="detail_activity_report_saved">Report saved</string>

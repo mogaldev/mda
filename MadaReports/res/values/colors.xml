@@ -24,6 +24,11 @@
     <color name="actionbar_tab_text_color">@color/base_red_color</color>
     <color name="actionbar_color">@color/base_red_color</color>
 
+    <!-- Home statistics colors -->
+    <color name="bar_color_all_reports">#99CC00</color>
+    <color name="bar_color_unread_reports">#FF464A</color>
+    <color name="bar_color_unreported_reports">#FFBB33</color>
+    
     <!-- Reports List -->
     <color name="reports_list_item_footer_background">#fafafa</color>
 
