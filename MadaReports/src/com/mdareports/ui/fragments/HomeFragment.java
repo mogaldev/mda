@@ -15,7 +15,8 @@ import com.mdareports.R;
 import com.mdareports.db.DatabaseWrapper;
 
 public class HomeFragment extends BaseFragment {
-	GoogleMap map;
+	private GoogleMap map;
+	private BarGraph graph;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -25,7 +26,9 @@ public class HomeFragment extends BaseFragment {
 		
 		final View rootView = inflater.inflate(R.layout.fragment_home,
 				container, false);
-
+		
+		// Set the bars in the Graph object
+		graph = (BarGraph)rootView.findViewById(R.id.graph);
 		// Acquire a reference to the system Location Manager
 //		LocationManager locationManager = (LocationManager) getActivity()
 //				.getSystemService(Context.LOCATION_SERVICE);
@@ -93,6 +96,13 @@ public class HomeFragment extends BaseFragment {
 //			});
 //		}
 		
+		return rootView;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+
 		DatabaseWrapper databaseWrapper = DatabaseWrapper.getInstance(getActivity());
 		Resources resources = getResources();
 		int countAllReports = databaseWrapper.countAllReports();
@@ -108,23 +118,17 @@ public class HomeFragment extends BaseFragment {
 		Bar unreadReportsBar = new Bar();
 		unreadReportsBar.setColor(resources.getColor(R.color.bar_color_unread_reports));
 		unreadReportsBar.setName(resources.getString(R.string.bar_title_unread));
-		allReportsBar.setValue(countUnreadReports);
+		unreadReportsBar.setValue(countUnreadReports);
 		Bar unreportedBar = new Bar();
 		unreportedBar.setColor(resources.getColor(R.color.bar_color_unreported_reports));
 		unreportedBar.setName(resources.getString(R.string.bar_title_unreported));
-		allReportsBar.setValue(countUnreportedReports);
+		unreportedBar.setValue(countUnreportedReports);
 		
 		// Add the points of the bars
 		points.add(allReportsBar);
 		points.add(unreadReportsBar);
 		points.add(unreportedBar);
 
-		// Set the bars in the Graph object
-		BarGraph g = (BarGraph)rootView.findViewById(R.id.graph);
-		g.setBars(points);
-
-		
-		return rootView;
+		graph.setBars(points);
 	}
-
 }
