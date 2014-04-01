@@ -36,8 +36,8 @@
     <string name="action_bar_share">Share</string>
 
     <!-- Action bar - Searchable -->
-    <string name="searchable_label">Search label</string>
-    <string name="searchable_hint">Search hint</string>
+    <string name="searchable_label">Search</string>
+    <string name="searchable_hint">Search...</string>
 
     <!-- End of Action Bars -->
 
@@ -126,9 +126,9 @@
     <!-- End of Preferences Settings -->
 
 	<!-- Home -->
-	<string name="bar_title_all">all reports</string>
-	<string name="bar_title_unread">unread reports</string>
-	<string name="bar_title_unreported">unreported in website reports</string>
+	<string name="bar_title_all">All</string>
+	<string name="bar_title_unread">Unread</string>
+	<string name="bar_title_unreported">Unreported in Website</string>
 
     <!-- Details Activity -->
     <string name="detail_activity_report_saved">Report saved</string>

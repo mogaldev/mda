@@ -37,8 +37,8 @@
     <string name="action_bar_share">שתף</string>
     
     <!-- Action bar - Searchable -->
-    <string name="searchable_label">Search label</string>
-    <string name="searchable_hint">Search hint</string>    
+    <string name="searchable_label">חיפוש</string>
+    <string name="searchable_hint">חיפוש...</string>    
     
     <!-- End of Action Bars -->
 
@@ -112,9 +112,9 @@
 
 
     <!-- Home -->
-	<string name="bar_title_all">כל הדיווחים</string>
-	<string name="bar_title_unread">דיווחים שלא נקראו</string>
-	<string name="bar_title_unreported">דיווחים שלא דווחו באתר</string>
+	<string name="bar_title_all">הכל</string>
+	<string name="bar_title_unread">לא נקראו</string>
+	<string name="bar_title_unreported">לא דווחו באתר</string>
 
     <!-- Details Activity -->
     <string name="detail_activity_report_saved">הדיווח נשמר</string>
