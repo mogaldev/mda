@@ -13,9 +13,6 @@ import android.widget.TextView;
 
 import com.mdareports.R;
 import com.mdareports.ui.activities.MdaDrawerActivity;
-import com.mdareports.utils.DeviceInfoUtils;
-import com.mdareports.utils.FontTypeFaceManager;
-import com.mdareports.utils.FontTypeFaceManager.CustomFonts;
 
 public class DrawerItemsAdapter extends BaseAdapter {
 
